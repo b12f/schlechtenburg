@@ -1,0 +1,25 @@
+.sb-block {
+  position: relative;
+  display: flex;
+  align-items: stretch;
+  justify-items: stretch;
+  min-height: 50px;
+
+  > .sb-toolbar {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  &:focus,
+  &:hover {
+    outline: 1px solid var(--grey-2);
+  }
+
+  &:focus {
+    > .sb-toolbar {
+      opacity: 1;
+      pointer-events: all;
+      outline: 1px solid var(--grey-2);
+    }
+  }
+}

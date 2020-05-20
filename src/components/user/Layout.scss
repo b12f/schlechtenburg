@@ -1,0 +1,11 @@
+.sb-layout {
+  display: flex;
+
+  &_vertical {
+    flex-direction: column;
+  }
+
+  &_horizontal {
+    flex-direction: row;
+  }
+}

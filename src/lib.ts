@@ -1,15 +1,49 @@
-import Vuex from 'vuex';
-import storeModule from './store';
 /* eslint no-param-reassign: 0 */
 
+interface UserBlock {
+  name: string;
+  edit: () => Promise<any>;
+  display: () => Promise<any>;
+}
+
+function addUserBlock(Vue, block) {
+  if (Vue.prototype.$sb.blocks[block.name]) {
+    console.warn(`Block ${block.name} is already registered`);
+  }
+  Vue.prototype.$sb.blocks[block.name] = block;
+}
+
 export default {
-  install(Vue, { store }: { store: Vuex }) {
+  install(Vue, { blocks }: { blocks: UserBlock[] } = { blocks: [] }) {
+    Vue.prototype.$sb = {
+      blocks: {},
+      activeBlockId: null,
+    };
 
-    store.registerModule('sb', storeModule);
+    addUserBlock(Vue, {
+      name: 'sb-layout',
+      edit: () => import('@user/Layout'),
+      display: () => import('@user/Layout'),
+    });
 
-    Vue.component('sb-layout', () => import('@user/Layout'));
-    Vue.component('sb-image', () => import('@user/Image'));
-    Vue.component('sb-paragraph', () => import('@user/Paragraph'));
-    Vue.component('sb-heading', () => import('@user/Heading'));
+    addUserBlock(Vue, {
+      name: 'sb-image',
+      edit: () => import('@user/Image'),
+      display: () => import('@user/Image'),
+    });
+
+    addUserBlock(Vue, {
+      name: 'sb-paragraph',
+      edit: () => import('@user/Paragraph'),
+      display: () => import('@user/Paragraph'),
+    });
+
+    addUserBlock(Vue, {
+      name: 'sb-heading',
+      edit: () => import('@user/Heading'),
+      display: () => import('@user/Heading'),
+    });
+
+    blocks.forEach((block) => addUserBlock(Vue, block));
   },
 };

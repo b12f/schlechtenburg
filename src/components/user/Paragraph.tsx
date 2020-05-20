@@ -7,7 +7,7 @@ import {
 import {
   model,
   treeElementProps,
-  useTree,
+  useDynamicComponents,
 } from '@components/TreeElement';
 
 import SbBlock from '@internal/Block';

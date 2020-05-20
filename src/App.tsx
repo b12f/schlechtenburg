@@ -11,25 +11,25 @@ export default defineComponent({
   name: 'App',
 
   setup() {
-    const tree = reactive({
-      component: 'sb-layout',
+    const block = reactive({
+      block: 'sb-layout',
       orientation: 'vertical',
       children: [],
     });
 
     watchEffect(() => {
-      console.log(tree);
+      console.log(block);
     });
 
-    return { tree };
+    return { block };
   },
 
   render() {
     return (
       <div id="app">
-        <Schlechtenburg vModel={this.tree} />
+        <Schlechtenburg vModel={this.block} />
 
-        <pre><code>{JSON.stringify(this.tree, null, 2)}</code></pre>
+        <pre><code>{JSON.stringify(this.block, null, 2)}</code></pre>
       </div>
     );
   },

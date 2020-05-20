@@ -8,10 +8,12 @@ import './main.scss';
 
 Vue.config.productionTip = false;
 
+Vue.use(Vuex);
 const store = new Vuex.Store({});
 Vue.use(VueCompositionApi);
 Vue.use(VueSchlechtenburg);
 
 new Vue({
+  store,
   render: (h) => h(App),
 }).$mount('#app');

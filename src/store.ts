@@ -1,8 +1,9 @@
+/* eslint no-param-reassign: 0 */
 import { GetterTree, MutationTree, ActionTree } from 'vuex';
 
 interface State {
   activeBlockId: number|null;
-};
+}
 
 const state: State = {
   activeBlockId: null,

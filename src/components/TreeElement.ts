@@ -11,6 +11,7 @@ export const BlockLibrary = Symbol('Schlechtenburg block library');
 
 export interface BlockDefinition {
   name: string;
+  getDefaultData: any;
   edit: () => Promise<any>;
   display: () => Promise<any>;
 }

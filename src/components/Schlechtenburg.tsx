@@ -1,7 +1,6 @@
 import {
   defineComponent,
   provide,
-  computed,
   reactive,
   ref,
   PropType,
@@ -16,6 +15,11 @@ import {
 } from '@components/TreeElement';
 
 import SbBlock from '@internal/Block';
+
+import SbLayout from '@user/Layout/index';
+import SbParagraph from '@user/Paragraph/index';
+import SbImage from '@user/Image/index';
+import SbHeading from '@user/Heading/index';
 
 export default defineComponent({
   name: 'schlechtenburg-main',
@@ -32,26 +36,10 @@ export default defineComponent({
     provide(ActiveBlock, activeBlock);
 
     const blockLibrary: BlockLibraryDefinition = reactive({
-      'sb-layout': {
-        name: 'sb-layout',
-        edit: () => import('@user/Layout'),
-        display: () => import('@user/Layout'),
-      },
-      'sb-image': {
-        name: 'sb-image',
-        edit: () => import('@user/Image'),
-        display: () => import('@user/Image'),
-      },
-      'sb-paragraph': {
-        name: 'sb-paragraph',
-        edit: () => import('@user/Paragraph'),
-        display: () => import('@user/Paragraph'),
-      },
-      'sb-heading': {
-        name: 'sb-heading',
-        edit: () => import('@user/Heading'),
-        display: () => import('@user/Heading'),
-      },
+      'sb-layout': SbLayout,
+      'sb-image': SbImage,
+      'sb-paragraph': SbParagraph,
+      'sb-heading': SbHeading,
       ...props.customBlocks.reduce(
         (
           blocks: BlockLibraryDefinition,

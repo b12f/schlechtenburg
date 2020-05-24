@@ -4,6 +4,7 @@ import {
   computed,
   defineComponent,
   watch,
+  PropType,
 } from '@vue/composition-api';
 import {
   model,
@@ -11,28 +12,38 @@ import {
   useDynamicBlocks,
   useActivation,
   BlockData,
+  BlockDefinition,
 } from '@components/TreeElement';
+import {
+  LayoutData,
+  LayoutProps,
+  getDefaultData,
+} from './util';
 
 import SbBlock from '@internal/Block';
 import SbToolbar from '@internal/Toolbar';
 import SbBlockPlaceholder from '@internal/BlockPlaceholder';
 
-import './Layout.scss';
+import './style.scss';
 
 export default defineComponent({
-  name: 'sb-layout',
+  name: 'sb-layout-edit',
 
   model,
 
   props: {
     ...blockProps,
+    data: {
+      type: (null as unknown) as PropType<LayoutData>,
+      default: getDefaultData,
+    },
   },
 
-  setup(props: BlockProps, context) {
+  setup(props: LayoutProps, context) {
     const { getBlock } = useDynamicBlocks();
     const { isActive, activate } = useActivation(props.blockId);
 
-    const localData = reactive({
+    const localData: LayoutData = reactive({
       orientation: props.data.orientation,
       children: [...props.data.children],
     });

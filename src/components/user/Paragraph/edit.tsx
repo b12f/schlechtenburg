@@ -5,29 +5,38 @@ import {
   Ref,
   onMounted,
   watch,
+  PropType,
 } from '@vue/composition-api';
 import {
   model,
   blockProps,
-  BlockProps,
   useActivation,
 } from '@components/TreeElement';
 
-import SbBlock from '@internal/Block';
+import {
+  getDefaultData,
+  ParagraphData,
+  ParagraphProps,
+} from './util.ts';
+
 import SbToolbar from '@internal/Toolbar';
 
-import './Paragraph.scss';
+import './style.scss';
 
 export default defineComponent({
-  name: 'sb-paragraph',
+  name: 'sb-paragraph-edit',
 
   model,
 
   props: {
     ...blockProps,
+    data: {
+      type: (null as unknown) as PropType<ParagraphData>,
+      default: getDefaultData,
+    },
   },
 
-  setup(props: BlockProps, context) {
+  setup(props: ParagraphProps, context) {
     const localData = reactive({
       value: props.data.value,
       focused: false,
@@ -81,7 +90,7 @@ export default defineComponent({
         context.emit('insert-block', {
           blockId,
           name: 'sb-paragraph',
-          data: { value: '' },
+          data: getDefaultData(),
         });
 
         activate(blockId);

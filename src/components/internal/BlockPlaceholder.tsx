@@ -1,4 +1,6 @@
 import { defineComponent } from '@vue/composition-api';
+import { BlockDefinition } from '../TreeElement';
+import BlockPicker from './BlockPicker';
 
 import './BlockPlaceholder.scss';
 
@@ -8,23 +10,13 @@ export default defineComponent({
   render() {
     return (
       <div class="sb-block-placeholder">
-        <button
-          class="sb-block-placeholder__add"
-          type="button"
+        <BlockPicker
           {...{
             on: {
-              click: () => this.$emit('insert-block', {
-                name: 'sb-paragraph',
-                blockId: +(new Date()),
-                data: {
-                  value: '',
-                },
-              }),
+              'picked-block': (block: BlockDefinition) => this.$emit('insert-block', block),
             },
           }}
-        >
-          {this.$slots.default ? this.$slots.default : 'Add a block'}
-        </button>
+        />
       </div>
     );
   },

@@ -1,27 +1,37 @@
-import { defineComponent } from '@vue/composition-api';
-import { useDynamicComponents } from './TreeElement';
+import { computed, defineComponent } from '@vue/composition-api';
+import { useDynamicBlocks } from '../TreeElement';
+
+import './BlockPicker.scss';
 
 export default defineComponent({
   props: {},
 
-  setup(props) {
-    const { customBlocks } = useDynamicComponents(props.components || {});
+  setup() {
+    const { customBlocks } = useDynamicBlocks();
 
-    return {
-      customBlocks,
-    };
+    const blockList = computed(() => Object.keys(customBlocks).map((key) => customBlocks[key]));
+    console.log(customBlocks, blockList);
+
+    return { blockList };
   },
 
   render() {
     return (
       <div class="sb-block-picker">
-        <component
-          class="sb-main"
-          v-for="child in children"
-          :key="child.id"
-          :is="getComponent(child.name)"
-          v-bind="child"
-        />
+        {...this.blockList.map((block: BlockDefinition) => (
+          <button
+            type="button"
+            {...{
+              on: {
+                click: ($event) => this.$emit('picked-block', {
+                  name: block.name,
+                  blockId: +(new Date()),
+                  data: block.getDefaultData(),
+                }),
+              },
+            }}
+          >{block.name}</button>
+        ))}
       </div>
     );
   },

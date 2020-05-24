@@ -55,7 +55,6 @@ export default defineComponent({
 
     const classes = computed(() => ({
       'sb-layout': true,
-      'sb-layout_active': isActive,
       [`sb-layout_${localData.orientation}`]: true,
     }));
 
@@ -80,17 +79,16 @@ export default defineComponent({
     };
 
     const appendBlock = (block: BlockData) => {
-      console.log('append block', block);
       context.emit('update', {
         children: [
           ...localData.children,
           block,
         ],
       });
+      activate(block.blockId);
     };
 
     const insertBlock = (index: number, block: BlockData) => {
-      console.log('insert block', index, block);
       context.emit('update', {
         children: [
           ...localData.children.slice(0, index + 1),
@@ -98,6 +96,7 @@ export default defineComponent({
           ...localData.children.slice(index + 1),
         ],
       });
+      activate(block.blockId);
     };
 
     return {

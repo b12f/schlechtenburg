@@ -54,9 +54,17 @@ export function useActivation(currentBlockId: string|number) {
   const activate = (blockId?: string|number|null) => {
     activeBlockId.value = blockId !== undefined ? blockId : currentBlockId;
   };
+  const requestActivation = () => {
+    if (activeBlockId.value) {
+      return;
+    }
+
+    activate();
+  };
 
   return {
     isActive,
     activate,
+    requestActivation,
   };
 }

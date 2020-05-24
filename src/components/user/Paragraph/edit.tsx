@@ -1,6 +1,7 @@
 import {
   defineComponent,
   reactive,
+  computed,
   ref,
   Ref,
   onMounted,
@@ -17,7 +18,7 @@ import {
   getDefaultData,
   ParagraphData,
   ParagraphProps,
-} from './util.ts';
+} from './util';
 
 import SbToolbar from '@internal/Toolbar';
 
@@ -39,8 +40,11 @@ export default defineComponent({
   setup(props: ParagraphProps, context) {
     const localData = reactive({
       value: props.data.value,
+      align: props.data.align,
       focused: false,
     });
+
+    console.log(localData);
 
     const inputEl: Ref<null|HTMLElement> = ref(null);
 
@@ -50,14 +54,16 @@ export default defineComponent({
       if (inputEl.value) {
         inputEl.value.innerHTML = localData.value;
 
-        if (isActive) {
+        if (isActive.value) {
           inputEl.value.focus();
         }
       }
     });
 
     watch(() => props.data, () => {
+      console.log('props update paragraph');
       localData.value = props.data.value;
+      localData.align = props.data.align;
       if (inputEl.value) {
         inputEl.value.innerHTML = localData.value;
       }
@@ -67,10 +73,11 @@ export default defineComponent({
       localData.value = $event.target.innerHTML;
     };
 
-    const classes = reactive({
+    const classes = computed(() => ({
       'sb-paragraph': true,
       'sb-paragraph_focused': localData.focused,
-    });
+      [`sb-paragraph_align-${localData.align}`]: true,
+    }));
 
     const onFocus = () => {
       localData.focused = true;
@@ -111,10 +118,15 @@ export default defineComponent({
   },
 
   render() {
-    console.log('render paragraph');
     return (
       <div class="sb-paragraph">
-        <SbToolbar>Paragraph editing</SbToolbar>
+        <SbToolbar>
+          <select vModel={this.localData.align}>
+            <option>left</option>
+            <option>center</option>
+            <option>right</option>
+          </select>
+        </SbToolbar>
         <p
           class={this.classes}
           ref="inputEl"

@@ -10,12 +10,9 @@
     pointer-events: none;
   }
 
-  &:focus,
-  &:hover {
+  &_active {
     outline: 1px solid var(--grey-2);
-  }
 
-  &:focus {
     > .sb-toolbar {
       opacity: 1;
       pointer-events: all;

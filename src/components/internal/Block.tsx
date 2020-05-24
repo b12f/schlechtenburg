@@ -20,11 +20,11 @@ export default defineComponent({
   },
 
   setup(props, context) {
-    const { isActive, activate } = useActivation(props.block.blockId);
+    const { isActive, activate, requestActivation } = useActivation(props.block.blockId);
     const { getBlock } = useDynamicBlocks();
     const classes = computed(() => ({
       'sb-block': true,
-      'sb-block_active': isActive,
+      'sb-block_active': isActive.value,
     }));
 
     const onChildUpdate = (updated: {[key: string]: any}) => {
@@ -41,8 +41,8 @@ export default defineComponent({
     return {
       getBlock,
       classes,
-      activate,
       onChildUpdate,
+      activate,
     };
   },
 
@@ -50,6 +50,7 @@ export default defineComponent({
     console.log('render block', this.block);
     const Block = this.getBlock(this.block.name).edit;
     return <Block
+      class={this.classes}
       data={this.block.data}
       block-id={this.block.blockId}
       {...{
@@ -59,6 +60,12 @@ export default defineComponent({
           update: this.onChildUpdate,
           'insert-block': (block: BlockDefinition) => this.$emit('insert-block', block),
           'append-block': (block: BlockDefinition) => this.$emit('append-block', block),
+        },
+        nativeOn: {
+          click: ($event) => {
+            $event.stopPropagation();
+            this.activate();
+          },
         },
       }}
     />;

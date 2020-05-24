@@ -1,12 +1,16 @@
 import {
+  inject,
   reactive,
+  computed,
   defineComponent,
-  watchEffect,
+  watch,
 } from '@vue/composition-api';
 import {
   model,
-  treeElementProps,
-  useDynamicComponents,
+  blockProps,
+  useDynamicBlocks,
+  useActivation,
+  BlockData,
 } from '@components/TreeElement';
 
 import SbBlock from '@internal/Block';
@@ -21,51 +25,52 @@ export default defineComponent({
   model,
 
   props: {
-    ...treeElementProps,
+    ...blockProps,
   },
 
-  setup(props, context) {
-    const { getComponent } = useDynamicComponents(props.userComponents);
+  setup(props: BlockProps, context) {
+    const { getBlock } = useDynamicBlocks();
+    const { isActive, activate } = useActivation(props.blockId);
 
     const localData = reactive({
-      orientation: props.tree.data.orientation,
-      children: [...props.tree.data.children],
+      orientation: props.data.orientation,
+      children: [...props.data.children],
     });
 
-    watchEffect(() => {
-      localData.orientation = props.tree.data.orientation;
-      localData.children = [...props.tree.data.children];
+    watch(() => props.data, () => {
+      localData.orientation = props.data.orientation;
+      localData.children = [...props.data.children];
     });
 
-    const classes = {
+    const classes = computed(() => ({
       'sb-layout': true,
+      'sb-layout_active': isActive,
       [`sb-layout_${localData.orientation}`]: true,
-    };
+    }));
 
     const toggleOrientation = () => {
-      context.emit('data', {
-        id: props.blockId,
-
-        ...localData,
+      context.emit('update', {
         orientation: localData.orientation === 'vertical' ? 'horizontal' : 'vertical',
       });
     };
 
     const onChildUpdate = (child, updated) => {
       const index = localData.children.indexOf(child);
-      context.emit('data', {
-        ...localData,
+      context.emit('update', {
         children: [
           ...localData.children.slice(0, index),
-          updated,
+          {
+            ...child,
+            ...updated,
+          },
           ...localData.children.slice(index + 1),
         ],
       });
     };
 
-    const addBlock = (block) => {
-      context.emit('tree', {
-        ...localData,
+    const appendBlock = (block: BlockData) => {
+      console.log('append block', block);
+      context.emit('update', {
         children: [
           ...localData.children,
           block,
@@ -73,19 +78,35 @@ export default defineComponent({
       });
     };
 
+    const insertBlock = (index: number, block: BlockData) => {
+      console.log('insert block', index, block);
+      context.emit('update', {
+        children: [
+          ...localData.children.slice(0, index + 1),
+          block,
+          ...localData.children.slice(index + 1),
+        ],
+      });
+    };
+
     return {
+      isActive,
+      activate,
+
       classes,
       onChildUpdate,
       toggleOrientation,
       localData,
-      getComponent,
-      addBlock,
+      getBlock,
+      appendBlock,
+      insertBlock,
     };
   },
 
   render() {
+    console.log('render layout');
     return (
-      <SbBlock class={this.classes}>
+      <div class={this.classes}>
         <SbToolbar slot="toolbar">
           <button
             type="button"
@@ -94,31 +115,31 @@ export default defineComponent({
                 click: this.toggleOrientation,
               },
             }}
-          >{this.localTree.orientation}</button>
+          >{this.localData.orientation}</button>
         </SbToolbar>
 
-        {...this.localTree.children.map((child) => {
-          const Component = this.getComponent(child.component);
-          return <Component
-            class="sb-main"
+        {...this.localData.children.map((child, index) => (
+          <SbBlock
             key={child.id}
-            components={this.components}
-            tree={child}
+            block={child}
             {...{
               on: {
-                tree: (updated) => this.onChildUpdate(child, updated),
+                update: (updated) => this.onChildUpdate(child, updated),
+                'insert-block': (block: BlockDefinition) => this.insertBlock(index, block),
+                'append-block': this.appendBlock,
               },
             }}
-          />;
-        })}
+          />
+        ))}
+
         <SbBlockPlaceholder
           {...{
             on: {
-              'add-block': this.addBlock,
+              'insert-block': this.appendBlock,
             },
           }}
         />
-      </SbBlock>
+      </div>
     );
   },
 });

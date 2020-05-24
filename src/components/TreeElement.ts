@@ -1,34 +1,61 @@
 import {
-  Context,
+  Ref,
+  ref,
+  inject,
+  reactive,
+  computed,
 } from '@vue/composition-api';
 
-type IComponentDefinition = { [name: string]: () => Promise<any> };
+export const ActiveBlock = Symbol('Schlechtenburg active block');
+export const BlockLibrary = Symbol('Schlechtenburg block library');
 
-type IBlockData = {
+export interface BlockDefinition {
   name: string;
-  id: string;
+  edit: () => Promise<any>;
+  display: () => Promise<any>;
+}
+
+export interface BlockLibraryDefinition {
+  [name: string]: BlockDefinition;
+}
+
+export interface BlockData {
+  name: string;
+  blockId: string|number;
   data: { [name: string]: any };
 }
 
-type ITreeElementProps = {
-  id: string;
+export interface BlockProps {
+  blockId: string|number;
   data: { [key: string]: any};
-};
+}
 
 export const model = {
   prop: 'block',
-  event: 'block-update',
+  event: 'update',
 };
 
 export const blockProps = {
-  id: { type: String, required: true },
+  blockId: { type: [String, Number], required: true },
   data: { type: Object, default: () => ({}) },
 };
 
-// export function useActivation
+export function useDynamicBlocks() {
+  const customBlocks: BlockLibraryDefinition = inject(BlockLibrary, reactive({}));
+  const getBlock = (name: string) => customBlocks[name];
 
-export function useDynamicBlocks(context: Context) {
-  const getBlock = (name: string) => context.root.$sb.blocks[name];
+  return { customBlocks, getBlock };
+}
 
-  return { getBlock };
+export function useActivation(currentBlockId: string|number) {
+  const activeBlockId: Ref<string|number|null> = inject(ActiveBlock, ref(null));
+  const isActive = computed(() => activeBlockId.value === currentBlockId);
+  const activate = (blockId?: string|number|null) => {
+    activeBlockId.value = blockId !== undefined ? blockId : currentBlockId;
+  };
+
+  return {
+    isActive,
+    activate,
+  };
 }

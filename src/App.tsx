@@ -12,13 +12,16 @@ export default defineComponent({
 
   setup() {
     const block = reactive({
-      block: 'sb-layout',
-      orientation: 'vertical',
-      children: [],
+      name: 'sb-layout',
+      blockId: `${+(new Date())}`,
+      data: {
+        orientation: 'vertical',
+        children: [],
+      },
     });
 
     watchEffect(() => {
-      console.log(block);
+      console.log('base block update', block);
     });
 
     return { block };

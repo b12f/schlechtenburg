@@ -1,9 +1,21 @@
 import {
   defineComponent,
+  provide,
   computed,
   reactive,
+  ref,
+  PropType,
 } from '@vue/composition-api';
-import { model, useDynamicBlocks } from '@components/TreeElement';
+import {
+  model,
+  ActiveBlock,
+  BlockProps,
+  BlockDefinition,
+  BlockLibraryDefinition,
+  BlockLibrary,
+} from '@components/TreeElement';
+
+import SbBlock from '@internal/Block';
 
 export default defineComponent({
   name: 'schlechtenburg-main',
@@ -11,29 +23,55 @@ export default defineComponent({
   model,
 
   props: {
+    customBlocks: { type: (null as unknown) as PropType<BlockDefinition[]>, default: () => [] },
     block: { type: Object, required: true },
   },
 
-  setup(props, context) {
-    const { getBlock } = useDynamicBlocks(context);
+  setup(props: BlockProps) {
+    const activeBlock = ref(null);
+    provide(ActiveBlock, activeBlock);
 
-    return {
-      getBlock,
-    };
+    const blockLibrary: BlockLibraryDefinition = reactive({
+      'sb-layout': {
+        name: 'sb-layout',
+        edit: () => import('@user/Layout'),
+        display: () => import('@user/Layout'),
+      },
+      'sb-image': {
+        name: 'sb-image',
+        edit: () => import('@user/Image'),
+        display: () => import('@user/Image'),
+      },
+      'sb-paragraph': {
+        name: 'sb-paragraph',
+        edit: () => import('@user/Paragraph'),
+        display: () => import('@user/Paragraph'),
+      },
+      'sb-heading': {
+        name: 'sb-heading',
+        edit: () => import('@user/Heading'),
+        display: () => import('@user/Heading'),
+      },
+      ...props.customBlocks.reduce(
+        (
+          blocks: BlockLibraryDefinition,
+          block: BlockLibraryDefinition,
+        ) => ({ ...blocks, [block.name]: block }),
+        {},
+      ),
+    });
+    provide(BlockLibrary, blockLibrary);
   },
 
   render() {
-    const Block = this.getBlock(this.block.name);
-    console.log(this.name, Block);
+    console.log('render base');
     return (
-      <Component
+      <SbBlock
         class="sb-main"
-        user-components={this.components}
-        data={this.block.data}
-        id={this.block.id}
+        block={this.block}
         {...{
           on: {
-            blockUpdate: (block) => this.$emit('block-update', block),
+            update: (block: BlockDefinition) => this.$emit('update', block),
           },
         }}
       />

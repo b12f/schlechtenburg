@@ -13,10 +13,12 @@ export default defineComponent({
           type="button"
           {...{
             on: {
-              click: () => this.$emit('add-block', {
-                component: 'sb-paragraph',
-                id: +(new Date()),
-                value: '',
+              click: () => this.$emit('insert-block', {
+                name: 'sb-paragraph',
+                blockId: +(new Date()),
+                data: {
+                  value: '',
+                },
               }),
             },
           }}

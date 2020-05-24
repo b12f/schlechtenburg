@@ -1,4 +1,14 @@
-import { computed, defineComponent } from '@vue/composition-api';
+import {
+  computed,
+  defineComponent,
+  PropType,
+} from '@vue/composition-api';
+import {
+  BlockData,
+  useDynamicBlocks,
+  useActivation,
+  BlockDefinition,
+} from '@components/TreeElement';
 
 import './Block.scss';
 
@@ -6,43 +16,51 @@ export default defineComponent({
   name: 'sb-block',
 
   props: {
-    active: { type: Boolean, default: false },
+    block: { type: (null as unknown) as PropType<BlockData>, default: false },
   },
 
   setup(props, context) {
+    const { isActive, activate } = useActivation(props.block.blockId);
+    const { getBlock } = useDynamicBlocks();
     const classes = computed(() => ({
       'sb-block': true,
-      'sb-block_active': props.active,
+      'sb-block_active': isActive,
     }));
 
-    const activate = () => {
-      if (props.active) {
-        return;
-      }
-
-      context.emit('activate');
+    const onChildUpdate = (updated: {[key: string]: any}) => {
+      console.log('child update', updated);
+      context.emit('update', {
+        ...props.block,
+        data: {
+          ...props.block.data,
+          ...updated,
+        },
+      });
     };
 
     return {
+      getBlock,
       classes,
       activate,
+      onChildUpdate,
     };
   },
 
   render() {
-    return (
-      <div
-        class="sb-block"
-        tabindex="0"
-        {...{
-          on: {
-            click: this.activate,
-          },
-        }}
-      >
-        {this.$slots.toolbar}
-        {this.$slots.default ? this.$slots.default : <div>Your content here</div>}
-      </div>
-    );
+    console.log('render block', this.block);
+    const Block = this.getBlock(this.block.name).edit;
+    return <Block
+      data={this.block.data}
+      block-id={this.block.blockId}
+      {...{
+        attrs: this.$attrs,
+        on: {
+          ...this.$listeners,
+          update: this.onChildUpdate,
+          'insert-block': (block: BlockDefinition) => this.$emit('insert-block', block),
+          'append-block': (block: BlockDefinition) => this.$emit('append-block', block),
+        },
+      }}
+    />;
   },
 });

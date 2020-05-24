@@ -1,25 +1,20 @@
 import { defineComponent } from '@vue/composition-api';
-import { treeElementProps, useDynamicComponents } from './TreeElement';
+import { useDynamicComponents } from './TreeElement';
 
 export default defineComponent({
-  props: {
-    ...treeElementProps,
-    orientation: String,
-  },
+  props: {},
 
   setup(props) {
-    const getComponent = useDynamicComponents(props.components || {});
+    const { customBlocks } = useDynamicComponents(props.components || {});
 
     return {
-      getComponent,
+      customBlocks,
     };
   },
 
   render() {
     return (
-      <div class="sb-layout">
-        {{ orientation }}
-
+      <div class="sb-block-picker">
         <component
           class="sb-main"
           v-for="child in children"

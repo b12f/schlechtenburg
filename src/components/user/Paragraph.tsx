@@ -2,12 +2,15 @@ import {
   defineComponent,
   reactive,
   ref,
+  Ref,
   onMounted,
+  watch,
 } from '@vue/composition-api';
 import {
   model,
-  treeElementProps,
-  useDynamicComponents,
+  blockProps,
+  BlockProps,
+  useActivation,
 } from '@components/TreeElement';
 
 import SbBlock from '@internal/Block';
@@ -21,56 +24,87 @@ export default defineComponent({
   model,
 
   props: {
-    ...treeElementProps,
+    ...blockProps,
   },
 
-  setup(props, context) {
-    const { localTree } = useTree(props);
+  setup(props: BlockProps, context) {
+    const localData = reactive({
+      value: props.data.value,
+      focused: false,
+    });
+
+    const inputEl: Ref<null|HTMLElement> = ref(null);
+
+    const { isActive, activate } = useActivation(props.blockId);
+
+    onMounted(() => {
+      if (inputEl.value) {
+        inputEl.value.innerHTML = localData.value;
+
+        if (isActive) {
+          inputEl.value.focus();
+        }
+      }
+    });
+
+    watch(() => props.data, () => {
+      localData.value = props.data.value;
+      if (inputEl.value) {
+        inputEl.value.innerHTML = localData.value;
+      }
+    });
 
     const onTextUpdate = ($event: InputEvent) => {
-      localTree.value = $event.target.innerHTML;
+      localData.value = $event.target.innerHTML;
     };
-
-    const focused = ref(false);
 
     const classes = reactive({
       'sb-paragraph': true,
-      'sb-paragraph_focused': focused,
+      'sb-paragraph_focused': localData.focused,
     });
 
     const onFocus = () => {
-      console.log('focus');
-      focused.value = true;
+      localData.focused = true;
     };
+
     const onBlur = () => {
-      console.log('blur');
-      focused.value = false;
-      context.emit('tree', {
-        value: localTree.value.value,
+      localData.focused = false;
+      context.emit('update', {
+        value: localData.value,
       });
+      activate(null);
     };
 
-    const inputEl = ref(null);
+    const onKeypress = ($event: KeyboardEvent) => {
+      if ($event.key === 'Enter') {
+        const blockId = +(new Date());
+        context.emit('insert-block', {
+          blockId,
+          name: 'sb-paragraph',
+          data: { value: '' },
+        });
 
-    onMounted(() => {
-      console.log(inputEl);
-      inputEl.value.innerHTML = localTree.value;
-    });
+        activate(blockId);
+
+        $event.preventDefault();
+      }
+    };
 
     return {
       classes,
-      localTree,
+      localData,
       onTextUpdate,
-      focused,
       onFocus,
       onBlur,
+      onKeypress,
       inputEl,
     };
   },
 
   render() {
+    console.log('render paragraph');
     return (
-      <SbBlock>
+      <div class="sb-paragraph">
         <SbToolbar>Paragraph editing</SbToolbar>
         <p
           class={this.classes}
@@ -81,10 +115,11 @@ export default defineComponent({
               input: this.onTextUpdate,
               focus: this.onFocus,
               blur: this.onBlur,
+              keypress: this.onKeypress,
             },
           }}
         ></p>
-      </SbBlock>
+      </div>
     );
   },
 });

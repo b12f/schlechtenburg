@@ -1,11 +1,5 @@
 /* eslint no-param-reassign: 0 */
 
-interface UserBlock {
-  name: string;
-  edit: () => Promise<any>;
-  display: () => Promise<any>;
-}
-
 function addUserBlock(Vue, block) {
   if (Vue.prototype.$sb.blocks[block.name]) {
     console.warn(`Block ${block.name} is already registered`);

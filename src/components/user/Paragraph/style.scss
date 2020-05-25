@@ -1,6 +1,8 @@
 .sb-paragraph {
-  display: block;
-  width: 100%;
+  &__input {
+    display: block;
+    width: 100%;
+  }
 
   &_align {
     &-left { .sb-paragraph__input { text-align: left; } }

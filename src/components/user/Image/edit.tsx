@@ -9,7 +9,6 @@ import {
 import {
   model,
   blockProps,
-  useActivation,
 } from '@components/TreeElement';
 
 import SbToolbar from '@internal/Toolbar';
@@ -61,16 +60,7 @@ export default defineComponent({
       }
     };
 
-    return {
-      localData,
-      fileInput,
-      selectImage,
-      onImageSelect,
-    };
-  },
-
-  render() {
-    return (
+    return () => (
       <div class="sb-image">
         <SbToolbar>
           Image Edit
@@ -80,17 +70,17 @@ export default defineComponent({
             style="display: none;"
             {...{
               on: {
-                input: this.onImageSelect,
+                input: onImageSelect,
               },
             }}
           />
         </SbToolbar>
-        {this.localData.src
-          ? <img src={this.localData.src} alt={this.localData.alt} />
+        {localData.src
+          ? <img src={localData.src} alt={localData.alt} />
           : <button
             {...{
               on: {
-                click: this.selectImage,
+                click: selectImage,
               },
             }}
           >Select Image</button>

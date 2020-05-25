@@ -7,13 +7,13 @@ import './BlockPlaceholder.scss';
 export default defineComponent({
   name: 'sb-block-placeholder',
 
-  render() {
-    return (
+  setup(props, context) {
+    return () => (
       <div class="sb-block-placeholder">
         <BlockPicker
           {...{
             on: {
-              'picked-block': (block: BlockDefinition) => this.$emit('insert-block', block),
+              'picked-block': (block: BlockDefinition) => context.emit('insert-block', block),
             },
           }}
         />

@@ -16,14 +16,14 @@ steps:
       branch:
         - master
     image: appleboy/drone-scp
-    repo: b12f/bbcom
     settings:
       host: web5svsvy.wh.hosting.zone
       port: 2244
       username:
-        from_secret: bbcom_ssh_user
+        from_secret: dev_ssh_user
       key:
-        from_secret: bbcom_ssh_key
+        from_secret: dev_ssh_key
       source: ./dist/*
       target: /home/web5svsvy/html/schlechtenburg.b12f.io/
+      strip_components: 1
       rm: true

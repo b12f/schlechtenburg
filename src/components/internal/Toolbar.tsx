@@ -5,10 +5,10 @@ import './Toolbar.scss';
 export default defineComponent({
   name: 'sb-toolbar',
 
-  render() {
-    return (
+  setup(props, context) {
+    return () => (
       <div class="sb-toolbar">
-        {this.$slots.default}
+        {context.slots.default()}
       </div>
     );
   },

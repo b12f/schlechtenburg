@@ -8,7 +8,7 @@ import {
 import {
   model,
   ActiveBlock,
-  BlockProps,
+  BlockData,
   BlockDefinition,
   BlockLibraryDefinition,
   BlockLibrary,
@@ -21,6 +21,11 @@ import SbParagraph from '@user/Paragraph/index';
 import SbImage from '@user/Image/index';
 import SbHeading from '@user/Heading/index';
 
+export interface SchlechtenburgProps {
+  customBlocks: BlockDefinition[];
+  block: BlockData;
+}
+
 export default defineComponent({
   name: 'schlechtenburg-main',
 
@@ -28,10 +33,10 @@ export default defineComponent({
 
   props: {
     customBlocks: { type: (null as unknown) as PropType<BlockDefinition[]>, default: () => [] },
-    block: { type: Object, required: true },
+    block: { type: (null as unknown) as PropType<BlockData>, required: true },
   },
 
-  setup(props: BlockProps) {
+  setup(props, context) {
     const activeBlock = ref(null);
     provide(ActiveBlock, activeBlock);
 
@@ -42,24 +47,21 @@ export default defineComponent({
       'sb-heading': SbHeading,
       ...props.customBlocks.reduce(
         (
-          blocks: BlockLibraryDefinition,
-          block: BlockLibraryDefinition,
+          blocks,
+          block,
         ) => ({ ...blocks, [block.name]: block }),
         {},
       ),
     });
     provide(BlockLibrary, blockLibrary);
-  },
 
-  render() {
-    console.log('render base');
-    return (
+    return () => (
       <SbBlock
         class="sb-main"
-        block={this.block}
+        block={props.block}
         {...{
           on: {
-            update: (block: BlockDefinition) => this.$emit('update', block),
+            update: (block: BlockDefinition) => context.emit('update', block),
           },
         }}
       />

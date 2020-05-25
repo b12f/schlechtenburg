@@ -4,6 +4,7 @@ import {
   watchEffect,
 } from '@vue/composition-api';
 import Schlechtenburg from '@components/Schlechtenburg';
+import { BlockData } from './components/TreeElement';
 
 import './App.scss';
 
@@ -18,21 +19,24 @@ export default defineComponent({
         orientation: 'vertical',
         children: [],
       },
-    });
+    }) as BlockData;
 
-    watchEffect(() => {
-      console.log('base block update', block);
-    });
-
-    return { block };
-  },
-
-  render() {
-    return (
+    return () => (
       <div id="app">
-        <Schlechtenburg vModel={this.block} />
+        <Schlechtenburg
+          block={block}
+          {...{
+            on: {
+              update: (newBlock: BlockData) => {
+                block.name = newBlock.name;
+                block.blockId = newBlock.blockId;
+                block.data = newBlock.data;
+              },
+            },
+          }}
+        />
 
-        <pre><code>{JSON.stringify(this.block, null, 2)}</code></pre>
+        <pre><code>{JSON.stringify(block, null, 2)}</code></pre>
       </div>
     );
   },

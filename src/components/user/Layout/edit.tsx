@@ -8,10 +8,8 @@ import {
 import {
   model,
   blockProps,
-  useDynamicBlocks,
   useActivation,
   BlockData,
-  BlockDefinition,
 } from '@components/TreeElement';
 
 import SbBlock from '@internal/Block';
@@ -40,8 +38,7 @@ export default defineComponent({
   },
 
   setup(props: LayoutProps, context) {
-    const { getBlock } = useDynamicBlocks();
-    const { isActive, activate } = useActivation(props.blockId);
+    const { activate } = useActivation(props.blockId);
 
     const localData: LayoutData = reactive({
       orientation: props.data.orientation,
@@ -64,7 +61,7 @@ export default defineComponent({
       });
     };
 
-    const onChildUpdate = (child, updated) => {
+    const onChildUpdate = (child: BlockData, updated: BlockData) => {
       const index = localData.children.indexOf(child);
       context.emit('update', {
         children: [
@@ -99,44 +96,28 @@ export default defineComponent({
       activate(block.blockId);
     };
 
-    return {
-      isActive,
-      activate,
-
-      classes,
-      onChildUpdate,
-      toggleOrientation,
-      localData,
-      getBlock,
-      appendBlock,
-      insertBlock,
-    };
-  },
-
-  render() {
-    console.log('render layout');
-    return (
-      <div class={this.classes}>
+    return () => (
+      <div class={classes.value}>
         <SbToolbar slot="toolbar">
           <button
             type="button"
             {...{
               on: {
-                click: this.toggleOrientation,
+                click: toggleOrientation,
               },
             }}
-          >{this.localData.orientation}</button>
+          >{localData.orientation}</button>
         </SbToolbar>
 
-        {...this.localData.children.map((child, index) => (
+        {...localData.children.map((child, index) => (
           <SbBlock
-            key={child.id}
+            key={child.blockId}
             block={child}
             {...{
               on: {
-                update: (updated) => this.onChildUpdate(child, updated),
-                'insert-block': (block: BlockDefinition) => this.insertBlock(index, block),
-                'append-block': this.appendBlock,
+                update: (updated: BlockData) => onChildUpdate(child, updated),
+                'insert-block': (block: BlockData) => insertBlock(index, block),
+                'append-block': appendBlock,
               },
             }}
           />
@@ -145,7 +126,7 @@ export default defineComponent({
         <SbBlockPlaceholder
           {...{
             on: {
-              'insert-block': this.appendBlock,
+              'insert-block': appendBlock,
             },
           }}
         />

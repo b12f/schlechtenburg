@@ -22,12 +22,12 @@ export interface BlockLibraryDefinition {
 
 export interface BlockData {
   name: string;
-  blockId: string|number;
+  blockId: string;
   data: { [name: string]: any };
 }
 
 export interface BlockProps {
-  blockId: string|number;
+  blockId: string;
   data: { [key: string]: any};
 }
 
@@ -37,7 +37,7 @@ export const model = {
 };
 
 export const blockProps = {
-  blockId: { type: [String, Number], required: true },
+  blockId: { type: String, required: true },
   data: { type: Object, default: () => ({}) },
 };
 
@@ -48,10 +48,10 @@ export function useDynamicBlocks() {
   return { customBlocks, getBlock };
 }
 
-export function useActivation(currentBlockId: string|number) {
-  const activeBlockId: Ref<string|number|null> = inject(ActiveBlock, ref(null));
+export function useActivation(currentBlockId: string) {
+  const activeBlockId: Ref<string|null> = inject(ActiveBlock, ref(null));
   const isActive = computed(() => activeBlockId.value === currentBlockId);
-  const activate = (blockId?: string|number|null) => {
+  const activate = (blockId?: string|null) => {
     activeBlockId.value = blockId !== undefined ? blockId : currentBlockId;
   };
   const requestActivation = () => {

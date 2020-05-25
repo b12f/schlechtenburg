@@ -3,8 +3,8 @@
   width: 100%;
 
   &_align {
-    &-left { text-align: left; }
-    &-right { text-align: right; }
-    &-center { text-align: center; }
+    &-left { .sb-paragraph__input { text-align: left; } }
+    &-right {  .sb-paragraph__input { text-align: right; } }
+    &-center {  .sb-paragraph__input { text-align: center; } }
   }
 }

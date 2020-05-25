@@ -1,11 +1,11 @@
 import {
   BlockProps,
-  BlockDefinition,
+  BlockData,
 } from '@components/TreeElement';
 
 export interface LayoutData {
   orientation: string;
-  children: BlockDefinition[];
+  children: BlockData[];
 }
 
 export interface LayoutProps extends BlockProps {

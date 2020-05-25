@@ -16,11 +16,11 @@ export default defineComponent({
   name: 'sb-block',
 
   props: {
-    block: { type: (null as unknown) as PropType<BlockData>, default: false },
+    block: { type: (null as unknown) as PropType<BlockData>, required: true },
   },
 
   setup(props, context) {
-    const { isActive, activate, requestActivation } = useActivation(props.block.blockId);
+    const { isActive, activate } = useActivation(props.block.blockId);
     const { getBlock } = useDynamicBlocks();
     const classes = computed(() => ({
       'sb-block': true,
@@ -28,7 +28,6 @@ export default defineComponent({
     }));
 
     const onChildUpdate = (updated: {[key: string]: any}) => {
-      console.log('child update', updated);
       context.emit('update', {
         ...props.block,
         data: {
@@ -38,33 +37,24 @@ export default defineComponent({
       });
     };
 
-    return {
-      getBlock,
-      classes,
-      onChildUpdate,
-      activate,
-    };
-  },
+    const Block = getBlock(props.block.name).edit as any;
 
-  render() {
-    console.log('render block', this.block);
-    const Block = this.getBlock(this.block.name).edit;
-    return <Block
-      class={this.classes}
-      data={this.block.data}
-      block-id={this.block.blockId}
+    return () => <Block
+      class={classes.value}
+      data={props.block.data}
+      block-id={props.block.blockId}
       {...{
-        attrs: this.$attrs,
+        attrs: context.attrs,
         on: {
-          ...this.$listeners,
-          update: this.onChildUpdate,
-          'insert-block': (block: BlockDefinition) => this.$emit('insert-block', block),
-          'append-block': (block: BlockDefinition) => this.$emit('append-block', block),
+          ...context.listeners,
+          update: onChildUpdate,
+          'insert-block': (block: BlockDefinition) => context.emit('insert-block', block),
+          'append-block': (block: BlockDefinition) => context.emit('append-block', block),
         },
         nativeOn: {
-          click: ($event) => {
+          click: ($event: MouseEvent) => {
             $event.stopPropagation();
-            this.activate();
+            activate();
           },
         },
       }}

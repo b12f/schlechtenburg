@@ -38,13 +38,15 @@ export default defineComponent({
   },
 
   setup(props: ParagraphProps, context) {
-    const localData = reactive({
+    const localData = (reactive({
       value: props.data.value,
       align: props.data.align,
       focused: false,
-    });
-
-    console.log(localData);
+    }) as any) as {
+      value: string;
+      align: string;
+      focused: boolean;
+    };
 
     const inputEl: Ref<null|HTMLElement> = ref(null);
 
@@ -61,7 +63,6 @@ export default defineComponent({
     });
 
     watch(() => props.data, () => {
-      console.log('props update paragraph');
       localData.value = props.data.value;
       localData.align = props.data.align;
       if (inputEl.value) {
@@ -70,7 +71,7 @@ export default defineComponent({
     });
 
     const onTextUpdate = ($event: InputEvent) => {
-      localData.value = $event.target.innerHTML;
+      localData.value = ($event.target as HTMLElement).innerHTML;
     };
 
     const classes = computed(() => ({
@@ -78,6 +79,10 @@ export default defineComponent({
       'sb-paragraph_focused': localData.focused,
       [`sb-paragraph_align-${localData.align}`]: true,
     }));
+
+    const setAlignment = ($event: Event) => {
+      context.emit('update', { align: ($event.target as HTMLSelectElement).value });
+    };
 
     const onFocus = () => {
       localData.focused = true;
@@ -93,7 +98,7 @@ export default defineComponent({
 
     const onKeypress = ($event: KeyboardEvent) => {
       if ($event.key === 'Enter') {
-        const blockId = +(new Date());
+        const blockId = `${+(new Date())}`;
         context.emit('insert-block', {
           blockId,
           name: 'sb-paragraph',
@@ -106,37 +111,32 @@ export default defineComponent({
       }
     };
 
-    return {
-      classes,
-      localData,
-      onTextUpdate,
-      onFocus,
-      onBlur,
-      onKeypress,
-      inputEl,
-    };
-  },
-
-  render() {
-    return (
-      <div class="sb-paragraph">
+    return () => (
+      <div class={classes.value}>
         <SbToolbar>
-          <select vModel={this.localData.align}>
+          <select
+            value={localData.align}
+            {...{
+              on: {
+                change: setAlignment,
+              },
+            }}
+          >
             <option>left</option>
             <option>center</option>
             <option>right</option>
           </select>
         </SbToolbar>
         <p
-          class={this.classes}
-          ref="inputEl"
+          class="sb-paragraph__input"
+          ref={inputEl}
           contenteditable
           {...{
             on: {
-              input: this.onTextUpdate,
-              focus: this.onFocus,
-              blur: this.onBlur,
-              keypress: this.onKeypress,
+              input: onTextUpdate,
+              focus: onFocus,
+              blur: onBlur,
+              keypress: onKeypress,
             },
           }}
         ></p>

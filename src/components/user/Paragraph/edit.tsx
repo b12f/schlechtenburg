@@ -14,13 +14,13 @@ import {
   useActivation,
 } from '@components/TreeElement';
 
+import SbToolbar from '@internal/Toolbar';
+
 import {
   getDefaultData,
   ParagraphData,
   ParagraphProps,
 } from './util';
-
-import SbToolbar from '@internal/Toolbar';
 
 import './style.scss';
 

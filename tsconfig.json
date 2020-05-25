@@ -15,9 +15,10 @@
       "jest"
     ],
     "paths": {
-      "@/*": [
-        "src/*"
-      ]
+      "@/*": [ "src/*" ],
+      "@components/*": [ "src/components/*" ],
+      "@user/*": [ "src/components/user/*" ],
+      "@internal/*": [ "src/components/internal/*" ]
     },
     "lib": [
       "esnext",

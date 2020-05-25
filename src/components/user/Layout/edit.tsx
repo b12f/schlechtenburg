@@ -1,5 +1,4 @@
 import {
-  inject,
   reactive,
   computed,
   defineComponent,
@@ -14,15 +13,16 @@ import {
   BlockData,
   BlockDefinition,
 } from '@components/TreeElement';
+
+import SbBlock from '@internal/Block';
+import SbToolbar from '@internal/Toolbar';
+import SbBlockPlaceholder from '@internal/BlockPlaceholder';
+
 import {
   LayoutData,
   LayoutProps,
   getDefaultData,
 } from './util';
-
-import SbBlock from '@internal/Block';
-import SbToolbar from '@internal/Toolbar';
-import SbBlockPlaceholder from '@internal/BlockPlaceholder';
 
 import './style.scss';
 

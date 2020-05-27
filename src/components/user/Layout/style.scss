@@ -1,5 +1,6 @@
 .sb-layout {
   display: flex;
+  flex-basis: 100%;
 
   &_vertical {
     flex-direction: column;
@@ -7,5 +8,9 @@
 
   &_horizontal {
     flex-direction: row;
+  }
+
+  > * {
+    flex-basis: 100%;
   }
 }

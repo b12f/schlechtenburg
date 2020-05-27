@@ -9,6 +9,8 @@ import {
   model,
   ActiveBlock,
   BlockData,
+  SbMode,
+  Mode,
   BlockDefinition,
   BlockLibraryDefinition,
   BlockLibrary,
@@ -21,9 +23,13 @@ import SbParagraph from '@user/Paragraph/index';
 import SbImage from '@user/Image/index';
 import SbHeading from '@user/Heading/index';
 
+import './Schlechtenburg.scss';
+
 export interface SchlechtenburgProps {
   customBlocks: BlockDefinition[];
+  eventUpdate: (b?: BlockData) => void;
   block: BlockData;
+  mode: SbMode;
 }
 
 export default defineComponent({
@@ -32,11 +38,25 @@ export default defineComponent({
   model,
 
   props: {
-    customBlocks: { type: (null as unknown) as PropType<BlockDefinition[]>, default: () => [] },
-    block: { type: (null as unknown) as PropType<BlockData>, required: true },
+    customBlocks: { type: Array as PropType<BlockDefinition[]>, default: () => [] },
+    block: { type: Object as PropType<BlockData>, required: true },
+    eventUpdate: {
+      type: (Function as unknown) as (b?: BlockData) => void,
+      default: () => () => undefined,
+    },
+    mode: {
+      type: String,
+      validator(value: string) {
+        return ['edit', 'display'].includes(value);
+      },
+      default: 'edit',
+    },
   },
 
-  setup(props, context) {
+  setup(props: SchlechtenburgProps, context) {
+    const mode = ref(props.mode);
+    provide(Mode, mode);
+
     const activeBlock = ref(null);
     provide(ActiveBlock, activeBlock);
 
@@ -56,15 +76,12 @@ export default defineComponent({
     provide(BlockLibrary, blockLibrary);
 
     return () => (
-      <SbBlock
-        class="sb-main"
-        block={props.block}
-        {...{
-          on: {
-            update: (block: BlockDefinition) => context.emit('update', block),
-          },
-        }}
-      />
+      <div class="sb-main">
+        <SbBlock
+          block={props.block}
+          eventUpdate={props.eventUpdate}
+        />
+      </div>
     );
   },
 });

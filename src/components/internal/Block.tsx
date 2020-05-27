@@ -7,7 +7,6 @@ import {
   BlockData,
   useDynamicBlocks,
   useActivation,
-  BlockDefinition,
 } from '@components/TreeElement';
 
 import './Block.scss';
@@ -17,6 +16,18 @@ export default defineComponent({
 
   props: {
     block: { type: (null as unknown) as PropType<BlockData>, required: true },
+    eventUpdate: {
+      type: (Function as unknown) as (b?: BlockData) => void,
+      default: () => () => undefined,
+    },
+    eventInsertBlock: {
+      type: (Function as unknown) as (b?: BlockData) => void,
+      default: () => () => undefined,
+    },
+    eventAppendBlock: {
+      type: (Function as unknown) as (b?: BlockData) => void,
+      default: () => () => undefined,
+    },
   },
 
   setup(props, context) {
@@ -28,7 +39,7 @@ export default defineComponent({
     }));
 
     const onChildUpdate = (updated: {[key: string]: any}) => {
-      context.emit('update', {
+      props.eventUpdate({
         ...props.block,
         data: {
           ...props.block.data,
@@ -37,27 +48,31 @@ export default defineComponent({
       });
     };
 
-    const Block = getBlock(props.block.name).edit as any;
+    const Block = getBlock(props.block.name) as any;
 
-    return () => <Block
-      class={classes.value}
-      data={props.block.data}
-      block-id={props.block.blockId}
-      {...{
-        attrs: context.attrs,
-        on: {
-          ...context.listeners,
-          update: onChildUpdate,
-          'insert-block': (block: BlockDefinition) => context.emit('insert-block', block),
-          'append-block': (block: BlockDefinition) => context.emit('append-block', block),
-        },
-        nativeOn: {
-          click: ($event: MouseEvent) => {
-            $event.stopPropagation();
-            activate();
+    return () => <div class={classes.value}>
+      <div class="sb-block__edit-cover"></div>
+      <div class="sb-block__mover"></div>
+      <Block
+        data={props.block.data}
+        block-id={props.block.blockId}
+        eventUpdate={onChildUpdate}
+        eventInsertBlock={props.eventInsertBlock}
+        eventAppendBlock={props.eventAppendBlock}
+        {...{
+          attrs: context.attrs,
+          on: {
+            ...context.listeners,
+            update: onChildUpdate,
           },
-        },
-      }}
-    />;
+          nativeOn: {
+            click: ($event: MouseEvent) => {
+              $event.stopPropagation();
+              activate();
+            },
+          },
+        }}
+      />
+    </div>;
   },
 });

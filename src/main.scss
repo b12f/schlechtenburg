@@ -3,7 +3,7 @@
 }
 
 html {
-  --bg: white;
+  --grey-0: white;
   --grey-1-t: rgba(0, 0, 0, 0.05);
   --grey-1: rgb(242, 242, 242);
   --grey-2-t: rgba(0, 0, 0, 0.1);
@@ -15,4 +15,13 @@ html {
   --grey-5-t: rgba(0, 0, 0, 0.7);
   --grey-5: rgb(75, 75, 75);
   --black: rgba(0, 0, 0, 0.9);
+
+  --bg: var(--grey-1);
+  --fg: var(--black);
+
+  --interact: #3f9cff;
+}
+
+body {
+  margin: 0;
 }

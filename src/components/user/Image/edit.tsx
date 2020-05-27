@@ -34,7 +34,7 @@ export default defineComponent({
     },
   },
 
-  setup(props: ImageProps) {
+  setup(props: ImageProps, context) {
     const localData = reactive({
       src: props.data.src,
       alt: props.data.alt,
@@ -56,7 +56,9 @@ export default defineComponent({
 
     const onImageSelect = () => {
       if (fileInput.value && fileInput.value.files && fileInput.value.files.length) {
-        localData.src = window.URL.createObjectURL(fileInput.value.files[0]);
+        context.emit('update', {
+          src: window.URL.createObjectURL(fileInput.value.files[0]),
+        });
       }
     };
 

@@ -35,6 +35,14 @@ export default defineComponent({
       type: (null as unknown) as PropType<ParagraphData>,
       default: getDefaultData,
     },
+    eventUpdate: {
+      type: (Function as unknown) as (b?: ParagraphData) => void,
+      default: () => () => undefined,
+    },
+    eventInsertBlock: {
+      type: (Function as unknown) as (b?: ParagraphData) => void,
+      default: () => () => undefined,
+    },
   },
 
   setup(props: ParagraphProps, context) {
@@ -81,7 +89,7 @@ export default defineComponent({
     }));
 
     const setAlignment = ($event: Event) => {
-      context.emit('update', { align: ($event.target as HTMLSelectElement).value });
+      props.eventUpdate({ align: ($event.target as HTMLSelectElement).value });
     };
 
     const onFocus = () => {
@@ -90,7 +98,7 @@ export default defineComponent({
 
     const onBlur = () => {
       localData.focused = false;
-      context.emit('update', {
+      props.eventUpdate({
         value: localData.value,
       });
       activate(null);
@@ -99,7 +107,7 @@ export default defineComponent({
     const onKeypress = ($event: KeyboardEvent) => {
       if ($event.key === 'Enter') {
         const blockId = `${+(new Date())}`;
-        context.emit('insert-block', {
+        props.eventInsertBlock({
           blockId,
           name: 'sb-paragraph',
           data: getDefaultData(),

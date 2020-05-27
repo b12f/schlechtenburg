@@ -7,12 +7,13 @@ import {
 } from '@vue/composition-api';
 import {
   model,
-  blockProps,
   useActivation,
   BlockData,
+  blockProps,
 } from '@components/TreeElement';
 
 import SbBlock from '@internal/Block';
+import SbButton from '@internal/Button';
 import SbToolbar from '@internal/Toolbar';
 import SbBlockPlaceholder from '@internal/BlockPlaceholder';
 
@@ -31,6 +32,10 @@ export default defineComponent({
 
   props: {
     ...blockProps,
+    eventUpdate: {
+      type: (Function as unknown) as (b?: LayoutData) => void,
+      default: () => () => undefined,
+    },
     data: {
       type: (null as unknown) as PropType<LayoutData>,
       default: getDefaultData,
@@ -56,14 +61,14 @@ export default defineComponent({
     }));
 
     const toggleOrientation = () => {
-      context.emit('update', {
+      props.eventUpdate({
         orientation: localData.orientation === 'vertical' ? 'horizontal' : 'vertical',
       });
     };
 
     const onChildUpdate = (child: BlockData, updated: BlockData) => {
       const index = localData.children.indexOf(child);
-      context.emit('update', {
+      props.eventUpdate({
         children: [
           ...localData.children.slice(0, index),
           {
@@ -76,7 +81,7 @@ export default defineComponent({
     };
 
     const appendBlock = (block: BlockData) => {
-      context.emit('update', {
+      props.eventUpdate({
         children: [
           ...localData.children,
           block,
@@ -99,14 +104,14 @@ export default defineComponent({
     return () => (
       <div class={classes.value}>
         <SbToolbar slot="toolbar">
-          <button
+          <SbButton
             type="button"
             {...{
-              on: {
+              nativeOn: {
                 click: toggleOrientation,
               },
             }}
-          >{localData.orientation}</button>
+          >{localData.orientation}</SbButton>
         </SbToolbar>
 
         {...localData.children.map((child, index) => (

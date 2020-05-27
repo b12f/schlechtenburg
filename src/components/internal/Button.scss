@@ -1,0 +1,10 @@
+.sb-button {
+  border: 0;
+  padding: 8px 12px;
+  background-color: var(--grey-0);
+  border: 1px solid var(--grey-2);
+
+  &:hover {
+    border: 1px solid var(--interact);
+  }
+}

@@ -1,7 +1,9 @@
 .sb-paragraph {
+  flex-basis: 100%;
+
   &__input {
     display: block;
-    width: 100%;
+    flex-basis: 100%;
   }
 
   &_align {

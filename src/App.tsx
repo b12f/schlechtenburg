@@ -1,7 +1,7 @@
 import {
   defineComponent,
   reactive,
-  watchEffect,
+  ref,
 } from '@vue/composition-api';
 import Schlechtenburg from '@components/Schlechtenburg';
 import { BlockData } from './components/TreeElement';
@@ -12,6 +12,7 @@ export default defineComponent({
   name: 'App',
 
   setup() {
+    const activeTab = ref('edit');
     const block = reactive({
       name: 'sb-layout',
       blockId: `${+(new Date())}`,
@@ -23,20 +24,39 @@ export default defineComponent({
 
     return () => (
       <div id="app">
-        <Schlechtenburg
-          block={block}
+        <select
+          value={activeTab.value}
           {...{
             on: {
-              update: (newBlock: BlockData) => {
-                block.name = newBlock.name;
-                block.blockId = newBlock.blockId;
-                block.data = newBlock.data;
+              change: ($event: Event) => {
+                activeTab.value = ($event.target as HTMLSelectElement).value;
               },
             },
           }}
+        >
+          <option>edit</option>
+          <option>display</option>
+          <option>json</option>
+        </select>
+        <Schlechtenburg
+          vShow={activeTab.value === 'edit'}
+          block={block}
+          eventUpdate={(newBlock: BlockData) => {
+            block.name = newBlock.name;
+            block.blockId = newBlock.blockId;
+            block.data = newBlock.data;
+          }}
         />
 
-        <pre><code>{JSON.stringify(block, null, 2)}</code></pre>
+        <Schlechtenburg
+          vShow={activeTab.value === 'display'}
+          block={block}
+          mode="display"
+        />
+
+        <pre vShow={activeTab.value === 'json'}>
+          <code>{JSON.stringify(block, null, 2)}</code>
+        </pre>
       </div>
     );
   },

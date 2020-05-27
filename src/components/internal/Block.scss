@@ -5,7 +5,7 @@
   justify-items: stretch;
   min-height: 50px;
 
-  > .sb-toolbar {
+  > * > .sb-toolbar {
     opacity: 0;
     pointer-events: none;
   }
@@ -13,10 +13,9 @@
   &_active {
     outline: 1px solid var(--grey-2);
 
-    > .sb-toolbar {
+    > * > .sb-toolbar {
       opacity: 1;
       pointer-events: all;
-      outline: 1px solid var(--grey-2);
     }
   }
 }

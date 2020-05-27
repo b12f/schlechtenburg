@@ -6,9 +6,6 @@ import {
   computed,
 } from '@vue/composition-api';
 
-export const ActiveBlock = Symbol('Schlechtenburg active block');
-export const BlockLibrary = Symbol('Schlechtenburg block library');
-
 export interface BlockDefinition {
   name: string;
   getDefaultData: any;
@@ -38,16 +35,32 @@ export const model = {
 
 export const blockProps = {
   blockId: { type: String, required: true },
+  eventUpdate: {
+    type: (Function as unknown) as (b: any) => void,
+    default: () => () => undefined,
+  },
   data: { type: Object, default: () => ({}) },
 };
 
+export enum SbMode {
+  Edit = 'edit',
+  Display = 'display',
+}
+export const Mode = Symbol('Schlechtenburg mode');
+export const BlockLibrary = Symbol('Schlechtenburg block library');
 export function useDynamicBlocks() {
+  const mode = inject(Mode, ref(SbMode.Edit));
   const customBlocks: BlockLibraryDefinition = inject(BlockLibrary, reactive({}));
-  const getBlock = (name: string) => customBlocks[name];
+  const getBlock = (name: string) => customBlocks[name][mode.value];
 
-  return { customBlocks, getBlock };
+  return {
+    mode,
+    customBlocks,
+    getBlock,
+  };
 }
 
+export const ActiveBlock = Symbol('Schlechtenburg active block');
 export function useActivation(currentBlockId: string) {
   const activeBlockId: Ref<string|null> = inject(ActiveBlock, ref(null));
   const isActive = computed(() => activeBlockId.value === currentBlockId);

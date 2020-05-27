@@ -33,12 +33,17 @@ export default defineComponent({
     },
   },
 
-  setup(props: ParagraphProps, context) {
+  setup(props: ParagraphProps) {
     const classes = computed(() => ({
       'sb-paragraph': true,
       [`sb-paragraph_align-${props.data.align}`]: true,
     }));
 
-    return () => <p class={classes}>{props.data.value}</p>;
+    return () => <p
+      class={classes.value}
+      {...{
+        domProps: { innerHTML: props.data.value },
+      }}
+    ></p>;
   },
 });

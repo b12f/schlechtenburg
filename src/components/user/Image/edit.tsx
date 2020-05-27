@@ -28,18 +28,20 @@ export default defineComponent({
 
   props: {
     ...blockProps,
+    eventUpdate: { type: Function, default: () => {} },
     data: {
       type: (null as unknown) as PropType<ImageData>,
       default: getDefaultData,
     },
   },
 
-  setup(props: ImageProps, context) {
+  setup(props: ImageProps) {
     const localData = reactive({
       src: props.data.src,
       alt: props.data.alt,
     });
 
+    console.log(props);
 
     const fileInput: Ref<null|HTMLInputElement> = ref(null);
 
@@ -56,9 +58,15 @@ export default defineComponent({
 
     const onImageSelect = () => {
       if (fileInput.value && fileInput.value.files && fileInput.value.files.length) {
-        context.emit('update', {
-          src: window.URL.createObjectURL(fileInput.value.files[0]),
+        const reader = new FileReader();
+        reader.addEventListener('load', () => {
+          props.eventUpdate({
+            src: reader.result,
+            alt: props.data.alt,
+          });
         });
+
+        reader.readAsDataURL(fileInput.value.files[0]);
       }
     };
 

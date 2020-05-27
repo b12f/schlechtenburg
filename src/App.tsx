@@ -6,6 +6,8 @@ import {
 import Schlechtenburg from '@components/Schlechtenburg';
 import { Block } from './components/TreeElement';
 
+import initialData from './initial-data.json';
+
 import './App.scss';
 
 export default defineComponent({
@@ -13,14 +15,7 @@ export default defineComponent({
 
   setup() {
     const activeTab = ref('edit');
-    const block = reactive({
-      name: 'sb-layout',
-      blockId: `${+(new Date())}`,
-      data: {
-        orientation: 'vertical',
-        children: [],
-      },
-    }) as Block;
+    const block = reactive(initialData) as Block;
 
     return () => (
       <div id="app">

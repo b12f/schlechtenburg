@@ -1,20 +1,14 @@
 import {
-  reactive,
   computed,
   defineComponent,
-  watch,
   PropType,
 } from '@vue/composition-api';
 import {
   model,
   blockProps,
-  useActivation,
-  BlockData,
 } from '@components/TreeElement';
 
 import SbBlock from '@internal/Block';
-import SbToolbar from '@internal/Toolbar';
-import SbBlockPlaceholder from '@internal/BlockPlaceholder';
 
 import {
   LayoutData,
@@ -37,7 +31,7 @@ export default defineComponent({
     },
   },
 
-  setup(props: LayoutProps, context) {
+  setup(props: LayoutProps) {
     const classes = computed(() => ({
       'sb-layout': true,
       [`sb-layout_${props.data.orientation}`]: true,
@@ -45,7 +39,7 @@ export default defineComponent({
 
     return () => (
       <div class={classes.value}>
-        {...props.data.children.map((child, index) => (
+        {...props.data.children.map((child) => (
           <SbBlock
             key={child.blockId}
             block={child}

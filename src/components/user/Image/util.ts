@@ -1,4 +1,4 @@
-import { BlockProps } from '@components/TreeElement';
+import { BlockData, BlockProps } from '@components/TreeElement';
 
 export interface ImageData {
   src: string;
@@ -7,6 +7,7 @@ export interface ImageData {
 
 export interface ImageProps extends BlockProps {
   data: ImageData;
+  eventUpdate: (b?: BlockData) => void;
 }
 
 export const getDefaultData: () => ImageData = () => ({

@@ -98,6 +98,7 @@ export default defineComponent({
 
     const onFocus = () => {
       localData.focused = true;
+      activate();
     };
 
     const onBlur = () => {

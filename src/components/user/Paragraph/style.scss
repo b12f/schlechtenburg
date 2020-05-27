@@ -7,8 +7,8 @@
   }
 
   &_align {
-    &-left { .sb-paragraph__input { text-align: left; } }
-    &-right {  .sb-paragraph__input { text-align: right; } }
-    &-center {  .sb-paragraph__input { text-align: center; } }
+    &-left { &, .sb-paragraph__input { text-align: left; } }
+    &-right {  &, .sb-paragraph__input { text-align: right; } }
+    &-center {  &, .sb-paragraph__input { text-align: center; } }
   }
 }

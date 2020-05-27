@@ -11,6 +11,8 @@ import {
 import {
   model,
   blockProps,
+  BlockProps,
+  BlockData,
   useActivation,
 } from '@components/TreeElement';
 
@@ -19,10 +21,15 @@ import SbToolbar from '@internal/Toolbar';
 import {
   getDefaultData,
   ParagraphData,
-  ParagraphProps,
 } from './util';
 
 import './style.scss';
+
+interface ParagraphProps extends BlockProps {
+  data: ParagraphData;
+  eventUpdate: (b?: ParagraphData) => void;
+  eventInsertBlock: (b?: BlockData) => void;
+}
 
 export default defineComponent({
   name: 'sb-paragraph-edit',
@@ -35,22 +42,16 @@ export default defineComponent({
       type: (null as unknown) as PropType<ParagraphData>,
       default: getDefaultData,
     },
-    eventUpdate: {
-      type: (Function as unknown) as (b?: ParagraphData) => void,
-      default: () => () => undefined,
-    },
-    eventInsertBlock: {
-      type: (Function as unknown) as (b?: ParagraphData) => void,
-      default: () => () => undefined,
-    },
+    eventUpdate: { type: Function, default: () => {} },
+    eventInsertBlock: { type: Function, default: () => {} },
   },
 
-  setup(props: ParagraphProps, context) {
+  setup(props: ParagraphProps) {
     const localData = (reactive({
       value: props.data.value,
       align: props.data.align,
       focused: false,
-    }) as any) as {
+    }) as unknown) as {
       value: string;
       align: string;
       focused: boolean;
@@ -89,7 +90,10 @@ export default defineComponent({
     }));
 
     const setAlignment = ($event: Event) => {
-      props.eventUpdate({ align: ($event.target as HTMLSelectElement).value });
+      props.eventUpdate({
+        value: localData.value,
+        align: ($event.target as HTMLSelectElement).value,
+      });
     };
 
     const onFocus = () => {
@@ -100,6 +104,7 @@ export default defineComponent({
       localData.focused = false;
       props.eventUpdate({
         value: localData.value,
+        align: localData.align,
       });
       activate(null);
     };
@@ -124,11 +129,7 @@ export default defineComponent({
         <SbToolbar>
           <select
             value={localData.align}
-            {...{
-              on: {
-                change: setAlignment,
-              },
-            }}
+            onChange={setAlignment}
           >
             <option>left</option>
             <option>center</option>
@@ -139,14 +140,10 @@ export default defineComponent({
           class="sb-paragraph__input"
           ref={inputEl}
           contenteditable
-          {...{
-            on: {
-              input: onTextUpdate,
-              focus: onFocus,
-              blur: onBlur,
-              keypress: onKeypress,
-            },
-          }}
+          onInput={onTextUpdate}
+          onFocus={onFocus}
+          onBlur={onBlur}
+          onKeypress={onKeypress}
         ></p>
       </div>
     );

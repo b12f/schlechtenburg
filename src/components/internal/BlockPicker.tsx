@@ -36,17 +36,17 @@ export default defineComponent({
     return () => (
       <div
         class="sb-block-picker"
-        onClick={($event: MouseEvent) => $event.stopPropagation()}
       >
         <SbButton
           type="button"
-          onClick={() => {
+          onClick={($event: MouseEvent) => {
             open.value = true;
-            console.log(open);
+            $event.stopPropagation();
           }}
         >Add a block</SbButton>
         <SbModal
           open={open.value}
+          onClick={($event: MouseEvent) => $event.stopPropagation()}
           eventClose={() => {
             open.value = false;
           }}

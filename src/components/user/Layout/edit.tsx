@@ -8,7 +8,7 @@ import {
 import {
   model,
   useActivation,
-  BlockData,
+  Block,
   blockProps,
 } from '@components/TreeElement';
 
@@ -32,17 +32,14 @@ export default defineComponent({
 
   props: {
     ...blockProps,
-    eventUpdate: {
-      type: (Function as unknown) as (b?: LayoutData) => void,
-      default: () => () => undefined,
-    },
+    eventUpdate: { type: Function, default: () => {} },
     data: {
       type: (null as unknown) as PropType<LayoutData>,
       default: getDefaultData,
     },
   },
 
-  setup(props: LayoutProps, context) {
+  setup(props: LayoutProps) {
     const { activate } = useActivation(props.blockId);
 
     const localData: LayoutData = reactive({
@@ -66,7 +63,7 @@ export default defineComponent({
       });
     };
 
-    const onChildUpdate = (child: BlockData, updated: BlockData) => {
+    const onChildUpdate = (child: Block, updated: Block) => {
       const index = localData.children.indexOf(child);
       props.eventUpdate({
         children: [
@@ -80,7 +77,7 @@ export default defineComponent({
       });
     };
 
-    const appendBlock = (block: BlockData) => {
+    const appendBlock = (block: Block) => {
       props.eventUpdate({
         children: [
           ...localData.children,
@@ -90,8 +87,8 @@ export default defineComponent({
       activate(block.blockId);
     };
 
-    const insertBlock = (index: number, block: BlockData) => {
-      context.emit('update', {
+    const insertBlock = (index: number, block: Block) => {
+      props.eventUpdate({
         children: [
           ...localData.children.slice(0, index + 1),
           block,
@@ -118,13 +115,9 @@ export default defineComponent({
           <SbBlock
             key={child.blockId}
             block={child}
-            {...{
-              on: {
-                update: (updated: BlockData) => onChildUpdate(child, updated),
-                'insert-block': (block: BlockData) => insertBlock(index, block),
-                'append-block': appendBlock,
-              },
-            }}
+            eventUpdate={(updated: Block) => onChildUpdate(child, updated)}
+            eventInsertBlock={(block: Block) => insertBlock(index, block)}
+            eventAppendBlock={appendBlock}
           />
         ))}
 

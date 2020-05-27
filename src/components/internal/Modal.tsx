@@ -1,10 +1,14 @@
 import {
   defineComponent,
   computed,
-  ref,
 } from '@vue/composition-api';
 
 import './Modal.scss';
+
+interface ModalProps {
+  open: boolean;
+  eventClose: () => void;
+}
 
 export default defineComponent({
   name: 'sb-modal',
@@ -14,13 +18,10 @@ export default defineComponent({
       type: Boolean,
       default: false,
     },
-    eventClose: {
-      type: (Function as unknown) as () => void,
-      default: () => () => undefined,
-    },
+    eventClose: { type: Function, default: () => {} },
   },
 
-  setup(props, context) {
+  setup(props: ModalProps, context) {
     const classes = computed(() => ({
       'sb-modal': true,
       'sb-modal_open': props.open,

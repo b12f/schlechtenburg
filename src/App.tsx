@@ -4,7 +4,7 @@ import {
   ref,
 } from '@vue/composition-api';
 import Schlechtenburg from '@components/Schlechtenburg';
-import { BlockData } from './components/TreeElement';
+import { Block } from './components/TreeElement';
 
 import './App.scss';
 
@@ -20,7 +20,7 @@ export default defineComponent({
         orientation: 'vertical',
         children: [],
       },
-    }) as BlockData;
+    }) as Block;
 
     return () => (
       <div id="app">
@@ -41,7 +41,7 @@ export default defineComponent({
         <Schlechtenburg
           vShow={activeTab.value === 'edit'}
           block={block}
-          eventUpdate={(newBlock: BlockData) => {
+          eventUpdate={(newBlock: Block) => {
             block.name = newBlock.name;
             block.blockId = newBlock.blockId;
             block.data = newBlock.data;

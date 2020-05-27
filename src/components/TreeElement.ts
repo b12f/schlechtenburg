@@ -17,10 +17,12 @@ export interface BlockLibraryDefinition {
   [name: string]: BlockDefinition;
 }
 
-export interface BlockData {
+export interface BlockData { [name: string]: any }
+
+export interface Block {
   name: string;
   blockId: string;
-  data: { [name: string]: any };
+  data: BlockData;
 }
 
 export interface BlockProps {
@@ -35,10 +37,6 @@ export const model = {
 
 export const blockProps = {
   blockId: { type: String, required: true },
-  eventUpdate: {
-    type: (Function as unknown) as (b: any) => void,
-    default: () => () => undefined,
-  },
   data: { type: Object, default: () => ({}) },
 };
 

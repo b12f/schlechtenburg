@@ -8,7 +8,7 @@ import {
 import {
   model,
   ActiveBlock,
-  BlockData,
+  Block,
   SbMode,
   Mode,
   BlockDefinition,
@@ -27,8 +27,8 @@ import './Schlechtenburg.scss';
 
 export interface SchlechtenburgProps {
   customBlocks: BlockDefinition[];
-  eventUpdate: (b?: BlockData) => void;
-  block: BlockData;
+  eventUpdate: (b: Block) => void;
+  block: Block;
   mode: SbMode;
 }
 
@@ -39,11 +39,8 @@ export default defineComponent({
 
   props: {
     customBlocks: { type: Array as PropType<BlockDefinition[]>, default: () => [] },
-    block: { type: Object as PropType<BlockData>, required: true },
-    eventUpdate: {
-      type: (Function as unknown) as (b?: BlockData) => void,
-      default: () => () => undefined,
-    },
+    block: { type: Object as PropType<Block>, required: true },
+    eventUpdate: { type: Function, default: () => {} },
     mode: {
       type: String,
       validator(value: string) {
@@ -53,7 +50,7 @@ export default defineComponent({
     },
   },
 
-  setup(props: SchlechtenburgProps, context) {
+  setup(props: SchlechtenburgProps) {
     const mode = ref(props.mode);
     provide(Mode, mode);
 

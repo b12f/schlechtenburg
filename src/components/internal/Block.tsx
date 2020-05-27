@@ -17,6 +17,7 @@ interface BlockProps {
   eventUpdate: (b?: Block) => void;
   eventInsertBlock: (b?: Block) => void;
   eventAppendBlock: (b?: Block) => void;
+  eventRemoveBlock: () => void;
 }
 
 export default defineComponent({
@@ -30,6 +31,7 @@ export default defineComponent({
     eventUpdate: { type: Function, default: () => {} },
     eventInsertBlock: { type: Function, default: () => {} },
     eventAppendBlock: { type: Function, default: () => {} },
+    eventRemoveBlock: { type: Function, default: () => {} },
   },
 
   setup(props: BlockProps, context) {
@@ -51,7 +53,6 @@ export default defineComponent({
     };
 
     const BlockComponent = getBlock(props.block.name) as any;
-
     if (mode.value === SbMode.Display) {
       return () => (
         <BlockComponent
@@ -70,13 +71,16 @@ export default defineComponent({
         eventUpdate={onChildUpdate}
         eventInsertBlock={props.eventInsertBlock}
         eventAppendBlock={props.eventAppendBlock}
-        onClick={($event: MouseEvent) => {
-          $event.stopPropagation();
-          activate();
-        }}
+        eventRemoveBlock={props.eventRemoveBlock}
         {...{
           attrs: context.attrs,
-          on: context.listeners,
+          nativeOn: {
+            click: ($event: MouseEvent) => {
+              $event.stopPropagation();
+              activate();
+            },
+            ...context.listeners,
+          },
         }}
       />
     </div>);

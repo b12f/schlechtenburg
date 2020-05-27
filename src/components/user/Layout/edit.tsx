@@ -65,6 +65,9 @@ export default defineComponent({
 
     const onChildUpdate = (child: Block, updated: Block) => {
       const index = localData.children.indexOf(child);
+      if (index === -1) {
+        return;
+      }
       props.eventUpdate({
         children: [
           ...localData.children.slice(0, index),
@@ -78,24 +81,33 @@ export default defineComponent({
     };
 
     const appendBlock = (block: Block) => {
-      props.eventUpdate({
-        children: [
-          ...localData.children,
-          block,
-        ],
-      });
+      localData.children = [
+        ...localData.children,
+        block,
+      ];
+      props.eventUpdate({ children: [...localData.children] });
       activate(block.blockId);
     };
 
     const insertBlock = (index: number, block: Block) => {
-      props.eventUpdate({
-        children: [
-          ...localData.children.slice(0, index + 1),
-          block,
-          ...localData.children.slice(index + 1),
-        ],
-      });
+      localData.children = [
+        ...localData.children.slice(0, index + 1),
+        block,
+        ...localData.children.slice(index + 1),
+      ];
+      props.eventUpdate({ children: [...localData.children] });
       activate(block.blockId);
+    };
+
+    const removeBlock = (index: number) => {
+      localData.children = [
+        ...localData.children.slice(0, index),
+        ...localData.children.slice(index + 1),
+      ];
+      props.eventUpdate({ children: [...localData.children] });
+
+      const newActiveIndex = Math.max(index - 1, 0);
+      activate(localData.children[newActiveIndex].blockId);
     };
 
     return () => (
@@ -118,6 +130,7 @@ export default defineComponent({
             eventUpdate={(updated: Block) => onChildUpdate(child, updated)}
             eventInsertBlock={(block: Block) => insertBlock(index, block)}
             eventAppendBlock={appendBlock}
+            eventRemoveBlock={() => removeBlock(index)}
           />
         ))}
 

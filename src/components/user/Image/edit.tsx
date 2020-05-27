@@ -12,6 +12,7 @@ import {
 } from '@components/TreeElement';
 
 import SbToolbar from '@internal/Toolbar';
+import SbButton from '@internal/Button';
 
 import {
   getDefaultData,
@@ -40,8 +41,6 @@ export default defineComponent({
       src: props.data.src,
       alt: props.data.alt,
     });
-
-    console.log(props);
 
     const fileInput: Ref<null|HTMLInputElement> = ref(null);
 
@@ -73,28 +72,19 @@ export default defineComponent({
     return () => (
       <div class="sb-image">
         <SbToolbar>
-          Image Edit
+          {localData.src
+            ? <SbButton onClick={selectImage}>Change Image</SbButton>
+            : null}
           <input
             type="file"
             ref="fileInput"
             style="display: none;"
-            {...{
-              on: {
-                input: onImageSelect,
-              },
-            }}
+            onInput={onImageSelect}
           />
         </SbToolbar>
         {localData.src
           ? <img src={localData.src} alt={localData.alt} />
-          : <button
-            {...{
-              on: {
-                click: selectImage,
-              },
-            }}
-          >Select Image</button>
-        }
+          : <SbButton onClick={selectImage}>Select Image</SbButton>}
       </div>
     );
   },

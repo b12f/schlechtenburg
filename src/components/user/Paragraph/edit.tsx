@@ -29,6 +29,7 @@ interface ParagraphProps extends BlockProps {
   data: ParagraphData;
   eventUpdate: (b?: ParagraphData) => void;
   eventInsertBlock: (b?: BlockData) => void;
+  eventRemoveBlock: () => void;
 }
 
 export default defineComponent({
@@ -44,6 +45,7 @@ export default defineComponent({
     },
     eventUpdate: { type: Function, default: () => {} },
     eventInsertBlock: { type: Function, default: () => {} },
+    eventRemoveBlock: { type: Function, default: () => {} },
   },
 
   setup(props: ParagraphProps) {
@@ -61,15 +63,20 @@ export default defineComponent({
 
     const { isActive, activate } = useActivation(props.blockId);
 
+    const focusInput = () => {
+      if (inputEl.value && isActive.value) {
+        inputEl.value.focus();
+      }
+    };
+
     onMounted(() => {
+      focusInput();
       if (inputEl.value) {
         inputEl.value.innerHTML = localData.value;
-
-        if (isActive.value) {
-          inputEl.value.focus();
-        }
       }
     });
+
+    watch(isActive, focusInput);
 
     watch(() => props.data, () => {
       localData.value = props.data.value;
@@ -110,8 +117,8 @@ export default defineComponent({
       activate(null);
     };
 
-    const onKeypress = ($event: KeyboardEvent) => {
-      if ($event.key === 'Enter') {
+    const onKeyup = ($event: KeyboardEvent) => {
+      if ($event.key === 'Enter' && !$event.shiftKey) {
         const blockId = `${+(new Date())}`;
         props.eventInsertBlock({
           blockId,
@@ -122,6 +129,8 @@ export default defineComponent({
         activate(blockId);
 
         $event.preventDefault();
+      } else if ($event.key === 'Backspace' && localData.value === '') {
+        props.eventRemoveBlock();
       }
     };
 
@@ -144,7 +153,7 @@ export default defineComponent({
           onInput={onTextUpdate}
           onFocus={onFocus}
           onBlur={onBlur}
-          onKeypress={onKeypress}
+          onKeyup={onKeyup}
         ></p>
       </div>
     );

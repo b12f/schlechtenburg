@@ -34,10 +34,9 @@ export default defineComponent({
     };
 
     return () => (
-      <div
-        class="sb-block-picker"
-      >
+      <div class="sb-block-picker">
         <SbButton
+          class="sb-block-picker__add-button"
           type="button"
           onClick={($event: MouseEvent) => {
             open.value = true;

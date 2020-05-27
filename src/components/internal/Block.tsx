@@ -10,6 +10,8 @@ import {
   SbMode,
 } from '@components/TreeElement';
 
+import SbButton from './Button';
+
 import './Block.scss';
 
 interface BlockProps {
@@ -64,7 +66,13 @@ export default defineComponent({
 
     return () => (<div class={classes.value}>
       <div class="sb-block__edit-cover"></div>
-      <div class="sb-block__mover"></div>
+      <div class="sb-block__remove">
+        <SbButton>x</SbButton>
+      </div>
+      <div class="sb-block__sliders">
+        <SbButton>&gt;</SbButton>
+        <SbButton>&lt;</SbButton>
+      </div>
       <BlockComponent
         data={props.block.data}
         block-id={props.block.blockId}

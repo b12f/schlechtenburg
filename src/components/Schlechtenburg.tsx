@@ -4,6 +4,8 @@ import {
   reactive,
   ref,
   PropType,
+  Ref,
+  watch,
 } from '@vue/composition-api';
 import {
   model,
@@ -11,9 +13,11 @@ import {
   Block,
   SbMode,
   Mode,
+  EditorDimensions,
   BlockDefinition,
   BlockLibraryDefinition,
   BlockLibrary,
+  useResizeObserver,
 } from '@components/TreeElement';
 
 import SbBlock from '@internal/Block';
@@ -51,6 +55,9 @@ export default defineComponent({
   },
 
   setup(props: SchlechtenburgProps) {
+    const el: Ref<null|HTMLElement> = ref(null);
+    useResizeObserver(el, EditorDimensions);
+
     const mode = ref(props.mode);
     provide(Mode, mode);
 
@@ -73,7 +80,10 @@ export default defineComponent({
     provide(BlockLibrary, blockLibrary);
 
     return () => (
-      <div class="sb-main">
+      <div
+        class="sb-main"
+        ref={el}
+      >
         <SbBlock
           block={props.block}
           eventUpdate={props.eventUpdate}

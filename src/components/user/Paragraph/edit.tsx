@@ -117,7 +117,7 @@ export default defineComponent({
       activate(null);
     };
 
-    const onKeyup = ($event: KeyboardEvent) => {
+    const onKeydown = ($event: KeyboardEvent) => {
       if ($event.key === 'Enter' && !$event.shiftKey) {
         const blockId = `${+(new Date())}`;
         props.eventInsertBlock({
@@ -129,7 +129,11 @@ export default defineComponent({
         activate(blockId);
 
         $event.preventDefault();
-      } else if ($event.key === 'Backspace' && localData.value === '') {
+      }
+    };
+
+    const onKeyup = ($event: KeyboardEvent) => {
+      if ($event.key === 'Backspace' && localData.value === '') {
         props.eventRemoveBlock();
       }
     };
@@ -153,6 +157,7 @@ export default defineComponent({
           onInput={onTextUpdate}
           onFocus={onFocus}
           onBlur={onBlur}
+          onKeydown={onKeydown}
           onKeyup={onKeyup}
         ></p>
       </div>

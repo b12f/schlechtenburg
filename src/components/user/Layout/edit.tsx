@@ -110,6 +110,40 @@ export default defineComponent({
       activate(localData.children[newActiveIndex].blockId);
     };
 
+    const moveUp = (index: number) => {
+      if (index === 0) {
+        return;
+      }
+
+      const curr = localData.children[index];
+      const prev = localData.children[index - 1];
+      localData.children = [
+        ...localData.children.slice(0, index - 1),
+        curr,
+        prev,
+        ...localData.children.slice(index + 1),
+      ];
+
+      props.eventUpdate({ children: [...localData.children] });
+    };
+
+    const moveDown = (index: number) => {
+      if (index === localData.children.length - 1) {
+        return;
+      }
+
+      const curr = localData.children[index];
+      const next = localData.children[index + 1];
+      localData.children = [
+        ...localData.children.slice(0, index),
+        next,
+        curr,
+        ...localData.children.slice(index + 2),
+      ];
+
+      props.eventUpdate({ children: [...localData.children] });
+    };
+
     return () => (
       <div class={classes.value}>
         <SbToolbar slot="toolbar">
@@ -125,12 +159,17 @@ export default defineComponent({
 
         {...localData.children.map((child, index) => (
           <SbBlock
-            key={child.blockId}
+            {...{ key: child.blockId }}
+            data-order={index}
             block={child}
             eventUpdate={(updated: Block) => onChildUpdate(child, updated)}
             eventInsertBlock={(block: Block) => insertBlock(index, block)}
             eventAppendBlock={appendBlock}
             eventRemoveBlock={() => removeBlock(index)}
+            eventMoveUp={() => moveUp(index)}
+            eventMoveDown={() => moveDown(index)}
+            sortable={localData.orientation}
+            removable
           />
         ))}
 

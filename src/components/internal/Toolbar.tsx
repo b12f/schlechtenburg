@@ -36,6 +36,7 @@ export default defineComponent({
       <div
         class="sb-toolbar"
         style={styles}
+        onClick={($event: MouseEvent) => $event.stopPropagation()}
       >
         {context.slots.default()}
       </div>

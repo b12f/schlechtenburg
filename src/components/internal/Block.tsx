@@ -85,7 +85,6 @@ export default defineComponent({
     return () => <div
       ref={el}
       class={classes.value}
-      onClick={($event: MouseEvent) => $event.stopPropagation()}
     >
       <div class="sb-block__edit-cover"></div>
       {props.sortable

@@ -17,6 +17,7 @@ import {
 } from '@components/TreeElement';
 
 import SbToolbar from '@internal/Toolbar';
+import SbSelect from '@internal/Select';
 
 import {
   getDefaultData,
@@ -114,7 +115,6 @@ export default defineComponent({
         value: localData.value,
         align: localData.align,
       });
-      activate(null);
     };
 
     const onKeydown = ($event: KeyboardEvent) => {
@@ -141,14 +141,14 @@ export default defineComponent({
     return () => (
       <div class={classes.value}>
         <SbToolbar>
-          <select
+          <SbSelect
             value={localData.align}
             onChange={setAlignment}
           >
             <option>left</option>
             <option>center</option>
             <option>right</option>
-          </select>
+          </SbSelect>
         </SbToolbar>
         <p
           class="sb-paragraph__input"

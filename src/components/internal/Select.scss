@@ -1,0 +1,25 @@
+.sb-select {
+  background-color: var(--grey-0);
+  border: 1px solid var(--grey-2);
+  position: relative;
+
+  &:hover {
+    border: 1px solid var(--interact);
+  }
+
+  &::after {
+    position: absolute;
+    content: '⯆';
+    top: 6px;
+    height: 100%;
+    right: 12px;
+    pointer-events: none;
+  }
+
+  &__input {
+    background: transparent;
+    appearance: none;
+    border: 0;
+    padding: 8px 32px 8px 12px;
+  }
+}

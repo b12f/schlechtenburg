@@ -55,6 +55,7 @@ export default defineComponent({
       <div
         class={classes.value}
         style={styles}
+        onClick={($event: MouseEvent) => $event.stopPropagation()}
       >
         <SbButton onClick={props.eventMoveUp}>{props.sortable === 'vertical' ? '↑' : '←'}</SbButton>
         <SbButton onClick={props.eventRemoveBlock}>x</SbButton>

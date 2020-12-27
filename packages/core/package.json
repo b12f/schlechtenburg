@@ -1,0 +1,38 @@
+{
+  "name": "@schlechtenburg/core",
+  "version": "0.0.0",
+  "description": "> TODO: description",
+  "author": "Benjamin Bädorf <hello@benjaminbaedorf.eu>",
+  "homepage": "",
+  "license": "GPLv3",
+  "main": "lib/core.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@git.b12f.io:b12f/schlechtenburg.git"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vuedx-typecheck . && vite build"
+  },
+  "dependencies": {
+    "vue": "^3.0.4"
+  },
+  "devDependencies": {
+    "@vue/compiler-sfc": "^3.0.4",
+    "@vuedx/typecheck": "^0.3.1-insiders-1606311019.0",
+    "@vuedx/typescript-plugin-vue": "^0.3.1-insiders-1606311019.0",
+    "lerna": "^3.22.1",
+    "typescript": "^4.1.2",
+    "vite": "^1.0.0-rc.13"
+  }
+}

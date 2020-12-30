@@ -1,5 +1,5 @@
 {
-  "name": "@schlechtenburg/core",
+  "name": "@schlechtenburg/paragraph",
   "version": "0.0.0",
   "description": "> TODO: description",
   "author": "Benjamin Bädorf <hello@benjaminbaedorf.eu>",
@@ -20,9 +20,11 @@
     "type": "git",
     "url": "git@git.b12f.io:b12f/schlechtenburg.git"
   },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
   "dependencies": {
-    "vue": "^3.0.4",
-    "lodash-es": "^4.17.20"
+    "@schlechtenburg/core": "^0.0.0"
   },
   "peerDependencies": {
     "vue": "3"

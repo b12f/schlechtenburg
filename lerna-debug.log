@@ -1,0 +1,6 @@
+0 silly argv { _: [ 'bootstrap' ], lernaVersion: '3.22.1', '$0': 'lerna' }
+1 notice cli v3.22.1
+2 verbose rootPath /home/ben/Workspace/schlechtenburg
+3 error JSONError: Unexpected string in JSON at position 503 while parsing '{  "name": "@schlechtenburg/core",  "v' in core/package.json
+3 error     at module.exports (/home/ben/.local/share/nvm/versions/node/v14.5.0/lib/node_modules/lerna/node_modules/parse-json/index.js:26:19)
+3 error     at parse (/home/ben/.local/share/nvm/versions/node/v14.5.0/lib/node_modules/lerna/node_modules/load-json-file/index.js:15:9)

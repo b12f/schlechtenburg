@@ -3,8 +3,8 @@ import {
   inject,
   reactive,
 } from 'vue';
-import { BlockLibraryDefinition } from '/@/blocks';
-import { Mode, SbMode } from '/@/mode';
+import { BlockLibraryDefinition } from './blocks';
+import { Mode, SbMode } from './mode';
 
 export const BlockLibrary = Symbol('Schlechtenburg block library');
 export function useDynamicBlocks() {

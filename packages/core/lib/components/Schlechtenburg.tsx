@@ -3,6 +3,7 @@ import {
   provide,
   shallowReactive,
   ref,
+  watch,
   PropType,
   Ref,
 } from 'vue';
@@ -17,7 +18,7 @@ import { BlockLibrary } from '../use-dynamic-blocks';
 import { EditorDimensions, useResizeObserver } from '../use-resize-observer';
 import { ActiveBlock } from '../use-activation';
 
-import SbBlock from './Block';
+import { SbBlock } from './Block';
 
 import './Schlechtenburg.scss';
 
@@ -64,6 +65,10 @@ export const Schlechtenburg = defineComponent({
     });
 
     provide(BlockLibrary, blockLibrary);
+
+    watch(props.block, () => {
+      console.log('Update', props.block);
+    });
 
     return () => (
       <div

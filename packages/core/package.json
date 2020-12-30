@@ -23,8 +23,5 @@
   "dependencies": {
     "vue": "^3.0.4",
     "lodash-es": "^4.17.20"
-  },
-  "peerDependencies": {
-    "vue": "3"
   }
 }

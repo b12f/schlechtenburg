@@ -24,9 +24,7 @@
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "dependencies": {
-    "@schlechtenburg/core": "^0.0.0"
-  },
-  "peerDependencies": {
-    "vue": "3"
+    "@schlechtenburg/core": "^0.0.0",
+    "vue": "^3.0.4"
   }
 }

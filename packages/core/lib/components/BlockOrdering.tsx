@@ -1,4 +1,4 @@
-import debounce from 'lodash-es/debounce';
+import { debounce } from 'lodash-es';
 import {
   watch,
   reactive,
@@ -7,7 +7,7 @@ import {
 } from 'vue';
 import { useBlockSizing } from '../use-resize-observer';
 
-import SbButton from './Button';
+import { SbButton } from './Button';
 
 import './BlockOrdering.scss';
 

@@ -1,11 +1,11 @@
 import { defineComponent } from 'vue';
 import { BlockDefinition } from '../blocks';
 
-import SbBlockPicker from './BlockPicker';
+import { SbBlockPicker } from './BlockPicker';
 
 import './BlockPlaceholder.scss';
 
-export const BlockPlaceholder = defineComponent({
+export const SbBlockPlaceholder = defineComponent({
   name: 'sb-block-placeholder',
 
   setup(props, context) {

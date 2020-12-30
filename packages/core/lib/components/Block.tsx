@@ -13,6 +13,7 @@ import { useActivation } from '../use-activation';
 import { useDynamicBlocks } from '../use-dynamic-blocks';
 
 import { SbBlockOrdering } from './BlockOrdering';
+import SbMissingBlock from './BlockMissing/index';
 
 import './Block.scss';
 
@@ -56,17 +57,6 @@ export const SbBlock = defineComponent({
       'sb-block_active': isActive.value,
     }));
 
-    const BlockComponent = getBlock(props.block.name) as any;
-
-    if (mode.value === SbMode.Display) {
-      return () => (
-        <BlockComponent
-          data={props.block.data}
-          block-id={props.block.blockId}
-        />
-      );
-    }
-
     const { triggerSizeCalculation } = useResizeObserver(el, BlockDimensions);
     watch(() => props.block.data, triggerSizeCalculation);
 
@@ -80,25 +70,46 @@ export const SbBlock = defineComponent({
       });
     };
 
-    return () => <div
-      ref={el}
-      class={classes.value}
-    >
-      <div class="sb-block__edit-cover"></div>
-      {context.slots['context-toolbar'] ? context.slots['context-toolbar']() : null}
-      <BlockComponent
-        data={props.block.data}
-        blockId={props.block.blockId}
-        eventUpdate={onChildUpdate}
-        eventPrependBlock={props.eventPrependBlock}
-        eventAppendBlock={props.eventAppendBlock}
-        eventRemoveBlock={props.eventRemoveBlock}
-        onClick={($event: MouseEvent) => {
-          $event.stopPropagation();
-          activate();
-        }}
-        {...context.attrs}
-      />
-    </div>;
+    return () => {
+      const BlockComponent = getBlock(props.block.name) as any;
+
+      if (!BlockComponent) {
+        const MissingBlock = SbMissingBlock[mode.value];
+        return <MissingBlock
+          name={props.block.name}
+          blockId={props.block.blockId}
+        />;
+      }
+
+      if (mode.value === SbMode.Display) {
+        return () => (
+          <BlockComponent
+            data={props.block.data}
+            blockId={props.block.blockId}
+          />
+        );
+      }
+
+      return <div
+        ref={el}
+        class={classes.value}
+      >
+        <div class="sb-block__edit-cover"></div>
+        {context.slots['context-toolbar'] ? context.slots['context-toolbar']() : null}
+        <BlockComponent
+          data={props.block.data}
+          blockId={props.block.blockId}
+          eventUpdate={onChildUpdate}
+          eventPrependBlock={props.eventPrependBlock}
+          eventAppendBlock={props.eventAppendBlock}
+          eventRemoveBlock={props.eventRemoveBlock}
+          onClick={($event: MouseEvent) => {
+            $event.stopPropagation();
+            activate();
+          }}
+          {...context.attrs}
+        />
+      </div>;
+    };
   },
 });

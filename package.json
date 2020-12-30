@@ -7,6 +7,7 @@
     "build": "vuedx-typecheck . && vite build"
   },
   "dependencies": {
+    "lodash-es": "^4.17.20",
     "vue": "^3.0.4"
   },
   "devDependencies": {

@@ -8,8 +8,8 @@ import {
   BlockDefinition,
 } from '../use-dynamic-blocks';
 
-import SbButton from './Button';
-import SbModal from './Modal';
+import { SbButton } from './Button';
+import { SbModal } from './Modal';
 
 import './BlockPicker.scss';
 

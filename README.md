@@ -1,34 +1,8 @@
-# schlechtenburg
+# Schlechtenburg
 
-## Project setup
-```
-npm install
-```
+Experimental WYSIWYG editor framework made with Vue 3 and TypeScript. It takes cues from both Wordpress' Gutenberg editor and CKEditor, though it tries to become a best of both worlds; a very lightweight, easily extensible core, written with modern components and the accompanying state management.
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+It inputs and outputs a tree of JSON-serializable data.
 
-### Compiles and minifies for production
-```
-npm run build
-```
+Just a plaything for now.
 
-### Run your unit tests
-```
-npm run test:unit
-```
-
-### Run your end-to-end tests
-```
-npm run test:e2e
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).

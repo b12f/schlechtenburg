@@ -18,7 +18,9 @@ export default defineComponent({
       <div id="app">
         <select
           value={activeTab.value}
-          onChange={($event: Event) => { activeTab.value = ($event.target as HTMLSelectElement).value; }}
+          onChange={($event: Event) => {
+            activeTab.value = ($event.target as HTMLSelectElement).value;
+          }}
         >
           <option>edit</option>
           <option>display</option>
@@ -43,7 +45,7 @@ export default defineComponent({
                 mode="display"
               />;
             case 'data':
-              return <pre><code>{JSON.stringify(block, null, 2)}</code></pre>;
+              return <pre><code>{ JSON.stringify(block, null, 2) }</code></pre>;
           }
         })()}
       </div>

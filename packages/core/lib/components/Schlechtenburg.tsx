@@ -51,7 +51,7 @@ export default defineComponent({
     },
   },
 
-  setup(props) {
+  setup(props: SchlechtenburgProps) {
     const el: Ref<null|HTMLElement> = ref(null);
     useResizeObserver(el, EditorDimensions);
 

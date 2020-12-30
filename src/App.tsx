@@ -1,12 +1,19 @@
 import {
+  onBeforeMount,
+  computed,
   defineComponent,
   reactive,
   ref,
-} from '@vue/composition-api';
-import Schlechtenburg from '@components/Schlechtenburg';
-import { Block } from './components/TreeElement';
+} from 'vue';
 
-import initialData from './initial-data.json';
+import { Schlechtenburg, Block, SbMode } from '../packages/core/lib';
+
+/*
+import SbHeading from '../packages/heading/lib';
+import SbParagraph from '../packages/paragraph/lib';
+import SbImage from '../packages/image/lib';
+ */
+import SbLayout from '../packages/layout/lib';
 
 import './App.scss';
 
@@ -15,44 +22,65 @@ export default defineComponent({
 
   setup() {
     const activeTab = ref('edit');
-    const block = reactive(initialData) as Block;
+    const block: Block<any> = reactive({
+      name: 'none',
+      blockId: '0',
+      data: null,
+    });
 
-    return () => (
-      <div id="app">
+    onBeforeMount(async () => {
+      const res = await fetch('/initial-data.json');
+      const data = await res.json();
+      block.name = data.name;
+      block.blockId = data.blockId;
+      block.data = data.data;
+    });
+
+    const Example = computed(() => {
+      switch (activeTab.value) {
+        case SbMode.Edit:
+          return <Schlechtenburg
+            block={block}
+            eventUpdate={(newBlock: Block<any>) => {
+              block.data = newBlock.data;
+            }}
+            customBlocks={[
+              SbLayout,
+              /*
+              SbHeading,
+              SbImage,
+              SbParagraph,
+               */
+            ]}
+            key="edit"
+            mode="edit"
+          />;
+        case SbMode.Edit:
+          return <Schlechtenburg
+            block={block}
+            key="display"
+            mode="display"
+          />;
+        case 'data':
+          return <pre><code>{ JSON.stringify(block, null, 2) }</code></pre>;
+      }
+    });
+
+    return () => {
+      console.log('render App');
+      return <div id="app">
         <select
           value={activeTab.value}
-          {...{
-            on: {
-              change: ($event: Event) => {
-                activeTab.value = ($event.target as HTMLSelectElement).value;
-              },
-            },
+          onChange={($event: Event) => {
+            activeTab.value = ($event.target as HTMLSelectElement).value;
           }}
         >
           <option>edit</option>
           <option>display</option>
-          <option>json</option>
+          <option>data</option>
         </select>
-        <Schlechtenburg
-          vShow={activeTab.value === 'edit'}
-          block={block}
-          eventUpdate={(newBlock: Block) => {
-            block.name = newBlock.name;
-            block.blockId = newBlock.blockId;
-            block.data = newBlock.data;
-          }}
-        />
-
-        <Schlechtenburg
-          vShow={activeTab.value === 'display'}
-          block={block}
-          mode="display"
-        />
-
-        <pre vShow={activeTab.value === 'json'}>
-          <code>{JSON.stringify(block, null, 2)}</code>
-        </pre>
-      </div>
-    );
+        <Example.value />
+      </div>;
+    };
   },
 });

@@ -2,7 +2,7 @@ import {
   BlockProps,
   Block,
   BlockData,
-} from '/@components/TreeElement';
+} from '/@/blocks';
 
 export interface LayoutData {
   orientation: string;

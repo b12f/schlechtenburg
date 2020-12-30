@@ -7,15 +7,16 @@ import {
 } from 'vue';
 import {
   model,
-  useActivation,
   Block,
   blockProps,
-} from '/@components/TreeElement';
+} from '/@/blocks';
+import { useActivation } from '/@/use-activation';
 
 import SbBlock from '/@internal/Block';
 import SbButton from '/@internal/Button';
 import SbToolbar from '/@internal/Toolbar';
 import SbBlockPlaceholder from '/@internal/BlockPlaceholder';
+import SbBlockOrdering from '/@internal/BlockOrdering';
 
 import {
   LayoutData,
@@ -58,6 +59,7 @@ export default defineComponent({
     }));
 
     const toggleOrientation = () => {
+      console.log('toggle');
       props.eventUpdate({
         orientation: localData.orientation === 'vertical' ? 'horizontal' : 'vertical',
       });
@@ -144,18 +146,12 @@ export default defineComponent({
       props.eventUpdate({ children: [...localData.children] });
     };
 
-    console.log('Rendering edit');
-
     return () => (
       <div class={classes.value}>
-        <SbToolbar slot="toolbar">
+        <SbToolbar>
           <SbButton
             type="button"
-            {...{
-              nativeOn: {
-                click: toggleOrientation,
-              },
-            }}
+            onClick={toggleOrientation}
           >{localData.orientation}</SbButton>
         </SbToolbar>
 
@@ -165,23 +161,23 @@ export default defineComponent({
             data-order={index}
             block={child}
             eventUpdate={(updated: Block) => onChildUpdate(child, updated)}
-            eventInsertBlock={(block: Block) => insertBlock(index, block)}
-            eventAppendBlock={appendBlock}
-            eventRemoveBlock={() => removeBlock(index)}
-            eventMoveUp={() => moveUp(index)}
-            eventMoveDown={() => moveDown(index)}
-            sortable={localData.orientation}
+            eventPrependBlock={(block: Block) => insertBlock(index - 1, block)}
+            eventAppendBlock={(block: Block) => insertBlock(index, block)}
             removable
-          />
+          >
+            {{
+              'context-toolbar': () =>
+                <SbBlockOrdering
+                  eventMoveUp={() => moveUp(index)}
+                  eventMoveDown={() => moveDown(index)}
+                  eventRemoveBlock={() => removeBlock(index)}
+                  sortable={props.sortable}
+                />,
+            }}
+          </SbBlock>
         ))}
 
-        <SbBlockPlaceholder
-          {...{
-            on: {
-              'insert-block': appendBlock,
-            },
-          }}
-        />
+        <SbBlockPlaceholder onInsertBlock={appendBlock} />
       </div>
     );
   },

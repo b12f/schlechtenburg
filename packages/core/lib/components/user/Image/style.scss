@@ -1,10 +1,8 @@
 .sb-image {
+  margin: 0;
 
-  @at-root {
-    & > img,
-    img#{&} {
-      width: 100%;
-      height: auto;
-    }
+  &__content {
+    width: 100%;
+    height: auto;
   }
 }

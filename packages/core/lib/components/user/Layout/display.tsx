@@ -6,7 +6,7 @@ import {
 import {
   model,
   blockProps,
-} from '/@components/TreeElement';
+} from '/@/blocks';
 
 import SbBlock from '/@internal/Block';
 
@@ -36,8 +36,6 @@ export default defineComponent({
       'sb-layout': true,
       [`sb-layout_${props.data.orientation}`]: true,
     }));
-
-    console.log('layout display', props.data);
 
     return () => (
       <div class={classes.value}>

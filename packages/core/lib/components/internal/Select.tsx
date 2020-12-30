@@ -11,10 +11,7 @@ export default defineComponent({
       <div class="sb-select">
         <select
           class="sb-select__input"
-          {...{
-            attrs: context.attrs,
-            on: context.listeners,
-          }}
+          {...context.attrs}
         >
           {context.slots.default()}
         </select>

@@ -4,14 +4,14 @@ import {
   watch,
   reactive,
 } from 'vue';
-import { useBlockSizing } from '/@components/TreeElement';
+import { useBlockSizing } from '/@/use-resize-observer';
 
 import './Toolbar.scss';
 
 export default defineComponent({
   name: 'sb-toolbar',
 
-  setup(props, context) {
+  setup(_, context) {
     const styles = reactive({
       bottom: '',
       left: '',
@@ -38,7 +38,7 @@ export default defineComponent({
         style={styles}
         onClick={($event: MouseEvent) => $event.stopPropagation()}
       >
-        {context.slots.default()}
+        {context.slots?.default?.()}
       </div>
     );
   },

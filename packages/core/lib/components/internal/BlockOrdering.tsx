@@ -3,17 +3,15 @@ import {
   watch,
   reactive,
   computed,
-  defineAsyncComponent,
+  defineComponent,
 } from 'vue';
-import {
-  useBlockSizing,
-} from '/@components/TreeElement';
+import { useBlockSizing } from '/@/use-resize-observer';
 
 import SbButton from './Button';
 
 import './BlockOrdering.scss';
 
-export default defineAsyncComponent({
+export default defineComponent({
   name: 'sb-block-ordering',
 
   props: {

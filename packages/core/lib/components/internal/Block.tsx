@@ -6,14 +6,11 @@ import {
   ref,
   Ref,
 } from 'vue';
-import {
-  Block,
-  useDynamicBlocks,
-  useActivation,
-  SbMode,
-  BlockDimensions,
-  useResizeObserver,
-} from '/@components/TreeElement';
+import { Block } from '/@/blocks';
+import { SbMode } from '/@/mode';
+import { useResizeObserver, BlockDimensions } from '/@/use-resize-observer';
+import { useActivation } from '/@/use-activation';
+import { useDynamicBlocks } from '/@/use-dynamic-blocks';
 
 import SbBlockOrdering from './BlockOrdering';
 
@@ -22,7 +19,7 @@ import './Block.scss';
 interface BlockProps {
   block: Block;
   eventUpdate: (b?: Block) => void;
-  eventInsertBlock: (b?: Block) => void;
+  eventPrependBlock: (b?: Block) => void;
   eventAppendBlock: (b?: Block) => void;
   eventRemoveBlock: () => void;
   eventMoveUp: () => void;
@@ -43,7 +40,7 @@ export default defineComponent({
       default: null,
     },
     eventUpdate: { type: Function, default: () => {} },
-    eventInsertBlock: { type: Function, default: () => {} },
+    eventPrependBlock: { type: Function, default: () => {} },
     eventAppendBlock: { type: Function, default: () => {} },
     eventRemoveBlock: { type: Function, default: () => {} },
     eventMoveUp: { type: Function, default: () => {} },
@@ -88,31 +85,19 @@ export default defineComponent({
       class={classes.value}
     >
       <div class="sb-block__edit-cover"></div>
-      {props.sortable
-        ? <SbBlockOrdering
-          eventMoveUp={props.eventMoveUp}
-          eventMoveDown={props.eventMoveDown}
-          eventRemoveBlock={props.eventRemoveBlock}
-          sortable={props.sortable}
-        />
-        : null}
+      {context.slots['context-toolbar'] ? context.slots['context-toolbar']() : null}
       <BlockComponent
         data={props.block.data}
-        block-id={props.block.blockId}
+        blockId={props.block.blockId}
         eventUpdate={onChildUpdate}
-        eventInsertBlock={props.eventInsertBlock}
+        eventPrependBlock={props.eventPrependBlock}
         eventAppendBlock={props.eventAppendBlock}
         eventRemoveBlock={props.eventRemoveBlock}
-        {...{
-          attrs: context.attrs,
-          nativeOn: {
-            click: ($event: MouseEvent) => {
-              $event.stopPropagation();
-              activate();
-            },
-            ...context.listeners,
-          },
+        onClick={($event: MouseEvent) => {
+          $event.stopPropagation();
+          activate();
         }}
+        {...context.attrs}
       />
     </div>;
   },

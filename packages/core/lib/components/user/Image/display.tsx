@@ -1,8 +1,10 @@
-import { defineAsyncComponent, PropType } from 'vue';
+import { defineComponent, PropType } from 'vue';
 import {
   model,
   blockProps,
-} from '/@components/TreeElement';
+} from '/@/blocks';
+
+import SbBlock from '/@internal/block';
 
 import {
   getDefaultData,
@@ -12,7 +14,7 @@ import {
 
 import './style.scss';
 
-export default defineAsyncComponent({
+export default defineComponent({
   name: 'sb-image-display',
 
   model,
@@ -26,12 +28,13 @@ export default defineAsyncComponent({
   },
 
   setup(props: ImageProps) {
-    console.log('img display', props.data);
-
-    return () => <img
-      class="sb-image"
-      src={props.data.src}
-      alt={props.data.alt}
-    />;
+    return () => <figure class="sb-image">
+        <img
+          class="sb-image__content"
+          src={props.data.src}
+          alt={props.data.alt}
+        />
+        <SbBlock block={props.data.description} />
+      </figure>;
   },
 });

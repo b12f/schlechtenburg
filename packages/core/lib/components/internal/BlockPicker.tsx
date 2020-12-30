@@ -6,10 +6,10 @@ import {
 import {
   useDynamicBlocks,
   BlockDefinition,
-} from '../TreeElement';
+} from '/@/use-dynamic-blocks';
 
-import SbButton from './Button';
-import SbModal from './Modal';
+import SbButton from '/@internal/Button';
+import SbModal from '/@internal/Modal';
 
 import './BlockPicker.scss';
 

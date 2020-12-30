@@ -1,5 +1,5 @@
 import {
-  defineAsyncComponent,
+  defineComponent,
   reactive,
   ref,
   Ref,
@@ -9,10 +9,11 @@ import {
 import {
   model,
   blockProps,
-} from '/@components/TreeElement';
+} from '/@/blocks';
 
 import SbToolbar from '/@internal/Toolbar';
 import SbButton from '/@internal/Button';
+import SbBlock from '/@internal/Block';
 
 import {
   getDefaultData,
@@ -22,7 +23,7 @@ import {
 
 import './style.scss';
 
-export default defineAsyncComponent({
+export default defineComponent({
   name: 'sb-image-edit',
 
   model,
@@ -40,6 +41,7 @@ export default defineAsyncComponent({
     const localData = reactive({
       src: props.data.src,
       alt: props.data.alt,
+      description: props.data.description,
     });
 
     const fileInput: Ref<null|HTMLInputElement> = ref(null);
@@ -47,6 +49,7 @@ export default defineAsyncComponent({
     watch(() => props.data, () => {
       localData.src = props.data.src;
       localData.alt = props.data.alt;
+      localData.description = props.data.description;
     });
 
     const selectImage = () => {
@@ -62,6 +65,7 @@ export default defineAsyncComponent({
           props.eventUpdate({
             src: reader.result,
             alt: props.data.alt,
+            description: props.data.description,
           });
         });
 
@@ -69,23 +73,40 @@ export default defineAsyncComponent({
       }
     };
 
+    const onDescriptionUpdate = (description) => {
+      props.eventUpdate({
+        ...props.data,
+        description,
+      });
+    };
+
     return () => (
-      <div class="sb-image">
+      <figure class="sb-image">
         <SbToolbar>
           {localData.src
             ? <SbButton onClick={selectImage}>Change Image</SbButton>
             : null}
           <input
             type="file"
-            ref="fileInput"
+            ref={fileInput}
             style="display: none;"
             onInput={onImageSelect}
           />
         </SbToolbar>
         {localData.src
-          ? <img src={localData.src} alt={localData.alt} />
+          ? <>
+              <img
+                src={localData.src}
+                alt={localData.alt}
+                class="sb-image__content"
+              />
+              <SbBlock
+                block={localData.description}
+                eventUpdate={(updated: Block) => onDescriptionUpdate(updated)}
+              />
+            </>
           : <SbButton onClick={selectImage}>Select Image</SbButton>}
-      </div>
+      </figure>
     );
   },
 });

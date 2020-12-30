@@ -1,5 +1,5 @@
 import {
-  defineAsyncComponent,
+  defineComponent,
   reactive,
   computed,
   ref,
@@ -13,8 +13,8 @@ import {
   blockProps,
   BlockProps,
   BlockData,
-  useActivation,
-} from '/@components/TreeElement';
+} from '/@/blocks';
+import { useActivation } from '/@/use-activation';
 
 import SbToolbar from '/@internal/Toolbar';
 import SbSelect from '/@internal/Select';
@@ -29,11 +29,11 @@ import './style.scss';
 interface ParagraphProps extends BlockProps {
   data: ParagraphData;
   eventUpdate: (b?: ParagraphData) => void;
-  eventInsertBlock: (b?: BlockData) => void;
+  eventAppendBlock: (b?: BlockData) => void;
   eventRemoveBlock: () => void;
 }
 
-export default defineAsyncComponent({
+export default defineComponent({
   name: 'sb-paragraph-edit',
 
   model,
@@ -45,7 +45,7 @@ export default defineAsyncComponent({
       default: getDefaultData,
     },
     eventUpdate: { type: Function, default: () => {} },
-    eventInsertBlock: { type: Function, default: () => {} },
+    eventAppendBlock: { type: Function, default: () => {} },
     eventRemoveBlock: { type: Function, default: () => {} },
   },
 
@@ -118,9 +118,9 @@ export default defineAsyncComponent({
     };
 
     const onKeydown = ($event: KeyboardEvent) => {
-      if ($event.key === 'Enter' && !$event.shiftKey) {
+      if (props.eventAppendBlock && $event.key === 'Enter' && !$event.shiftKey) {
         const blockId = `${+(new Date())}`;
-        props.eventInsertBlock({
+        props.eventAppendBlock({
           blockId,
           name: 'sb-paragraph',
           data: getDefaultData(),
@@ -133,7 +133,7 @@ export default defineAsyncComponent({
     };
 
     const onKeyup = ($event: KeyboardEvent) => {
-      if ($event.key === 'Backspace' && localData.value === '') {
+      if (props.eventRemoveBlock && $event.key === 'Backspace' && localData.value === '') {
         props.eventRemoveBlock();
       }
     };
@@ -163,4 +163,4 @@ export default defineAsyncComponent({
       </div>
     );
   },
-};
+});

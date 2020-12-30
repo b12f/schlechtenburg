@@ -1,6 +1,6 @@
 import { defineComponent } from 'vue';
-import { BlockDefinition } from '../TreeElement';
-import BlockPicker from './BlockPicker';
+import { BlockDefinition } from '/@/blocks';
+import BlockPicker from '/@internal/BlockPicker';
 
 import './BlockPlaceholder.scss';
 
@@ -11,11 +11,7 @@ export default defineComponent({
     return () => (
       <div class="sb-block-placeholder">
         <BlockPicker
-          {...{
-            on: {
-              'picked-block': (block: BlockDefinition) => context.emit('insert-block', block),
-            },
-          }}
+          onPickedBlock={(block: BlockDefinition) => context.emit('insert-block', block)}
         />
       </div>
     );

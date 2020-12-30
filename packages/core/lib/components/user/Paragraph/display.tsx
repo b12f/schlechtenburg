@@ -1,5 +1,5 @@
 import {
-  defineAsyncComponent,
+  defineComponent,
   computed,
   PropType,
 } from 'vue';
@@ -7,7 +7,7 @@ import {
   model,
   blockProps,
   BlockProps,
-} from '/@components/TreeElement';
+} from '/@/blocks';
 
 import {
   getDefaultData,
@@ -20,7 +20,7 @@ interface ParagraphProps extends BlockProps {
   data: ParagraphData;
 }
 
-export default defineAsyncComponent({
+export default defineComponent({
   name: 'sb-paragraph-display',
 
   model,
@@ -39,12 +39,10 @@ export default defineAsyncComponent({
       [`sb-paragraph_align-${props.data.align}`]: true,
     }));
 
-    console.log('p display', props.data);
-
     return () => <p
       class={classes.value}
       {...{
-        domProps: { innerHTML: props.data.value },
+        innerHTML: props.data.value,
       }}
     ></p>;
   },

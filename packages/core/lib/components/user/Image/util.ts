@@ -1,8 +1,13 @@
-import { BlockData, BlockProps } from '/@components/TreeElement';
+import {
+  ParagraphData,
+  getDefaultData as getDefaultParagraphData
+} from '/@user/Paragraph/util';
+import { BlockData, BlockProps } from '/@/blocks';
 
 export interface ImageData {
   src: string;
   alt: string;
+  description: ParagraphData;
 }
 
 export interface ImageProps extends BlockProps {
@@ -13,4 +18,5 @@ export interface ImageProps extends BlockProps {
 export const getDefaultData: () => ImageData = () => ({
   src: '',
   alt: '',
+  description: getDefaultParagraphData(),
 });

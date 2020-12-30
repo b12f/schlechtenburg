@@ -1,6 +1,5 @@
 .sb-layout {
   display: flex;
-  flex-basis: 100%;
 
   &_vertical {
     flex-direction: column;
@@ -10,7 +9,13 @@
     flex-direction: row;
   }
 
+  &__item {
+    position: relative;
+  }
+
   > * {
-    flex-basis: 100%;
+    flex-basis: auto;
+    flex-grow: 1;
+    flex-shrink: 1;
   }
 }

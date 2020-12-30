@@ -1,8 +1,9 @@
 import { defineComponent, reactive, ref } from 'vue';
 import Schlechtenburg from '/@components/Schlechtenburg';
-import { Block, SbMode } from '/@components/TreeElement';
+import { Block } from '/@/blocks';
+import { SbMode } from '/@/mode';
 
-import initialData from './initial-data.json';
+import initialData from './initial-data';
 
 import './App.scss';
 
@@ -11,38 +12,40 @@ export default defineComponent({
 
   setup() {
     const activeTab = ref('edit');
-    const block = reactive(initialData) as Block;
+    const block: Block<any> = reactive(initialData);
 
     return () => (
       <div id="app">
         <select
           value={activeTab.value}
-          onchange={($event: Event) => { activeTab.value = ($event.target as HTMLSelectElement).value; }}
+          onChange={($event: Event) => { activeTab.value = ($event.target as HTMLSelectElement).value; }}
         >
           <option>edit</option>
           <option>display</option>
-          <option>json</option>
+          <option>data</option>
         </select>
 
-        <Schlechtenburg
-          v-show={activeTab.value === 'edit'}
-          block={block}
-          eventUpdate={(newBlock: Block) => {
-            block.name = newBlock.name;
-            block.blockId = newBlock.blockId;
-            block.data = newBlock.data;
-          }}
-        />
-
-        <Schlechtenburg
-          v-show={activeTab.value === 'display'}
-          block={block}
-          mode={SbMode.Display}
-        />
-
-        <pre v-show={activeTab.value === 'json'}>
-          <code>{JSON.stringify(block, null, 2)}</code>
-        </pre>
+        {(() => {
+          switch (activeTab.value) {
+            case SbMode.Edit:
+              return <Schlechtenburg
+                block={block}
+                eventUpdate={(newBlock: Block<any>) => {
+                  block.data = newBlock.data;
+                }}
+                key="edit"
+                mode="edit"
+              />;
+            case SbMode.Edit:
+              return <Schlechtenburg
+                block={block}
+                key="display"
+                mode="display"
+              />;
+            case 'data':
+              return <pre><code>{JSON.stringify(block, null, 2)}</code></pre>;
+          }
+        })()}
       </div>
     );
   },

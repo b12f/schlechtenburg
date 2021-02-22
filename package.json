@@ -11,12 +11,13 @@
     "vue": "^3.0.4"
   },
   "devDependencies": {
-    "@vue/compiler-sfc": "^3.0.4",
-    "@vuedx/typecheck": "^0.3.1-insiders-1606311019.0",
-    "@vuedx/typescript-plugin-vue": "^0.3.1-insiders-1606311019.0",
+    "@vitejs/plugin-vue-jsx": "^1.1.0",
+    "@vue/compiler-sfc": "^3.0.5",
+    "@vuedx/typecheck": "^0.6.3",
+    "@vuedx/typescript-plugin-vue": "^0.6.3",
     "lerna": "^3.22.1",
     "sass": "^1.30.0",
     "typescript": "^4.1.2",
-    "vite": "^1.0.0-rc.13"
+    "vite": "^2.0.1"
   }
 }

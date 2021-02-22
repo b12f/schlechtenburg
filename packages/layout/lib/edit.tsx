@@ -33,7 +33,7 @@ export default defineComponent({
 
   props: {
     ...blockProps,
-    eventUpdate: { type: Function, default: () => {} },
+    onUpdate: { type: Function, default: () => {} },
     data: {
       type: (null as unknown) as PropType<LayoutData>,
       default: getDefaultData,
@@ -60,7 +60,7 @@ export default defineComponent({
 
     const toggleOrientation = () => {
       console.log('toggle');
-      props.eventUpdate({
+      props.onUpdate({
         orientation: localData.orientation === 'vertical' ? 'horizontal' : 'vertical',
       });
     };
@@ -70,7 +70,7 @@ export default defineComponent({
       if (index === -1) {
         return;
       }
-      props.eventUpdate({
+      props.onUpdate({
         children: [
           ...localData.children.slice(0, index),
           {
@@ -87,7 +87,7 @@ export default defineComponent({
         ...localData.children,
         block,
       ];
-      props.eventUpdate({ children: [...localData.children] });
+      props.onUpdate({ children: [...localData.children] });
       activate(block.blockId);
     };
 
@@ -97,7 +97,7 @@ export default defineComponent({
         block,
         ...localData.children.slice(index + 1),
       ];
-      props.eventUpdate({ children: [...localData.children] });
+      props.onUpdate({ children: [...localData.children] });
       activate(block.blockId);
     };
 
@@ -106,13 +106,25 @@ export default defineComponent({
         ...localData.children.slice(0, index),
         ...localData.children.slice(index + 1),
       ];
-      props.eventUpdate({ children: [...localData.children] });
+      props.onUpdate({ children: [...localData.children] });
 
       const newActiveIndex = Math.max(index - 1, 0);
       activate(localData.children[newActiveIndex].blockId);
     };
 
-    const moveUp = (index: number) => {
+    const activateBlock = (index: number) => {
+      const safeIndex =
+        Math.max(
+           Math.min(
+             localData.children.length - 1,
+             index,
+           ),
+          0,
+        );
+      activate(localData.children[safeIndex].blockId);
+    };
+
+    const moveBackward = (index: number) => {
       if (index === 0) {
         return;
       }
@@ -126,10 +138,10 @@ export default defineComponent({
         ...localData.children.slice(index + 1),
       ];
 
-      props.eventUpdate({ children: [...localData.children] });
+      props.onUpdate({ children: [...localData.children] });
     };
 
-    const moveDown = (index: number) => {
+    const moveForward = (index: number) => {
       if (index === localData.children.length - 1) {
         return;
       }
@@ -143,7 +155,7 @@ export default defineComponent({
         ...localData.children.slice(index + 2),
       ];
 
-      props.eventUpdate({ children: [...localData.children] });
+      props.onUpdate({ children: [...localData.children] });
     };
 
     return () => (
@@ -160,17 +172,19 @@ export default defineComponent({
             {...{ key: child.blockId }}
             data-order={index}
             block={child}
-            eventUpdate={(updated: Block) => onChildUpdate(child, updated)}
-            eventPrependBlock={(block: Block) => insertBlock(index - 1, block)}
-            eventAppendBlock={(block: Block) => insertBlock(index, block)}
-            removable
+            onUpdate={(updated: Block) => onChildUpdate(child, updated)}
+            onRemoveSelf={() => removeBlock(index)}
+            onPrependBlock={(block: Block) => insertBlock(index - 1, block)}
+            onAppendBlock={(block: Block) => insertBlock(index, block)}
+            onActivatePrevious={(block: Block) => activateBlock(index - 1,)}
+            onActivateNext={(block: Block) => activateBlock(index + 1,)}
           >
             {{
               'context-toolbar': () =>
                 <SbBlockOrdering
-                  eventMoveUp={() => moveUp(index)}
-                  eventMoveDown={() => moveDown(index)}
-                  eventRemoveBlock={() => removeBlock(index)}
+                  onMoveBackward={() => moveBackward(index)}
+                  onMoveForward={() => moveForward(index)}
+                  onRemove={() => removeBlock(index)}
                   sortable={props.sortable}
                 />,
             }}

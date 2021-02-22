@@ -19,9 +19,9 @@ export const SbBlockOrdering = defineComponent({
       type: String,
       default: null,
     },
-    eventRemoveBlock: { type: Function, default: () => {} },
-    eventMoveUp: { type: Function, default: () => {} },
-    eventMoveDown: { type: Function, default: () => {} },
+    onRemove: { type: Function, default: () => {} },
+    onMoveUp: { type: Function, default: () => {} },
+    onMoveDown: { type: Function, default: () => {} },
   },
 
   setup(props) {
@@ -55,9 +55,9 @@ export const SbBlockOrdering = defineComponent({
         style={styles}
         onClick={($event: MouseEvent) => $event.stopPropagation()}
       >
-        <SbButton onClick={props.eventMoveUp}>{props.sortable === 'vertical' ? '↑' : '←'}</SbButton>
-        <SbButton onClick={props.eventRemoveBlock}>x</SbButton>
-        <SbButton onClick={props.eventMoveDown}>{props.sortable === 'vertical' ? '↓' : '→'}</SbButton>
+        <SbButton onClick={props.onMoveUp}>{props.sortable === 'vertical' ? '↑' : '←'}</SbButton>
+        <SbButton onClick={props.onRemove}>x</SbButton>
+        <SbButton onClick={props.onMoveDown}>{props.sortable === 'vertical' ? '↓' : '→'}</SbButton>
       </div>
     );
   },

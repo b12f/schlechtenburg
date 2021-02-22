@@ -7,7 +7,7 @@ import './Modal.scss';
 
 interface ModalProps {
   open: boolean;
-  eventClose: () => void;
+  onClose: () => void;
 }
 
 export const SbModal = defineComponent({
@@ -18,7 +18,7 @@ export const SbModal = defineComponent({
       type: Boolean,
       default: false,
     },
-    eventClose: { type: Function, default: () => {} },
+    onClose: { type: Function, default: () => {} },
   },
 
   setup(props: ModalProps, context) {
@@ -33,7 +33,7 @@ export const SbModal = defineComponent({
           class="sb-modal__overlay"
           onClick={($event: MouseEvent) => {
             $event.stopPropagation();
-            props.eventClose();
+            props.onClose();
           }}
         >
           <div class="sb-modal__content">

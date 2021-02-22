@@ -19,12 +19,14 @@ import './Block.scss';
 
 interface BlockProps {
   block: Block;
-  eventUpdate: (b?: Block) => void;
-  eventPrependBlock: (b?: Block) => void;
-  eventAppendBlock: (b?: Block) => void;
-  eventRemoveBlock: () => void;
-  eventMoveUp: () => void;
-  eventMoveDown: () => void;
+  onUpdate: (b?: Block) => void;
+  onPrependBlock: (b?: Block) => void;
+  onAppendBlock: (b?: Block) => void;
+  onRemoveSelf: () => void;
+  onMoveBackward: () => void;
+  onMoveForward: () => void;
+  onActivateNext: () => void;
+  onActivatePrevious: () => void;
   sortable: string;
 }
 
@@ -40,12 +42,12 @@ export const SbBlock = defineComponent({
       type: String,
       default: null,
     },
-    eventUpdate: { type: Function, default: () => {} },
-    eventPrependBlock: { type: Function, default: () => {} },
-    eventAppendBlock: { type: Function, default: () => {} },
-    eventRemoveBlock: { type: Function, default: () => {} },
-    eventMoveUp: { type: Function, default: () => {} },
-    eventMoveDown: { type: Function, default: () => {} },
+    onUpdate: { type: Function, default: () => {} },
+    onPrependBlock: { type: Function, default: () => {} },
+    onAppendBlock: { type: Function, default: () => {} },
+    onRemoveSelf: { type: Function, default: () => {} },
+    onMoveBackward: { type: Function, default: () => {} },
+    onMoveForward: { type: Function, default: () => {} },
   },
 
   setup(props: BlockProps, context) {
@@ -61,7 +63,7 @@ export const SbBlock = defineComponent({
     watch(() => props.block.data, triggerSizeCalculation);
 
     const onChildUpdate = (updated: {[key: string]: any}) => {
-      props.eventUpdate({
+      props.onUpdate({
         ...props.block,
         data: {
           ...props.block.data,
@@ -99,10 +101,12 @@ export const SbBlock = defineComponent({
         <BlockComponent
           data={props.block.data}
           blockId={props.block.blockId}
-          eventUpdate={onChildUpdate}
-          eventPrependBlock={props.eventPrependBlock}
-          eventAppendBlock={props.eventAppendBlock}
-          eventRemoveBlock={props.eventRemoveBlock}
+          onUpdate={onChildUpdate}
+          onPrependBlock={props.onPrependBlock}
+          onAppendBlock={props.onAppendBlock}
+          onRemoveSelf={props.onRemoveSelf}
+          onActivatePrevious={props.onActivatePrevious}
+          onActivateNext={props.onActivateNext}
           onClick={($event: MouseEvent) => {
             $event.stopPropagation();
             activate();

@@ -18,13 +18,14 @@ import { BlockLibrary } from '../use-dynamic-blocks';
 import { EditorDimensions, useResizeObserver } from '../use-resize-observer';
 import { ActiveBlock } from '../use-activation';
 
+import { SbMainMenu } from './MainMenu';
 import { SbBlock } from './Block';
 
 import './Schlechtenburg.scss';
 
 export interface SchlechtenburgProps {
   customBlocks: BlockDefinition[];
-  eventUpdate: (b: Block<any>) => void;
+  onUpdate: (b: Block<any>) => void;
   block: Block<any>;
   mode: SbMode;
 }
@@ -37,7 +38,7 @@ export const Schlechtenburg = defineComponent({
   props: {
     customBlocks: { type: Array as PropType<BlockDefinition[]>, default: () => [] },
     block: { type: Object as PropType<Block<any>>, required: true },
-    eventUpdate: { type: Function, default: () => {} },
+    onUpdate: { type: Function, default: () => {} },
     mode: {
       type: String as PropType<SbMode>,
       validator(value: any) {
@@ -75,9 +76,12 @@ export const Schlechtenburg = defineComponent({
         class="sb-main"
         ref={el}
       >
+        <SbMainMenu
+          block={props.block}
+        />
         <SbBlock
           block={props.block}
-          eventUpdate={props.eventUpdate}
+          onUpdate={props.onUpdate}
         />
       </div>
     );

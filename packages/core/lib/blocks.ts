@@ -11,12 +11,12 @@ export interface BlockLibraryDefinition {
   [name: string]: BlockDefinition;
 }
 
-export interface BlockProps<T> {
+export interface BlockProps {
   blockId: string;
-  data: T;
+  data: any;
 }
 
-export interface Block<T> extends BlockProps<T> {
+export interface Block extends BlockProps {
   name: string;
 }
 

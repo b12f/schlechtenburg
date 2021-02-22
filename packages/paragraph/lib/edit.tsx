@@ -28,9 +28,11 @@ import './style.scss';
 
 interface ParagraphProps extends BlockProps {
   data: ParagraphData;
-  eventUpdate: (b?: ParagraphData) => void;
-  eventAppendBlock: (b?: BlockData) => void;
-  eventRemoveBlock: () => void;
+  onUpdate: (b?: ParagraphData) => void;
+  onAppendBlock: (b?: BlockData) => void;
+  onRemoveSelf: () => void;
+  onActivateNext: () => void;
+  onActivatePrevious: () => void;
 }
 
 export default defineComponent({
@@ -44,9 +46,11 @@ export default defineComponent({
       type: (null as unknown) as PropType<ParagraphData>,
       default: getDefaultData,
     },
-    eventUpdate: { type: Function, default: () => {} },
-    eventAppendBlock: { type: Function, default: () => {} },
-    eventRemoveBlock: { type: Function, default: () => {} },
+    onUpdate: { type: Function, default: () => {} },
+    onAppendBlock: { type: Function, default: () => {} },
+    onRemoveSelf: { type: Function, default: () => {} },
+    onActivateNext: { type: Function, default: () => {} },
+    onActivatePrevious: { type: Function, default: () => {} },
   },
 
   setup(props: ParagraphProps) {
@@ -98,7 +102,7 @@ export default defineComponent({
     }));
 
     const setAlignment = ($event: Event) => {
-      props.eventUpdate({
+      props.onUpdate({
         value: localData.value,
         align: ($event.target as HTMLSelectElement).value,
       });
@@ -111,16 +115,16 @@ export default defineComponent({
 
     const onBlur = () => {
       localData.focused = false;
-      props.eventUpdate({
+      props.onUpdate({
         value: localData.value,
         align: localData.align,
       });
     };
 
     const onKeydown = ($event: KeyboardEvent) => {
-      if (props.eventAppendBlock && $event.key === 'Enter' && !$event.shiftKey) {
+      if ($event.key === 'Enter' && !$event.shiftKey) {
         const blockId = `${+(new Date())}`;
-        props.eventAppendBlock({
+        props.onAppendBlock({
           blockId,
           name: 'sb-paragraph',
           data: getDefaultData(),
@@ -133,8 +137,23 @@ export default defineComponent({
     };
 
     const onKeyup = ($event: KeyboardEvent) => {
-      if (props.eventRemoveBlock && $event.key === 'Backspace' && localData.value === '') {
-        props.eventRemoveBlock();
+      if ($event.key === 'Backspace' && localData.value === '') {
+        props.onRemoveSelf();
+      }
+
+      const selection = window.getSelection();
+      const node = selection.focusNode;
+      const childNodes = Array.from(inputEl.value.childNodes);
+      const index = childNodes.indexOf(node);
+      if (node === inputEl.value || index === 0 || index === childNodes.length -1) {
+        switch ($event.key) {
+          case 'ArrowDown':
+            props.onActivateNext();
+            break;
+          case 'ArrowUp':
+            props.onActivatePrevious();
+            break;
+        }
       }
     };
 

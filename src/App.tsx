@@ -8,12 +8,10 @@ import {
 
 import { Schlechtenburg, Block, SbMode } from '../packages/core/lib';
 
-/*
+import SbLayout from '../packages/layout/lib';
 import SbHeading from '../packages/heading/lib';
 import SbParagraph from '../packages/paragraph/lib';
 import SbImage from '../packages/image/lib';
- */
-import SbLayout from '../packages/layout/lib';
 
 import './App.scss';
 
@@ -41,16 +39,14 @@ export default defineComponent({
         case SbMode.Edit:
           return <Schlechtenburg
             block={block}
-            eventUpdate={(newBlock: Block<any>) => {
+            onUpdate={(newBlock: Block<any>) => {
               block.data = newBlock.data;
             }}
             customBlocks={[
               SbLayout,
-              /*
               SbHeading,
               SbImage,
               SbParagraph,
-               */
             ]}
             key="edit"
             mode="edit"
@@ -67,7 +63,6 @@ export default defineComponent({
     });
 
     return () => {
-      console.log('render App');
       return <div id="app">
         <select
           value={activeTab.value}

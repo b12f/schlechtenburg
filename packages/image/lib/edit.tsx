@@ -29,7 +29,7 @@ export default defineComponent({
 
   props: {
     ...blockProps,
-    eventUpdate: { type: Function, default: () => {} },
+    onUpdate: { type: Function, default: () => {} },
     data: {
       type: (null as unknown) as PropType<ImageData>,
       default: getDefaultData,
@@ -61,7 +61,7 @@ export default defineComponent({
       if (fileInput.value && fileInput.value.files && fileInput.value.files.length) {
         const reader = new FileReader();
         reader.addEventListener('load', () => {
-          props.eventUpdate({
+          props.onUpdate({
             src: reader.result,
             alt: props.data.alt,
             description: props.data.description,
@@ -73,7 +73,7 @@ export default defineComponent({
     };
 
     const onDescriptionUpdate = (description) => {
-      props.eventUpdate({
+      props.onUpdate({
         ...props.data,
         description,
       });
@@ -101,7 +101,7 @@ export default defineComponent({
               />
               <SbBlock
                 block={localData.description}
-                eventUpdate={(updated: Block) => onDescriptionUpdate(updated)}
+                onUpdate={(updated: Block) => onDescriptionUpdate(updated)}
               />
             </>
           : <SbButton onClick={selectImage}>Select Image</SbButton>}

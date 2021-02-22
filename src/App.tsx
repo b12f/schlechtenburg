@@ -49,13 +49,19 @@ export default defineComponent({
               SbParagraph,
             ]}
             key="edit"
-            mode="edit"
+            mode={SbMode.Edit}
           />;
-        case SbMode.Edit:
+        case SbMode.Display:
           return <Schlechtenburg
             block={block}
+            customBlocks={[
+              SbLayout,
+              SbHeading,
+              SbImage,
+              SbParagraph,
+            ]}
             key="display"
-            mode="display"
+            mode={SbMode.Display}
           />;
         case 'data':
           return <pre><code>{ JSON.stringify(block, null, 2) }</code></pre>;

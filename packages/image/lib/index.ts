@@ -6,4 +6,5 @@ export default {
   getDefaultData,
   edit: defineAsyncComponent(() => import('./edit')),
   display: defineAsyncComponent(() => import('./display')),
+  getChildren: (block) => [ block.data.description ],
 };

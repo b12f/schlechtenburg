@@ -23,28 +23,33 @@ export const SbContextMenu = defineComponent({
 
   setup(props: ContextMenuProps, context) {
     const opened = ref(false);
-    const close = () => { opened.value = false; }
+    const open = () => { opened.value = true; };
+    const close = () => { opened.value = false; };
     const closeOnEscape = ($event: KeyboardEvent) => {
       if ($event.key === 'Escape') {
         close();
       }
     };
-    const open = () => {
-      opened.value = true;
-      document.addEventListener('click', close);
-      document.addEventListener('keypress', closeOnEscape);
-    }
-    const toggle = () => { opened.value = !opened.value; }
+    const toggle = () => { opened.value ? close() : open() };
 
-    watch(opened, () => {
-      if (!opened.value) {
-        document.removeEventListener('click', close);
-        document.removeEventListener('keypress', closeOnEscape);
+    watch(opened, (curr, prev) => {
+      if (curr === prev) {
+        return;
+      }
+
+      if (!curr) {
+        document.body.removeEventListener('click', close);
+        document.body.removeEventListener('keypress', closeOnEscape);
+      } else {
+        setTimeout(() => {
+          document.body.addEventListener('click', close);
+          document.body.addEventListener('keypress', closeOnEscape);
+        });
       }
     });
 
     return () => (
-      <div class="sb-context-menu">
+      <div class="sb-context">
         {
           context.slots.context({
             opened,
@@ -55,10 +60,12 @@ export const SbContextMenu = defineComponent({
           <SbButton onClick={toggle}>Menu</SbButton>
         }
         <dialog
-          open={opened.value}
+          class="sb-context-menu"
+          open={opened.value ? true : undefined}
           onClose={close}
           onClick={($event: Event) => {
             // Make sure clicks inside do not autoclose this
+            $event.stopPropagation();
           }}
         >
             {context.slots.default({

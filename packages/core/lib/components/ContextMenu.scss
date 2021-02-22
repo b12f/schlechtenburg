@@ -1,0 +1,18 @@
+.sb-context {
+  position: relative;
+}
+
+.sb-context-menu {
+  display: none;
+  flex-direction: column;
+  background: var(--grey-0);
+  border: 1px solid var(--grey-3);
+  top: 100%;
+  left: 0;
+  margin: 0;
+  z-index: var(--z-context-menu);
+
+  &[open] {
+    display: flex;
+  }
+}

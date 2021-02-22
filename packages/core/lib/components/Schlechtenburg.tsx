@@ -67,18 +67,16 @@ export const Schlechtenburg = defineComponent({
 
     provide(BlockLibrary, blockLibrary);
 
-    watch(props.block, () => {
-      console.log('Update', props.block);
-    });
-
     return () => (
       <div
         class="sb-main"
         ref={el}
       >
-        <SbMainMenu
-          block={props.block}
-        />
+        {
+          mode.value === SbMode.Edit
+          ? <SbMainMenu block={props.block} />
+          : null
+        }
         <SbBlock
           block={props.block}
           onUpdate={props.onUpdate}

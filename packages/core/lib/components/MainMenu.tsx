@@ -4,7 +4,7 @@ import {
 } from 'vue';
 import { Block } from '../blocks';
 
-import { TreeBlockSelect } from './TreeBlockSelect';
+import { SbTreeBlockSelect } from './TreeBlockSelect';
 
 import './MainMenu.scss';
 
@@ -25,8 +25,8 @@ export const SbMainMenu = defineComponent({
   setup(props: MainMenuProps, context) {
     return () => (
       <div class="sb-main-menu">
-        <TreeBlockSelect
-          block={block}
+        <SbTreeBlockSelect
+          block={props.block}
         />
       </div>
     );

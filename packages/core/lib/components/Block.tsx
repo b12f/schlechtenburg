@@ -73,7 +73,7 @@ export const SbBlock = defineComponent({
     };
 
     return () => {
-      const BlockComponent = getBlock(props.block.name) as any;
+      const BlockComponent = getBlock(props.block.name)?.[mode.value] as any;
 
       if (!BlockComponent) {
         const MissingBlock = SbMissingBlock[mode.value];
@@ -84,12 +84,10 @@ export const SbBlock = defineComponent({
       }
 
       if (mode.value === SbMode.Display) {
-        return () => (
-          <BlockComponent
-            data={props.block.data}
-            blockId={props.block.blockId}
-          />
-        );
+        return <BlockComponent
+          data={props.block.data}
+          blockId={props.block.blockId}
+        />;
       }
 
       return <div

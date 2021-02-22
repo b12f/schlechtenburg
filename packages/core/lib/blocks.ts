@@ -1,10 +1,18 @@
 import { Component } from 'vue';
 
+export interface BlockTree {
+  name: string;
+  icon?: string;
+  children?: BlockTree[];
+}
+
 export interface BlockDefinition {
   name: string;
+  icon?: string;
   getDefaultData: any;
   edit: Component;
   display: Component;
+  getChildren?: (block: Block) => Block[],
 }
 
 export interface BlockLibraryDefinition {

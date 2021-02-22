@@ -31,7 +31,6 @@ export default defineComponent({
   },
 
   setup(props: MissingBlockProps) {
-    console.log(props, props.name, props.data, props.blockId);
     return () => (
       <div class="sb-missing-block">
         Missing block: {props.name}

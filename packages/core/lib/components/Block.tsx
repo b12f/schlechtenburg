@@ -10,6 +10,7 @@ import { Block } from '../blocks';
 import { SbMode } from '../mode';
 import { useResizeObserver, BlockDimensions } from '../use-resize-observer';
 import { useActivation } from '../use-activation';
+import { useBlockTree } from '../use-block-tree';
 import { useDynamicBlocks } from '../use-dynamic-blocks';
 
 import { SbBlockOrdering } from './BlockOrdering';
@@ -53,7 +54,11 @@ export const SbBlock = defineComponent({
   setup(props: BlockProps, context) {
     const el: Ref<null|HTMLElement> = ref(null);
     const { mode, getBlock } = useDynamicBlocks();
-    const { isActive, activate } = useActivation(props.block.blockId);
+    const {
+      isActive,
+      activate,
+      isHighlighted,
+    } = useActivation(props.block.id);
     const classes = computed(() => ({
       'sb-block': true,
       'sb-block_active': isActive.value,
@@ -61,6 +66,10 @@ export const SbBlock = defineComponent({
 
     const { triggerSizeCalculation } = useResizeObserver(el, BlockDimensions);
     watch(() => props.block.data, triggerSizeCalculation);
+
+    const { register } = useBlockTree();
+    register(props.block);
+    watch(props.block, () => { register(props.block); });
 
     const onChildUpdate = (updated: {[key: string]: any}) => {
       props.onUpdate({
@@ -79,14 +88,14 @@ export const SbBlock = defineComponent({
         const MissingBlock = SbMissingBlock[mode.value];
         return <MissingBlock
           name={props.block.name}
-          blockId={props.block.blockId}
+          blockId={props.block.id}
         />;
       }
 
       if (mode.value === SbMode.Display) {
         return <BlockComponent
           data={props.block.data}
-          blockId={props.block.blockId}
+          blockId={props.block.id}
         />;
       }
 
@@ -98,7 +107,7 @@ export const SbBlock = defineComponent({
         {context.slots['context-toolbar'] ? context.slots['context-toolbar']() : null}
         <BlockComponent
           data={props.block.data}
-          blockId={props.block.blockId}
+          blockId={props.block.id}
           onUpdate={onChildUpdate}
           onPrependBlock={props.onPrependBlock}
           onAppendBlock={props.onAppendBlock}

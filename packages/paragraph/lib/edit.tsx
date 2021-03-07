@@ -123,14 +123,14 @@ export default defineComponent({
 
     const onKeydown = ($event: KeyboardEvent) => {
       if ($event.key === 'Enter' && !$event.shiftKey) {
-        const blockId = `${+(new Date())}`;
+        const id = `${+(new Date())}`;
         props.onAppendBlock({
-          blockId,
+          id,
           name: 'sb-paragraph',
           data: getDefaultData(),
         });
 
-        activate(blockId);
+        activate(id);
 
         $event.preventDefault();
       }

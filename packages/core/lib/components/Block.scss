@@ -20,7 +20,7 @@
   }
 
   &_active {
-    outline: 1px solid var(--grey-2);
+    outline: 4px solid var(--interact);
 
     > * > .sb-toolbar {
       opacity: 1;
@@ -32,5 +32,9 @@
       opacity: 1;
       pointer-events: all;
     }
+  }
+
+  &_highlighted {
+    outline: 2px solid var(--interact);
   }
 }

@@ -41,7 +41,7 @@ export default defineComponent({
   },
 
   setup(props: LayoutProps) {
-    const { activate } = useActivation(props.blockId);
+    const { activate } = useActivation(props.id);
 
     const localData: LayoutData = reactive({
       orientation: props.data.orientation,
@@ -88,7 +88,7 @@ export default defineComponent({
         block,
       ];
       props.onUpdate({ children: [...localData.children] });
-      activate(block.blockId);
+      activate(block.id);
     };
 
     const insertBlock = (index: number, block: Block) => {
@@ -98,7 +98,7 @@ export default defineComponent({
         ...localData.children.slice(index + 1),
       ];
       props.onUpdate({ children: [...localData.children] });
-      activate(block.blockId);
+      activate(block.id);
     };
 
     const removeBlock = (index: number) => {
@@ -109,7 +109,7 @@ export default defineComponent({
       props.onUpdate({ children: [...localData.children] });
 
       const newActiveIndex = Math.max(index - 1, 0);
-      activate(localData.children[newActiveIndex].blockId);
+      activate(localData.children[newActiveIndex].id);
     };
 
     const activateBlock = (index: number) => {
@@ -121,7 +121,7 @@ export default defineComponent({
            ),
           0,
         );
-      activate(localData.children[safeIndex].blockId);
+      activate(localData.children[safeIndex].id);
     };
 
     const moveBackward = (index: number) => {
@@ -169,7 +169,7 @@ export default defineComponent({
 
         {...localData.children.map((child, index) => (
           <SbBlock
-            {...{ key: child.blockId }}
+            {...{ key: child.id }}
             data-order={index}
             block={child}
             onUpdate={(updated: Block) => onChildUpdate(child, updated)}

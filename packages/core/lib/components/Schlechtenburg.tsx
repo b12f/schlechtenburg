@@ -3,18 +3,19 @@ import {
   provide,
   shallowReactive,
   ref,
-  watch,
   PropType,
   Ref,
 } from 'vue';
 import {
   model,
   Block,
+  BlockTree,
   BlockDefinition,
   BlockLibraryDefinition,
 } from '../blocks';
 import { Mode, SbMode } from '../mode';
 import { BlockLibrary } from '../use-dynamic-blocks';
+import { BlockTreeSym, BlockTreeRegister, BlockTreeUnregister } from '../use-block-tree';
 import { EditorDimensions, useResizeObserver } from '../use-resize-observer';
 import { ActiveBlock } from '../use-activation';
 
@@ -57,6 +58,11 @@ export const Schlechtenburg = defineComponent({
 
     const activeBlock = ref(null);
     provide(ActiveBlock, activeBlock);
+
+    const blockTree = ref(null);
+    provide(BlockTreeSym, blockTree);
+    provide(BlockTreeRegister, (block: BlockTree) => { blockTree.value = block; });
+    provide(BlockTreeUnregister, () => { blockTree.value = null; });
 
     const blockLibrary: BlockLibraryDefinition = shallowReactive({
       ...props.customBlocks.reduce(

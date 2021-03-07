@@ -1,6 +1,7 @@
 import { Component } from 'vue';
 
 export interface BlockTree {
+  id: string;
   name: string;
   icon?: string;
   children?: BlockTree[];
@@ -20,7 +21,7 @@ export interface BlockLibraryDefinition {
 }
 
 export interface BlockProps {
-  blockId: string;
+  id: string;
   data: any;
 }
 
@@ -34,7 +35,7 @@ export const model = {
 };
 
 export const blockProps = {
-  blockId: {
+  id: {
     type: String,
     default: () => `${+(new Date())}`,
   },

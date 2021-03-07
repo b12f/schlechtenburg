@@ -40,7 +40,7 @@ export default defineComponent({
       <div class={classes.value}>
         {...props.data.children.map((child) => (
           <SbBlock
-            key={child.blockId}
+            key={child.id}
             block={child}
           />
         ))}

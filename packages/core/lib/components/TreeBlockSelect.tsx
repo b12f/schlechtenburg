@@ -1,5 +1,4 @@
 import {
-  computed,
   defineComponent,
   PropType,
 } from 'vue';
@@ -7,7 +6,8 @@ import {
   Block,
   BlockTree,
 } from '../blocks';
-import { useDynamicBlocks } from '../use-dynamic-blocks';
+import { useBlockTree } from '../use-block-tree';
+import { useActivation } from '../use-activation';
 
 import { SbContextMenu } from './ContextMenu';
 import { SbButton } from './Button';
@@ -21,42 +21,47 @@ interface TreeBlockSelectProps {
 export const SbTreeBlockSelect = defineComponent({
   name: 'sb-main-menu',
 
-  props: {
-    block: {
-      type: (null as unknown) as PropType<Block>,
-      required: true,
-    },
-  },
+  setup() {
+    const { blockTree } = useBlockTree();
+    const {
+      activate,
+      activeBlockId,
+    } = useActivation();
 
-  setup(props: TreeBlockSelectProps, context) {
-    const { getBlock } = useDynamicBlocks();
-
-    const getTreeForBlock = (block: Block): BlockTree => {
-      const getBlockChildren = getBlock(block.name)?.getChildren;
-      // TODO: vue-jxs apparently cannot parse arrow functions here
-      const getChildren = getBlockChildren || function ({ data }) { return data?.children; };
-      const children = getChildren(block) || [];
-      return {
-        name: block.name,
-        children: children.map(getTreeForBlock),
-      };
-    };
-
-    const tree = computed(() => getTreeForBlock(props.block));
-
-    const treeToHtml = (tree: BlockTree) => <li>
-      {tree.name}
-      {tree.children.length ? <ul>{tree.children.map(treeToHtml)}</ul> : null}
+    const treeToHtml = (tree: BlockTree, close: Function) => <li
+      class={{
+        'sb-tree-block-select__block': true,
+        'sb-tree-block-select__block_active': activeBlockId.value === tree.id,
+      }}
+    >
+      <button
+        class="sb-tree-block-select__block-name"
+        onClick={() => {
+          activate(tree.id);
+          close();
+        }}
+        onMouseEnter={() => activate(tree.id)}
+      >{tree.name}</button>
+      {tree.children.length
+        ? <ul class="sb-tree-block-select__list">
+          {tree.children.map((child: BlockTree) => treeToHtml(child, close))}
+        </ul>
+          : null
+      }
     </li>;
 
     return () => (
-      <SbContextMenu
-        class="sb-tree-block-select"
-        v-slots={{
-          context: ({ toggle }) => <SbButton onClick={toggle}>Tree</SbButton>,
-          default: () => <ul>{treeToHtml(tree.value)}</ul>,
-        }}
-      />
+      blockTree.value
+        ?  <SbContextMenu
+          class="sb-tree-block-select"
+          v-slots={{
+            context: ({ toggle }) => <SbButton onClick={toggle}>Tree</SbButton>,
+            default: ({ close }) => <ul
+              class="sb-tree-block-select__list sb-tree-block-select__list_base"
+            >{treeToHtml(blockTree.value, close)}</ul>,
+          }}
+        />
+        : ''
     );
   },
 });

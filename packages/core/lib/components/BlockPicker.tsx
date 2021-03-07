@@ -28,7 +28,7 @@ export const SbBlockPicker = defineComponent({
       open.value = false;
       context.emit('picked-block', {
         name: block.name,
-        blockId: `${+(new Date())}`,
+        id: `${+(new Date())}`,
         data: block.getDefaultData(),
       });
     };

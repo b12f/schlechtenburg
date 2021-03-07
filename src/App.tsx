@@ -22,7 +22,7 @@ export default defineComponent({
     const activeTab = ref('edit');
     const block: Block<any> = reactive({
       name: 'none',
-      blockId: '0',
+      id: '0',
       data: null,
     });
 
@@ -30,7 +30,7 @@ export default defineComponent({
       const res = await fetch('/initial-data.json');
       const data = await res.json();
       block.name = data.name;
-      block.blockId = data.blockId;
+      block.id = data.id;
       block.data = data.data;
     });
 

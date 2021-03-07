@@ -42,7 +42,7 @@ export const SbBlockPicker = defineComponent({
             open.value = true;
             $event.stopPropagation();
           }}
-        >Add a block</SbButton>
+        >+</SbButton>
         <SbModal
           open={open.value}
           onClick={($event: MouseEvent) => $event.stopPropagation()}

@@ -20,6 +20,7 @@ import { EditorDimensions, useResizeObserver } from '../use-resize-observer';
 import { ActiveBlock } from '../use-activation';
 
 import { SbMainMenu } from './MainMenu';
+import { SbBlockToolbar } from './BlockToolbar';
 import { SbBlock } from './Block';
 
 import './Schlechtenburg.scss';
@@ -80,7 +81,10 @@ export const Schlechtenburg = defineComponent({
       >
         {
           mode.value === SbMode.Edit
-          ? <SbMainMenu block={props.block} />
+          ? <>
+            <SbMainMenu block={props.block} />
+            <SbBlockToolbar block={props.block} />
+          </>
           : null
         }
         <SbBlock

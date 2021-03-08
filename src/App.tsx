@@ -6,7 +6,7 @@ import {
   ref,
 } from 'vue';
 
-import { Schlechtenburg, Block, SbMode } from '../packages/core/lib';
+import { SbMain, BlockData, SbMode } from '../packages/core/lib';
 
 import SbLayout from '../packages/layout/lib';
 import SbHeading from '../packages/heading/lib';
@@ -20,7 +20,7 @@ export default defineComponent({
 
   setup() {
     const activeTab = ref('edit');
-    const block: Block<any> = reactive({
+    const block: BlockData<any> = reactive({
       name: 'none',
       id: '0',
       data: null,
@@ -34,12 +34,12 @@ export default defineComponent({
       block.data = data.data;
     });
 
-    const Example = computed(() => {
+    const displayedElement = computed(() => {
       switch (activeTab.value) {
         case SbMode.Edit:
-          return <Schlechtenburg
+          return <SbMain
             block={block}
-            onUpdate={(newBlock: Block<any>) => {
+            onUpdate={(newBlock: BlockData<any>) => {
               block.data = newBlock.data;
             }}
             customBlocks={[
@@ -52,7 +52,7 @@ export default defineComponent({
             mode={SbMode.Edit}
           />;
         case SbMode.Display:
-          return <Schlechtenburg
+          return <SbMain
             block={block}
             customBlocks={[
               SbLayout,
@@ -80,7 +80,7 @@ export default defineComponent({
           <option>display</option>
           <option>data</option>
         </select>
-        <Example.value />
+        {displayedElement.value}
       </div>;
     };
   },

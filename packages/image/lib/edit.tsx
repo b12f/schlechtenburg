@@ -8,16 +8,15 @@ import {
 } from 'vue';
 import {
   model,
-  blockProps,
   SbToolbar,
   SbButton,
-  SbBlock
+  SbBlock,
+  BlockData,
 } from '@schlechtenburg/core';
-
+import { ParagraphData } from '@schlechtenburg/paragraph';
 import {
   getDefaultData,
   ImageData,
-  ImageProps,
 } from './util';
 
 import './style.scss';
@@ -28,7 +27,6 @@ export default defineComponent({
   model,
 
   props: {
-    ...blockProps,
     onUpdate: { type: Function, default: () => {} },
     data: {
       type: (null as unknown) as PropType<ImageData>,
@@ -36,7 +34,7 @@ export default defineComponent({
     },
   },
 
-  setup(props: ImageProps) {
+  setup(props) {
     const localData = reactive({
       src: props.data.src,
       alt: props.data.alt,
@@ -61,8 +59,13 @@ export default defineComponent({
       if (fileInput.value && fileInput.value.files && fileInput.value.files.length) {
         const reader = new FileReader();
         reader.addEventListener('load', () => {
+          const src = reader?.result?.toString();
+          if (!src) {
+            throw new Error('Couldn\'t load image src');
+          }
+
           props.onUpdate({
-            src: reader.result,
+            src,
             alt: props.data.alt,
             description: props.data.description,
           });
@@ -72,7 +75,7 @@ export default defineComponent({
       }
     };
 
-    const onDescriptionUpdate = (description) => {
+    const onDescriptionUpdate = (description: BlockData<ParagraphData>) => {
       props.onUpdate({
         ...props.data,
         description,
@@ -83,7 +86,7 @@ export default defineComponent({
       <figure class="sb-image">
         <SbToolbar>
           {localData.src
-            ? <SbButton onClick={selectImage}>Change Image</SbButton>
+            ? <SbButton {...{ 'onClick:value': selectImage }}>Select Image</SbButton>
             : null}
           <input
             type="file"
@@ -101,10 +104,11 @@ export default defineComponent({
               />
               <SbBlock
                 block={localData.description}
-                onUpdate={(updated: Block) => onDescriptionUpdate(updated)}
+                onUpdate={(updated: BlockData<ParagraphData>) => onDescriptionUpdate(updated)}
               />
             </>
-          : <SbButton onClick={selectImage}>Select Image</SbButton>}
+          : <SbButton {...{ 'onClick:value': selectImage }}>Select Image</SbButton>
+        }
       </figure>
     );
   },

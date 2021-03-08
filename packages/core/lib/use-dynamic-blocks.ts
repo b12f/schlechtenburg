@@ -3,13 +3,13 @@ import {
   inject,
   reactive,
 } from 'vue';
-import { BlockLibraryDefinition } from './blocks';
+import { BlockLibrary } from './types';
 import { Mode, SbMode } from './mode';
 
-export const BlockLibrary = Symbol('Schlechtenburg block library');
+export const SymBlockLibrary = Symbol('Schlechtenburg block library');
 export function useDynamicBlocks() {
   const mode = inject(Mode, ref(SbMode.Edit));
-  const customBlocks: BlockLibraryDefinition = inject(BlockLibrary, reactive({}));
+  const customBlocks: BlockLibrary = inject(SymBlockLibrary, reactive({}));
   const getBlock = (name: string) => customBlocks[name];
 
   return {

@@ -6,37 +6,23 @@ import {
   ref,
   Ref,
 } from 'vue';
-import { Block } from '../blocks';
+import { BlockData } from '../types';
 import { SbMode } from '../mode';
-import { useResizeObserver, BlockDimensions } from '../use-resize-observer';
+import { useResizeObserver, SymBlockDimensions } from '../use-resize-observer';
 import { useActivation } from '../use-activation';
 import { useBlockTree } from '../use-block-tree';
 import { useDynamicBlocks } from '../use-dynamic-blocks';
 
-import { SbBlockOrdering } from './BlockOrdering';
-import SbMissingBlock from './BlockMissing/index';
+import SbMissingBlock from './MissingBlock';
 
 import './Block.scss';
-
-interface BlockProps {
-  block: Block;
-  onUpdate: (b?: Block) => void;
-  onPrependBlock: (b?: Block) => void;
-  onAppendBlock: (b?: Block) => void;
-  onRemoveSelf: () => void;
-  onMoveBackward: () => void;
-  onMoveForward: () => void;
-  onActivateNext: () => void;
-  onActivatePrevious: () => void;
-  sortable: string;
-}
 
 export const SbBlock = defineComponent({
   name: 'sb-block',
 
   props: {
     block: {
-      type: (null as unknown) as PropType<Block>,
+      type: (null as unknown) as PropType<BlockData<any>>,
       required: true,
     },
     sortable: {
@@ -47,24 +33,23 @@ export const SbBlock = defineComponent({
     onPrependBlock: { type: Function, default: () => {} },
     onAppendBlock: { type: Function, default: () => {} },
     onRemoveSelf: { type: Function, default: () => {} },
-    onMoveBackward: { type: Function, default: () => {} },
-    onMoveForward: { type: Function, default: () => {} },
+    onActivatePrevious: { type: Function, default: () => {} },
+    onActivateNext: { type: Function, default: () => {} },
   },
 
-  setup(props: BlockProps, context) {
+  setup(props, context) {
     const el: Ref<null|HTMLElement> = ref(null);
     const { mode, getBlock } = useDynamicBlocks();
     const {
       isActive,
       activate,
-      isHighlighted,
     } = useActivation(props.block.id);
     const classes = computed(() => ({
       'sb-block': true,
       'sb-block_active': isActive.value,
     }));
 
-    const { triggerSizeCalculation } = useResizeObserver(el, BlockDimensions);
+    const { triggerSizeCalculation } = useResizeObserver(el, SymBlockDimensions);
     watch(() => props.block.data, triggerSizeCalculation);
 
     const { register } = useBlockTree();
@@ -114,11 +99,14 @@ export const SbBlock = defineComponent({
           onRemoveSelf={props.onRemoveSelf}
           onActivatePrevious={props.onActivatePrevious}
           onActivateNext={props.onActivateNext}
-          onClick={($event: MouseEvent) => {
-            $event.stopPropagation();
-            activate();
+
+          {...{
+            'onClick:value': ($event: MouseEvent) => {
+              $event.stopPropagation();
+              activate();
+            },
+            ...context.attrs,
           }}
-          {...context.attrs}
         />
       </div>;
     };

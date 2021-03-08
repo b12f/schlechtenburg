@@ -5,10 +5,7 @@ import {
 } from 'vue';
 import {
   model,
-  blockProps,
-  BlockProps,
 } from '@schlechtenburg/core';
-
 import {
   getDefaultData,
   ParagraphData,
@@ -16,24 +13,19 @@ import {
 
 import './style.scss';
 
-interface ParagraphProps extends BlockProps {
-  data: ParagraphData;
-}
-
 export default defineComponent({
   name: 'sb-paragraph-display',
 
   model,
 
   props: {
-    ...blockProps,
     data: {
       type: Object as PropType<ParagraphData>,
       default: getDefaultData,
     },
   },
 
-  setup(props: ParagraphProps) {
+  setup(props) {
     const classes = computed(() => ({
       'sb-paragraph': true,
       [`sb-paragraph_align-${props.data.align}`]: true,

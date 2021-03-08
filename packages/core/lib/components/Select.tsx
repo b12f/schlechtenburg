@@ -6,14 +6,14 @@ export const SbSelect = defineComponent({
 
   inheritAttrs: false,
 
-  setup(props, context) {
+  setup(_, context) {
     return () => (
       <div class="sb-select">
         <select
           class="sb-select__input"
           {...context.attrs}
         >
-          {context.slots.default()}
+          {context.slots.default?.()}
         </select>
       </div>
     );

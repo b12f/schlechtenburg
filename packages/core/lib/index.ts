@@ -1,5 +1,7 @@
 export * from './mode';
-export * from './blocks';
+export * from './types';
+
+export * from './block-helpers';
 
 export * from './use-activation';
 export * from './use-dynamic-blocks';

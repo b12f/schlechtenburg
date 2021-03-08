@@ -2,32 +2,25 @@ import {
   defineComponent,
   PropType,
 } from 'vue';
-import { Block } from '../blocks';
-
+import { BlockData } from '../types';
 import { SbTreeBlockSelect } from './TreeBlockSelect';
 
 import './MainMenu.scss';
-
-interface MainMenuProps {
-  block: Block;
-}
 
 export const SbMainMenu = defineComponent({
   name: 'sb-main-menu',
 
   props: {
     block: {
-      type: (null as unknown) as PropType<Block>,
+      type: (null as unknown) as PropType<BlockData<any>>,
       required: true,
     },
   },
 
-  setup(props: MainMenuProps, context) {
+  setup() {
     return () => (
       <div class="sb-main-menu">
-        <SbTreeBlockSelect
-          block={props.block}
-        />
+        <SbTreeBlockSelect />
       </div>
     );
   },

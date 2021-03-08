@@ -3,15 +3,9 @@ import {
   defineComponent,
   ref,
 } from 'vue';
-
 import { SbButton } from './Button';
 
 import './ContextMenu.scss';
-
-interface ContextMenuProps {
-  onClose: () => void;
-  onOpen: () => void;
-}
 
 export const SbContextMenu = defineComponent({
   name: 'sb-context-menu',
@@ -21,7 +15,7 @@ export const SbContextMenu = defineComponent({
     onOpen: { type: Function, default: () => {} },
   },
 
-  setup(props: ContextMenuProps, context) {
+  setup(props, context) {
     const opened = ref(false);
     const open = () => { opened.value = true; };
     const close = () => { opened.value = false; };
@@ -40,10 +34,12 @@ export const SbContextMenu = defineComponent({
       if (!curr) {
         document.body.removeEventListener('click', close);
         document.body.removeEventListener('keypress', closeOnEscape);
+        props.onClose();
       } else {
         setTimeout(() => {
           document.body.addEventListener('click', close);
           document.body.addEventListener('keypress', closeOnEscape);
+          props.onOpen();
         });
       }
     });
@@ -51,24 +47,23 @@ export const SbContextMenu = defineComponent({
     return () => (
       <div class="sb-context">
         {
-          context.slots.context({
+          context.slots.context?.({
             opened,
             toggle,
             close,
             open,
-          }) ||
-          <SbButton onClick={toggle}>Menu</SbButton>
+          }) || <SbButton {...{ onClick: toggle }}>Menu</SbButton>
         }
         <dialog
           class="sb-context-menu"
           open={opened.value ? true : undefined}
-          onClose={close}
           onClick={($event: Event) => {
             // Make sure clicks inside do not autoclose this
             $event.stopPropagation();
           }}
+          {...{ onClose: close /* TODO: DialogHTMLAttributes needs an onClose handler type */ }}
         >
-            {context.slots.default({
+            {context.slots.default?.({
               opened,
               toggle,
               close,

@@ -7,7 +7,7 @@ export const SbButton = defineComponent({
 
   inheritAttrs: false,
 
-  setup(props, context) {
+  setup(_, context) {
     return () => (
       <button
         {...{
@@ -15,7 +15,7 @@ export const SbButton = defineComponent({
           class: (context.attrs.class || '') + ' sb-button',
         }}
       >
-        {context.slots.default()}
+        {context.slots.default?.()}
       </button>
     );
   },

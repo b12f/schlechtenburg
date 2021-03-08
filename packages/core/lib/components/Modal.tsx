@@ -5,11 +5,6 @@ import {
 
 import './Modal.scss';
 
-interface ModalProps {
-  open: boolean;
-  onClose: () => void;
-}
-
 export const SbModal = defineComponent({
   name: 'sb-modal',
 
@@ -21,7 +16,7 @@ export const SbModal = defineComponent({
     onClose: { type: Function, default: () => {} },
   },
 
-  setup(props: ModalProps, context) {
+  setup(props, context) {
     const classes = computed(() => ({
       'sb-modal': true,
       'sb-modal_open': props.open,
@@ -37,7 +32,7 @@ export const SbModal = defineComponent({
           }}
         >
           <div class="sb-modal__content">
-            {context.slots.default()}
+            {context.slots.default?.()}
           </div>
         </div>
       </div>

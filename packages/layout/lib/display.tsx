@@ -5,13 +5,10 @@ import {
 } from 'vue';
 import {
   model,
-  blockProps,
   SbBlock,
 } from '@schlechtenburg/core';
-
 import {
   LayoutData,
-  LayoutProps,
   getDefaultData,
 } from './util';
 
@@ -23,14 +20,13 @@ export default defineComponent({
   model,
 
   props: {
-    ...blockProps,
     data: {
       type: (null as unknown) as PropType<LayoutData>,
       default: getDefaultData,
     },
   },
 
-  setup(props: LayoutProps) {
+  setup(props) {
     const classes = computed(() => ({
       'sb-layout': true,
       [`sb-layout_${props.data.orientation}`]: true,

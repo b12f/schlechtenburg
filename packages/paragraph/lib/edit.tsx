@@ -10,15 +10,10 @@ import {
 } from 'vue';
 import {
   model,
-  blockProps,
-  BlockProps,
-  BlockData,
   useActivation,
-
   SbToolbar,
   SbSelect,
 } from '@schlechtenburg/core';
-
 import {
   getDefaultData,
   ParagraphData,
@@ -26,22 +21,13 @@ import {
 
 import './style.scss';
 
-interface ParagraphProps extends BlockProps {
-  data: ParagraphData;
-  onUpdate: (b?: ParagraphData) => void;
-  onAppendBlock: (b?: BlockData) => void;
-  onRemoveSelf: () => void;
-  onActivateNext: () => void;
-  onActivatePrevious: () => void;
-}
-
 export default defineComponent({
   name: 'sb-paragraph-edit',
 
   model,
 
   props: {
-    ...blockProps,
+    blockId: { type: String, required: true },
     data: {
       type: (null as unknown) as PropType<ParagraphData>,
       default: getDefaultData,
@@ -53,7 +39,7 @@ export default defineComponent({
     onActivatePrevious: { type: Function, default: () => {} },
   },
 
-  setup(props: ParagraphProps) {
+  setup(props) {
     const localData = (reactive({
       value: props.data.value,
       align: props.data.align,
@@ -91,7 +77,7 @@ export default defineComponent({
       }
     });
 
-    const onTextUpdate = ($event: InputEvent) => {
+    const onTextUpdate = ($event: Event) => {
       localData.value = ($event.target as HTMLElement).innerHTML;
     };
 
@@ -142,9 +128,9 @@ export default defineComponent({
       }
 
       const selection = window.getSelection();
-      const node = selection.focusNode;
-      const childNodes = Array.from(inputEl.value.childNodes);
-      const index = childNodes.indexOf(node);
+      const node = selection?.focusNode;
+      const childNodes = Array.from(inputEl?.value?.childNodes || []);
+      const index = node ? childNodes.indexOf(node as ChildNode) : -1;
       if (node === inputEl.value || index === 0 || index === childNodes.length -1) {
         switch ($event.key) {
           case 'ArrowDown':
@@ -161,8 +147,10 @@ export default defineComponent({
       <div class={classes.value}>
         <SbToolbar>
           <SbSelect
-            value={localData.align}
-            onChange={setAlignment}
+            {...{
+              value: localData.align,
+              onChange: setAlignment,
+            }}
           >
             <option>left</option>
             <option>center</option>

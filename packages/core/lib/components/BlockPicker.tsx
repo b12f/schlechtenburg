@@ -3,10 +3,8 @@ import {
   ref,
   defineComponent,
 } from 'vue';
-import {
-  useDynamicBlocks,
-  BlockDefinition,
-} from '../use-dynamic-blocks';
+import { useDynamicBlocks } from '../use-dynamic-blocks';
+import { BlockDefinition } from '../types';
 
 import { SbButton } from './Button';
 import { SbModal } from './Modal';
@@ -16,17 +14,19 @@ import './BlockPicker.scss';
 export const SbBlockPicker = defineComponent({
   name: 'sb-block-picker',
 
-  props: {},
+  props: {
+    onPickedBlock: { type: Function, default: () => {} },
+  },
 
-  setup(props, context) {
+  setup(props) {
     const open = ref(false);
     const { customBlocks } = useDynamicBlocks();
 
     const blockList = computed(() => Object.keys(customBlocks).map((key) => customBlocks[key]));
 
-    const selectBlock = (block: BlockDefinition) => () => {
+    const selectBlock = (block: BlockDefinition<any>) => () => {
       open.value = false;
-      context.emit('picked-block', {
+      props.onPickedBlock({
         name: block.name,
         id: `${+(new Date())}`,
         data: block.getDefaultData(),
@@ -37,23 +37,27 @@ export const SbBlockPicker = defineComponent({
       <div class="sb-block-picker">
         <SbButton
           class="sb-block-picker__add-button"
-          type="button"
-          onClick={($event: MouseEvent) => {
-            open.value = true;
-            $event.stopPropagation();
+          {...{
+            type: 'button',
+            onClick: ($event: MouseEvent) => {
+              open.value = true;
+              $event.stopPropagation();
+            },
           }}
         >+</SbButton>
         <SbModal
           open={open.value}
-          onClick={($event: MouseEvent) => $event.stopPropagation()}
           onClose={() => {
             open.value = false;
           }}
+          {...{ onClick: ($event: MouseEvent) => $event.stopPropagation() }}
         >
-          {...blockList.value.map((block: BlockDefinition) => (
+          {...blockList.value.map((block: BlockDefinition<any>) => (
             <SbButton
-              type="button"
-              onClick={selectBlock(block)}
+              {...{
+                type: 'button',
+                onClick: () => selectBlock(block),
+              }}
             >{block.name}</SbButton>
           ))}
         </SbModal>

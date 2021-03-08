@@ -15,13 +15,13 @@ export const SbBlockOrdering = defineComponent({
   name: 'sb-block-ordering',
 
   props: {
-    sortable: {
+    orientation: {
       type: String,
       default: null,
     },
     onRemove: { type: Function, default: () => {} },
-    onMoveUp: { type: Function, default: () => {} },
-    onMoveDown: { type: Function, default: () => {} },
+    onMoveBackward: { type: Function, default: () => {} },
+    onMoveForward: { type: Function, default: () => {} },
   },
 
   setup(props) {
@@ -32,7 +32,7 @@ export const SbBlockOrdering = defineComponent({
 
     const classes = computed(() => ({
       'sb-block-ordering': true,
-      [`sb-block-ordering_${props.sortable}`]: !!props.sortable,
+      [`sb-block-ordering_${props.orientation}`]: !!props.orientation,
     }));
 
     const { editorDimensions, blockDimensions } = useBlockSizing();
@@ -47,7 +47,7 @@ export const SbBlockOrdering = defineComponent({
     });
     watch(editorDimensions, resetStyles);
     watch(blockDimensions, resetStyles);
-    watch(() => props.sortable, resetStyles);
+    watch(() => props.orientation, resetStyles);
 
     return () => (
       <div
@@ -55,9 +55,9 @@ export const SbBlockOrdering = defineComponent({
         style={styles}
         onClick={($event: MouseEvent) => $event.stopPropagation()}
       >
-        <SbButton onClick={props.onMoveUp}>{props.sortable === 'vertical' ? '↑' : '←'}</SbButton>
-        <SbButton onClick={props.onRemove}>x</SbButton>
-        <SbButton onClick={props.onMoveDown}>{props.sortable === 'vertical' ? '↓' : '→'}</SbButton>
+        <SbButton {...{onClick: props.onMoveBackward}}>{props.orientation === 'vertical' ? '↑' : '←'}</SbButton>
+        <SbButton {...{onClick: props.onRemove}}>x</SbButton>
+        <SbButton {...{onClick: props.onMoveForward}}>{props.orientation === 'vertical' ? '↓' : '→'}</SbButton>
       </div>
     );
   },

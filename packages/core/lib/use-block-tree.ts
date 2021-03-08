@@ -1,4 +1,5 @@
 import {
+  ref,
   Ref,
   reactive,
   inject,
@@ -6,19 +7,19 @@ import {
   onUnmounted,
 } from 'vue';
 import {
-  BlockTree,
-  Block,
-} from './blocks';
+  TreeNode,
+  BlockData,
+} from './types';
 
-export const BlockTreeSym = Symbol('Schlechtenburg block tree');
-export const BlockTreeRegister = Symbol('Schlechtenburg block tree');
-export const BlockTreeUnregister = Symbol('Schlechtenburg block tree');
+export const SymBlockTree= Symbol('Schlechtenburg block tree');
+export const SymBlockTreeRegister = Symbol('Schlechtenburg block tree register');
+export const SymBlockTreeUnregister = Symbol('Schlechtenburg block tree unregister');
 export function useBlockTree() {
-  const blockTree: Ref<BlockTree|null> = inject(BlockTreeSym, null);
-  const registerWithParent = inject(BlockTreeRegister, (_: BlockTree) => {});
-  const unregisterWithParent = inject(BlockTreeUnregister, (_: BlockTree) => {});
+  const blockTree: Ref<TreeNode|null> = inject(SymBlockTree, ref(null));
+  const registerWithParent = inject(SymBlockTreeRegister, (_: TreeNode) => {});
+  const unregisterWithParent = inject(SymBlockTreeUnregister, (_: TreeNode) => {});
 
-  const self: BlockTree= reactive({
+  const self: TreeNode = reactive({
     id: '',
     name: '',
     icon: '',
@@ -26,8 +27,8 @@ export function useBlockTree() {
   });
 
   // Provide a registration function to child blocks
-  provide(BlockTreeRegister, (block: BlockTree) => {
-    if (self.children.find((child: BlockTree) => child.id === block.id)) {
+  provide(SymBlockTreeRegister, (block: TreeNode) => {
+    if (self.children.find((child: TreeNode) => child.id === block.id)) {
       return;
     }
 
@@ -38,11 +39,11 @@ export function useBlockTree() {
   });
 
   // Provide an unregistration function to child blocks
-  provide(BlockTreeUnregister, ({ id }: BlockTree) => {
-    self.children = self.children.filter((child: BlockTree) => child.id !== id);
+  provide(SymBlockTreeUnregister, ({ id }: TreeNode) => {
+    self.children = self.children.filter((child: TreeNode) => child.id !== id);
   });
 
-  const register = (block: Block) => {
+  const register = (block: BlockData<any>) => {
     if (!block.id) {
       throw new Error(`Cannot register a block without an id: ${JSON.stringify(block)}`);
     }

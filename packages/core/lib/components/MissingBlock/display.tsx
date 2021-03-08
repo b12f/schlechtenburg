@@ -2,16 +2,9 @@ import { defineComponent, PropType } from 'vue';
 import {
   model,
   blockProps,
-  BlockProps,
-} from '../../blocks';
+} from '../../block-helpers';
 
 import './style.scss';
-
-interface MissingBlockProps extends BlockProps<any> {
-  eventUpdate: (b?: any) => void;
-  eventAppendBlock: (b?: any) => void;
-  eventRemoveBlock: () => void;
-}
 
 export default defineComponent({
   name: 'sb-missing-block',
@@ -19,8 +12,8 @@ export default defineComponent({
   model,
 
   props: {
-    name: String,
     ...blockProps,
+    name: String,
     data: {
       type: (null as unknown) as PropType<any>,
       default: null,
@@ -30,11 +23,9 @@ export default defineComponent({
     eventRemoveBlock: { type: Function, default: () => {} },
   },
 
-  setup(props: MissingBlockProps) {
+  setup(props) {
     return () => (
-      <div class="sb-missing-block">
-        Missing block: {props.name}
-      </div>
+      <div class="sb-missing-block">Missing block: {props.name}</div>
     );
   },
 });

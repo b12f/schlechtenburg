@@ -1,17 +1,8 @@
-import {
-  BlockProps,
-  Block,
-  BlockData,
-} from '/@/blocks';
+import { BlockData } from '@schlechtenburg/core';
 
 export interface LayoutData {
   orientation: string;
-  children: Block[];
-}
-
-export interface LayoutProps extends BlockProps {
-  data: LayoutData;
-  eventUpdate: (b?: BlockData) => void;
+  children: BlockData<any>[];
 }
 
 export const getDefaultData: () => LayoutData = () => ({

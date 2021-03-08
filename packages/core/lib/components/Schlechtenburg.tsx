@@ -7,17 +7,21 @@ import {
   Ref,
 } from 'vue';
 import {
-  model,
-  Block,
-  BlockTree,
+  BlockData,
   BlockDefinition,
-  BlockLibraryDefinition,
-} from '../blocks';
+  BlockLibrary,
+  TreeNode,
+} from '../types';
+import { model } from '../block-helpers';
 import { Mode, SbMode } from '../mode';
-import { BlockLibrary } from '../use-dynamic-blocks';
-import { BlockTreeSym, BlockTreeRegister, BlockTreeUnregister } from '../use-block-tree';
-import { EditorDimensions, useResizeObserver } from '../use-resize-observer';
-import { ActiveBlock } from '../use-activation';
+import { SymBlockLibrary} from '../use-dynamic-blocks';
+import {
+  SymBlockTree,
+  SymBlockTreeRegister,
+  SymBlockTreeUnregister,
+} from '../use-block-tree';
+import { SymEditorDimensions, useResizeObserver } from '../use-resize-observer';
+import { SymActiveBlock } from '../use-activation';
 
 import { SbMainMenu } from './MainMenu';
 import { SbBlockToolbar } from './BlockToolbar';
@@ -25,21 +29,20 @@ import { SbBlock } from './Block';
 
 import './Schlechtenburg.scss';
 
-export interface SchlechtenburgProps {
-  customBlocks: BlockDefinition[];
-  onUpdate: (b: Block<any>) => void;
-  block: Block<any>;
-  mode: SbMode;
-}
-
-export const Schlechtenburg = defineComponent({
-  name: 'schlechtenburg-main',
+export const SbMain = defineComponent({
+  name: 'sb-main',
 
   model,
 
   props: {
-    customBlocks: { type: Array as PropType<BlockDefinition[]>, default: () => [] },
-    block: { type: Object as PropType<Block<any>>, required: true },
+    customBlocks: {
+      type: Array as PropType<BlockDefinition<any>[]>,
+      default: () => [],
+    },
+    block: {
+      type: Object as PropType<BlockData<any>>,
+      required: true,
+    },
     onUpdate: { type: Function, default: () => {} },
     mode: {
       type: String as PropType<SbMode>,
@@ -50,29 +53,29 @@ export const Schlechtenburg = defineComponent({
     },
   },
 
-  setup(props: SchlechtenburgProps) {
+  setup(props) { // TODO: why does the typing of props not work here?
     const el: Ref<null|HTMLElement> = ref(null);
-    useResizeObserver(el, EditorDimensions);
+    useResizeObserver(el, SymEditorDimensions);
 
     const mode = ref(props.mode);
     provide(Mode, mode);
 
     const activeBlock = ref(null);
-    provide(ActiveBlock, activeBlock);
+    provide(SymActiveBlock, activeBlock);
 
-    const blockTree = ref(null);
-    provide(BlockTreeSym, blockTree);
-    provide(BlockTreeRegister, (block: BlockTree) => { blockTree.value = block; });
-    provide(BlockTreeUnregister, () => { blockTree.value = null; });
+    const blockTree: Ref<TreeNode|null> = ref(null);
+    provide(SymBlockTree, blockTree);
+    provide(SymBlockTreeRegister, (block: TreeNode) => { blockTree.value = block; });
+    provide(SymBlockTreeUnregister, () => { blockTree.value = null; });
 
-    const blockLibrary: BlockLibraryDefinition = shallowReactive({
+    const blockLibrary: BlockLibrary = shallowReactive({
       ...props.customBlocks.reduce(
-        (blocks: {[name: string]: Block<any>}, block: Block<any>) => ({ ...blocks, [block.name]: block }),
+        (blocks: BlockLibrary, block: BlockDefinition<any>) => ({ ...blocks, [block.name]: block }),
         {},
       ),
     });
 
-    provide(BlockLibrary, blockLibrary);
+    provide(SymBlockLibrary, blockLibrary);
 
     return () => (
       <div
@@ -83,7 +86,7 @@ export const Schlechtenburg = defineComponent({
           mode.value === SbMode.Edit
           ? <>
             <SbMainMenu block={props.block} />
-            <SbBlockToolbar block={props.block} />
+            <SbBlockToolbar />
           </>
           : null
         }

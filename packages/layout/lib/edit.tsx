@@ -7,8 +7,7 @@ import {
 } from 'vue';
 import {
   model,
-  Block,
-  blockProps,
+  BlockData,
   useActivation,
 
   SbBlock,
@@ -20,7 +19,6 @@ import {
 
 import {
   LayoutData,
-  LayoutProps,
   getDefaultData,
 } from './util';
 
@@ -32,7 +30,6 @@ export default defineComponent({
   model,
 
   props: {
-    ...blockProps,
     onUpdate: { type: Function, default: () => {} },
     data: {
       type: (null as unknown) as PropType<LayoutData>,
@@ -40,8 +37,8 @@ export default defineComponent({
     },
   },
 
-  setup(props: LayoutProps) {
-    const { activate } = useActivation(props.id);
+  setup(props) {
+    const { activate } = useActivation();
 
     const localData: LayoutData = reactive({
       orientation: props.data.orientation,
@@ -59,13 +56,12 @@ export default defineComponent({
     }));
 
     const toggleOrientation = () => {
-      console.log('toggle');
       props.onUpdate({
         orientation: localData.orientation === 'vertical' ? 'horizontal' : 'vertical',
       });
     };
 
-    const onChildUpdate = (child: Block, updated: Block) => {
+    const onChildUpdate = (child: BlockData<any>, updated: BlockData<any>) => {
       const index = localData.children.indexOf(child);
       if (index === -1) {
         return;
@@ -82,7 +78,7 @@ export default defineComponent({
       });
     };
 
-    const appendBlock = (block: Block) => {
+    const appendBlock = (block: BlockData<any>) => {
       localData.children = [
         ...localData.children,
         block,
@@ -91,7 +87,7 @@ export default defineComponent({
       activate(block.id);
     };
 
-    const insertBlock = (index: number, block: Block) => {
+    const insertBlock = (index: number, block: BlockData<any>) => {
       localData.children = [
         ...localData.children.slice(0, index + 1),
         block,
@@ -162,8 +158,10 @@ export default defineComponent({
       <div class={classes.value}>
         <SbToolbar>
           <SbButton
-            type="button"
-            onClick={toggleOrientation}
+            {...{
+              type: 'button',
+              onClick: toggleOrientation,
+            }}
           >{localData.orientation}</SbButton>
         </SbToolbar>
 
@@ -172,12 +170,12 @@ export default defineComponent({
             {...{ key: child.id }}
             data-order={index}
             block={child}
-            onUpdate={(updated: Block) => onChildUpdate(child, updated)}
+            onUpdate={(updated: BlockData<any>) => onChildUpdate(child, updated)}
             onRemoveSelf={() => removeBlock(index)}
-            onPrependBlock={(block: Block) => insertBlock(index - 1, block)}
-            onAppendBlock={(block: Block) => insertBlock(index, block)}
-            onActivatePrevious={(block: Block) => activateBlock(index - 1,)}
-            onActivateNext={(block: Block) => activateBlock(index + 1,)}
+            onPrependBlock={(block: BlockData<any>) => insertBlock(index - 1, block)}
+            onAppendBlock={(block: BlockData<any>) => insertBlock(index, block)}
+            onActivatePrevious={() => activateBlock(index - 1,)}
+            onActivateNext={() => activateBlock(index + 1,)}
           >
             {{
               'context-toolbar': () =>
@@ -185,7 +183,7 @@ export default defineComponent({
                   onMoveBackward={() => moveBackward(index)}
                   onMoveForward={() => moveForward(index)}
                   onRemove={() => removeBlock(index)}
-                  sortable={props.sortable}
+                  orientation={localData.orientation}
                 />,
             }}
           </SbBlock>

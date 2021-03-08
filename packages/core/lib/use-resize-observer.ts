@@ -1,3 +1,5 @@
+/// <reference types="resize-observer-browser" />
+
 import {
   Ref,
   ref,
@@ -13,8 +15,8 @@ interface BlockRect {
   top: number;
 }
 
-export const BlockDimensions = Symbol('Schlechtenburg block dimensions');
-export const EditorDimensions = Symbol('Schlechtenburg editor dimensions');
+export const SymBlockDimensions = Symbol('Schlechtenburg block dimensions');
+export const SymEditorDimensions = Symbol('Schlechtenburg editor dimensions');
 export function useResizeObserver(el: Ref<null|HTMLElement>, symbol: symbol) {
   const dimensions: Ref<null|BlockRect> = ref(null);
   provide(symbol, dimensions);
@@ -47,8 +49,8 @@ export function useResizeObserver(el: Ref<null|HTMLElement>, symbol: symbol) {
 }
 
 export function useBlockSizing() {
-  const editorDimensions: Ref<BlockRect|null> = inject(EditorDimensions, ref(null));
-  const blockDimensions: Ref<BlockRect|null> = inject(BlockDimensions, ref(null));
+  const editorDimensions: Ref<BlockRect|null> = inject(SymEditorDimensions, ref(null));
+  const blockDimensions: Ref<BlockRect|null> = inject(SymBlockDimensions, ref(null));
 
   return { editorDimensions, blockDimensions };
 }

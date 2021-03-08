@@ -1,7 +1,7 @@
 import vueJsx from '@vitejs/plugin-vue-jsx';
 
 export default {
-  base: '/schlechtenburg/',
+  base: './',
   plugins: [
     vueJsx({}),
   ],

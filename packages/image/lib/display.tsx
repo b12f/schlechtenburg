@@ -1,14 +1,11 @@
 import { defineComponent, PropType } from 'vue';
 import {
   model,
-  blockProps,
   SbBlock,
 } from '@schlechtenburg/core';
-
 import {
   getDefaultData,
   ImageData,
-  ImageProps,
 } from './util';
 
 import './style.scss';
@@ -19,14 +16,13 @@ export default defineComponent({
   model,
 
   props: {
-    ...blockProps,
     data: {
       type: (null as unknown) as PropType<ImageData>,
       default: getDefaultData,
     },
   },
 
-  setup(props: ImageProps) {
+  setup(props) {
     return () => <figure class="sb-image">
         <img
           class="sb-image__content"

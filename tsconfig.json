@@ -12,5 +12,14 @@
 //    "noErrorTruncation": true,
     "paths": {}
   },
-  "include": [ "lib/**/*.ts", "lib/**/*.d.ts", "lib/**/*.tsx", "lib/**/*.vue" ]
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.d.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue",
+    "packages/**/lib/**/*.ts",
+    "packages/**lib/**/*.d.ts",
+    "packages/**lib/**/*.tsx",
+    "packages/**lib/**/*.vue"
+  ]
 }

@@ -1,10 +1,9 @@
 import {
-  onBeforeMount,
   defineComponent,
   reactive,
 } from 'vue';
 
-import { SbMain, BlockData } from '../packages/core/lib';
+import { SbMain } from '../packages/core/lib';
 
 import SbParagraph from '../packages/paragraph/lib';
 
@@ -14,31 +13,19 @@ export default defineComponent({
   name: 'App',
 
   setup() {
-    const block: BlockData<any> = reactive({
-      name: 'none',
-      id: '0',
-      data: null,
+    const block = reactive({
+      "name": "sb-paragraph",
+      "id": "1590592112200",
+      "data": {
+        "value": "This is the first paragraph<br>",
+        "align": "left"
+      },
     });
 
-    onBeforeMount(async () => {
-      const res = await fetch('./initial-data.json');
-      const data = await res.json();
-      block.name = data.name;
-      block.id = data.id;
-      block.data = data.data;
-    });
-
-    return () => {
-      return <div id="app">
-          <SbMain
-            block={block}
-            onUpdate={(newBlock: BlockData<any>) => {
-              block.data = newBlock.data;
-            }}
-            customBlocks={[ SbParagraph ]}
-            key="edit"
-          />
-      </div>;
-    };
+    return () => <SbMain
+      block={block}
+      customBlocks={[ SbParagraph ]}
+      key="edit"
+    />;
   },
 });

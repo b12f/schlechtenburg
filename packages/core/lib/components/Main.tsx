@@ -26,7 +26,6 @@ export const SbMain = defineComponent({
       type: Object,
       required: true,
     },
-    onUpdate: { type: Function, default: () => {} },
   },
 
   setup(props) {
@@ -39,10 +38,6 @@ export const SbMain = defineComponent({
 
     provide(SymBlockLibrary, blockLibrary);
 
-    return () => (
-      <div class="sb-main">
-        <SbBlock block={props.block} />
-      </div>
-    );
+    return () => <SbBlock block={props.block} />;
   },
 });

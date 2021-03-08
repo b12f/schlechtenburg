@@ -27,7 +27,7 @@ import { SbMainMenu } from './MainMenu';
 import { SbBlockToolbar } from './BlockToolbar';
 import { SbBlock } from './Block';
 
-import './Schlechtenburg.scss';
+import './Main.scss';
 
 export const SbMain = defineComponent({
   name: 'sb-main',

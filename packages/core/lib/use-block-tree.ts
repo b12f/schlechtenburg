@@ -14,6 +14,7 @@ import {
 export const SymBlockTree= Symbol('Schlechtenburg block tree');
 export const SymBlockTreeRegister = Symbol('Schlechtenburg block tree register');
 export const SymBlockTreeUnregister = Symbol('Schlechtenburg block tree unregister');
+
 export function useBlockTree() {
   const blockTree: Ref<TreeNode|null> = inject(SymBlockTree, ref(null));
   const registerWithParent = inject(SymBlockTreeRegister, (_: TreeNode) => {});

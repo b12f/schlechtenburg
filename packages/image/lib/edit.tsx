@@ -86,7 +86,7 @@ export default defineComponent({
       <figure class="sb-image">
         <SbToolbar>
           {localData.src
-            ? <SbButton {...{ 'onClick:value': selectImage }}>Select Image</SbButton>
+            ? <SbButton {...{ onClick: selectImage }}>Select Image</SbButton>
             : null}
           <input
             type="file"
@@ -107,7 +107,7 @@ export default defineComponent({
                 onUpdate={(updated: BlockData<ParagraphData>) => onDescriptionUpdate(updated)}
               />
             </>
-          : <SbButton {...{ 'onClick:value': selectImage }}>Select Image</SbButton>
+          : <SbButton {...{ onClick: selectImage }}>Select Image</SbButton>
         }
       </figure>
     );

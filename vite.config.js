@@ -10,6 +10,7 @@ export default {
     jsxFragment: 'Fragment',
   },
   build: {
+    sourcemap: true,
     outDir: 'docs',
   },
 };

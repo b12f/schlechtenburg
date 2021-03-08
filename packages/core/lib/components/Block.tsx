@@ -101,7 +101,7 @@ export const SbBlock = defineComponent({
           onActivateNext={props.onActivateNext}
 
           {...{
-            'onClick:value': ($event: MouseEvent) => {
+            onClick: ($event: MouseEvent) => {
               $event.stopPropagation();
               activate();
             },

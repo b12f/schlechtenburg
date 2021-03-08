@@ -1,6 +1,7 @@
 import vueJsx from '@vitejs/plugin-vue-jsx';
 
 export default {
+  base: './',
   plugins: [
     vueJsx({}),
   ],

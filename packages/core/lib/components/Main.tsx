@@ -2,14 +2,7 @@ import {
   defineComponent,
   provide,
   shallowReactive,
-  ref,
-  PropType,
 } from 'vue';
-import {
-  BlockData,
-  BlockDefinition,
-  BlockLibrary,
-} from '../types';
 import { SymBlockLibrary} from '../use-dynamic-blocks';
 
 import { SbBlock } from './Block';
@@ -26,20 +19,20 @@ export const SbMain = defineComponent({
 
   props: {
     customBlocks: {
-      type: Array as PropType<BlockDefinition<any>[]>,
+      type: Array,
       default: () => [],
     },
     block: {
-      type: Object as PropType<BlockData<any>>,
+      type: Object,
       required: true,
     },
     onUpdate: { type: Function, default: () => {} },
   },
 
-  setup(props: any) { // TODO: why does the typing of props not work here?
-    const blockLibrary: BlockLibrary = shallowReactive({
+  setup(props) {
+    const blockLibrary = shallowReactive({
       ...props.customBlocks.reduce(
-        (blocks: BlockLibrary, block: BlockDefinition<any>) => ({ ...blocks, [block.name]: block }),
+        (blocks, block) => ({ ...blocks, [block.name]: block }),
         {},
       ),
     });
@@ -48,10 +41,7 @@ export const SbMain = defineComponent({
 
     return () => (
       <div class="sb-main">
-        <SbBlock
-          block={props.block}
-          onUpdate={props.onUpdate}
-        />
+        <SbBlock block={props.block} />
       </div>
     );
   },

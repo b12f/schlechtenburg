@@ -1,5 +1,3 @@
-export * from './types';
-
 export * from './use-dynamic-blocks';
 
 export * from './components/Main';

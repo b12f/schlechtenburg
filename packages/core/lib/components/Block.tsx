@@ -1,12 +1,10 @@
 import {
   defineComponent,
-  computed,
-  PropType,
+  inject,
+  reactive,
   ref,
-  Ref,
 } from 'vue';
-import { BlockData } from '../types';
-import { useDynamicBlocks } from '../use-dynamic-blocks';
+import { SymBlockLibrary } from '../use-dynamic-blocks';
 
 import './Block.scss';
 
@@ -15,22 +13,22 @@ export const SbBlock = defineComponent({
 
   props: {
     block: {
-      type: (null as unknown) as PropType<BlockData<any>>,
+      type: Object,
       required: true,
     },
   },
 
   setup(props, context) {
-    const el: Ref<null|HTMLElement> = ref(null);
-    const { getBlock } = useDynamicBlocks();
-    const classes = computed(() => ({ 'sb-block': true }));
+    const el = ref(null);
+    const customBlocks = inject(SymBlockLibrary, reactive({}));
+    const getBlock = (name) => customBlocks[name];
 
     return () => {
-      const BlockComponent = getBlock(props.block.name)?.component as any;
+      const BlockComponent = getBlock(props.block.name)?.component || <span>Missing block {name}</span>;
 
       return <div
         ref={el}
-        class={classes.value}
+        class="sb-block"
       >
         <BlockComponent
           data={props.block.data}

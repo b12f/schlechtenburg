@@ -53,7 +53,7 @@ export const SbMain = defineComponent({
     },
   },
 
-  setup(props) { // TODO: why does the typing of props not work here?
+  setup(props: any) { // TODO: why does the typing of props not work here?
     const el: Ref<null|HTMLElement> = ref(null);
     useResizeObserver(el, SymEditorDimensions);
 

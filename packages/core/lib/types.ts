@@ -28,8 +28,7 @@ export interface BlockDefinition<T> {
   name: string;
   icon?: string;
   getDefaultData: T;
-  edit: Component<BlockProps<T>>;
-  display: Component<BlockProps<T>>;
+  component: Component<BlockProps<T>>;
 }
 
 export interface BlockLibrary {

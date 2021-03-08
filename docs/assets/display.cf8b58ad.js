@@ -1,2 +1,0 @@
-import{j as a,m as s,k as r,q as p,s as e,x as t}from"./index.a48301fd.js";/* empty css              */import"./vendor.a029424f.js";var l=a({name:"sb-paragraph-display",model:s,props:{data:{type:Object,default:r}},setup(a){const s=p((()=>({"sb-paragraph":!0,[`sb-paragraph_align-${a.data.align}`]:!0})));return()=>e("p",t({class:s.value},{innerHTML:a.data.value}),null)}});export default l;
-//# sourceMappingURL=display.cf8b58ad.js.map

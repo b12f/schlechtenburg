@@ -1,0 +1,1 @@
+import{y as a,m as s,z as e,D as t,e as l}from"./index.7f5b9510.js";/* empty css              */import"./vendor.9babb3f5.js";var i=a({name:"sb-image-display",model:s,props:{data:{type:null,default:e}},setup:a=>()=>t("figure",{class:"sb-image"},[t("img",{class:"sb-image__content",src:a.data.src,alt:a.data.alt},null),t(l,{block:a.data.description},null)])});export default i;

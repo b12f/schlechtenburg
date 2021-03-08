@@ -27,7 +27,7 @@ export default defineComponent({
     });
 
     onBeforeMount(async () => {
-      const res = await fetch('/initial-data.json');
+      const res = await fetch('./initial-data.json');
       const data = await res.json();
       block.name = data.name;
       block.id = data.id;

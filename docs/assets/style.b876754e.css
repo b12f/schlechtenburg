@@ -1,0 +1,1 @@
+.sb-layout{display:flex}.sb-layout_vertical{flex-direction:column}.sb-layout_horizontal{flex-direction:row}.sb-layout__item{position:relative}.sb-layout>*{flex-basis:auto;flex-grow:1;flex-shrink:1}

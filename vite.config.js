@@ -8,4 +8,7 @@ export default {
     jsxFactory: 'h',
     jsxFragment: 'Fragment',
   },
+  build: {
+    outDir: 'docs',
+  },
 };

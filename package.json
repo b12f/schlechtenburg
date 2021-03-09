@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "license": "GPL-3.0-or-later",
   "scripts": {
-    "dev": "concurrently 'vuedx-typecheck --no-pretty --watch ./src' 'vite'",
-    "build": "vuedx-typecheck --no-pretty ./src && vite build"
+    "dev": "vite",
+    "build": "vite build"
   },
   "dependencies": {
     "lodash-es": "^4.17.21",

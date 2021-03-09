@@ -1,0 +1,2 @@
+import{d as a,g as l,r,a as e,o as s,c as p,b as n}from"./index.1b27d369.js";var t=a({name:"sb-paragraph-edit",props:{blockId:{type:String,required:!0},data:{type:null,default:l}},setup(a){const l=r({value:a.data.value,align:a.data.align}),t=e(null);s((()=>{t.value&&(t.value.innerHTML=l.value)}));const u=p((()=>({"sb-paragraph":!0,[`sb-paragraph_align-${l.align}`]:!0})));return()=>n("div",{class:u.value},[n("p",{class:"sb-paragraph__input",ref:t},null)])}});export default t;
+//# sourceMappingURL=Paragraph.163a67b8.js.map

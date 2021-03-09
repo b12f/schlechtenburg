@@ -7,5 +7,5 @@ export const name = 'sb-paragraph';
 export default {
   name,
   getDefaultData,
-  component: defineAsyncComponent(() => import('./edit')),
+  component: defineAsyncComponent(() => import('./Paragraph')),
 };

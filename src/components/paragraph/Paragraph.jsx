@@ -7,7 +7,7 @@ import {
 } from 'vue';
 import { getDefaultData } from './util';
 
-import './style.scss';
+import './Paragraph.scss';
 
 export default defineComponent({
   name: 'sb-paragraph-edit',

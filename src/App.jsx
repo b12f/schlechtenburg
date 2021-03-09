@@ -3,9 +3,9 @@ import {
   reactive,
 } from 'vue';
 
-import { SbMain } from '../packages/core/lib';
+import { SbMain } from './components/Main';
 
-import SbParagraph from '../packages/paragraph/lib';
+import SbParagraph from './components/paragraph';
 
 import './App.scss';
 

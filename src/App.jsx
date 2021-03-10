@@ -4,8 +4,6 @@ import {
 
 import { SbMain } from '../packages/core/lib';
 
-import './App.scss';
-
 export default defineComponent({
   name: 'App',
 

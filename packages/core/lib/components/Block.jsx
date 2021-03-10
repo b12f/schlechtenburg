@@ -4,8 +4,6 @@ import {
 } from 'vue';
 import { ExampleSymbol } from '../use-dynamic-blocks';
 
-import './Block.scss';
-
 export const SbBlock = defineComponent({
   name: 'sb-block',
 

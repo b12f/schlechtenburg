@@ -1,1 +1,1 @@
-export const SymBlockLibrary = Symbol('Schlechtenburg block library');
+export const ExampleSymbol = Symbol('Example');

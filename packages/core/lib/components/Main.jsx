@@ -1,9 +1,8 @@
 import {
   defineComponent,
   provide,
-  shallowReactive,
 } from 'vue';
-import { SymBlockLibrary} from '../use-dynamic-blocks';
+import { ExampleSymbol } from '../use-dynamic-blocks';
 
 import { SbBlock } from './Block';
 
@@ -12,32 +11,13 @@ import './Main.scss';
 export const SbMain = defineComponent({
   name: 'sb-main',
 
-  model: {
-    prop: 'block',
-    event: 'update',
-  },
+  setup() {
+    console.log('main setup');
+    provide(ExampleSymbol , 0);
 
-  props: {
-    customBlocks: {
-      type: Array,
-      default: () => [],
-    },
-    block: {
-      type: Object,
-      required: true,
-    },
-  },
-
-  setup(props) {
-    const blockLibrary = shallowReactive({
-      ...props.customBlocks.reduce(
-        (blocks, block) => ({ ...blocks, [block.name]: block }),
-        {},
-      ),
-    });
-
-    provide(SymBlockLibrary, blockLibrary);
-
-    return () => <SbBlock block={props.block} />;
+    return () => <div>
+      Main
+      <SbBlock />
+    </div>;
   },
 });

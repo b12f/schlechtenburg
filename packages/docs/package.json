@@ -1,0 +1,46 @@
+{
+  "name": "@schlechtenburg/docs",
+  "version": "0.0.0",
+  "description": "> TODO: description",
+  "author": "Benjamin Bädorf <hello@benjaminbaedorf.eu>",
+  "homepage": "",
+  "license": "ISC",
+  "main": "lib/docs.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@git.b12f.io:b12f/schlechtenburg.git"
+  },
+  "scripts": {
+    "dev": "concurrently 'vuedx-typecheck --no-pretty --watch ./lib' 'vite'",
+    "build": "vuedx-typecheck --no-pretty ./lib && vite build"
+  },
+  "dependencies": {
+    "@schlechtenburg/core": "^0.0.0",
+    "@schlechtenburg/heading": "^0.0.0",
+    "@schlechtenburg/image": "^0.0.0",
+    "@schlechtenburg/layout": "^0.0.0",
+    "@schlechtenburg/paragraph": "^0.0.0",
+    "lodash-es": "^4.17.21",
+    "vue": "^3.0.7"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue-jsx": "^1.1.2",
+    "@vue/compiler-sfc": "^3.0.7",
+    "@vuedx/typecheck": "^0.6.3",
+    "@vuedx/typescript-plugin-vue": "^0.6.3",
+    "concurrently": "^6.0.0",
+    "sass": "^1.32.8",
+    "typescript": "^4.2.3",
+    "vite": "^2.0.5"
+  }
+}

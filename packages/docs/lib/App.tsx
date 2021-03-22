@@ -6,12 +6,12 @@ import {
   ref,
 } from 'vue';
 
-import { SbMain, BlockData, SbMode } from '../packages/core/lib';
+import { SbMain, BlockData, SbMode } from '@schlechtenburg/core';
 
-import SbLayout from '../packages/layout/lib';
-import SbHeading from '../packages/heading/lib';
-import SbParagraph from '../packages/paragraph/lib';
-import SbImage from '../packages/image/lib';
+import SbLayout from '@schlechtenburg/layout';
+import SbHeading from '@schlechtenburg/heading';
+import SbParagraph from '@schlechtenburg/paragraph';
+import SbImage from '@schlechtenburg/image';
 
 import './App.scss';
 

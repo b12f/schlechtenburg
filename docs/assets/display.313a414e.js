@@ -1,2 +1,0 @@
-var e=Object.assign;import{d as n,m as t,q as a,a as s,n as l}from"./index.03405139.js";var i=n({name:"sb-missing-block",model:t,props:e(e({},a),{name:String,data:{type:null,default:null},eventUpdate:{type:Function,default:()=>{}},eventAppendBlock:{type:Function,default:()=>{}},eventRemoveBlock:{type:Function,default:()=>{}}}),setup:e=>()=>s("div",{class:"sb-missing-block"},[l("Missing block: "),e.name])});export default i;
-//# sourceMappingURL=display.313a414e.js.map

@@ -7,7 +7,7 @@ import { useDynamicBlocks } from '../use-dynamic-blocks';
 import { BlockDefinition } from '../types';
 
 import { SbButton } from './Button';
-import { SbModal } from './Modal';
+import { SbContextMenu } from './ContextMenu';
 
 import './BlockPicker.scss';
 
@@ -18,8 +18,7 @@ export const SbBlockPicker = defineComponent({
     onPickedBlock: { type: Function, default: () => {} },
   },
 
-  setup(props) {
-    const open = ref(false);
+  setup(props, context) {
     const { customBlocks } = useDynamicBlocks();
 
     const blockList = computed(() => Object.keys(customBlocks).map((key) => customBlocks[key]));
@@ -35,32 +34,24 @@ export const SbBlockPicker = defineComponent({
 
     return () => (
       <div class="sb-block-picker">
-        <SbButton
-          class="sb-block-picker__add-button"
-          {...{
-            type: 'button',
-            onClick: ($event: MouseEvent) => {
-              open.value = true;
-              $event.stopPropagation();
-            },
-          }}
-        >+</SbButton>
-        <SbModal
-          open={open.value}
-          onClose={() => {
-            open.value = false;
-          }}
-          {...{ onClick: ($event: MouseEvent) => $event.stopPropagation() }}
-        >
-          {...blockList.value.map((block: BlockDefinition<any>) => (
+        <SbContextMenu
+          class="sb-tree-block-select"
+          v-slots={{
+            context: (slotContext) => context.slots.context
+              ? context.slots.context(slotContext)
+              : <SbButton {...{ onClick: slotContext.toggle }}>Insert a block</SbButton>,
+            default: ({ close }: { close: Function }) => blockList.value.map((block: BlockDefinition<any>) => (
             <SbButton
               {...{
                 type: 'button',
-                onClick: () => selectBlock(block),
+                onClick: () => {
+                  selectBlock(block);
+                  close();
+                },
               }}
-            >{block.name}</SbButton>
-          ))}
-        </SbModal>
+            >{block.name}</SbButton>)),
+          }}
+        ></SbContextMenu>
       </div>
     );
   },

@@ -4,7 +4,6 @@ import {
 } from 'vue';
 import { IBlockData } from '../types';
 import { SbTreeBlockSelect } from './TreeBlockSelect';
-import { SbGlobalInsert } from './GlobalInsert';
 
 import './MainMenu.scss';
 
@@ -22,7 +21,6 @@ export const SbMainMenu = defineComponent({
     return () => (
       <div class="sb-main-menu">
         <SbTreeBlockSelect />
-        <SbGlobalInsert />
       </div>
     );
   },

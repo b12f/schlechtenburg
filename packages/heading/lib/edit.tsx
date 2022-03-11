@@ -88,7 +88,7 @@ export default defineComponent({
     const classes = computed(() => ({
       'sb-heading': true,
       'sb-heading_focused': localData.focused,
-      [`sb-heading_align${localData.align}`]: true,
+      [`sb-heading_align-${localData.align}`]: true,
       [`sb-heading_${localData.level}`]: true,
     }));
 

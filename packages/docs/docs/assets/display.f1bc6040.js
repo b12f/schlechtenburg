@@ -1,0 +1,2 @@
+import{d as a,m as e,j as s,c as t,q as d}from"./index.2f19b693.js";/* empty css              */var l=a({name:"sb-heading-display",model:e,props:{data:{type:Object,default:s}},setup(a){const e=t((()=>({"sb-heading":!0,[`sb-heading_align-${a.data.align}`]:!0,[`sb-heading_${a.data.level}`]:!0})));return()=>d(`h${a.data.level}`,{class:e.value,innerHTML:a.data.value})}});export default l;
+//# sourceMappingURL=display.f1bc6040.js.map

@@ -13,15 +13,13 @@
     pointer-events: none;
   }
 
-  &__edit-cover {
-  }
-
   > .sb-block-ordering {
     opacity: 0;
     pointer-events: none;
   }
 
-  &_active {
+  &_active,
+  &_active:hover {
     outline: 4px solid var(--interact);
 
     > * > .sb-toolbar {

@@ -1,0 +1,9 @@
+.sb-hover-cover {
+  &:hover {
+    outline: 1px dashed var(--interact);
+  }
+
+  &_child-hovered:hover {
+    outline: none;
+  }
+}

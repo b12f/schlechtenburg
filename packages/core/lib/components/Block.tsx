@@ -12,6 +12,7 @@ import { useResizeObserver, SymBlockDimensions } from '../use-resize-observer';
 import { useActivation } from '../use-activation';
 import { useBlockTree } from '../use-block-tree';
 import { useDynamicBlocks } from '../use-dynamic-blocks';
+import hoverCover from '../directives/hover-cover';
 
 import SbMissingBlock from './MissingBlock';
 
@@ -19,6 +20,10 @@ import './Block.scss';
 
 export const SbBlock = defineComponent({
   name: 'sb-block',
+
+  directives: {
+    hoverCover,
+  },
 
   props: {
     block: {
@@ -87,8 +92,8 @@ export const SbBlock = defineComponent({
       return <div
         ref={el}
         class={classes.value}
+        v-hover-cover
       >
-        <div class="sb-block__edit-cover"></div>
         {context.slots['context-toolbar'] ? context.slots['context-toolbar']() : null}
         <BlockComponent
           data={props.block.data}

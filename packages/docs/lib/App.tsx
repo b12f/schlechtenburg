@@ -69,8 +69,9 @@ export default defineComponent({
     });
 
     return () => {
-      return <div id="app">
+      return <div class="app" id="app">
         <select
+          class="app--mode"
           value={activeTab.value}
           onChange={($event: Event) => {
             activeTab.value = ($event.target as HTMLSelectElement).value;

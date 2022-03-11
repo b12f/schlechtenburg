@@ -11,7 +11,7 @@ import {
   SbToolbar,
   SbButton,
   SbBlock,
-  BlockData,
+  IBlockData,
 } from '@schlechtenburg/core';
 import { ParagraphData } from '@schlechtenburg/paragraph';
 import {
@@ -75,7 +75,7 @@ export default defineComponent({
       }
     };
 
-    const onDescriptionUpdate = (description: BlockData<ParagraphData>) => {
+    const onDescriptionUpdate = (description: IBlockData<ParagraphData>) => {
       props.onUpdate({
         ...props.data,
         description,
@@ -104,7 +104,7 @@ export default defineComponent({
               />
               <SbBlock
                 block={localData.description}
-                onUpdate={(updated: BlockData<ParagraphData>) => onDescriptionUpdate(updated)}
+                onUpdate={(updated: IBlockData<ParagraphData>) => onDescriptionUpdate(updated)}
               />
             </>
           : <SbButton {...{ onClick: selectImage }}>Select Image</SbButton>

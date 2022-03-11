@@ -1,37 +1,37 @@
 import { Component } from 'vue';
 
-export interface TreeNode {
+export interface ITreeNode {
   id: string;
   name: string;
   icon?: string;
-  children: TreeNode[];
+  children: ITreeNode[];
 }
 
-export interface BlockData<T> {
+export interface IBlockData<T> {
   id: string;
   name: string;
   data: T;
 }
 
-export interface BlockProps<T> {
+export interface IBlockProps<T> {
   blockId: string;
   data?: T,
-  onUpdate?: (b?: BlockData<T>) => void;
-  onPrependBlock?: (b?: BlockData<T>) => void;
-  onAppendBlock?: (b?: BlockData<T>) => void;
+  onUpdate?: (b?: IBlockData<T>) => void;
+  onPrependBlock?: (b?: IBlockData<T>) => void;
+  onAppendBlock?: (b?: IBlockData<T>) => void;
   onRemoveSelf?: () => void;
   onActivateNext?: () => void;
   onActivatePrevious?: () => void;
 }
 
-export interface BlockDefinition<T> {
+export interface IBlockDefinition<T> {
   name: string;
   icon?: string;
   getDefaultData: T;
-  edit: Component<BlockProps<T>>;
-  display: Component<BlockProps<T>>;
+  edit: Component<IBlockProps<T>>;
+  display: Component<IBlockProps<T>>;
 }
 
-export interface BlockLibrary {
-  [name: string]: BlockDefinition<any>;
+export interface IBlockLibrary {
+  [name: string]: IBlockDefinition<any>;
 }

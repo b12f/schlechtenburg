@@ -6,7 +6,7 @@ import {
   ref,
 } from 'vue';
 
-import { SbMain, BlockData, SbMode } from '@schlechtenburg/core';
+import { SbMain, IBlockData, SbMode } from '@schlechtenburg/core';
 
 import SbLayout from '@schlechtenburg/layout';
 import SbHeading from '@schlechtenburg/heading';
@@ -20,7 +20,7 @@ export default defineComponent({
 
   setup() {
     const activeTab = ref('edit');
-    const block: BlockData<any> = reactive({
+    const block: IBlockData<any> = reactive({
       name: 'none',
       id: '0',
       data: null,
@@ -39,7 +39,7 @@ export default defineComponent({
         case SbMode.Edit:
           return <SbMain
             block={block}
-            onUpdate={(newBlock: BlockData<any>) => {
+            onUpdate={(newBlock: IBlockData<any>) => {
               block.data = newBlock.data;
             }}
             customBlocks={[

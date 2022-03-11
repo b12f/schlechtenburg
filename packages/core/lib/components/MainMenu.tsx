@@ -2,7 +2,7 @@ import {
   defineComponent,
   PropType,
 } from 'vue';
-import { BlockData } from '../types';
+import { IBlockData } from '../types';
 import { SbTreeBlockSelect } from './TreeBlockSelect';
 import { SbGlobalInsert } from './GlobalInsert';
 
@@ -13,7 +13,7 @@ export const SbMainMenu = defineComponent({
 
   props: {
     block: {
-      type: (null as unknown) as PropType<BlockData<any>>,
+      type: (null as unknown) as PropType<IBlockData<any>>,
       required: true,
     },
   },

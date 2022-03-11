@@ -6,7 +6,7 @@ import {
   ref,
   Ref,
 } from 'vue';
-import { BlockData } from '../types';
+import { IBlockData } from '../types';
 import { SbMode } from '../mode';
 import { useResizeObserver, SymBlockDimensions } from '../use-resize-observer';
 import { useActivation } from '../use-activation';
@@ -22,7 +22,7 @@ export const SbBlock = defineComponent({
 
   props: {
     block: {
-      type: (null as unknown) as PropType<BlockData<any>>,
+      type: (null as unknown) as PropType<IBlockData<any>>,
       required: true,
     },
     sortable: {

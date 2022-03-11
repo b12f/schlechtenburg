@@ -1,5 +1,5 @@
 import { defineComponent } from 'vue';
-import { BlockData } from '../types';
+import { IBlockData } from '../types';
 
 import { SbBlockPicker } from './BlockPicker';
 
@@ -16,7 +16,7 @@ export const SbBlockPlaceholder = defineComponent({
     return () => (
       <div class="sb-block-placeholder">
         <SbBlockPicker
-          onPickedBlock={(block: BlockData<any>) => props.onInsertBlock(block)}
+          onPickedBlock={(block: IBlockData<any>) => props.onInsertBlock(block)}
         />
       </div>
     );

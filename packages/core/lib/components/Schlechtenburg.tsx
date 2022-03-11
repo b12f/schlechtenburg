@@ -7,10 +7,10 @@ import {
   Ref,
 } from 'vue';
 import {
-  BlockData,
-  BlockDefinition,
-  BlockLibrary,
-  TreeNode,
+  IBlockData,
+  IBlockDefinition,
+  IBlockLibrary,
+  ITreeNode,
 } from '../types';
 import { model } from '../block-helpers';
 import { Mode, SbMode } from '../mode';
@@ -36,11 +36,11 @@ export const SbMain = defineComponent({
 
   props: {
     customBlocks: {
-      type: Array as PropType<BlockDefinition<any>[]>,
+      type: Array as PropType<IBlockDefinition<any>[]>,
       default: () => [],
     },
     block: {
-      type: Object as PropType<BlockData<any>>,
+      type: Object as PropType<IBlockData<any>>,
       required: true,
     },
     onUpdate: { type: Function, default: () => {} },
@@ -63,14 +63,14 @@ export const SbMain = defineComponent({
     const activeBlock = ref(null);
     provide(SymActiveBlock, activeBlock);
 
-    const blockTree: Ref<TreeNode|null> = ref(null);
+    const blockTree: Ref<ITreeNode|null> = ref(null);
     provide(SymBlockTree, blockTree);
-    provide(SymBlockTreeRegister, (block: TreeNode) => { blockTree.value = block; });
+    provide(SymBlockTreeRegister, (block: ITreeNode) => { blockTree.value = block; });
     provide(SymBlockTreeUnregister, () => { blockTree.value = null; });
 
-    const blockLibrary: BlockLibrary = shallowReactive({
+    const blockLibrary: IBlockLibrary = shallowReactive({
       ...props.customBlocks.reduce(
-        (blocks: BlockLibrary, block: BlockDefinition<any>) => ({ ...blocks, [block.name]: block }),
+        (blocks: IBlockLibrary, block: IBlockDefinition<any>) => ({ ...blocks, [block.name]: block }),
         {},
       ),
     });

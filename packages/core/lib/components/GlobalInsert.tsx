@@ -1,5 +1,5 @@
 import { defineComponent } from 'vue';
-import { TreeNode } from '../types';
+import { ITreeNode } from '../types';
 import { useBlockTree } from '../use-block-tree';
 import { useActivation } from '../use-activation';
 

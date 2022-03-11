@@ -1,5 +1,5 @@
 import { defineComponent } from 'vue';
-import { TreeNode } from '../types';
+import { ITreeNode } from '../types';
 import { useBlockTree } from '../use-block-tree';
 import { useActivation } from '../use-activation';
 
@@ -18,7 +18,7 @@ export const SbTreeBlockSelect = defineComponent({
       activeBlockId,
     } = useActivation();
 
-    const treeToHtml = (tree: TreeNode, close: Function) => <li
+    const treeToHtml = (tree: ITreeNode, close: Function) => <li
       class={{
         'sb-tree-block-select__block': true,
         'sb-tree-block-select__block_active': activeBlockId.value === tree.id,
@@ -34,7 +34,7 @@ export const SbTreeBlockSelect = defineComponent({
       >{tree.name}</button>
       {tree.children?.length
         ? <ul class="sb-tree-block-select__list">
-          {tree.children?.map((child: TreeNode) => treeToHtml(child, close))}
+          {tree.children?.map((child: ITreeNode) => treeToHtml(child, close))}
         </ul>
           : null
       }
@@ -48,7 +48,7 @@ export const SbTreeBlockSelect = defineComponent({
             context: ({ toggle }: { toggle: Function }) => <SbButton {...{ onClick: toggle }}>Tree</SbButton>,
             default: ({ close }: { close: Function }) => <ul
               class="sb-tree-block-select__list sb-tree-block-select__list_base"
-            >{treeToHtml(blockTree.value as TreeNode, close)}</ul>,
+            >{treeToHtml(blockTree.value as ITreeNode, close)}</ul>,
           }}
         />
         : ''

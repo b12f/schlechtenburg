@@ -7,7 +7,7 @@ import {
 } from 'vue';
 import {
   model,
-  BlockData,
+  IBlockData,
   useActivation,
 
   SbBlock,
@@ -61,7 +61,7 @@ export default defineComponent({
       });
     };
 
-    const onChildUpdate = (child: BlockData<any>, updated: BlockData<any>) => {
+    const onChildUpdate = (child: IBlockData<any>, updated: IBlockData<any>) => {
       const index = localData.children.indexOf(child);
       if (index === -1) {
         return;
@@ -78,7 +78,7 @@ export default defineComponent({
       });
     };
 
-    const appendBlock = (block: BlockData<any>) => {
+    const appendBlock = (block: IBlockData<any>) => {
       localData.children = [
         ...localData.children,
         block,
@@ -87,7 +87,7 @@ export default defineComponent({
       activate(block.id);
     };
 
-    const insertBlock = (index: number, block: BlockData<any>) => {
+    const insertBlock = (index: number, block: IBlockData<any>) => {
       localData.children = [
         ...localData.children.slice(0, index + 1),
         block,
@@ -170,10 +170,10 @@ export default defineComponent({
             {...{ key: child.id }}
             data-order={index}
             block={child}
-            onUpdate={(updated: BlockData<any>) => onChildUpdate(child, updated)}
+            onUpdate={(updated: IBlockData<any>) => onChildUpdate(child, updated)}
             onRemoveSelf={() => removeBlock(index)}
-            onPrependBlock={(block: BlockData<any>) => insertBlock(index - 1, block)}
-            onAppendBlock={(block: BlockData<any>) => insertBlock(index, block)}
+            onPrependBlock={(block: IBlockData<any>) => insertBlock(index - 1, block)}
+            onAppendBlock={(block: IBlockData<any>) => insertBlock(index, block)}
             onActivatePrevious={() => activateBlock(index - 1,)}
             onActivateNext={() => activateBlock(index + 1,)}
           >

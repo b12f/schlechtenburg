@@ -4,7 +4,7 @@ import {
   defineComponent,
 } from 'vue';
 import { useDynamicBlocks } from '../use-dynamic-blocks';
-import { BlockDefinition } from '../types';
+import { IBlockDefinition } from '../types';
 
 import { SbButton } from './Button';
 import { SbContextMenu } from './ContextMenu';
@@ -19,11 +19,13 @@ export const SbBlockPicker = defineComponent({
   },
 
   setup(props, context) {
+    const open = ref(false);
+
     const { customBlocks } = useDynamicBlocks();
 
     const blockList = computed(() => Object.keys(customBlocks).map((key) => customBlocks[key]));
 
-    const selectBlock = (block: BlockDefinition<any>) => () => {
+    const selectBlock = (block: IBlockDefinition<any>) => () => {
       open.value = false;
       props.onPickedBlock({
         name: block.name,
@@ -40,7 +42,7 @@ export const SbBlockPicker = defineComponent({
             context: (slotContext) => context.slots.context
               ? context.slots.context(slotContext)
               : <SbButton {...{ onClick: slotContext.toggle }}>Insert a block</SbButton>,
-            default: ({ close }: { close: Function }) => blockList.value.map((block: BlockDefinition<any>) => (
+            default: ({ close }: { close: Function }) => blockList.value.map((block: IBlockDefinition<any>) => (
             <SbButton
               {...{
                 type: 'button',

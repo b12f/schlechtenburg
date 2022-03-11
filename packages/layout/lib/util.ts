@@ -1,8 +1,8 @@
-import { BlockData } from '@schlechtenburg/core';
+import { IBlockData } from '@schlechtenburg/core';
 
 export interface LayoutData {
   orientation: string;
-  children: BlockData<any>[];
+  children: IBlockData<any>[];
 }
 
 export const getDefaultData: () => LayoutData = () => ({

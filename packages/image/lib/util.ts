@@ -1,5 +1,5 @@
 import {
-  BlockData,
+  IBlockData,
   generateBlockId,
 } from '@schlechtenburg/core';
 import {
@@ -11,7 +11,7 @@ import {
 export interface ImageData {
   src: string;
   alt: string;
-  description: BlockData<ParagraphData>;
+  description: IBlockData<ParagraphData>;
 }
 
 export const getDefaultData: () => ImageData = () => ({

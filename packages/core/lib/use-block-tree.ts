@@ -7,8 +7,8 @@ import {
   onUnmounted,
 } from 'vue';
 import {
-  TreeNode,
-  BlockData,
+  ITreeNode,
+  IBlockData,
 } from './types';
 
 export const SymBlockTree= Symbol('Schlechtenburg block tree');
@@ -16,11 +16,11 @@ export const SymBlockTreeRegister = Symbol('Schlechtenburg block tree register')
 export const SymBlockTreeUnregister = Symbol('Schlechtenburg block tree unregister');
 
 export function useBlockTree() {
-  const blockTree: Ref<TreeNode|null> = inject(SymBlockTree, ref(null));
-  const registerWithParent = inject(SymBlockTreeRegister, (_: TreeNode) => {});
-  const unregisterWithParent = inject(SymBlockTreeUnregister, (_: TreeNode) => {});
+  const blockTree: Ref<ITreeNode|null> = inject(SymBlockTree, ref(null));
+  const registerWithParent = inject(SymBlockTreeRegister, (_: ITreeNode) => {});
+  const unregisterWithParent = inject(SymBlockTreeUnregister, (_: ITreeNode) => {});
 
-  const self: TreeNode = reactive({
+  const self: ITreeNode = reactive({
     id: '',
     name: '',
     icon: '',
@@ -28,8 +28,8 @@ export function useBlockTree() {
   });
 
   // Provide a registration function to child blocks
-  provide(SymBlockTreeRegister, (block: TreeNode) => {
-    if (self.children.find((child: TreeNode) => child.id === block.id)) {
+  provide(SymBlockTreeRegister, (block: ITreeNode) => {
+    if (self.children.find((child: ITreeNode) => child.id === block.id)) {
       return;
     }
 
@@ -40,11 +40,11 @@ export function useBlockTree() {
   });
 
   // Provide an unregistration function to child blocks
-  provide(SymBlockTreeUnregister, ({ id }: TreeNode) => {
-    self.children = self.children.filter((child: TreeNode) => child.id !== id);
+  provide(SymBlockTreeUnregister, ({ id }: ITreeNode) => {
+    self.children = self.children.filter((child: ITreeNode) => child.id !== id);
   });
 
-  const register = (block: BlockData<any>) => {
+  const register = (block: IBlockData<any>) => {
     if (!block.id) {
       throw new Error(`Cannot register a block without an id: ${JSON.stringify(block)}`);
     }

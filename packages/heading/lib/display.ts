@@ -36,7 +36,7 @@ export default defineComponent({
     return () => h(
       `h${props.data.level}`,
       {
-        class: classes,
+        class: classes.value,
         innerHTML: props.data.value,
       },
     );

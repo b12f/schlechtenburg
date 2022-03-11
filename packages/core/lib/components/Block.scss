@@ -5,6 +5,8 @@
   align-items: stretch;
   justify-items: stretch;
   height: auto;
+  min-width: 32px;
+  min-height: 32px;
 
   > * > .sb-toolbar {
     opacity: 0;

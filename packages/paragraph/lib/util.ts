@@ -1,9 +1,9 @@
-export interface ParagraphData {
+export interface IParagraphData {
   value: string;
   align: string;
 }
 
-export const getDefaultData: () => ParagraphData = () => ({
+export const getDefaultData: () => IParagraphData = () => ({
   value: '',
   align: 'left',
 });

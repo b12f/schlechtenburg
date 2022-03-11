@@ -8,7 +8,7 @@ import {
   SbBlock,
 } from '@schlechtenburg/core';
 import {
-  LayoutData,
+  ILayoutData,
   getDefaultData,
 } from './util';
 
@@ -21,7 +21,7 @@ export default defineComponent({
 
   props: {
     data: {
-      type: (null as unknown) as PropType<LayoutData>,
+      type: (null as unknown) as PropType<ILayoutData>,
       default: getDefaultData,
     },
   },

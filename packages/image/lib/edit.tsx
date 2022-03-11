@@ -13,10 +13,10 @@ import {
   SbBlock,
   IBlockData,
 } from '@schlechtenburg/core';
-import { ParagraphData } from '@schlechtenburg/paragraph';
+import { IParagraphData } from '@schlechtenburg/paragraph';
 import {
   getDefaultData,
-  ImageData,
+  IImageData,
 } from './util';
 
 import './style.scss';
@@ -29,7 +29,7 @@ export default defineComponent({
   props: {
     onUpdate: { type: Function, default: () => {} },
     data: {
-      type: (null as unknown) as PropType<ImageData>,
+      type: (null as unknown) as PropType<IImageData>,
       default: getDefaultData,
     },
   },
@@ -75,7 +75,7 @@ export default defineComponent({
       }
     };
 
-    const onDescriptionUpdate = (description: IBlockData<ParagraphData>) => {
+    const onDescriptionUpdate = (description: IBlockData<IParagraphData>) => {
       props.onUpdate({
         ...props.data,
         description,
@@ -104,7 +104,7 @@ export default defineComponent({
               />
               <SbBlock
                 block={localData.description}
-                onUpdate={(updated: IBlockData<ParagraphData>) => onDescriptionUpdate(updated)}
+                onUpdate={(updated: IBlockData<IParagraphData>) => onDescriptionUpdate(updated)}
               />
             </>
           : <SbButton {...{ onClick: selectImage }}>Select Image</SbButton>

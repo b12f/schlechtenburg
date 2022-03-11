@@ -25,7 +25,7 @@ export const SbBlockPicker = defineComponent({
 
     const blockList = computed(() => Object.keys(customBlocks).map((key) => customBlocks[key]));
 
-    const selectBlock = (block: IBlockDefinition<any>) => () => {
+    const selectBlock = (block: IBlockDefinition<any>) => {
       open.value = false;
       props.onPickedBlock({
         name: block.name,

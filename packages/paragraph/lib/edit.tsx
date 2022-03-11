@@ -16,7 +16,7 @@ import {
 } from '@schlechtenburg/core';
 import {
   getDefaultData,
-  ParagraphData,
+  IParagraphData,
 } from './util';
 
 import './style.scss';
@@ -29,7 +29,7 @@ export default defineComponent({
   props: {
     blockId: { type: String, required: true },
     data: {
-      type: (null as unknown) as PropType<ParagraphData>,
+      type: (null as unknown) as PropType<IParagraphData>,
       default: getDefaultData,
     },
     onUpdate: { type: Function, default: () => {} },

@@ -25,6 +25,7 @@
   },
   "dependencies": {
     "@schlechtenburg/core": "^0.0.0",
+    "@schlechtenburg/paragraph": "^0.0.0",
     "vue": "^3.0.7"
   }
 }

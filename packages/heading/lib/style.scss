@@ -1,0 +1,39 @@
+.sb-heading {
+  flex-basis: 100%;
+  font-weight: bold;
+
+  &_1 {
+    font-size: 4rem;
+  }
+
+  &_2 {
+    font-size: 3rem;
+  }
+
+  &_3 {
+    font-size: 2rem;
+  }
+
+  &_4 {
+    font-size: 1.6rem;
+  }
+
+  &_5 {
+    font-size: 1.2rem;
+  }
+
+  &_6 {
+    font-size: 1rem;
+  }
+
+  &__input {
+    display: block;
+    flex-basis: 100%;
+  }
+
+  &_align {
+    &-left { &, .sb-heading__input { text-align: left; } }
+    &-right {  &, .sb-heading__input { text-align: right; } }
+    &-center {  &, .sb-heading__input { text-align: center; } }
+  }
+}

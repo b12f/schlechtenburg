@@ -2,40 +2,43 @@ import {
   defineComponent,
   computed,
   PropType,
+  h,
 } from 'vue';
 import {
   model,
 } from '@schlechtenburg/core';
 import {
   getDefaultData,
-  IParagraphData,
+  IHeadingData,
 } from './util';
 
 import './style.scss';
 
 export default defineComponent({
-  name: 'sb-paragraph-display',
+  name: 'sb-heading-display',
 
   model,
 
   props: {
     data: {
-      type: Object as PropType<IParagraphData>,
+      type: Object as PropType<IHeadingData>,
       default: getDefaultData,
     },
   },
 
   setup(props) {
     const classes = computed(() => ({
-      'sb-paragraph': true,
-      [`sb-paragraph_align-${props.data.align}`]: true,
+      'sb-heading': true,
+      [`sb-heading_align-${props.data.align}`]: true,
+      [`sb-heading_${props.data.level}`]: true,
     }));
 
-    return () => <p
-      class={classes.value}
-      {...{
+    return () => h(
+      `h${props.data.level}`,
+      {
+        class: classes,
         innerHTML: props.data.value,
-      }}
-    ></p>;
+      },
+    );
   },
 });

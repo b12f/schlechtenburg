@@ -8,5 +8,5 @@ export default {
   name,
   getDefaultData,
   edit: defineAsyncComponent(() => import('./edit')),
-  display: defineAsyncComponent(() => import('./edit')),
+  display: defineAsyncComponent(() => import('./display')),
 };

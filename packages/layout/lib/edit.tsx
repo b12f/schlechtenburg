@@ -18,7 +18,7 @@ import {
 } from '@schlechtenburg/core';
 
 import {
-  LayoutData,
+  ILayoutData,
   getDefaultData,
 } from './util';
 
@@ -32,7 +32,7 @@ export default defineComponent({
   props: {
     onUpdate: { type: Function, default: () => {} },
     data: {
-      type: (null as unknown) as PropType<LayoutData>,
+      type: (null as unknown) as PropType<ILayoutData>,
       default: getDefaultData,
     },
   },
@@ -40,7 +40,7 @@ export default defineComponent({
   setup(props) {
     const { activate } = useActivation();
 
-    const localData: LayoutData = reactive({
+    const localData: ILayoutData = reactive({
       orientation: props.data.orientation,
       children: [...props.data.children],
     });
@@ -79,6 +79,7 @@ export default defineComponent({
     };
 
     const appendBlock = (block: IBlockData<any>) => {
+      console.log(appendBlock);
       localData.children = [
         ...localData.children,
         block,

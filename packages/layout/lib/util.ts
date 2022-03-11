@@ -1,11 +1,11 @@
 import { IBlockData } from '@schlechtenburg/core';
 
-export interface LayoutData {
+export interface ILayoutData {
   orientation: string;
   children: IBlockData<any>[];
 }
 
-export const getDefaultData: () => LayoutData = () => ({
+export const getDefaultData: () => ILayoutData = () => ({
   orientation: 'vertical',
   children: [],
 });

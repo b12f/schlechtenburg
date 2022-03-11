@@ -5,7 +5,7 @@ import {
 } from '@schlechtenburg/core';
 import {
   getDefaultData,
-  ImageData,
+  IImageData,
 } from './util';
 
 import './style.scss';
@@ -17,7 +17,7 @@ export default defineComponent({
 
   props: {
     data: {
-      type: (null as unknown) as PropType<ImageData>,
+      type: (null as unknown) as PropType<IImageData>,
       default: getDefaultData,
     },
   },

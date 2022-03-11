@@ -4,17 +4,17 @@ import {
 } from '@schlechtenburg/core';
 import {
   name as paragraphName,
-  ParagraphData,
+  IParagraphData,
   getDefaultData as getDefaultParagraphData
 } from '@schlechtenburg/paragraph';
 
-export interface ImageData {
+export interface IImageData {
   src: string;
   alt: string;
-  description: IBlockData<ParagraphData>;
+  description: IBlockData<IParagraphData>;
 }
 
-export const getDefaultData: () => ImageData = () => ({
+export const getDefaultData: () => IImageData = () => ({
   src: '',
   alt: '',
   description: {

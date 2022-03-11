@@ -5,6 +5,15 @@
     "orientation": "vertical",
     "children": [
       {
+        "name": "sb-heading",
+        "id": "1480592112212",
+        "data": {
+          "value": "A pretty heading",
+          "align": "center",
+          "level": 1
+        }
+      },
+      {
         "name": "sb-paragraph",
         "id": "1590592112200",
         "data": {

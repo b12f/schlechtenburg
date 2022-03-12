@@ -42,7 +42,7 @@ export default defineComponent({
             onUpdate={(newBlock: IBlockData<any>) => {
               block.data = newBlock.data;
             }}
-            customBlocks={[
+            availableBlocks={[
               SbLayout,
               SbHeading,
               SbImage,
@@ -54,7 +54,7 @@ export default defineComponent({
         case SbMode.Display:
           return <SbMain
             block={block}
-            customBlocks={[
+            availableBlocks={[
               SbLayout,
               SbHeading,
               SbImage,

@@ -35,7 +35,7 @@ export const SbMain = defineComponent({
   model,
 
   props: {
-    customBlocks: {
+    availableBlocks: {
       type: Array as PropType<IBlockDefinition<any>[]>,
       default: () => [],
     },
@@ -69,7 +69,7 @@ export const SbMain = defineComponent({
     provide(SymBlockTreeUnregister, () => { blockTree.value = null; });
 
     const blockLibrary: IBlockLibrary = shallowReactive({
-      ...props.customBlocks.reduce(
+      ...props.availableBlocks.reduce(
         (blocks: IBlockLibrary, block: IBlockDefinition<any>) => ({ ...blocks, [block.name]: block }),
         {},
       ),

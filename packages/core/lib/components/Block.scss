@@ -20,6 +20,7 @@
 
   &_active,
   &_active:hover {
+    z-index: 1;
     outline: 4px solid var(--interact);
 
     > * > .sb-toolbar {

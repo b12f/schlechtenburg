@@ -8,6 +8,7 @@ import {
 import {
   model,
   IBlockData,
+  OnUpdateSelfCb,
   useActivation,
 
   SbBlock,
@@ -30,7 +31,10 @@ export default defineComponent({
   model,
 
   props: {
-    onUpdate: { type: Function, default: () => {} },
+    onUpdate: {
+      type: (null as unknown) as PropType<OnUpdateSelfCb<ILayoutData>>,
+      default: () => {},
+    },
     data: {
       type: (null as unknown) as PropType<ILayoutData>,
       default: getDefaultData,

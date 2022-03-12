@@ -2,10 +2,18 @@ import {
   watch,
   defineComponent,
   ref,
+  Ref,
 } from 'vue';
 import { SbButton } from './Button';
 
 import './ContextMenu.scss';
+
+export interface IContextMenuSlotContext {
+  opened: Ref<boolean>;
+  open: () => void;
+  close: () => void;
+  toggle: () => void;
+}
 
 export const SbContextMenu = defineComponent({
   name: 'sb-context-menu',

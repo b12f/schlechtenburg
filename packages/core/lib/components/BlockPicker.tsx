@@ -7,7 +7,7 @@ import { useDynamicBlocks } from '../use-dynamic-blocks';
 import { IBlockDefinition } from '../types';
 
 import { SbButton } from './Button';
-import { SbContextMenu } from './ContextMenu';
+import { SbContextMenu, IContextMenuSlotContext } from './ContextMenu';
 
 import './BlockPicker.scss';
 
@@ -39,7 +39,7 @@ export const SbBlockPicker = defineComponent({
         <SbContextMenu
           class="sb-tree-block-select"
           v-slots={{
-            context: (slotContext) => context.slots.context
+            context: (slotContext:IContextMenuSlotContext) => context.slots.context
               ? context.slots.context(slotContext)
               : <SbButton {...{ onClick: slotContext.toggle }}>Insert a block</SbButton>,
             default: ({ close }: { close: Function }) => blockList.value.map((block: IBlockDefinition<any>) => (

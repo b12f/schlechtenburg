@@ -32,11 +32,26 @@ export default defineComponent({
       type: (null as unknown) as PropType<IParagraphData>,
       default: getDefaultData,
     },
-    onUpdate: { type: Function, default: () => {} },
-    onAppendBlock: { type: Function, default: () => {} },
-    onRemoveSelf: { type: Function, default: () => {} },
-    onActivateNext: { type: Function, default: () => {} },
-    onActivatePrevious: { type: Function, default: () => {} },
+    onUpdate: {
+      type: (null as unknown) as PropType<((block?: Partial<IParagraphData>) => void)>,
+      default: () => {},
+    },
+    onAppendBlock: {
+      type: (null as unknown) as PropType<((block?: any) => void)>,
+      default: () => {},
+    },
+    onRemoveSelf: {
+      type: (null as unknown) as PropType<() => void>,
+      default: () => {},
+    },
+    onActivateNext: {
+      type: (null as unknown) as PropType<() => void>,
+      default: () => {},
+    },
+    onActivatePrevious: {
+      type: (null as unknown) as PropType<() => void>,
+      default: () => {},
+    },
   },
 
   setup(props) {

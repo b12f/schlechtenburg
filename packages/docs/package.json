@@ -22,7 +22,8 @@
   },
   "scripts": {
     "dev": "concurrently 'vuedx-typecheck --no-pretty --watch ./lib' 'vite'",
-    "build": "vuedx-typecheck --no-pretty ./lib && vite build"
+    "build": "vuedx-typecheck --no-pretty ./lib && vite build",
+    "typecheck": "vuedx-typecheck --no-pretty ./lib"
   },
   "dependencies": {
     "@schlechtenburg/core": "^0.0.0",

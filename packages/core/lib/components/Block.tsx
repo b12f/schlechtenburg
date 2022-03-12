@@ -6,7 +6,15 @@ import {
   ref,
   Ref,
 } from 'vue';
-import { IBlockData } from '../types';
+import {
+  IBlockData,
+  OnUpdateBlockCb,
+  OnActivateNextCb,
+  OnRemoveSelfCb,
+  OnAppendBlockCb,
+  OnPrependBlockCb,
+  OnActivatePreviousCb,
+} from '../types';
 import { SbMode } from '../mode';
 import { useResizeObserver, SymBlockDimensions } from '../use-resize-observer';
 import { useActivation } from '../use-activation';
@@ -34,12 +42,30 @@ export const SbBlock = defineComponent({
       type: String,
       default: null,
     },
-    onUpdate: { type: Function, default: () => {} },
-    onPrependBlock: { type: Function, default: () => {} },
-    onAppendBlock: { type: Function, default: () => {} },
-    onRemoveSelf: { type: Function, default: () => {} },
-    onActivatePrevious: { type: Function, default: () => {} },
-    onActivateNext: { type: Function, default: () => {} },
+    onUpdate: {
+      type: (null as unknown) as PropType<OnUpdateBlockCb>,
+      default: () => {},
+    },
+    onPrependBlock: {
+      type: (null as unknown) as PropType<OnPrependBlockCb>,
+      default: () => {},
+    },
+    onAppendBlock: {
+      type: (null as unknown) as PropType<OnAppendBlockCb>,
+      default: () => {},
+    },
+    onRemoveSelf: {
+      type: (null as unknown) as PropType<OnRemoveSelfCb>,
+      default: () => {},
+    },
+    onActivatePrevious: {
+      type: (null as unknown) as PropType<OnActivatePreviousCb>,
+      default: () => {},
+    },
+    onActivateNext: {
+      type: (null as unknown) as PropType<OnActivateNextCb>,
+      default: () => {},
+    },
   },
 
   setup(props, context) {

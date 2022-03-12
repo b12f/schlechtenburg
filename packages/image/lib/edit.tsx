@@ -12,6 +12,7 @@ import {
   SbButton,
   SbBlock,
   IBlockData,
+  OnUpdateSelfCb,
 } from '@schlechtenburg/core';
 import { IParagraphData } from '@schlechtenburg/paragraph';
 import {
@@ -27,7 +28,10 @@ export default defineComponent({
   model,
 
   props: {
-    onUpdate: { type: Function, default: () => {} },
+    onUpdate: {
+      type: (null as unknown) as PropType<OnUpdateSelfCb<IImageData>>,
+      default: () => {},
+    },
     data: {
       type: (null as unknown) as PropType<IImageData>,
       default: getDefaultData,

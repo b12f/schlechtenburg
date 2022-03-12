@@ -13,6 +13,11 @@ import {
   useActivation,
   SbToolbar,
   SbSelect,
+  OnUpdateSelfCb,
+  OnAppendBlockCb,
+  OnRemoveSelfCb,
+  OnActivateNextCb,
+  OnActivatePreviousCb,
 } from '@schlechtenburg/core';
 import {
   getDefaultData,
@@ -33,11 +38,26 @@ export default defineComponent({
       type: (null as unknown) as PropType<IHeadingData>,
       default: getDefaultData,
     },
-    onUpdate: { type: Function, default: () => {} },
-    onAppendBlock: { type: Function, default: () => {} },
-    onRemoveSelf: { type: Function, default: () => {} },
-    onActivateNext: { type: Function, default: () => {} },
-    onActivatePrevious: { type: Function, default: () => {} },
+    onUpdate: {
+      type: (null as unknown) as PropType<OnUpdateSelfCb<IHeadingData>>,
+      default: () => {},
+    },
+    onAppendBlock: {
+      type: (null as unknown) as PropType<OnAppendBlockCb>,
+      default: () => {},
+    },
+    onRemoveSelf: {
+      type: (null as unknown) as PropType<OnRemoveSelfCb>,
+      default: () => {},
+    },
+    onActivateNext: {
+      type: (null as unknown) as PropType<OnActivateNextCb>,
+      default: () => {},
+    },
+    onActivatePrevious: {
+      type: (null as unknown) as PropType<OnActivatePreviousCb>,
+      default: () => {},
+    },
   },
 
   setup(props) {

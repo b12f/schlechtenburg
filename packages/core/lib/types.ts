@@ -13,15 +13,23 @@ export interface IBlockData<T> {
   data: T;
 }
 
+export type OnUpdateSelfCb<T> = (updated: Partial<T>) => void;
+export type OnUpdateBlockCb = (updated: IBlockData<any>) => void;
+export type OnPrependBlockCb =  (block: IBlockData<any>) => void;
+export type OnAppendBlockCb =  (block: IBlockData<any>) => void;
+export type OnRemoveSelfCb =  () => void;
+export type OnActivatePreviousCb =  () => void;
+export type OnActivateNextCb =  () => void;
+
 export interface IBlockProps<T> {
-  blockId: string;
+  blockId?: string;
   data?: T,
-  onUpdate?: (b?: IBlockData<T>) => void;
-  onPrependBlock?: (b?: IBlockData<T>) => void;
-  onAppendBlock?: (b?: IBlockData<T>) => void;
-  onRemoveSelf?: () => void;
-  onActivateNext?: () => void;
-  onActivatePrevious?: () => void;
+  onUpdate?: OnUpdateSelfCb<T>;
+  onPrependBlock?: OnPrependBlockCb;
+  onAppendBlock?: OnAppendBlockCb;
+  onRemoveSelf?: OnRemoveSelfCb;
+  onActivateNext?: OnActivateNextCb;
+  onActivatePrevious?: OnActivatePreviousCb;
 }
 
 export interface IBlockDefinition<T> {

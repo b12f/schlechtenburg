@@ -83,7 +83,6 @@ export default defineComponent({
     };
 
     const appendBlock = (block: IBlockData<any>) => {
-      console.log(appendBlock);
       localData.children = [
         ...localData.children,
         block,

@@ -53,8 +53,6 @@ export default {
     const parents = findParents(el);
     parentData.set(el, parents);
 
-    console.log('got parents', el, parents);
-
     el.addEventListener('mouseenter', onMouseEnter)
     el.addEventListener('mouseleave', onMouseLeave)
   },

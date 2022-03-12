@@ -1,2 +1,0 @@
-import{d as a,m as s,g as t,c as l,a as e,e as d}from"./index.db295836.js";/* empty css              */var o=a({name:"sb-layout-display",model:s,props:{data:{type:null,default:t}},setup(a){const s=l((()=>({"sb-layout":!0,[`sb-layout_${a.data.orientation}`]:!0})));return()=>e("div",{class:s.value},[...a.data.children.map((a=>e(d,{key:a.id,block:a},null)))])}});export default o;
-//# sourceMappingURL=display.d31e0ebf.js.map

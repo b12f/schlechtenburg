@@ -13,6 +13,7 @@ import {
   useActivation,
   SbToolbar,
   SbSelect,
+  generateBlockId,
 } from '@schlechtenburg/core';
 import {
   getDefaultData,
@@ -124,7 +125,7 @@ export default defineComponent({
 
     const onKeydown = ($event: KeyboardEvent) => {
       if ($event.key === 'Enter' && !$event.shiftKey) {
-        const id = `${+(new Date())}`;
+        const id = generateBlockId();
         props.onAppendBlock({
           id,
           name: 'sb-paragraph',

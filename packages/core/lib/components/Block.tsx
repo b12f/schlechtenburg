@@ -26,6 +26,10 @@ import SbMissingBlock from './MissingBlock';
 
 import './Block.scss';
 
+/**
+ * Displays a Schlechtenburg block either the mode of the schlechtenburg instance.
+ * You can use this to display child blocks inside your own blocks.
+ */
 export const SbBlock = defineComponent({
   name: 'sb-block',
 
@@ -34,34 +38,51 @@ export const SbBlock = defineComponent({
   },
 
   props: {
+    /**
+     * The state for the block.
+     */
     block: {
       type: (null as unknown) as PropType<IBlockData<any>>,
       required: true,
     },
-    sortable: {
-      type: String,
-      default: null,
-    },
+    /**
+     * Called when the block should be updated.
+     */
     onUpdate: {
       type: (null as unknown) as PropType<OnUpdateBlockCb>,
       default: () => {},
     },
+    /**
+     * Called when a sibling block should be inserted before the block
+     */
     onPrependBlock: {
       type: (null as unknown) as PropType<OnPrependBlockCb>,
       default: () => {},
     },
+    /**
+     * Called when a sibling block should be inserted after the block
+     */
     onAppendBlock: {
       type: (null as unknown) as PropType<OnAppendBlockCb>,
       default: () => {},
     },
+    /**
+     * Called when the block should be removed
+     */
     onRemoveSelf: {
       type: (null as unknown) as PropType<OnRemoveSelfCb>,
       default: () => {},
     },
+    /**
+     * Called when the previous sibling block should be activated
+     */
     onActivatePrevious: {
       type: (null as unknown) as PropType<OnActivatePreviousCb>,
       default: () => {},
     },
+    /**
+     * Called when the next sibling block should be activated
+     */
     onActivateNext: {
       type: (null as unknown) as PropType<OnActivateNextCb>,
       default: () => {},
@@ -120,7 +141,13 @@ export const SbBlock = defineComponent({
         class={classes.value}
         v-hover-cover
       >
-        {context.slots['context-toolbar'] ? context.slots['context-toolbar']() : null}
+        {
+          /**
+           * This is an alternative toolbar location that parent blocks can use to offer UI elements specific to child blocks.
+           * @slot context-toolbar
+           */
+          context.slots['context-toolbar'] ? context.slots['context-toolbar']() : null
+        }
         <BlockComponent
           data={props.block.data}
           blockId={props.block.id}

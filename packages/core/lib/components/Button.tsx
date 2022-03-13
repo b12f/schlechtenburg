@@ -2,6 +2,10 @@ import { defineComponent } from 'vue';
 
 import './Button.scss';
 
+/**
+ * A button in the schlechtenburg theme
+ * @sbui
+ */
 export const SbButton = defineComponent({
   name: 'sb-button',
 
@@ -15,7 +19,13 @@ export const SbButton = defineComponent({
           class: (context.attrs.class || '') + ' sb-button',
         }}
       >
-        {context.slots.default?.()}
+        {
+          /**
+           * The button contents
+           * @slot default
+           */
+          context.slots.default?.()
+        }
       </button>
     );
   },

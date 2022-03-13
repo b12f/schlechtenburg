@@ -5,6 +5,7 @@ import {
 } from 'vue';
 import { useDynamicBlocks } from '../use-dynamic-blocks';
 import { IBlockDefinition } from '../types';
+import { generateBlockId } from '../block-helpers';
 
 import { SbButton } from './Button';
 import { SbContextMenu, IContextMenuSlotContext } from './ContextMenu';
@@ -29,7 +30,7 @@ export const SbBlockPicker = defineComponent({
       open.value = false;
       props.onPickedBlock({
         name: block.name,
-        id: `${+(new Date())}`,
+        id: generateBlockId(),
         data: block.getDefaultData(),
       });
     };

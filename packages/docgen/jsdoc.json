@@ -1,0 +1,17 @@
+{
+  "tags": {
+    "allowUnknownTags": true,
+    "dictionaries": ["jsdoc", "closure"]
+  },
+  "source": {
+    "include": ["./lib"],
+    "includePattern": ".(jsx|js|ts|tsx)$"
+  },
+  "sourceType": "module",
+  "plugins": [
+    "jsdoc-plugin-typescript"
+  ],
+  "typescript": {
+    "moduleRoot": "src"
+}
+}

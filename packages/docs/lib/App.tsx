@@ -69,7 +69,7 @@ export default defineComponent({
     });
 
     return () => {
-      return <div class="app" id="app">
+      return <div class="app">
         <select
           class="app--mode"
           value={activeTab.value}

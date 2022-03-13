@@ -8,6 +8,10 @@ import { useBlockSizing } from '../use-resize-observer';
 
 import './Toolbar.scss';
 
+/**
+ * Toolbar in the schlechtenburg theme
+ * @sbui
+ */
 export const SbToolbar = defineComponent({
   name: 'sb-toolbar',
 
@@ -38,7 +42,13 @@ export const SbToolbar = defineComponent({
         style={styles}
         onClick={($event: MouseEvent) => $event.stopPropagation()}
       >
-        {context.slots?.default?.()}
+        {
+          /**
+           * The toolbar contents
+           * @slot default
+           */
+          context.slots.default?.()
+        }
       </div>
     );
   },

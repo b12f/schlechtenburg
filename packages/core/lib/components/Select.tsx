@@ -1,6 +1,10 @@
 import { defineComponent } from 'vue';
 import './Select.scss';
 
+/**
+ * A select input in the schlechtenburg theme
+ * @sbui
+ */
 export const SbSelect = defineComponent({
   name: 'sb-select',
 
@@ -13,7 +17,13 @@ export const SbSelect = defineComponent({
           class="sb-select__input"
           {...context.attrs}
         >
-          {context.slots.default?.()}
+        {
+          /**
+           * The select options list
+           * @slot default
+           */
+          context.slots.default?.()
+        }
         </select>
       </div>
     );

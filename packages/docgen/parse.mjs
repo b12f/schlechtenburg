@@ -4,18 +4,30 @@ import { parse } from 'vue-docgen-api'
 import { join } from 'path'
 import glob from 'glob-promise'
 import TypeDoc from 'typedoc'
-import { writeFile } from 'fs/promises'
+import { writeFile, readFile } from 'fs/promises'
 
 const DOCS_PATH = join(process.cwd(), process.argv[2] || './docs');
 const LIB_PATH = join(process.cwd(), process.argv[3] || './lib');
 
-const getTSDocs = (outputFile) => {
+const transformTSDocs = (docs) => {
+  return {
+    ...docs,
+    children: docs.children.map(child => ({
+      ...child,
+      typeParameters: child.typeParameter,
+    })),
+  };
+};
+
+const getTSDocs = async (outputFile) => {
   const app = new TypeDoc.Application();
   app.options.addReader(new TypeDoc.TSConfigReader());
 
   app.bootstrap();
   const project = app.convert();
-  return app.generateJson(project, outputFile);
+  await app.generateJson(project, outputFile);
+  const data = JSON.parse(await readFile(outputFile));
+  await writeFile(outputFile, JSON.stringify(transformTSDocs(data), null, 2))
 };
 
 const getVueComponentDocs = async (dir) => {
@@ -37,11 +49,17 @@ const getVueComponentDocs = async (dir) => {
 };
 
 (async () => {
-  const tsDocsOutput = join(DOCS_PATH, 'lib.json');
-  await getTSDocs(tsDocsOutput);
+  await Promise.all([
+    (() => {
+      const tsDocsOutput = join(DOCS_PATH, 'lib.json');
+      return getTSDocs(tsDocsOutput);
+    })(),
 
-  const vueComponents = await getVueComponentDocs(LIB_PATH);
-  const componentJsonPath = join(DOCS_PATH, 'components.json');
-  console.log(`Info: JSON written to ${componentJsonPath}`);
-  await writeFile(componentJsonPath, JSON.stringify(vueComponents, null, 2));
+    (async () => {
+      const vueComponents = await getVueComponentDocs(LIB_PATH);
+      const componentJsonPath = join(DOCS_PATH, 'components.json');
+      console.log(`Info: JSON written to ${componentJsonPath}`);
+      return writeFile(componentJsonPath, JSON.stringify(vueComponents, null, 2));
+    })(),
+  ])
 })();

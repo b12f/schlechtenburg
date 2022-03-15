@@ -7,6 +7,13 @@ import './main.scss';
 const router = createRouter({
   routes,
   history: createWebHistory(),
+  scrollBehavior(to) {
+    if (to.hash) {
+      return { el: to.hash };
+    }
+
+    return { top: 0 };
+  }
 });
 
 const app = createApp(App);

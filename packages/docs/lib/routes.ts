@@ -1,11 +1,13 @@
 
 export default [
   {
+    name: 'home',
     path: '/',
-    component: () => import('./Introduction').then(d => d.default),
+    component: () => import('./pages/Introduction').then(d => d.default),
   },
   {
-    path: '/example',
-    component: () => import('./Example').then(d => d.default),
+    name: 'package',
+    path: '/@schlechtenburg/:package',
+    component: () => import('./pages/Package').then(d => d.default),
   },
 ]

@@ -2,7 +2,7 @@ import {
   defineComponent,
 } from 'vue';
 import { RouterView } from 'vue-router';
-import SideMenu from './Sidemenu';
+import SideMenu from './sidemenu/Sidemenu';
 
 import './App.scss';
 

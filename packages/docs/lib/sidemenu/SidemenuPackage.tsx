@@ -19,18 +19,24 @@ export default defineComponent({
   setup(props) {
     const { lib, components } = props.package;
     const shortName = getShortPackageName(lib.name);
-    return () => <div class="sidemenu-package">
-      <RouterLink to={{
-        name: 'package',
-        params: { package: shortName },
-      }}>{lib.name}</RouterLink>
-      <ul>
-        {...(lib.children || []).map(child => <li>
-          <RouterLink to={{
-            name: 'package',
-            params: { package: shortName },
-            hash: '#' + child.name,
-          }}>{child.name}</RouterLink>
+    return () => <div>
+      <RouterLink
+        class="sidemenu--link sidemenu--link_package"
+        to={{
+          name: 'package',
+          params: { package: shortName },
+        }}
+      >{lib.name}</RouterLink>
+      <ul class="sidemenu--package-children">
+        {...(lib.children || []).map(child => <li class="sidemenu--package-child">
+          <RouterLink
+            class="sidemenu--link"
+            to={{
+              name: 'package',
+              params: { package: shortName },
+              hash: '#' + child.name,
+            }}
+          >{child.name}</RouterLink>
         </li>)}
       </ul>
     </div>;

@@ -17,7 +17,7 @@ export default defineComponent({
     const packageName = route.params.package;
     const docs = getByName(Array.isArray(packageName) ? packageName[0] : packageName);
     if (!docs) {
-      return () => <div>Unknown package name {packageName}</div>
+      return () => <div>Unknown package name {packageName}</div>;
     }
 
     const { lib, components } = docs;

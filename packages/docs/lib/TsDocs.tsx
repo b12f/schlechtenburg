@@ -23,14 +23,23 @@ export default defineComponent({
 
   setup(props) {
     const docs = props.docs;
-    console.log(docs);
     return () => <section class="docs ts-docs">
-      <h2 id={docs.name}>
-        {docs.name}
-        {docs.typeParameters ? getTypeParamString(docs.typeParameters) : ''}
-      </h2>
-      <p>{docs.kindString}</p>
-      <p>{docs.comment}</p>
+      <header class="docs--header">
+        <h2
+          class="docs--title"
+          id={docs.name}
+        >
+          {docs.name}
+          {docs.typeParameters ? getTypeParamString(docs.typeParameters) : ''}
+        </h2>
+        <p class="docs--type">{docs.kindString}</p>
+      </header>
+
+      <p class="docs--description">{docs.comment?.shortText || ''}</p>
+
+      {...(docs.children || []).map(child => <pre><code>
+        {child.name}: {child.type?.name}
+      </code></pre>)}
     </section>;
   },
 });

@@ -11,8 +11,8 @@ export default defineComponent({
 
   setup() {
     return () => <div class="app">
-      <SideMenu></SideMenu>
-      <RouterView></RouterView>
+      <SideMenu class="app--sidemenu"></SideMenu>
+      <RouterView class="app--main"></RouterView>
     </div>;
   },
 });

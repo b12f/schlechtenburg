@@ -13,7 +13,7 @@ import {
   ITreeNode,
 } from '../types';
 import { model } from '../block-helpers';
-import { Mode, SbMode } from '../mode';
+import { SymMode, SbMode } from '../mode';
 import { SymBlockLibrary} from '../use-dynamic-blocks';
 import {
   SymBlockTree,
@@ -58,7 +58,7 @@ export const SbMain = defineComponent({
     useResizeObserver(el, SymEditorDimensions);
 
     const mode = ref(props.mode);
-    provide(Mode, mode);
+    provide(SymMode, mode);
 
     const activeBlock = ref(null);
     provide(SymActiveBlock, activeBlock);

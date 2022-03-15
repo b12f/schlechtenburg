@@ -3,9 +3,20 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
-  padding: 3rem 4rem;
+  display: flex;
 
-  &--mode {
-    margin-bottom: 2rem;
+  &--sidemenu {
+    width: 300px;
+    padding: 3rem 1rem;
+  }
+
+  &--main {
+    padding: 3rem 4rem;
+    margin: 0 auto;
+    flex-basis: 700px;
+    flex-shrink: 1;
+    flex-grow: 0;
+    display: flex;
+    flex-direction: column;
   }
 }

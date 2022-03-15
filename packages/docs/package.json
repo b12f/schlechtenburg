@@ -21,33 +21,20 @@
     "url": "git@git.b12f.io:b12f/schlechtenburg.git"
   },
   "scripts": {
-    "dev": "concurrently 'vuedx-typecheck --no-pretty --watch ./lib' 'vite'",
-    "build": "vuedx-typecheck --no-pretty ./lib && vite build",
-    "typecheck": "vuedx-typecheck --no-pretty ./lib"
+    "dev": "vuepress dev docs",
+    "build": "vuepress build docs"
   },
   "dependencies": {
     "@schlechtenburg/core": "^0.0.0",
     "@schlechtenburg/heading": "^0.0.0",
     "@schlechtenburg/image": "^0.0.0",
     "@schlechtenburg/layout": "^0.0.0",
-    "@schlechtenburg/paragraph": "^0.0.0",
-    "lodash-es": "^4.17.21",
-    "vue": "^3.0.7",
-    "vue-router": "4"
+    "@schlechtenburg/paragraph": "^0.0.0"
   },
   "devDependencies": {
-    "@types/pug": "^2.0.6",
-    "@vitejs/plugin-vue-jsx": "^1.1.2",
-    "@vue/compiler-sfc": "^3.0.7",
-    "@vuedx/typecheck": "^0.6.3",
-    "@vuedx/typescript-plugin-vue": "^0.6.3",
-    "concurrently": "^6.0.0",
-    "sass": "^1.32.8",
-    "typedoc": "^0.22.13",
-    "typescript": "^4.2.3",
-    "vite": "^2.0.5",
-    "vite-plugin-md2vue": "^1.1.1",
-    "vite-tsconfig-paths": "^3.4.1",
-    "vue-docgen-api": "^4.44.18"
+    "sass": "^1.49.9",
+    "vite": "^2.8.6",
+    "vue": "^3.2.31",
+    "vuepress": "^2.0.0-beta.36"
   }
 }

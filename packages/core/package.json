@@ -7,6 +7,7 @@
   "license": "GPL-3.0-or-later",
   "main": "lib/index.ts",
   "scripts": {
+    "typecheck": "vuedx-typecheck --no-pretty ./lib",
     "docgen": "docgen"
   },
   "directories": {
@@ -31,6 +32,8 @@
     "vue": "^3.0.7"
   },
   "devDependencies": {
+    "@vuedx/typecheck": "^0.6.3",
+    "@vuedx/typescript-plugin-vue": "^0.6.3",
     "@schlechtenburg/docgen": "^0.0.0",
     "@types/lodash-es": "^4.17.4",
     "@types/uuid": "^8.3.0"

@@ -6,12 +6,16 @@
   "homepage": "",
   "license": "GPL-3.0-or-later",
   "main": "lib/index.ts",
+  "scripts": {
+    "docgen": "docgen"
+  },
   "directories": {
     "lib": "lib",
     "test": "__tests__"
   },
   "files": [
-    "lib"
+    "lib",
+    "docs"
   ],
   "publishConfig": {
     "access": "public"
@@ -21,13 +25,14 @@
     "url": "git@git.b12f.io:b12f/schlechtenburg.git"
   },
   "dependencies": {
+    "@schlechtenburg/docgen": "^0.0.0",
     "lodash-es": "^4.17.21",
     "uuid": "^8.3.2",
     "vue": "^3.0.7"
   },
   "devDependencies": {
+    "@schlechtenburg/docgen": "^0.0.0",
     "@types/lodash-es": "^4.17.4",
-    "@types/resize-observer-browser": "^0.1.5",
     "@types/uuid": "^8.3.0"
   }
 }

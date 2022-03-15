@@ -1,5 +1,3 @@
-/// <reference types="resize-observer-browser" />
-
 import {
   Ref,
   ref,

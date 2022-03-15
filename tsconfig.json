@@ -10,13 +10,10 @@
     "plugins": [ { "name": "@vuedx/typescript-plugin-vue" } ],
     "resolveJsonModule": true,
 //    "noErrorTruncation": true,
+    "allowSyntheticDefaultImports": true,
     "paths": {}
   },
   "include": [
-    "src/**/*.ts",
-    "src/**/*.d.ts",
-    "src/**/*.tsx",
-    "src/**/*.vue",
     "packages/**/lib/**/*.ts",
     "packages/**lib/**/*.d.ts",
     "packages/**lib/**/*.tsx",

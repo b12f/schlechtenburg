@@ -1,0 +1,298 @@
+[
+  {
+    "displayName": "sb-block",
+    "description": "Displays a Schlechtenburg block either the mode of the schlechtenburg instance.\nYou can use this to display child blocks inside your own blocks.",
+    "tags": {},
+    "exportName": "SbBlock",
+    "props": [
+      {
+        "name": "block",
+        "description": "The state for the block.",
+        "type": {
+          "name": "IBlockData<any>"
+        },
+        "required": true
+      },
+      {
+        "name": "onUpdate",
+        "description": "Called when the block should be updated.",
+        "type": {
+          "name": "OnUpdateBlockCb"
+        },
+        "defaultValue": {
+          "func": true,
+          "value": "() => {}"
+        }
+      },
+      {
+        "name": "onPrependBlock",
+        "description": "Called when a sibling block should be inserted before the block",
+        "type": {
+          "name": "OnPrependBlockCb"
+        },
+        "defaultValue": {
+          "func": true,
+          "value": "() => {}"
+        }
+      },
+      {
+        "name": "onAppendBlock",
+        "description": "Called when a sibling block should be inserted after the block",
+        "type": {
+          "name": "OnAppendBlockCb"
+        },
+        "defaultValue": {
+          "func": true,
+          "value": "() => {}"
+        }
+      },
+      {
+        "name": "onRemoveSelf",
+        "description": "Called when the block should be removed",
+        "type": {
+          "name": "OnRemoveSelfCb"
+        },
+        "defaultValue": {
+          "func": true,
+          "value": "() => {}"
+        }
+      },
+      {
+        "name": "onActivatePrevious",
+        "description": "Called when the previous sibling block should be activated",
+        "type": {
+          "name": "OnActivatePreviousCb"
+        },
+        "defaultValue": {
+          "func": true,
+          "value": "() => {}"
+        }
+      },
+      {
+        "name": "onActivateNext",
+        "description": "Called when the next sibling block should be activated",
+        "type": {
+          "name": "OnActivateNextCb"
+        },
+        "defaultValue": {
+          "func": true,
+          "value": "() => {}"
+        }
+      }
+    ]
+  },
+  {
+    "displayName": "sb-block-ordering",
+    "exportName": "SbBlockOrdering",
+    "description": "",
+    "tags": {},
+    "props": [
+      {
+        "name": "orientation",
+        "type": {
+          "name": "string"
+        },
+        "defaultValue": {
+          "func": false,
+          "value": "null"
+        }
+      },
+      {
+        "name": "onRemove",
+        "type": {
+          "name": "func"
+        },
+        "defaultValue": {
+          "func": true,
+          "value": "() => {}"
+        }
+      },
+      {
+        "name": "onMoveBackward",
+        "type": {
+          "name": "func"
+        },
+        "defaultValue": {
+          "func": true,
+          "value": "() => {}"
+        }
+      },
+      {
+        "name": "onMoveForward",
+        "type": {
+          "name": "func"
+        },
+        "defaultValue": {
+          "func": true,
+          "value": "() => {}"
+        }
+      }
+    ]
+  },
+  {
+    "displayName": "sb-block-picker",
+    "exportName": "SbBlockPicker",
+    "description": "",
+    "tags": {},
+    "props": [
+      {
+        "name": "onPickedBlock",
+        "type": {
+          "name": "func"
+        },
+        "defaultValue": {
+          "func": true,
+          "value": "() => {}"
+        }
+      }
+    ]
+  },
+  {
+    "displayName": "sb-block-placeholder",
+    "description": "A placeholder for a block.\nDisplays a placeholder for a block, allowing the user to select a block to insert.",
+    "tags": {
+      "sbui": [
+        {
+          "description": true,
+          "title": "sbui"
+        }
+      ]
+    },
+    "exportName": "SbBlockPlaceholder",
+    "props": [
+      {
+        "name": "onInsertBlock",
+        "description": "Called when the user picked a block that should be inserted here.",
+        "type": {
+          "name": "func"
+        },
+        "defaultValue": {
+          "func": true,
+          "value": "() => {}"
+        }
+      }
+    ]
+  },
+  {
+    "displayName": "sb-block-toolbar",
+    "exportName": "SbBlockToolbar",
+    "description": "",
+    "tags": {}
+  },
+  {
+    "displayName": "sb-button",
+    "description": "A button in the schlechtenburg theme",
+    "tags": {
+      "sbui": [
+        {
+          "description": true,
+          "title": "sbui"
+        }
+      ]
+    },
+    "exportName": "SbButton"
+  },
+  {
+    "displayName": "sb-context-menu",
+    "exportName": "SbContextMenu",
+    "description": "",
+    "tags": {},
+    "props": [
+      {
+        "name": "onClose",
+        "type": {
+          "name": "func"
+        },
+        "defaultValue": {
+          "func": true,
+          "value": "() => {}"
+        }
+      },
+      {
+        "name": "onOpen",
+        "type": {
+          "name": "func"
+        },
+        "defaultValue": {
+          "func": true,
+          "value": "() => {}"
+        }
+      }
+    ]
+  },
+  {
+    "displayName": "sb-main-menu",
+    "exportName": "SbMainMenu",
+    "description": "",
+    "tags": {},
+    "props": [
+      {
+        "name": "block",
+        "type": {
+          "name": "IBlockData<any>"
+        },
+        "required": true
+      }
+    ]
+  },
+  {
+    "displayName": "sb-modal",
+    "exportName": "SbModal",
+    "description": "",
+    "tags": {},
+    "props": [
+      {
+        "name": "open",
+        "type": {
+          "name": "boolean"
+        },
+        "defaultValue": {
+          "func": false,
+          "value": "false"
+        }
+      },
+      {
+        "name": "onClose",
+        "type": {
+          "name": "func"
+        },
+        "defaultValue": {
+          "func": true,
+          "value": "() => {}"
+        }
+      }
+    ]
+  },
+  {
+    "displayName": "sb-select",
+    "description": "A select input in the schlechtenburg theme",
+    "tags": {
+      "sbui": [
+        {
+          "description": true,
+          "title": "sbui"
+        }
+      ]
+    },
+    "exportName": "SbSelect"
+  },
+  {
+    "displayName": "sb-toolbar",
+    "description": "Toolbar in the schlechtenburg theme",
+    "tags": {
+      "sbui": [
+        {
+          "description": true,
+          "title": "sbui"
+        }
+      ]
+    },
+    "exportName": "SbToolbar"
+  },
+  {
+    "displayName": "sb-main-menu",
+    "exportName": "SbTreeBlockSelect",
+    "description": "",
+    "tags": {}
+  }
+]

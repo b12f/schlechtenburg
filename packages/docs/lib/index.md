@@ -11,9 +11,9 @@ It inputs and outputs a tree of JSON-serializable data.
 This is still in the Proof-of-concept phase.
 
 <div class="cta-row">
-  <a href="/guide/why" class="button button_cta">Why Schlechtenburg?</a>
-  <a href="/guide/introduction" class="button">Get Started</a>
-  <a href="/api" class="button">See the API docs</a>
+  <a href="/schlechtenburg/guide/why" class="button button_cta">Why Schlechtenburg?</a>
+  <a href="/schlechtenburg/guide/introduction" class="button">Get Started</a>
+  <a href="/schlechtenburg/api" class="button">See the API docs</a>
 </div>
 
 <ExampleEditor></ExampleEditor>

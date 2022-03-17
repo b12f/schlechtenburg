@@ -11,6 +11,7 @@ import {
   IBlockDefinition,
   IBlockLibrary,
   ITreeNode,
+  OnUpdateBlockCb,
 } from '../types';
 import { model } from '../block-helpers';
 import { SymMode, SbMode } from '../mode';
@@ -27,7 +28,7 @@ import { SbMainMenu } from './MainMenu';
 import { SbBlockToolbar } from './BlockToolbar';
 import { SbBlock } from './Block';
 
-import './Schlechtenburg.scss';
+import './Main.scss';
 
 export const SbMain = defineComponent({
   name: 'sb-main',
@@ -43,7 +44,13 @@ export const SbMain = defineComponent({
       type: Object as PropType<IBlockData<any>>,
       required: true,
     },
-    onUpdate: { type: Function, default: () => {} },
+    /**
+     * Called when the block should be updated.
+     */
+    onUpdate: {
+      type: (null as unknown) as PropType<OnUpdateBlockCb>,
+      default: () => {},
+    },
     mode: {
       type: String as PropType<SbMode>,
       validator(value: any) {

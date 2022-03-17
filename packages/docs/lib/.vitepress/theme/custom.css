@@ -1,0 +1,36 @@
+:root {
+  --c-grey: #eeeeee;
+  --c-brand-dark: #378863;
+}
+
+.button {
+  display: inline-block;
+  cursor: pointer;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  color: var(--c-black);
+  background: var(--c-grey);
+  border: 0;
+  font-size: 1rem;
+  line-height: 1.6rem;
+  border-radius: 0.3rem;
+}
+
+.button:hover {
+  text-decoration: none;
+}
+
+.button_cta {
+  color: var(--c-white);
+  background: var(--c-brand-dark);
+}
+
+.cta-row {
+  display: flex;
+  justify-content: center;
+  margin: 4rem;
+}
+
+.cta-row .button {
+  margin: 0.5rem;
+}

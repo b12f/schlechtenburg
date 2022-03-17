@@ -24,7 +24,8 @@ export default defineConfig({
         {
           text: 'Getting Started',
           children: [
-            { text: 'Introduction', link: '/guide/introduction' }
+            { text: 'Why Schlechtenburg?', link: '/guide/why' },
+            { text: 'Installation', link: '/guide/installation' },
           ],
         }
       ],
@@ -32,10 +33,11 @@ export default defineConfig({
         {
           text: 'API',
           children: [
-            { text: 'Core', link: '/api/core' }
+            { text: 'Core', link: '/api/core' },
           ],
         }
       ],
+      '/': false,
     },
   },
 });

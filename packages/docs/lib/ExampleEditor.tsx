@@ -13,31 +13,22 @@ import SbHeading from '@schlechtenburg/heading';
 import SbParagraph from '@schlechtenburg/paragraph';
 import SbImage from '@schlechtenburg/image';
 
-import './App.scss';
+import exampleData from './example-data';
+
+import './ExampleEditor.scss';
 
 export default defineComponent({
-  name: 'App',
+  name: 'ExampleEditor',
 
   setup() {
     const activeTab = ref('edit');
-    const block: IBlockData<any> = reactive({
-      name: 'none',
-      id: '0',
-      data: null,
-    });
-
-    onBeforeMount(async () => {
-      const res = await fetch('./initial-data.json');
-      const data = await res.json();
-      block.name = data.name;
-      block.id = data.id;
-      block.data = data.data;
-    });
+    const block: IBlockData<any> = reactive({ ...exampleData });
 
     const displayedElement = computed(() => {
       switch (activeTab.value) {
         case SbMode.Edit:
           return <SbMain
+            class="example-editor--sb"
             block={block}
             onUpdate={(newBlock: IBlockData<any>) => {
               block.data = newBlock.data;
@@ -53,6 +44,7 @@ export default defineComponent({
           />;
         case SbMode.Display:
           return <SbMain
+            class="example-editor--sb"
             block={block}
             availableBlocks={[
               SbLayout,
@@ -69,18 +61,21 @@ export default defineComponent({
     });
 
     return () => {
-      return <div class="app">
-        <select
-          class="app--mode"
-          value={activeTab.value}
-          onChange={($event: Event) => {
-            activeTab.value = ($event.target as HTMLSelectElement).value;
-          }}
-        >
-          <option>edit</option>
-          <option>display</option>
-          <option>data</option>
-        </select>
+      return <div class="example-editor">
+        <h2 class="example-editor--title">
+          <span>Try it yourself</span>
+          <select
+            class="example-editor--mode"
+            value={activeTab.value}
+            onChange={($event: Event) => {
+              activeTab.value = ($event.target as HTMLSelectElement).value;
+            }}
+          >
+            <option value="edit">Editor mode</option>
+            <option value="display">Display mode</option>
+            <option value="data">JSON Data structure</option>
+          </select>
+        </h2>
         {displayedElement.value}
       </div>;
     };

@@ -7,7 +7,7 @@ export * from './use-activation';
 export * from './use-dynamic-blocks';
 export * from './use-resize-observer';
 
-export * from './components/Schlechtenburg';
+export * from './components/Main';
 export * from './components/Block';
 export * from './components/BlockPicker';
 export * from './components/BlockOrdering';

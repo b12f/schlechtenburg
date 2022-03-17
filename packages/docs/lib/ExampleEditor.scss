@@ -1,0 +1,17 @@
+.example-editor {
+  display: flex;
+  flex-direction: column;
+
+  &--title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &--mode { }
+
+  &--sb {
+    display: flex;
+    flex-direction: column;
+  }
+}

@@ -169,31 +169,33 @@ export default defineComponent({
           >{localData.orientation}</SbButton>
         </SbToolbar>
 
-        {...localData.children.map((child, index) => (
-          <SbBlock
-            {...{ key: child.id }}
-            data-order={index}
-            block={child}
-            onUpdate={(updated: IBlockData<any>) => onChildUpdate(child, updated)}
-            onRemoveSelf={() => removeBlock(index)}
-            onPrependBlock={(block: IBlockData<any>) => insertBlock(index - 1, block)}
-            onAppendBlock={(block: IBlockData<any>) => insertBlock(index, block)}
-            onActivatePrevious={() => activateBlock(index - 1,)}
-            onActivateNext={() => activateBlock(index + 1,)}
-          >
-            {{
-              'context-toolbar': () =>
-                <SbBlockOrdering
-                  onMoveBackward={() => moveBackward(index)}
-                  onMoveForward={() => moveForward(index)}
-                  onRemove={() => removeBlock(index)}
-                  orientation={localData.orientation}
-                />,
-            }}
-          </SbBlock>
-        ))}
+        <>
+          {...localData.children.map((child, index) => (
+            <SbBlock
+              {...{ key: child.id }}
+              data-order={index}
+              block={child}
+              onUpdate={(updated: IBlockData<any>) => onChildUpdate(child, updated)}
+              onRemoveSelf={() => removeBlock(index)}
+              onPrependBlock={(block: IBlockData<any>) => insertBlock(index - 1, block)}
+              onAppendBlock={(block: IBlockData<any>) => insertBlock(index, block)}
+              onActivatePrevious={() => activateBlock(index - 1,)}
+              onActivateNext={() => activateBlock(index + 1,)}
+            >
+              {{
+                'context-toolbar': () =>
+                  <SbBlockOrdering
+                    onMoveBackward={() => moveBackward(index)}
+                    onMoveForward={() => moveForward(index)}
+                    onRemove={() => removeBlock(index)}
+                    orientation={localData.orientation}
+                  />,
+              }}
+            </SbBlock>
+          ))}
+        </>
 
-        <SbBlockPlaceholder onInsertBlock={appendBlock} />
+        <SbBlockPlaceholder onInsertBlock={appendBlock}></SbBlockPlaceholder>
       </div>
     );
   },

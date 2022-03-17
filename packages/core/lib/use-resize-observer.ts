@@ -2,6 +2,7 @@ import {
   Ref,
   ref,
   inject,
+  onBeforeMount,
   watch,
   provide,
 } from 'vue';
@@ -32,16 +33,18 @@ export function useResizeObserver(el: Ref<null|HTMLElement>, symbol: symbol) {
     };
   };
 
-  const resizeObserver = new ResizeObserver(triggerSizeCalculation);
-  const mutationObserver = new MutationObserver(triggerSizeCalculation);
+  onBeforeMount(() => {
+    const resizeObserver = new ResizeObserver(triggerSizeCalculation);
+    const mutationObserver = new MutationObserver(triggerSizeCalculation);
 
-  watch(el, () => {
-    if (!el.value) {
-      return;
-    }
-    resizeObserver.observe(el.value);
-    mutationObserver.observe(el.value, { attributes: true, childList: false, subtree: false });
-  });
+    watch(el, () => {
+      if (!el.value) {
+        return;
+      }
+      resizeObserver.observe(el.value);
+      mutationObserver.observe(el.value, { attributes: true, childList: false, subtree: false });
+    });
+  })
 
   return { triggerSizeCalculation, dimensions };
 }

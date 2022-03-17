@@ -4,6 +4,8 @@ export default defineConfig({
   title: 'Schlechtenburg',
   description: 'Experimental WYSIWYG block editor',
 
+  base: '/schlechtenburg/',
+
   themeConfig: {
     nav: [
       {

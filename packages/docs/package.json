@@ -26,6 +26,7 @@
     "serve": "vitepress serve lib"
   },
   "dependencies": {
+    "@schlechtenburg/standalone": "^0.0.0",
     "@schlechtenburg/core": "^0.0.0",
     "@schlechtenburg/heading": "^0.0.0",
     "@schlechtenburg/image": "^0.0.0",

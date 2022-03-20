@@ -129,7 +129,7 @@ export const SbBlock = defineComponent({
         />;
       }
 
-      if (mode.value === SbMode.Display) {
+      if (mode.value === SbMode.View) {
         return <BlockComponent
           data={props.block.data}
           blockId={props.block.id}

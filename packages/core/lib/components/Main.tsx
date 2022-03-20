@@ -3,6 +3,7 @@ import {
   provide,
   shallowReactive,
   ref,
+  watch,
   PropType,
   Ref,
 } from 'vue';
@@ -27,6 +28,13 @@ import { SymActiveBlock } from '../use-activation';
 import { SbMainMenu } from './MainMenu';
 import { SbBlockToolbar } from './BlockToolbar';
 import { SbBlock } from './Block';
+
+export interface ISbMainProps {
+  availableBlocks: IBlockDefinition<any>[];
+  block: IBlockData<any>;
+  onUpdate: OnUpdateBlockCb;
+  mode: SbMode;
+}
 
 import './Main.scss';
 
@@ -60,12 +68,17 @@ export const SbMain = defineComponent({
     },
   },
 
-  setup(props: any) { // TODO: why does the typing of props not work here?
+  setup(props: ISbMainProps) {
     const el: Ref<null|HTMLElement> = ref(null);
     useResizeObserver(el, SymEditorDimensions);
 
     const mode = ref(props.mode);
     provide(SymMode, mode);
+
+    watch(() => props.mode, (newMode) => {
+      console.log('Mode update', newMode);
+      mode.value = newMode;
+    });
 
     const activeBlock = ref(null);
     provide(SymActiveBlock, activeBlock);

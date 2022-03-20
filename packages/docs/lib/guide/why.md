@@ -48,11 +48,6 @@ experience is great. Schlechtenburg aims to offer a vast library of reusable com
 variables, and rules for the editing UI. We call this **SBUI**. Complex blocks require complex editing forms and UIs so
 most of the work goes into creating this UI. A good Design System should help ease the pain.
 
-## SSR Compatible
-
-Does as it says; drop Schlechtenburg into Nuxt.js, and not just the display mode but also the editor
-itself will render on the server.
-
 ## Accessible 
 
 Toolbars and editing elements are in the correct tab order, **SBUI** elements are all fully
@@ -73,6 +68,12 @@ looks like this:
   }
 },
 ```
+
+The main advantage here is that it enables you to write your own tooling around the format, since
+you don't have to deal with HTML or the DOM directly. This also enables really easy subtree rendering,
+by just taking that subtree of the JSON and feeding it to a Schlechtenburg instance. if instead of
+rendering a full page you'd only want to render the images, you could find all of the `sb-image` nodes
+in the tree and rendering them all inside an `sb-layout` block.
 
 ## So why not Gutenberg?
 

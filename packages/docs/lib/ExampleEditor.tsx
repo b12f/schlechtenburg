@@ -25,37 +25,20 @@ export default defineComponent({
 
     const displayedElement = computed(() => {
       switch (activeTab.value) {
-        case SbMode.Edit:
-          return <SbMain
-            class="example-editor--sb"
-            block={block}
-            onUpdate={(newBlock: IBlockData<any>) => {
-              block.data = newBlock.data;
-            }}
-            availableBlocks={[
-              SbLayout,
-              SbHeading,
-              SbImage,
-              SbParagraph,
-            ]}
-            key="edit"
-            mode={SbMode.Edit}
-          />;
-        case SbMode.Display:
-          return <SbMain
-            class="example-editor--sb"
-            block={block}
-            availableBlocks={[
-              SbLayout,
-              SbHeading,
-              SbImage,
-              SbParagraph,
-            ]}
-            key="display"
-            mode={SbMode.Display}
-          />;
         case 'data':
           return <pre><code>{ JSON.stringify(block, null, 2) }</code></pre>;
+        default:
+          return <SbMain
+            class="example-editor--sb"
+            block={block}
+            availableBlocks={[
+              SbLayout,
+              SbHeading,
+              SbImage,
+              SbParagraph,
+            ]}
+            mode={activeTab.value as SbMode}
+          />;
       }
     });
 
@@ -70,8 +53,8 @@ export default defineComponent({
               activeTab.value = ($event.target as HTMLSelectElement).value;
             }}
           >
-            <option value="edit">Editor mode</option>
-            <option value="display">Display mode</option>
+            <option value={SbMode.Edit}>Editor mode</option>
+            <option value={SbMode.View}>Viewer mode</option>
             <option value="data">JSON Data structure</option>
           </select>
         </h2>

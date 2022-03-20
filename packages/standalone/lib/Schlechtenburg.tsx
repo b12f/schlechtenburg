@@ -47,8 +47,8 @@ export const Schlechtenburg = defineComponent({
 
   setup(props: ISchlechtenburgProps) {
     return () => <SbMain
-      availableBlocks={props.availableBlocks}
       block={props.block}
+      availableBlocks={props.availableBlocks}
       onUpdate={props.onUpdate}
       mode={props.mode}
     />;

@@ -1,8 +1,11 @@
-import { createApp } from 'vue'
 import {
-  ISchlechtenburgProps,
-  Schlechtenburg,
-} from './Schlechtenburg';
+  createApp,
+} from 'vue'
+import {
+  ISbMainProps,
+  IBlockData,
+  SbMain,
+} from '@schlechtenburg/core';
 
 /**
  *
@@ -16,10 +19,21 @@ export const startSchlechtenburg = async (
   /**
    * The schlechtenburg props
    */
-  props:ISchlechtenburgProps,
+  props:ISbMainProps,
 ) => {
-  const app = createApp(Schlechtenburg, props as unknown as Record<string, unknown>);
+  let block = { ...props.block };
+  const app = createApp(SbMain, {
+    ...props,
+    onUpdate: (update: IBlockData<any>) => {
+      block = update;
+      props.onUpdate(update);
+    },
+  }as unknown as Record<string, unknown>);
   app.mount(el);
 
-  return app;
+  return {
+    getBlock() {
+      return block;
+    },
+  };
 }

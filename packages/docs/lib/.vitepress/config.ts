@@ -4,8 +4,6 @@ export default defineConfig({
   title: 'Schlechtenburg',
   description: 'Experimental WYSIWYG block editor',
 
-  base: '/schlechtenburg/',
-
   themeConfig: {
     nav: [
       {
@@ -27,6 +25,7 @@ export default defineConfig({
           text: 'Getting Started',
           children: [
             { text: 'Why Schlechtenburg?', link: '/guide/why' },
+            { text: 'Examples', link: '/guide/examples' },
             { text: 'Installation', link: '/guide/installation' },
           ],
         }

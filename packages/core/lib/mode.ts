@@ -3,6 +3,6 @@
  */
 export enum SbMode {
   Edit = 'edit',
-  Display = 'display',
+  View = 'view',
 }
 export const SymMode = Symbol('Schlechtenburg mode');

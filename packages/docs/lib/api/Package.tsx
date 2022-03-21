@@ -1,21 +1,28 @@
 import { defineComponent } from 'vue';
-import { useRoute } from 'vue-router';
+
 import { ComponentDoc } from 'vue-docgen-api';
 import { DeclarationReflection } from 'typedoc';
 
 import { getByName } from '../docs';
-import ComponentDocs from '../ComponentDocs';
-import TsDocs from '../TsDocs';
+import { getShortPackageName } from './package';
+import ComponentDocs from './ComponentDocs';
+import TSDocs from './TSDocs';
 
 import './Package.scss';
 
 export default defineComponent({
   name: 'Package',
 
-  setup() {
-    const route = useRoute();
-    const packageName = route.params.package;
-    const docs = getByName(Array.isArray(packageName) ? packageName[0] : packageName);
+  props: {
+    name: {
+      type: String,
+      required: true,
+    },
+  },
+
+  setup(props) {
+    const packageName = props.name;
+    const docs = getByName(getShortPackageName(Array.isArray(packageName) ? packageName[0] : packageName));
     if (!docs) {
       return () => <div>Unknown package name {packageName}</div>;
     }
@@ -31,7 +38,7 @@ export default defineComponent({
           return <ComponentDocs docs={componentDocs}></ComponentDocs>
         }
 
-        return <TsDocs docs={child}></TsDocs>
+        return <TSDocs docs={child}></TSDocs>
       })}
     </main>;
   },

@@ -15,7 +15,12 @@ export default defineConfig({
         text: 'API',
         activeMatch: `^/api/`,
         items: [
+          { text: '@schlechtenburg/standalone', link: '/api/@schlechtenburg/standalone' },
           { text: '@schlechtenburg/core', link: '/api/@schlechtenburg/core' },
+          { text: '@schlechtenburg/layout', link: '/api/@schlechtenburg/layout' },
+          { text: '@schlechtenburg/heading', link: '/api/@schlechtenburg/heading' },
+          { text: '@schlechtenburg/paragraph', link: '/api/@schlechtenburg/paragraph' },
+          { text: '@schlechtenburg/image', link: '/api/@schlechtenburg/image' },
         ],
       },
     ],
@@ -34,7 +39,12 @@ export default defineConfig({
         {
           text: 'API',
           children: [
-            { text: 'Core', link: '/api/core' },
+            { text: '@schlechtenburg/standalone', link: '/api/@schlechtenburg/standalone' },
+            { text: '@schlechtenburg/core', link: '/api/@schlechtenburg/core' },
+            { text: '@schlechtenburg/layout', link: '/api/@schlechtenburg/layout' },
+            { text: '@schlechtenburg/heading', link: '/api/@schlechtenburg/heading' },
+            { text: '@schlechtenburg/paragraph', link: '/api/@schlechtenburg/paragraph' },
+            { text: '@schlechtenburg/image', link: '/api/@schlechtenburg/image' },
           ],
         }
       ],

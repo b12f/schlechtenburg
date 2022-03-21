@@ -7,12 +7,12 @@ import {
   TypeParameterReflection,
 } from 'typedoc';
 
-import './TsDocs.scss';
+import './TSDocs.scss';
 
 const getTypeParamString = (params: TypeParameterReflection[]) => `<${params.map(p => p.name).join(', ')}>`;
 
 export default defineComponent({
-  name: 'TsDocs',
+  name: 'TSDocs',
 
   props: {
     docs: {

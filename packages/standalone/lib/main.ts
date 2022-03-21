@@ -1,11 +1,6 @@
-import {
-  createApp,
-} from 'vue'
-import {
-  ISbMainProps,
-  IBlockData,
-  SbMain,
-} from '@schlechtenburg/core';
+import { createApp } from 'vue'
+import { ISbMainProps } from '@schlechtenburg/core';
+import getWrapper from './get-wrapper';
 
 /**
  *
@@ -21,19 +16,25 @@ export const startSchlechtenburg = async (
    */
   props:ISbMainProps,
 ) => {
-  let block = { ...props.block };
-  const app = createApp(SbMain, {
-    ...props,
-    onUpdate: (update: IBlockData<any>) => {
-      block = update;
-      props.onUpdate(update);
-    },
-  }as unknown as Record<string, unknown>);
+  const {
+    SchlechtenburgWrapper,
+    getBlock,
+    setBlock,
+    getMode,
+    setMode,
+  } = getWrapper();
+
+  const app = createApp(
+    SchlechtenburgWrapper,
+    { ...props, } as unknown as Record<string, unknown>,
+  );
   app.mount(el);
 
   return {
-    getBlock() {
-      return block;
-    },
+    app,
+    getBlock,
+    setBlock,
+    getMode,
+    setMode,
   };
 }

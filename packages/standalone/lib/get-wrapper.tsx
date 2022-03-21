@@ -1,6 +1,7 @@
 import {
   defineComponent,
   ref,
+  Ref,
   PropType,
 } from 'vue'
 import {
@@ -9,17 +10,17 @@ import {
   SbMain,
   SbMode,
   OnUpdateBlockCb,
+  ISbMainProps,
 } from '@schlechtenburg/core';
 
 /**
  *
  */
-export default function getWrapper({
-  block,
-  mode,
-  availableBlocks,
-}) {
-  return defineComponent({
+export default function getWrapper() {
+  const refBlock: Ref<IBlockData<any>|null> = ref(null);
+  const refMode = ref(SbMode.View);
+
+  const SchlechtenburgWrapper = defineComponent({
     name: 'SchlechtenburgWrapper',
 
     props: {
@@ -47,15 +48,39 @@ export default function getWrapper({
       },
     },
 
-    setup(props) {
-      const refBlock = ref({ ...block });
-      const refMode = ref({ ...block });
+    setup(props: ISbMainProps) {
+      refBlock.value = { ...(props.block) };
+      refMode.value = props.mode;
+
+      if (!refBlock.value) {
+        return () => <div class="sb-message sb-message_error">An Error occurred</div>;
+      }
 
       return () => <SbMain
-        block={refBlock}
+        block={refBlock.value as IBlockData<any>}
         availableBlocks={props.availableBlocks}
-        mode={mode}
+        mode={refMode.value}
+        onUpdate={(newBlock: IBlockData<any>) => {
+          refBlock.value = { ...newBlock };
+
+        }}
       />
     }
   });
+
+  return {
+    SchlechtenburgWrapper,
+    getBlock() {
+      return refBlock.value;
+    },
+    setBlock(block: IBlockData<any>) {
+      refBlock.value = { ...block };
+    },
+    getMode() {
+      return refMode.value;
+    },
+    setMode(mode: SbMode) {
+      refMode.value = mode;
+    },
+  };
 }

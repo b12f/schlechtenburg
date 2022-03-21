@@ -22,6 +22,7 @@ export default defineComponent({
     const block = exampleData;
 
     onMounted(async () => {
+      // getBlock could be used to access the block data inside the editor
       const { getBlock } = await startSchlechtenburg(
         '#example-editor',
         {
@@ -39,8 +40,7 @@ export default defineComponent({
 
           // This callback will be alled any time the block data gets updated
           onUpdate: (blockData) => {
-            console.log('Got onUpdate', blockData);
-            console.log('getBlock', getBlock());
+            console.log('got update', blockData);
           }
         },
       )

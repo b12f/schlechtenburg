@@ -18,7 +18,6 @@ export default defineComponent({
 
   setup(props) {
     const docs = props.docs;
-    console.log(docs);
     return () => <section class="docs component-docs">
       <header class="docs--header">
         <h2

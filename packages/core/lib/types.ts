@@ -159,7 +159,7 @@ export interface IBlockDefinition<T> {
   icon?: string;
   getDefaultData: T;
   edit: Component<IBlockProps<T>>;
-  display: Component<IBlockProps<T>>;
+  view: Component<IBlockProps<T>>;
 }
 
 /**

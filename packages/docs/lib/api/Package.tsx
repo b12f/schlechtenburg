@@ -3,8 +3,6 @@ import { defineComponent } from 'vue';
 import { ComponentDoc } from 'vue-docgen-api';
 import { DeclarationReflection } from 'typedoc';
 
-import { getByName } from '../docs';
-import { getShortPackageName } from './package';
 import ComponentDocs from './ComponentDocs';
 import TSDocs from './TSDocs';
 
@@ -28,7 +26,7 @@ export default defineComponent({
     }
 
     const { lib, components } = docs;
-    return () => <main class="package">
+    return () => <div class="package">
       <h1>{lib.name}</h1>
       <p>{lib.comment}</p>
       <p>{lib.flags}</p>
@@ -40,6 +38,6 @@ export default defineComponent({
 
         return <TSDocs docs={child}></TSDocs>
       })}
-    </main>;
+    </div>;
   },
 });

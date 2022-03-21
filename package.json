@@ -2,7 +2,11 @@
   "name": "schlechtenburg",
   "version": "0.0.0",
   "license": "GPL-3.0-or-later",
-  "scripts": {},
+  "scripts": {
+    "docs:dev": "lerna run --parallel --stream dev",
+    "docs:build": "lerna run ts-to-json:build && lerna run json-to-md:build && lerna run --scope @schlechtenburg/docs build",
+    "typecheck": "lerna run --stream typecheck"
+  },
   "devDependencies": {
     "lerna": "^3.22.1"
   },

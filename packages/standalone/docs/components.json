@@ -1,0 +1,48 @@
+[
+  {
+    "displayName": "schlechtenburg",
+    "exportName": "Schlechtenburg",
+    "description": "",
+    "tags": {},
+    "props": [
+      {
+        "name": "availableBlocks",
+        "type": {
+          "name": "IBlockDefinition<any>[]"
+        },
+        "defaultValue": {
+          "func": true,
+          "value": "() => []"
+        }
+      },
+      {
+        "name": "block",
+        "type": {
+          "name": "IBlockData<any>"
+        },
+        "required": true
+      },
+      {
+        "name": "onUpdate",
+        "description": "Called when the block should be updated.",
+        "type": {
+          "name": "OnUpdateBlockCb"
+        },
+        "defaultValue": {
+          "func": true,
+          "value": "() => {}"
+        }
+      },
+      {
+        "name": "mode",
+        "type": {
+          "name": "SbMode"
+        },
+        "defaultValue": {
+          "func": false,
+          "value": "SbMode.Edit"
+        }
+      }
+    ]
+  }
+]

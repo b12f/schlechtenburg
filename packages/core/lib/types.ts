@@ -15,7 +15,7 @@ export interface ITreeNode {
 
 /**
  * Schlechtenburg inputs and outputs a plain JS Object that can be JSON stringified. This is the
- * interface type for that data structure. <T> will be the data type of the specific block being
+ * interface type for that data structure. &lt;T&gt; will be the data type of the specific block being
  *
  * @see SbMain
  */

@@ -7,8 +7,12 @@
   "license": "GPL-3.0-or-later",
   "main": "lib/index.ts",
   "scripts": {
+    "dev": "json-to-md:watch",
     "typecheck": "vuedx-typecheck --no-pretty ./lib",
-    "docgen": "docgen"
+    "ts-to-json:build": "ts-to-json",
+    "json-to-md:build": "json-to-md build",
+    "json-to-md:watch": "json-to-md watch",
+    "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "directories": {
     "lib": "lib",

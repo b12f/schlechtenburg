@@ -1,157 +1,5 @@
 # @schlechtenburg/core
 
-## SbMode
-
-The mode the Schlechtenburg editor is currently in
-
-- **Type** `Enumeration`
-
-
-- **Members**
-   - **Edit**: `undefined`
-   - **View**: `undefined`
-
-
-## IBlockData&lt;T&gt;
-
-Schlechtenburg inputs and outputs a plain JS Object that can be JSON stringified. This is the
-interface type for that data structure. `T` will be the data type of the specific block being
-
-- **Type** `Interface`
-
-
-- **Members**
-   - **data**: `T`
-   - **id**: `string`
-   - **name**: `string`
-
-
-## IBlockDefinition&lt;T&gt;
-
-Any Block that you create
-
-- **Type** `Interface`
-
-
-- **Members**
-   - **edit**: `Component`
-   - **getDefaultData**: `T`
-   - **icon**: `string`
-   - **name**: `string`
-   - **view**: `Component`
-
-
-## IBlockLibrary
-
-Schlechtenburg maintains a library of blocks that are available
-
-- **Type** `Interface`
-
-
-
-## IBlockProps&lt;T&gt;
-
-Any Block that you create
-
-- **Type** `Interface`
-
-
-- **Members**
-   - **blockId**: `string`
-   - **data**: `T`
-   - **onActivateNext**: `OnActivateNextCb`
-   - **onActivatePrevious**: `OnActivatePreviousCb`
-   - **onAppendBlock**: `OnAppendBlockCb`
-   - **onPrependBlock**: `OnPrependBlockCb`
-   - **onRemoveSelf**: `OnRemoveSelfCb`
-   - **onUpdate**: `OnUpdateSelfCb`
-
-
-## ISbMainProps
-
-
-
-- **Type** `Interface`
-
-
-- **Members**
-   - **availableBlocks**: `undefined`
-   - **block**: `IBlockData`
-   - **mode**: `SbMode`
-   - **onUpdate**: `OnUpdateBlockCb`
-
-
-## ITreeNode
-
-Schlechtenburg keeps track of the rendered block tree.
-This is useful for e.g. the tree select component in the editor header.
-
-- **Type** `Interface`
-
-
-- **Members**
-   - **children**: `undefined`
-   - **icon**: `string`
-   - **id**: `string`
-   - **name**: `string`
-
-
-## OnActivateNextCb
-
-
-
-- **Type** `Type alias`
-
-
-
-## OnActivatePreviousCb
-
-
-
-- **Type** `Type alias`
-
-
-
-## OnAppendBlockCb
-
-
-
-- **Type** `Type alias`
-
-
-
-## OnPrependBlockCb
-
-
-
-- **Type** `Type alias`
-
-
-
-## OnRemoveSelfCb
-
-
-
-- **Type** `Type alias`
-
-
-
-## OnUpdateBlockCb
-
-
-
-- **Type** `Type alias`
-
-
-
-## OnUpdateSelfCb&lt;T&gt;
-
-
-
-- **Type** `Type alias`
-
-
-
 ## SbBlock
 
 Displays a Schlechtenburg block either the mode of the schlechtenburg instance.
@@ -367,7 +215,6 @@ A button in the schlechtenburg theme
 
 
 
-## SbMain
 
 
 
@@ -395,7 +242,6 @@ Toolbar in the schlechtenburg theme
 
 
 
-## SymActiveBlock
 
 
 
@@ -403,7 +249,6 @@ Toolbar in the schlechtenburg theme
 
 
 
-## SymBlockDimensions
 
 
 
@@ -411,7 +256,6 @@ Toolbar in the schlechtenburg theme
 
 
 
-## SymBlockLibrary
 
 
 
@@ -419,7 +263,6 @@ Toolbar in the schlechtenburg theme
 
 
 
-## SymEditorDimensions
 
 
 
@@ -427,7 +270,6 @@ Toolbar in the schlechtenburg theme
 
 
 
-## SymMode
 
 
 
@@ -435,7 +277,6 @@ Toolbar in the schlechtenburg theme
 
 
 
-## blockProps
 
 
 
@@ -443,11 +284,11 @@ Toolbar in the schlechtenburg theme
 
 
 
-## model
 
 
 
 - **Type** `Variable`
+
 
 
 
@@ -455,7 +296,9 @@ Toolbar in the schlechtenburg theme
 
 
 
-- **Type** `Function`
+
+
+- **Params**
 
 
 
@@ -463,7 +306,9 @@ Toolbar in the schlechtenburg theme
 
 
 
-- **Type** `Function`
+
+
+- **Params**
 
 
 
@@ -471,7 +316,9 @@ Toolbar in the schlechtenburg theme
 
 
 
-- **Type** `Function`
+
+
+- **Params**
 
 
 
@@ -479,7 +326,9 @@ Toolbar in the schlechtenburg theme
 
 
 
-- **Type** `Function`
+
+
+- **Params**
 
 
 
@@ -487,4 +336,6 @@ Toolbar in the schlechtenburg theme
 
 
 
-- **Type** `Function`
+
+
+- **Params**

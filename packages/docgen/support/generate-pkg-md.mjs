@@ -1,28 +1,8 @@
-const getTypeParamString = (params) => `&lt;${params.map(p => p.name).join(', ')}&gt;`;
-
-const generateComponentDoc = (docs) => `
-## ${docs.exportName}
-
-${docs.description || ''}
-
-- **Type**: \`Component\`
-
-### Props
-
-${(docs.props || []).map(prop => `
-#### ${prop.name}
-
-${prop.description || ''}
-
-${prop.type ? `
-- **Type** \`${prop.type.name}\`
-` : ''}
-${prop.defaultValue ? `
-- **Default value** \`${prop.defaultValue.value}\`
-` : ''}
-
-`).join('\n')}
-`;
+import generateComponentMd from './generate-component-md.mjs';
+import generateFunctionMd from './generate-function-md.mjs';
+import generateTypeMd from './generate-type-md.mjs';
+import generateEnumMd from './generate-enum-md.mjs';
+import generateInterfaceMd from './generate-interface-md.mjs';
 
 const generateMembersDocs = (children) => children ? `
 - **Members**
@@ -31,8 +11,13 @@ ${(children)
   .join('\n')}
 ` : '';
 
-const generateTSDocs = (docs) => `
-## ${docs.name}${docs.typeParameters ? getTypeParamString(docs.typeParameters) : ''}
+const generateTSDocs = (docs) => {
+  switch (docs.kindString) {
+    case 'Function': return generateFunctionMd(docs.signatures[0]); // There are currently no functions with multiple sigs
+    case 'Enumeration': return generateEnumMd(docs);
+    case 'Interface': return generateInterfaceMd(docs);
+    case 'Type alias': return generateTypeMd(docs);
+    default: return `
 
 ${docs.comment?.shortText || ''}
 
@@ -40,6 +25,8 @@ ${docs.comment?.shortText || ''}
 
 ${generateMembersDocs(docs.children)}
 `;
+  }
+}
 
 const generateChildren = (
   children = [],
@@ -47,7 +34,7 @@ const generateChildren = (
 ) => children.map((child) => {
   const componentDocs = components.find((c) => c.exportName === child.name);
   if (componentDocs) {
-    return generateComponentDoc(componentDocs);
+    return generateComponentMd(componentDocs);
   }
 
   return generateTSDocs(child);

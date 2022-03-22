@@ -3,17 +3,18 @@ import { ISbMainProps } from '@schlechtenburg/core';
 import getWrapper from './get-wrapper';
 
 /**
+ * Initializes the Schlechtenburg editor
  *
+ * @param el The element on which the editor schould be mounted
+ * @param props The Schlechtenburg props
+ *
+ * @returns A set of functions to interact with the live Schlechtenburg instance
+ *
+ * @See ISbMainProps
+ * @See SbMain
  */
 export const startSchlechtenburg = async (
-  /**
-   * The element on which the editor schould be mounted
-   */
   el:HTMLElement|string,
-
-  /**
-   * The schlechtenburg props
-   */
   props:ISbMainProps,
 ) => {
   const {
@@ -31,7 +32,6 @@ export const startSchlechtenburg = async (
   app.mount(el);
 
   return {
-    app,
     getBlock,
     setBlock,
     getMode,

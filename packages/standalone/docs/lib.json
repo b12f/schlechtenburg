@@ -15,7 +15,7 @@
       "sources": [
         {
           "fileName": "main.ts",
-          "line": 8,
+          "line": 13,
           "character": 13
         }
       ],
@@ -26,7 +26,10 @@
           "kind": 4096,
           "kindString": "Call signature",
           "flags": {},
-          "comment": {},
+          "comment": {
+            "shortText": "Initializes the Schlechtenburg editor",
+            "returns": "A set of functions to interact with the live Schlechtenburg instance\n"
+          },
           "parameters": [
             {
               "id": 3,
@@ -34,6 +37,9 @@
               "kind": 32768,
               "kindString": "Parameter",
               "flags": {},
+              "comment": {
+                "shortText": "The element on which the editor schould be mounted"
+              },
               "type": {
                 "type": "union",
                 "types": [
@@ -56,6 +62,9 @@
               "kind": 32768,
               "kindString": "Parameter",
               "flags": {},
+              "comment": {
+                "shortText": "The Schlechtenburg props\n"
+              },
               "type": {
                 "type": "reference",
                 "name": "ISbMainProps"
@@ -76,27 +85,6 @@
                   "children": [
                     {
                       "id": 6,
-                      "name": "app",
-                      "kind": 1024,
-                      "kindString": "Property",
-                      "flags": {},
-                      "type": {
-                        "type": "reference",
-                        "typeArguments": [
-                          {
-                            "type": "reference",
-                            "qualifiedName": "Element",
-                            "package": "typescript",
-                            "name": "Element"
-                          }
-                        ],
-                        "qualifiedName": "App",
-                        "package": "@vue/runtime-core",
-                        "name": "App"
-                      }
-                    },
-                    {
-                      "id": 7,
                       "name": "getBlock",
                       "kind": 1024,
                       "kindString": "Property",
@@ -104,14 +92,14 @@
                       "type": {
                         "type": "reflection",
                         "declaration": {
-                          "id": 8,
+                          "id": 7,
                           "name": "__type",
                           "kind": 65536,
                           "kindString": "Type literal",
                           "flags": {},
                           "signatures": [
                             {
-                              "id": 9,
+                              "id": 8,
                               "name": "__type",
                               "kind": 4096,
                               "kindString": "Call signature",
@@ -141,7 +129,7 @@
                       }
                     },
                     {
-                      "id": 14,
+                      "id": 13,
                       "name": "getMode",
                       "kind": 1024,
                       "kindString": "Property",
@@ -149,14 +137,14 @@
                       "type": {
                         "type": "reflection",
                         "declaration": {
-                          "id": 15,
+                          "id": 14,
                           "name": "__type",
                           "kind": 65536,
                           "kindString": "Type literal",
                           "flags": {},
                           "signatures": [
                             {
-                              "id": 16,
+                              "id": 15,
                               "name": "__type",
                               "kind": 4096,
                               "kindString": "Call signature",
@@ -171,7 +159,7 @@
                       }
                     },
                     {
-                      "id": 10,
+                      "id": 9,
                       "name": "setBlock",
                       "kind": 1024,
                       "kindString": "Property",
@@ -179,21 +167,21 @@
                       "type": {
                         "type": "reflection",
                         "declaration": {
-                          "id": 11,
+                          "id": 10,
                           "name": "__type",
                           "kind": 65536,
                           "kindString": "Type literal",
                           "flags": {},
                           "signatures": [
                             {
-                              "id": 12,
+                              "id": 11,
                               "name": "__type",
                               "kind": 4096,
                               "kindString": "Call signature",
                               "flags": {},
                               "parameters": [
                                 {
-                                  "id": 13,
+                                  "id": 12,
                                   "name": "block",
                                   "kind": 32768,
                                   "kindString": "Parameter",
@@ -220,7 +208,7 @@
                       }
                     },
                     {
-                      "id": 17,
+                      "id": 16,
                       "name": "setMode",
                       "kind": 1024,
                       "kindString": "Property",
@@ -228,21 +216,21 @@
                       "type": {
                         "type": "reflection",
                         "declaration": {
-                          "id": 18,
+                          "id": 17,
                           "name": "__type",
                           "kind": 65536,
                           "kindString": "Type literal",
                           "flags": {},
                           "signatures": [
                             {
-                              "id": 19,
+                              "id": 18,
                               "name": "__type",
                               "kind": 4096,
                               "kindString": "Call signature",
                               "flags": {},
                               "parameters": [
                                 {
-                                  "id": 20,
+                                  "id": 19,
                                   "name": "mode",
                                   "kind": 32768,
                                   "kindString": "Parameter",
@@ -269,10 +257,9 @@
                       "kind": 1024,
                       "children": [
                         6,
-                        7,
-                        14,
-                        10,
-                        17
+                        13,
+                        9,
+                        16
                       ]
                     }
                   ]

@@ -3,12 +3,13 @@
   "version": "0.0.0",
   "license": "GPL-3.0-or-later",
   "scripts": {
-    "docs:dev": "lerna run --parallel --stream dev",
-    "docs:build": "lerna run ts-to-json:build && lerna run json-to-md:build && lerna run --scope @schlechtenburg/docs build",
+    "docs:build": "npx typedoc --out ./docs/api --entryPointStrategy packages --readme none packages/core packages/heading packages/standalone packages/paragraph packages/layout packages/image",
     "typecheck": "lerna run --stream typecheck"
   },
   "devDependencies": {
-    "lerna": "^3.22.1"
+    "lerna": "^3.22.1",
+    "typedoc": "^0.22.13",
+    "typescript": "^4.6.2"
   },
   "dependencies": {
     "lodash-es": "^4.17.21"

@@ -24,9 +24,6 @@
   "scripts": {
     "dev": "npm run json-to-md:watch",
     "typecheck": "vuedx-typecheck --no-pretty ./lib",
-    "ts-to-json:build": "ts-to-json",
-    "json-to-md:build": "json-to-md build",
-    "json-to-md:watch": "json-to-md watch",
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "peerDependencies": {
@@ -37,7 +34,6 @@
     "@schlechtenburg/paragraph": "^0.0.0"
   },
   "devDependencies": {
-    "@schlechtenburg/docgen": "^0.0.0",
     "@vuedx/typecheck": "^0.6.3",
     "@vuedx/typescript-plugin-vue": "^0.6.3",
     "vue": "^3.2.31"

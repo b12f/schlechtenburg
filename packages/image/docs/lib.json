@@ -7,14 +7,14 @@
   "originalName": "",
   "children": [
     {
-      "id": 50,
+      "id": 63,
       "name": "IImageData",
       "kind": 256,
       "kindString": "Interface",
       "flags": {},
       "children": [
         {
-          "id": 52,
+          "id": 65,
           "name": "alt",
           "kind": 1024,
           "kindString": "Property",
@@ -32,7 +32,7 @@
           }
         },
         {
-          "id": 53,
+          "id": 66,
           "name": "description",
           "kind": 1024,
           "kindString": "Property",
@@ -56,7 +56,7 @@
           }
         },
         {
-          "id": 51,
+          "id": 64,
           "name": "src",
           "kind": 1024,
           "kindString": "Property",
@@ -79,9 +79,9 @@
           "title": "Properties",
           "kind": 1024,
           "children": [
-            52,
-            53,
-            51
+            65,
+            66,
+            64
           ]
         }
       ],
@@ -108,302 +108,6 @@
           "kindString": "Type literal",
           "flags": {},
           "children": [
-            {
-              "id": 33,
-              "name": "display",
-              "kind": 1024,
-              "kindString": "Property",
-              "flags": {},
-              "type": {
-                "type": "reference",
-                "typeArguments": [
-                  {
-                    "type": "reflection",
-                    "declaration": {
-                      "id": 34,
-                      "name": "__type",
-                      "kind": 65536,
-                      "kindString": "Type literal",
-                      "flags": {},
-                      "children": [
-                        {
-                          "id": 35,
-                          "name": "data",
-                          "kind": 1024,
-                          "kindString": "Property",
-                          "flags": {},
-                          "type": {
-                            "type": "reflection",
-                            "declaration": {
-                              "id": 36,
-                              "name": "__type",
-                              "kind": 65536,
-                              "kindString": "Type literal",
-                              "flags": {},
-                              "children": [
-                                {
-                                  "id": 38,
-                                  "name": "default",
-                                  "kind": 1024,
-                                  "kindString": "Property",
-                                  "flags": {},
-                                  "type": {
-                                    "type": "reflection",
-                                    "declaration": {
-                                      "id": 39,
-                                      "name": "__type",
-                                      "kind": 65536,
-                                      "kindString": "Type literal",
-                                      "flags": {},
-                                      "signatures": [
-                                        {
-                                          "id": 40,
-                                          "name": "__type",
-                                          "kind": 4096,
-                                          "kindString": "Call signature",
-                                          "flags": {},
-                                          "type": {
-                                            "type": "reference",
-                                            "id": 50,
-                                            "name": "IImageData"
-                                          }
-                                        }
-                                      ]
-                                    }
-                                  },
-                                  "defaultValue": "getDefaultData"
-                                },
-                                {
-                                  "id": 37,
-                                  "name": "type",
-                                  "kind": 1024,
-                                  "kindString": "Property",
-                                  "flags": {},
-                                  "type": {
-                                    "type": "reference",
-                                    "typeArguments": [
-                                      {
-                                        "type": "reference",
-                                        "id": 50,
-                                        "name": "IImageData"
-                                      }
-                                    ],
-                                    "qualifiedName": "PropType",
-                                    "package": "@vue/runtime-core",
-                                    "name": "PropType"
-                                  },
-                                  "defaultValue": "..."
-                                }
-                              ],
-                              "groups": [
-                                {
-                                  "title": "Properties",
-                                  "kind": 1024,
-                                  "children": [
-                                    38,
-                                    37
-                                  ]
-                                }
-                              ]
-                            }
-                          },
-                          "defaultValue": "..."
-                        }
-                      ],
-                      "groups": [
-                        {
-                          "title": "Properties",
-                          "kind": 1024,
-                          "children": [
-                            35
-                          ]
-                        }
-                      ]
-                    }
-                  },
-                  {
-                    "type": "reflection",
-                    "declaration": {
-                      "id": 41,
-                      "name": "__type",
-                      "kind": 65536,
-                      "kindString": "Type literal",
-                      "flags": {},
-                      "signatures": [
-                        {
-                          "id": 42,
-                          "name": "__type",
-                          "kind": 4096,
-                          "kindString": "Call signature",
-                          "flags": {},
-                          "type": {
-                            "type": "reference",
-                            "qualifiedName": "global.JSX.Element",
-                            "package": "@vue/runtime-dom",
-                            "name": "Element"
-                          }
-                        }
-                      ]
-                    }
-                  },
-                  {
-                    "type": "intrinsic",
-                    "name": "unknown"
-                  },
-                  {
-                    "type": "reflection",
-                    "declaration": {
-                      "id": 43,
-                      "name": "__type",
-                      "kind": 65536,
-                      "kindString": "Type literal",
-                      "flags": {}
-                    }
-                  },
-                  {
-                    "type": "reflection",
-                    "declaration": {
-                      "id": 44,
-                      "name": "__type",
-                      "kind": 65536,
-                      "kindString": "Type literal",
-                      "flags": {}
-                    }
-                  },
-                  {
-                    "type": "reference",
-                    "qualifiedName": "ComponentOptionsMixin",
-                    "package": "@vue/runtime-core",
-                    "name": "ComponentOptionsMixin"
-                  },
-                  {
-                    "type": "reference",
-                    "qualifiedName": "ComponentOptionsMixin",
-                    "package": "@vue/runtime-core",
-                    "name": "ComponentOptionsMixin"
-                  },
-                  {
-                    "type": "reference",
-                    "typeArguments": [
-                      {
-                        "type": "intrinsic",
-                        "name": "string"
-                      },
-                      {
-                        "type": "intrinsic",
-                        "name": "any"
-                      }
-                    ],
-                    "qualifiedName": "Record",
-                    "package": "typescript",
-                    "name": "Record"
-                  },
-                  {
-                    "type": "intrinsic",
-                    "name": "string"
-                  },
-                  {
-                    "type": "reference",
-                    "qualifiedName": "PublicProps",
-                    "package": "@vue/runtime-core",
-                    "name": "PublicProps"
-                  },
-                  {
-                    "type": "reference",
-                    "typeArguments": [
-                      {
-                        "type": "intersection",
-                        "types": [
-                          {
-                            "type": "reflection",
-                            "declaration": {
-                              "id": 45,
-                              "name": "__type",
-                              "kind": 65536,
-                              "kindString": "Type literal",
-                              "flags": {},
-                              "children": [
-                                {
-                                  "id": 46,
-                                  "name": "data",
-                                  "kind": 1024,
-                                  "kindString": "Property",
-                                  "flags": {},
-                                  "type": {
-                                    "type": "reference",
-                                    "id": 50,
-                                    "name": "IImageData"
-                                  }
-                                }
-                              ],
-                              "groups": [
-                                {
-                                  "title": "Properties",
-                                  "kind": 1024,
-                                  "children": [
-                                    46
-                                  ]
-                                }
-                              ]
-                            }
-                          },
-                          {
-                            "type": "reflection",
-                            "declaration": {
-                              "id": 47,
-                              "name": "__type",
-                              "kind": 65536,
-                              "kindString": "Type literal",
-                              "flags": {}
-                            }
-                          }
-                        ]
-                      }
-                    ],
-                    "qualifiedName": "Readonly",
-                    "package": "typescript",
-                    "name": "Readonly"
-                  },
-                  {
-                    "type": "reflection",
-                    "declaration": {
-                      "id": 48,
-                      "name": "__type",
-                      "kind": 65536,
-                      "kindString": "Type literal",
-                      "flags": {},
-                      "children": [
-                        {
-                          "id": 49,
-                          "name": "data",
-                          "kind": 1024,
-                          "kindString": "Property",
-                          "flags": {},
-                          "type": {
-                            "type": "reference",
-                            "id": 50,
-                            "name": "IImageData"
-                          }
-                        }
-                      ],
-                      "groups": [
-                        {
-                          "title": "Properties",
-                          "kind": 1024,
-                          "children": [
-                            49
-                          ]
-                        }
-                      ]
-                    }
-                  }
-                ],
-                "qualifiedName": "DefineComponent",
-                "package": "@vue/runtime-core",
-                "name": "DefineComponent"
-              },
-              "defaultValue": "..."
-            },
             {
               "id": 8,
               "name": "edit",
@@ -460,7 +164,7 @@
                                           "flags": {},
                                           "type": {
                                             "type": "reference",
-                                            "id": 50,
+                                            "id": 63,
                                             "name": "IImageData"
                                           }
                                         }
@@ -480,7 +184,7 @@
                                     "typeArguments": [
                                       {
                                         "type": "reference",
-                                        "id": 50,
+                                        "id": 63,
                                         "name": "IImageData"
                                       }
                                     ],
@@ -565,7 +269,7 @@
                                         "typeArguments": [
                                           {
                                             "type": "reference",
-                                            "id": 50,
+                                            "id": 63,
                                             "name": "IImageData"
                                           }
                                         ],
@@ -697,8 +401,8 @@
                     "type": "reference",
                     "typeArguments": [
                       {
-                        "type": "intersection",
-                        "types": [
+                        "type": "reference",
+                        "typeArguments": [
                           {
                             "type": "reflection",
                             "declaration": {
@@ -709,16 +413,87 @@
                               "flags": {},
                               "children": [
                                 {
-                                  "id": 28,
+                                  "id": 33,
                                   "name": "data",
                                   "kind": 1024,
                                   "kindString": "Property",
                                   "flags": {},
                                   "type": {
-                                    "type": "reference",
-                                    "id": 50,
-                                    "name": "IImageData"
-                                  }
+                                    "type": "reflection",
+                                    "declaration": {
+                                      "id": 34,
+                                      "name": "__type",
+                                      "kind": 65536,
+                                      "kindString": "Type literal",
+                                      "flags": {},
+                                      "children": [
+                                        {
+                                          "id": 36,
+                                          "name": "default",
+                                          "kind": 1024,
+                                          "kindString": "Property",
+                                          "flags": {},
+                                          "type": {
+                                            "type": "reflection",
+                                            "declaration": {
+                                              "id": 37,
+                                              "name": "__type",
+                                              "kind": 65536,
+                                              "kindString": "Type literal",
+                                              "flags": {},
+                                              "signatures": [
+                                                {
+                                                  "id": 38,
+                                                  "name": "__type",
+                                                  "kind": 4096,
+                                                  "kindString": "Call signature",
+                                                  "flags": {},
+                                                  "type": {
+                                                    "type": "reference",
+                                                    "id": 63,
+                                                    "name": "IImageData"
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "defaultValue": "getDefaultData"
+                                        },
+                                        {
+                                          "id": 35,
+                                          "name": "type",
+                                          "kind": 1024,
+                                          "kindString": "Property",
+                                          "flags": {},
+                                          "type": {
+                                            "type": "reference",
+                                            "typeArguments": [
+                                              {
+                                                "type": "reference",
+                                                "id": 63,
+                                                "name": "IImageData"
+                                              }
+                                            ],
+                                            "qualifiedName": "PropType",
+                                            "package": "@vue/runtime-core",
+                                            "name": "PropType"
+                                          },
+                                          "defaultValue": "..."
+                                        }
+                                      ],
+                                      "groups": [
+                                        {
+                                          "title": "Properties",
+                                          "kind": 1024,
+                                          "children": [
+                                            36,
+                                            35
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "defaultValue": "..."
                                 },
                                 {
                                   "id": 27,
@@ -727,16 +502,86 @@
                                   "kindString": "Property",
                                   "flags": {},
                                   "type": {
-                                    "type": "reference",
-                                    "typeArguments": [
-                                      {
-                                        "type": "reference",
-                                        "id": 50,
-                                        "name": "IImageData"
-                                      }
-                                    ],
-                                    "name": "OnUpdateSelfCb"
-                                  }
+                                    "type": "reflection",
+                                    "declaration": {
+                                      "id": 28,
+                                      "name": "__type",
+                                      "kind": 65536,
+                                      "kindString": "Type literal",
+                                      "flags": {},
+                                      "children": [
+                                        {
+                                          "id": 30,
+                                          "name": "default",
+                                          "kind": 1024,
+                                          "kindString": "Property",
+                                          "flags": {},
+                                          "type": {
+                                            "type": "reflection",
+                                            "declaration": {
+                                              "id": 31,
+                                              "name": "__type",
+                                              "kind": 65536,
+                                              "kindString": "Type literal",
+                                              "flags": {},
+                                              "signatures": [
+                                                {
+                                                  "id": 32,
+                                                  "name": "__type",
+                                                  "kind": 4096,
+                                                  "kindString": "Call signature",
+                                                  "flags": {},
+                                                  "type": {
+                                                    "type": "intrinsic",
+                                                    "name": "void"
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "defaultValue": "..."
+                                        },
+                                        {
+                                          "id": 29,
+                                          "name": "type",
+                                          "kind": 1024,
+                                          "kindString": "Property",
+                                          "flags": {},
+                                          "type": {
+                                            "type": "reference",
+                                            "typeArguments": [
+                                              {
+                                                "type": "reference",
+                                                "typeArguments": [
+                                                  {
+                                                    "type": "reference",
+                                                    "id": 63,
+                                                    "name": "IImageData"
+                                                  }
+                                                ],
+                                                "name": "OnUpdateSelfCb"
+                                              }
+                                            ],
+                                            "qualifiedName": "PropType",
+                                            "package": "@vue/runtime-core",
+                                            "name": "PropType"
+                                          },
+                                          "defaultValue": "..."
+                                        }
+                                      ],
+                                      "groups": [
+                                        {
+                                          "title": "Properties",
+                                          "kind": 1024,
+                                          "children": [
+                                            30,
+                                            29
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "defaultValue": "..."
                                 }
                               ],
                               "groups": [
@@ -744,24 +589,17 @@
                                   "title": "Properties",
                                   "kind": 1024,
                                   "children": [
-                                    28,
+                                    33,
                                     27
                                   ]
                                 }
                               ]
                             }
-                          },
-                          {
-                            "type": "reflection",
-                            "declaration": {
-                              "id": 29,
-                              "name": "__type",
-                              "kind": 65536,
-                              "kindString": "Type literal",
-                              "flags": {}
-                            }
                           }
-                        ]
+                        ],
+                        "qualifiedName": "ExtractPropTypes",
+                        "package": "@vue/runtime-core",
+                        "name": "ExtractPropTypes"
                       }
                     ],
                     "qualifiedName": "Readonly",
@@ -771,26 +609,26 @@
                   {
                     "type": "reflection",
                     "declaration": {
-                      "id": 30,
+                      "id": 39,
                       "name": "__type",
                       "kind": 65536,
                       "kindString": "Type literal",
                       "flags": {},
                       "children": [
                         {
-                          "id": 32,
+                          "id": 41,
                           "name": "data",
                           "kind": 1024,
                           "kindString": "Property",
                           "flags": {},
                           "type": {
                             "type": "reference",
-                            "id": 50,
+                            "id": 63,
                             "name": "IImageData"
                           }
                         },
                         {
-                          "id": 31,
+                          "id": 40,
                           "name": "onUpdate",
                           "kind": 1024,
                           "kindString": "Property",
@@ -800,7 +638,7 @@
                             "typeArguments": [
                               {
                                 "type": "reference",
-                                "id": 50,
+                                "id": 63,
                                 "name": "IImageData"
                               }
                             ],
@@ -813,8 +651,8 @@
                           "title": "Properties",
                           "kind": 1024,
                           "children": [
-                            32,
-                            31
+                            41,
+                            40
                           ]
                         }
                       ]
@@ -850,7 +688,7 @@
                       "flags": {},
                       "type": {
                         "type": "reference",
-                        "id": 50,
+                        "id": 63,
                         "name": "IImageData"
                       }
                     }
@@ -868,6 +706,366 @@
                 "type": "intrinsic",
                 "name": "string"
               }
+            },
+            {
+              "id": 42,
+              "name": "view",
+              "kind": 1024,
+              "kindString": "Property",
+              "flags": {},
+              "type": {
+                "type": "reference",
+                "typeArguments": [
+                  {
+                    "type": "reflection",
+                    "declaration": {
+                      "id": 43,
+                      "name": "__type",
+                      "kind": 65536,
+                      "kindString": "Type literal",
+                      "flags": {},
+                      "children": [
+                        {
+                          "id": 44,
+                          "name": "data",
+                          "kind": 1024,
+                          "kindString": "Property",
+                          "flags": {},
+                          "type": {
+                            "type": "reflection",
+                            "declaration": {
+                              "id": 45,
+                              "name": "__type",
+                              "kind": 65536,
+                              "kindString": "Type literal",
+                              "flags": {},
+                              "children": [
+                                {
+                                  "id": 47,
+                                  "name": "default",
+                                  "kind": 1024,
+                                  "kindString": "Property",
+                                  "flags": {},
+                                  "type": {
+                                    "type": "reflection",
+                                    "declaration": {
+                                      "id": 48,
+                                      "name": "__type",
+                                      "kind": 65536,
+                                      "kindString": "Type literal",
+                                      "flags": {},
+                                      "signatures": [
+                                        {
+                                          "id": 49,
+                                          "name": "__type",
+                                          "kind": 4096,
+                                          "kindString": "Call signature",
+                                          "flags": {},
+                                          "type": {
+                                            "type": "reference",
+                                            "id": 63,
+                                            "name": "IImageData"
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "defaultValue": "getDefaultData"
+                                },
+                                {
+                                  "id": 46,
+                                  "name": "type",
+                                  "kind": 1024,
+                                  "kindString": "Property",
+                                  "flags": {},
+                                  "type": {
+                                    "type": "reference",
+                                    "typeArguments": [
+                                      {
+                                        "type": "reference",
+                                        "id": 63,
+                                        "name": "IImageData"
+                                      }
+                                    ],
+                                    "qualifiedName": "PropType",
+                                    "package": "@vue/runtime-core",
+                                    "name": "PropType"
+                                  },
+                                  "defaultValue": "..."
+                                }
+                              ],
+                              "groups": [
+                                {
+                                  "title": "Properties",
+                                  "kind": 1024,
+                                  "children": [
+                                    47,
+                                    46
+                                  ]
+                                }
+                              ]
+                            }
+                          },
+                          "defaultValue": "..."
+                        }
+                      ],
+                      "groups": [
+                        {
+                          "title": "Properties",
+                          "kind": 1024,
+                          "children": [
+                            44
+                          ]
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "type": "reflection",
+                    "declaration": {
+                      "id": 50,
+                      "name": "__type",
+                      "kind": 65536,
+                      "kindString": "Type literal",
+                      "flags": {},
+                      "signatures": [
+                        {
+                          "id": 51,
+                          "name": "__type",
+                          "kind": 4096,
+                          "kindString": "Call signature",
+                          "flags": {},
+                          "type": {
+                            "type": "reference",
+                            "qualifiedName": "global.JSX.Element",
+                            "package": "@vue/runtime-dom",
+                            "name": "Element"
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "type": "intrinsic",
+                    "name": "unknown"
+                  },
+                  {
+                    "type": "reflection",
+                    "declaration": {
+                      "id": 52,
+                      "name": "__type",
+                      "kind": 65536,
+                      "kindString": "Type literal",
+                      "flags": {}
+                    }
+                  },
+                  {
+                    "type": "reflection",
+                    "declaration": {
+                      "id": 53,
+                      "name": "__type",
+                      "kind": 65536,
+                      "kindString": "Type literal",
+                      "flags": {}
+                    }
+                  },
+                  {
+                    "type": "reference",
+                    "qualifiedName": "ComponentOptionsMixin",
+                    "package": "@vue/runtime-core",
+                    "name": "ComponentOptionsMixin"
+                  },
+                  {
+                    "type": "reference",
+                    "qualifiedName": "ComponentOptionsMixin",
+                    "package": "@vue/runtime-core",
+                    "name": "ComponentOptionsMixin"
+                  },
+                  {
+                    "type": "reference",
+                    "typeArguments": [
+                      {
+                        "type": "intrinsic",
+                        "name": "string"
+                      },
+                      {
+                        "type": "intrinsic",
+                        "name": "any"
+                      }
+                    ],
+                    "qualifiedName": "Record",
+                    "package": "typescript",
+                    "name": "Record"
+                  },
+                  {
+                    "type": "intrinsic",
+                    "name": "string"
+                  },
+                  {
+                    "type": "reference",
+                    "qualifiedName": "PublicProps",
+                    "package": "@vue/runtime-core",
+                    "name": "PublicProps"
+                  },
+                  {
+                    "type": "reference",
+                    "typeArguments": [
+                      {
+                        "type": "reference",
+                        "typeArguments": [
+                          {
+                            "type": "reflection",
+                            "declaration": {
+                              "id": 54,
+                              "name": "__type",
+                              "kind": 65536,
+                              "kindString": "Type literal",
+                              "flags": {},
+                              "children": [
+                                {
+                                  "id": 55,
+                                  "name": "data",
+                                  "kind": 1024,
+                                  "kindString": "Property",
+                                  "flags": {},
+                                  "type": {
+                                    "type": "reflection",
+                                    "declaration": {
+                                      "id": 56,
+                                      "name": "__type",
+                                      "kind": 65536,
+                                      "kindString": "Type literal",
+                                      "flags": {},
+                                      "children": [
+                                        {
+                                          "id": 58,
+                                          "name": "default",
+                                          "kind": 1024,
+                                          "kindString": "Property",
+                                          "flags": {},
+                                          "type": {
+                                            "type": "reflection",
+                                            "declaration": {
+                                              "id": 59,
+                                              "name": "__type",
+                                              "kind": 65536,
+                                              "kindString": "Type literal",
+                                              "flags": {},
+                                              "signatures": [
+                                                {
+                                                  "id": 60,
+                                                  "name": "__type",
+                                                  "kind": 4096,
+                                                  "kindString": "Call signature",
+                                                  "flags": {},
+                                                  "type": {
+                                                    "type": "reference",
+                                                    "id": 63,
+                                                    "name": "IImageData"
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "defaultValue": "getDefaultData"
+                                        },
+                                        {
+                                          "id": 57,
+                                          "name": "type",
+                                          "kind": 1024,
+                                          "kindString": "Property",
+                                          "flags": {},
+                                          "type": {
+                                            "type": "reference",
+                                            "typeArguments": [
+                                              {
+                                                "type": "reference",
+                                                "id": 63,
+                                                "name": "IImageData"
+                                              }
+                                            ],
+                                            "qualifiedName": "PropType",
+                                            "package": "@vue/runtime-core",
+                                            "name": "PropType"
+                                          },
+                                          "defaultValue": "..."
+                                        }
+                                      ],
+                                      "groups": [
+                                        {
+                                          "title": "Properties",
+                                          "kind": 1024,
+                                          "children": [
+                                            58,
+                                            57
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "defaultValue": "..."
+                                }
+                              ],
+                              "groups": [
+                                {
+                                  "title": "Properties",
+                                  "kind": 1024,
+                                  "children": [
+                                    55
+                                  ]
+                                }
+                              ]
+                            }
+                          }
+                        ],
+                        "qualifiedName": "ExtractPropTypes",
+                        "package": "@vue/runtime-core",
+                        "name": "ExtractPropTypes"
+                      }
+                    ],
+                    "qualifiedName": "Readonly",
+                    "package": "typescript",
+                    "name": "Readonly"
+                  },
+                  {
+                    "type": "reflection",
+                    "declaration": {
+                      "id": 61,
+                      "name": "__type",
+                      "kind": 65536,
+                      "kindString": "Type literal",
+                      "flags": {},
+                      "children": [
+                        {
+                          "id": 62,
+                          "name": "data",
+                          "kind": 1024,
+                          "kindString": "Property",
+                          "flags": {},
+                          "type": {
+                            "type": "reference",
+                            "id": 63,
+                            "name": "IImageData"
+                          }
+                        }
+                      ],
+                      "groups": [
+                        {
+                          "title": "Properties",
+                          "kind": 1024,
+                          "children": [
+                            62
+                          ]
+                        }
+                      ]
+                    }
+                  }
+                ],
+                "qualifiedName": "DefineComponent",
+                "package": "@vue/runtime-core",
+                "name": "DefineComponent"
+              },
+              "defaultValue": "..."
             }
           ],
           "groups": [
@@ -875,10 +1073,10 @@
               "title": "Properties",
               "kind": 1024,
               "children": [
-                33,
                 8,
                 5,
-                4
+                4,
+                42
               ]
             }
           ]
@@ -907,7 +1105,7 @@
       "defaultValue": "'sb-image'"
     },
     {
-      "id": 54,
+      "id": 67,
       "name": "getDefaultData",
       "kind": 64,
       "kindString": "Function",
@@ -921,14 +1119,14 @@
       ],
       "signatures": [
         {
-          "id": 55,
+          "id": 68,
           "name": "getDefaultData",
           "kind": 4096,
           "kindString": "Call signature",
           "flags": {},
           "type": {
             "type": "reference",
-            "id": 50,
+            "id": 63,
             "name": "IImageData"
           }
         }
@@ -940,7 +1138,7 @@
       "title": "Interfaces",
       "kind": 256,
       "children": [
-        50
+        63
       ]
     },
     {
@@ -961,7 +1159,7 @@
       "title": "Functions",
       "kind": 64,
       "children": [
-        54
+        67
       ]
     }
   ],

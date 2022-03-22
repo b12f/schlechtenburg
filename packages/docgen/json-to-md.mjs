@@ -27,6 +27,7 @@ const TS_DOCS_FILE_PATH = join(PKG_DIR, 'docs', 'lib.json');
   const apiDocsDir = resolve(PKG_DIR, '..', `docs/lib/api/${pkgSpace}`);
 
   const readTransFormAndWriteOut = async () => {
+    console.log(`Got update for ${pkgName}`);
     const components = JSON.parse(await readFile(COMPONENT_DOCS_FILE_PATH));
     const lib = JSON.parse(await readFile(TS_DOCS_FILE_PATH));
 
@@ -44,7 +45,6 @@ const TS_DOCS_FILE_PATH = join(PKG_DIR, 'docs', 'lib.json');
       const componentWatcher = watch(COMPONENT_DOCS_FILE_PATH);
       const libWatcher = watch(TS_DOCS_FILE_PATH);
       for await (const event of combine([componentWatcher, libWatcher])) {
-        console.log(`Got update for ${pkgName}`);
         debounce(readTransFormAndWriteOut, 500);
       }
       return;

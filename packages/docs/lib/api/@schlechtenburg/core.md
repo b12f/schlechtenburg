@@ -2,7 +2,7 @@
 
 ## SbMode
 
-
+The mode the Schlechtenburg editor is currently in
 
 - **Type**
   ```
@@ -10,13 +10,13 @@
   ```
 
 - **Members**
-   - `Display`: `undefined`
-   - `Edit`: `undefined`
+   - **Edit**: `undefined`
+   - **View**: `undefined`
 
 ## IBlockData&lt;T&gt;
 
 Schlechtenburg inputs and outputs a plain JS Object that can be JSON stringified. This is the
-interface type for that data structure. <T> will be the data type of the specific block being
+interface type for that data structure. `T` will be the data type of the specific block being
 
 - **Type**
   ```
@@ -24,9 +24,9 @@ interface type for that data structure. <T> will be the data type of the specifi
   ```
 
 - **Members**
-   - `data`: `T`
-   - `id`: `string`
-   - `name`: `string`
+   - **data**: `T`
+   - **id**: `string`
+   - **name**: `string`
 
 ## IBlockDefinition&lt;T&gt;
 
@@ -38,11 +38,11 @@ Any Block that you create
   ```
 
 - **Members**
-   - `display`: `Component`
-   - `edit`: `Component`
-   - `getDefaultData`: `T`
-   - `icon`: `string`
-   - `name`: `string`
+   - **edit**: `Component`
+   - **getDefaultData**: `T`
+   - **icon**: `string`
+   - **name**: `string`
+   - **view**: `Component`
 
 ## IBlockLibrary
 
@@ -66,14 +66,29 @@ Any Block that you create
   ```
 
 - **Members**
-   - `blockId`: `string`
-   - `data`: `T`
-   - `onActivateNext`: `OnActivateNextCb`
-   - `onActivatePrevious`: `OnActivatePreviousCb`
-   - `onAppendBlock`: `OnAppendBlockCb`
-   - `onPrependBlock`: `OnPrependBlockCb`
-   - `onRemoveSelf`: `OnRemoveSelfCb`
-   - `onUpdate`: `OnUpdateSelfCb`
+   - **blockId**: `string`
+   - **data**: `T`
+   - **onActivateNext**: `OnActivateNextCb`
+   - **onActivatePrevious**: `OnActivatePreviousCb`
+   - **onAppendBlock**: `OnAppendBlockCb`
+   - **onPrependBlock**: `OnPrependBlockCb`
+   - **onRemoveSelf**: `OnRemoveSelfCb`
+   - **onUpdate**: `OnUpdateSelfCb`
+
+## ISbMainProps
+
+
+
+- **Type**
+  ```
+    Interface
+  ```
+
+- **Members**
+   - **availableBlocks**: `undefined`
+   - **block**: `IBlockData`
+   - **mode**: `SbMode`
+   - **onUpdate**: `OnUpdateBlockCb`
 
 ## ITreeNode
 
@@ -86,10 +101,10 @@ This is useful for e.g. the tree select component in the editor header.
   ```
 
 - **Members**
-   - `children`: `undefined`
-   - `icon`: `string`
-   - `id`: `string`
-   - `name`: `string`
+   - **children**: `undefined`
+   - **icon**: `string`
+   - **id**: `string`
+   - **name**: `string`
 
 ## OnActivateNextCb
 
@@ -170,18 +185,6 @@ This is useful for e.g. the tree select component in the editor header.
 - **Type**
   ```
     Type alias
-  ```
-
-- **Members**
-
-
-## Mode
-
-
-
-- **Type**
-  ```
-    Variable
   ```
 
 - **Members**
@@ -574,6 +577,18 @@ Toolbar in the schlechtenburg theme
 
 
 ## SymEditorDimensions
+
+
+
+- **Type**
+  ```
+    Variable
+  ```
+
+- **Members**
+
+
+## SymMode
 
 
 

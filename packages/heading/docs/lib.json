@@ -7,14 +7,14 @@
   "originalName": "",
   "children": [
     {
-      "id": 90,
+      "id": 126,
       "name": "IHeadingData",
       "kind": 256,
       "kindString": "Interface",
       "flags": {},
       "children": [
         {
-          "id": 92,
+          "id": 128,
           "name": "align",
           "kind": 1024,
           "kindString": "Property",
@@ -32,7 +32,7 @@
           }
         },
         {
-          "id": 93,
+          "id": 129,
           "name": "level",
           "kind": 1024,
           "kindString": "Property",
@@ -50,7 +50,7 @@
           }
         },
         {
-          "id": 91,
+          "id": 127,
           "name": "value",
           "kind": 1024,
           "kindString": "Property",
@@ -73,9 +73,9 @@
           "title": "Properties",
           "kind": 1024,
           "children": [
-            92,
-            93,
-            91
+            128,
+            129,
+            127
           ]
         }
       ],
@@ -102,349 +102,6 @@
           "kindString": "Type literal",
           "flags": {},
           "children": [
-            {
-              "id": 70,
-              "name": "display",
-              "kind": 1024,
-              "kindString": "Property",
-              "flags": {},
-              "type": {
-                "type": "reference",
-                "typeArguments": [
-                  {
-                    "type": "reflection",
-                    "declaration": {
-                      "id": 71,
-                      "name": "__type",
-                      "kind": 65536,
-                      "kindString": "Type literal",
-                      "flags": {},
-                      "children": [
-                        {
-                          "id": 72,
-                          "name": "data",
-                          "kind": 1024,
-                          "kindString": "Property",
-                          "flags": {},
-                          "type": {
-                            "type": "reflection",
-                            "declaration": {
-                              "id": 73,
-                              "name": "__type",
-                              "kind": 65536,
-                              "kindString": "Type literal",
-                              "flags": {},
-                              "children": [
-                                {
-                                  "id": 75,
-                                  "name": "default",
-                                  "kind": 1024,
-                                  "kindString": "Property",
-                                  "flags": {},
-                                  "type": {
-                                    "type": "reflection",
-                                    "declaration": {
-                                      "id": 76,
-                                      "name": "__type",
-                                      "kind": 65536,
-                                      "kindString": "Type literal",
-                                      "flags": {},
-                                      "signatures": [
-                                        {
-                                          "id": 77,
-                                          "name": "__type",
-                                          "kind": 4096,
-                                          "kindString": "Call signature",
-                                          "flags": {},
-                                          "type": {
-                                            "type": "reference",
-                                            "id": 90,
-                                            "name": "IHeadingData"
-                                          }
-                                        }
-                                      ]
-                                    }
-                                  },
-                                  "defaultValue": "getDefaultData"
-                                },
-                                {
-                                  "id": 74,
-                                  "name": "type",
-                                  "kind": 1024,
-                                  "kindString": "Property",
-                                  "flags": {},
-                                  "type": {
-                                    "type": "reference",
-                                    "typeArguments": [
-                                      {
-                                        "type": "reference",
-                                        "id": 90,
-                                        "name": "IHeadingData"
-                                      }
-                                    ],
-                                    "qualifiedName": "PropType",
-                                    "package": "@vue/runtime-core",
-                                    "name": "PropType"
-                                  },
-                                  "defaultValue": "..."
-                                }
-                              ],
-                              "groups": [
-                                {
-                                  "title": "Properties",
-                                  "kind": 1024,
-                                  "children": [
-                                    75,
-                                    74
-                                  ]
-                                }
-                              ]
-                            }
-                          },
-                          "defaultValue": "..."
-                        }
-                      ],
-                      "groups": [
-                        {
-                          "title": "Properties",
-                          "kind": 1024,
-                          "children": [
-                            72
-                          ]
-                        }
-                      ]
-                    }
-                  },
-                  {
-                    "type": "reflection",
-                    "declaration": {
-                      "id": 78,
-                      "name": "__type",
-                      "kind": 65536,
-                      "kindString": "Type literal",
-                      "flags": {},
-                      "signatures": [
-                        {
-                          "id": 79,
-                          "name": "__type",
-                          "kind": 4096,
-                          "kindString": "Call signature",
-                          "flags": {},
-                          "type": {
-                            "type": "reference",
-                            "typeArguments": [
-                              {
-                                "type": "reference",
-                                "qualifiedName": "RendererNode",
-                                "package": "@vue/runtime-core",
-                                "name": "RendererNode"
-                              },
-                              {
-                                "type": "reference",
-                                "qualifiedName": "RendererElement",
-                                "package": "@vue/runtime-core",
-                                "name": "RendererElement"
-                              },
-                              {
-                                "type": "reflection",
-                                "declaration": {
-                                  "id": 80,
-                                  "name": "__type",
-                                  "kind": 65536,
-                                  "kindString": "Type literal",
-                                  "flags": {},
-                                  "indexSignature": {
-                                    "id": 81,
-                                    "name": "__index",
-                                    "kind": 8192,
-                                    "kindString": "Index signature",
-                                    "flags": {},
-                                    "parameters": [
-                                      {
-                                        "id": 82,
-                                        "name": "key",
-                                        "kind": 32768,
-                                        "flags": {},
-                                        "type": {
-                                          "type": "intrinsic",
-                                          "name": "string"
-                                        }
-                                      }
-                                    ],
-                                    "type": {
-                                      "type": "intrinsic",
-                                      "name": "any"
-                                    }
-                                  }
-                                }
-                              }
-                            ],
-                            "qualifiedName": "VNode",
-                            "package": "@vue/runtime-core",
-                            "name": "VNode"
-                          }
-                        }
-                      ]
-                    }
-                  },
-                  {
-                    "type": "intrinsic",
-                    "name": "unknown"
-                  },
-                  {
-                    "type": "reflection",
-                    "declaration": {
-                      "id": 83,
-                      "name": "__type",
-                      "kind": 65536,
-                      "kindString": "Type literal",
-                      "flags": {}
-                    }
-                  },
-                  {
-                    "type": "reflection",
-                    "declaration": {
-                      "id": 84,
-                      "name": "__type",
-                      "kind": 65536,
-                      "kindString": "Type literal",
-                      "flags": {}
-                    }
-                  },
-                  {
-                    "type": "reference",
-                    "qualifiedName": "ComponentOptionsMixin",
-                    "package": "@vue/runtime-core",
-                    "name": "ComponentOptionsMixin"
-                  },
-                  {
-                    "type": "reference",
-                    "qualifiedName": "ComponentOptionsMixin",
-                    "package": "@vue/runtime-core",
-                    "name": "ComponentOptionsMixin"
-                  },
-                  {
-                    "type": "reference",
-                    "typeArguments": [
-                      {
-                        "type": "intrinsic",
-                        "name": "string"
-                      },
-                      {
-                        "type": "intrinsic",
-                        "name": "any"
-                      }
-                    ],
-                    "qualifiedName": "Record",
-                    "package": "typescript",
-                    "name": "Record"
-                  },
-                  {
-                    "type": "intrinsic",
-                    "name": "string"
-                  },
-                  {
-                    "type": "reference",
-                    "qualifiedName": "PublicProps",
-                    "package": "@vue/runtime-core",
-                    "name": "PublicProps"
-                  },
-                  {
-                    "type": "reference",
-                    "typeArguments": [
-                      {
-                        "type": "intersection",
-                        "types": [
-                          {
-                            "type": "reflection",
-                            "declaration": {
-                              "id": 85,
-                              "name": "__type",
-                              "kind": 65536,
-                              "kindString": "Type literal",
-                              "flags": {},
-                              "children": [
-                                {
-                                  "id": 86,
-                                  "name": "data",
-                                  "kind": 1024,
-                                  "kindString": "Property",
-                                  "flags": {},
-                                  "type": {
-                                    "type": "reference",
-                                    "id": 90,
-                                    "name": "IHeadingData"
-                                  }
-                                }
-                              ],
-                              "groups": [
-                                {
-                                  "title": "Properties",
-                                  "kind": 1024,
-                                  "children": [
-                                    86
-                                  ]
-                                }
-                              ]
-                            }
-                          },
-                          {
-                            "type": "reflection",
-                            "declaration": {
-                              "id": 87,
-                              "name": "__type",
-                              "kind": 65536,
-                              "kindString": "Type literal",
-                              "flags": {}
-                            }
-                          }
-                        ]
-                      }
-                    ],
-                    "qualifiedName": "Readonly",
-                    "package": "typescript",
-                    "name": "Readonly"
-                  },
-                  {
-                    "type": "reflection",
-                    "declaration": {
-                      "id": 88,
-                      "name": "__type",
-                      "kind": 65536,
-                      "kindString": "Type literal",
-                      "flags": {},
-                      "children": [
-                        {
-                          "id": 89,
-                          "name": "data",
-                          "kind": 1024,
-                          "kindString": "Property",
-                          "flags": {},
-                          "type": {
-                            "type": "reference",
-                            "id": 90,
-                            "name": "IHeadingData"
-                          }
-                        }
-                      ],
-                      "groups": [
-                        {
-                          "title": "Properties",
-                          "kind": 1024,
-                          "children": [
-                            89
-                          ]
-                        }
-                      ]
-                    }
-                  }
-                ],
-                "qualifiedName": "DefineComponent",
-                "package": "@vue/runtime-core",
-                "name": "DefineComponent"
-              },
-              "defaultValue": "..."
-            },
             {
               "id": 8,
               "name": "edit",
@@ -557,7 +214,7 @@
                                           "flags": {},
                                           "type": {
                                             "type": "reference",
-                                            "id": 90,
+                                            "id": 126,
                                             "name": "IHeadingData"
                                           }
                                         }
@@ -577,7 +234,7 @@
                                     "typeArguments": [
                                       {
                                         "type": "reference",
-                                        "id": 90,
+                                        "id": 126,
                                         "name": "IHeadingData"
                                       }
                                     ],
@@ -986,7 +643,7 @@
                                         "typeArguments": [
                                           {
                                             "type": "reference",
-                                            "id": 90,
+                                            "id": 126,
                                             "name": "IHeadingData"
                                           }
                                         ],
@@ -1123,8 +780,8 @@
                     "type": "reference",
                     "typeArguments": [
                       {
-                        "type": "intersection",
-                        "types": [
+                        "type": "reference",
+                        "typeArguments": [
                           {
                             "type": "reflection",
                             "declaration": {
@@ -1141,83 +798,549 @@
                                   "kindString": "Property",
                                   "flags": {},
                                   "type": {
-                                    "type": "intrinsic",
-                                    "name": "string"
-                                  }
+                                    "type": "reflection",
+                                    "declaration": {
+                                      "id": 56,
+                                      "name": "__type",
+                                      "kind": 65536,
+                                      "kindString": "Type literal",
+                                      "flags": {},
+                                      "children": [
+                                        {
+                                          "id": 58,
+                                          "name": "required",
+                                          "kind": 1024,
+                                          "kindString": "Property",
+                                          "flags": {},
+                                          "type": {
+                                            "type": "literal",
+                                            "value": true
+                                          },
+                                          "defaultValue": "true"
+                                        },
+                                        {
+                                          "id": 57,
+                                          "name": "type",
+                                          "kind": 1024,
+                                          "kindString": "Property",
+                                          "flags": {},
+                                          "type": {
+                                            "type": "reference",
+                                            "qualifiedName": "StringConstructor",
+                                            "package": "typescript",
+                                            "name": "StringConstructor"
+                                          },
+                                          "defaultValue": "String"
+                                        }
+                                      ],
+                                      "groups": [
+                                        {
+                                          "title": "Properties",
+                                          "kind": 1024,
+                                          "children": [
+                                            58,
+                                            57
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "defaultValue": "..."
                                 },
                                 {
-                                  "id": 56,
+                                  "id": 59,
                                   "name": "data",
                                   "kind": 1024,
                                   "kindString": "Property",
                                   "flags": {},
                                   "type": {
-                                    "type": "reference",
-                                    "id": 90,
-                                    "name": "IHeadingData"
-                                  }
+                                    "type": "reflection",
+                                    "declaration": {
+                                      "id": 60,
+                                      "name": "__type",
+                                      "kind": 65536,
+                                      "kindString": "Type literal",
+                                      "flags": {},
+                                      "children": [
+                                        {
+                                          "id": 62,
+                                          "name": "default",
+                                          "kind": 1024,
+                                          "kindString": "Property",
+                                          "flags": {},
+                                          "type": {
+                                            "type": "reflection",
+                                            "declaration": {
+                                              "id": 63,
+                                              "name": "__type",
+                                              "kind": 65536,
+                                              "kindString": "Type literal",
+                                              "flags": {},
+                                              "signatures": [
+                                                {
+                                                  "id": 64,
+                                                  "name": "__type",
+                                                  "kind": 4096,
+                                                  "kindString": "Call signature",
+                                                  "flags": {},
+                                                  "type": {
+                                                    "type": "reference",
+                                                    "id": 126,
+                                                    "name": "IHeadingData"
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "defaultValue": "getDefaultData"
+                                        },
+                                        {
+                                          "id": 61,
+                                          "name": "type",
+                                          "kind": 1024,
+                                          "kindString": "Property",
+                                          "flags": {},
+                                          "type": {
+                                            "type": "reference",
+                                            "typeArguments": [
+                                              {
+                                                "type": "reference",
+                                                "id": 126,
+                                                "name": "IHeadingData"
+                                              }
+                                            ],
+                                            "qualifiedName": "PropType",
+                                            "package": "@vue/runtime-core",
+                                            "name": "PropType"
+                                          },
+                                          "defaultValue": "..."
+                                        }
+                                      ],
+                                      "groups": [
+                                        {
+                                          "title": "Properties",
+                                          "kind": 1024,
+                                          "children": [
+                                            62,
+                                            61
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "defaultValue": "..."
                                 },
                                 {
-                                  "id": 60,
+                                  "id": 83,
                                   "name": "onActivateNext",
                                   "kind": 1024,
                                   "kindString": "Property",
                                   "flags": {},
                                   "type": {
-                                    "type": "reference",
-                                    "name": "OnActivateNextCb"
-                                  }
+                                    "type": "reflection",
+                                    "declaration": {
+                                      "id": 84,
+                                      "name": "__type",
+                                      "kind": 65536,
+                                      "kindString": "Type literal",
+                                      "flags": {},
+                                      "children": [
+                                        {
+                                          "id": 86,
+                                          "name": "default",
+                                          "kind": 1024,
+                                          "kindString": "Property",
+                                          "flags": {},
+                                          "type": {
+                                            "type": "reflection",
+                                            "declaration": {
+                                              "id": 87,
+                                              "name": "__type",
+                                              "kind": 65536,
+                                              "kindString": "Type literal",
+                                              "flags": {},
+                                              "signatures": [
+                                                {
+                                                  "id": 88,
+                                                  "name": "__type",
+                                                  "kind": 4096,
+                                                  "kindString": "Call signature",
+                                                  "flags": {},
+                                                  "type": {
+                                                    "type": "intrinsic",
+                                                    "name": "void"
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "defaultValue": "..."
+                                        },
+                                        {
+                                          "id": 85,
+                                          "name": "type",
+                                          "kind": 1024,
+                                          "kindString": "Property",
+                                          "flags": {},
+                                          "type": {
+                                            "type": "reference",
+                                            "typeArguments": [
+                                              {
+                                                "type": "reference",
+                                                "name": "OnActivateNextCb"
+                                              }
+                                            ],
+                                            "qualifiedName": "PropType",
+                                            "package": "@vue/runtime-core",
+                                            "name": "PropType"
+                                          },
+                                          "defaultValue": "..."
+                                        }
+                                      ],
+                                      "groups": [
+                                        {
+                                          "title": "Properties",
+                                          "kind": 1024,
+                                          "children": [
+                                            86,
+                                            85
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "defaultValue": "..."
                                 },
                                 {
-                                  "id": 61,
+                                  "id": 89,
                                   "name": "onActivatePrevious",
                                   "kind": 1024,
                                   "kindString": "Property",
                                   "flags": {},
                                   "type": {
-                                    "type": "reference",
-                                    "name": "OnActivatePreviousCb"
-                                  }
+                                    "type": "reflection",
+                                    "declaration": {
+                                      "id": 90,
+                                      "name": "__type",
+                                      "kind": 65536,
+                                      "kindString": "Type literal",
+                                      "flags": {},
+                                      "children": [
+                                        {
+                                          "id": 92,
+                                          "name": "default",
+                                          "kind": 1024,
+                                          "kindString": "Property",
+                                          "flags": {},
+                                          "type": {
+                                            "type": "reflection",
+                                            "declaration": {
+                                              "id": 93,
+                                              "name": "__type",
+                                              "kind": 65536,
+                                              "kindString": "Type literal",
+                                              "flags": {},
+                                              "signatures": [
+                                                {
+                                                  "id": 94,
+                                                  "name": "__type",
+                                                  "kind": 4096,
+                                                  "kindString": "Call signature",
+                                                  "flags": {},
+                                                  "type": {
+                                                    "type": "intrinsic",
+                                                    "name": "void"
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "defaultValue": "..."
+                                        },
+                                        {
+                                          "id": 91,
+                                          "name": "type",
+                                          "kind": 1024,
+                                          "kindString": "Property",
+                                          "flags": {},
+                                          "type": {
+                                            "type": "reference",
+                                            "typeArguments": [
+                                              {
+                                                "type": "reference",
+                                                "name": "OnActivatePreviousCb"
+                                              }
+                                            ],
+                                            "qualifiedName": "PropType",
+                                            "package": "@vue/runtime-core",
+                                            "name": "PropType"
+                                          },
+                                          "defaultValue": "..."
+                                        }
+                                      ],
+                                      "groups": [
+                                        {
+                                          "title": "Properties",
+                                          "kind": 1024,
+                                          "children": [
+                                            92,
+                                            91
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "defaultValue": "..."
                                 },
                                 {
-                                  "id": 58,
+                                  "id": 71,
                                   "name": "onAppendBlock",
                                   "kind": 1024,
                                   "kindString": "Property",
                                   "flags": {},
                                   "type": {
-                                    "type": "reference",
-                                    "name": "OnAppendBlockCb"
-                                  }
+                                    "type": "reflection",
+                                    "declaration": {
+                                      "id": 72,
+                                      "name": "__type",
+                                      "kind": 65536,
+                                      "kindString": "Type literal",
+                                      "flags": {},
+                                      "children": [
+                                        {
+                                          "id": 74,
+                                          "name": "default",
+                                          "kind": 1024,
+                                          "kindString": "Property",
+                                          "flags": {},
+                                          "type": {
+                                            "type": "reflection",
+                                            "declaration": {
+                                              "id": 75,
+                                              "name": "__type",
+                                              "kind": 65536,
+                                              "kindString": "Type literal",
+                                              "flags": {},
+                                              "signatures": [
+                                                {
+                                                  "id": 76,
+                                                  "name": "__type",
+                                                  "kind": 4096,
+                                                  "kindString": "Call signature",
+                                                  "flags": {},
+                                                  "type": {
+                                                    "type": "intrinsic",
+                                                    "name": "void"
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "defaultValue": "..."
+                                        },
+                                        {
+                                          "id": 73,
+                                          "name": "type",
+                                          "kind": 1024,
+                                          "kindString": "Property",
+                                          "flags": {},
+                                          "type": {
+                                            "type": "reference",
+                                            "typeArguments": [
+                                              {
+                                                "type": "reference",
+                                                "name": "OnAppendBlockCb"
+                                              }
+                                            ],
+                                            "qualifiedName": "PropType",
+                                            "package": "@vue/runtime-core",
+                                            "name": "PropType"
+                                          },
+                                          "defaultValue": "..."
+                                        }
+                                      ],
+                                      "groups": [
+                                        {
+                                          "title": "Properties",
+                                          "kind": 1024,
+                                          "children": [
+                                            74,
+                                            73
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "defaultValue": "..."
                                 },
                                 {
-                                  "id": 59,
+                                  "id": 77,
                                   "name": "onRemoveSelf",
                                   "kind": 1024,
                                   "kindString": "Property",
                                   "flags": {},
                                   "type": {
-                                    "type": "reference",
-                                    "name": "OnRemoveSelfCb"
-                                  }
+                                    "type": "reflection",
+                                    "declaration": {
+                                      "id": 78,
+                                      "name": "__type",
+                                      "kind": 65536,
+                                      "kindString": "Type literal",
+                                      "flags": {},
+                                      "children": [
+                                        {
+                                          "id": 80,
+                                          "name": "default",
+                                          "kind": 1024,
+                                          "kindString": "Property",
+                                          "flags": {},
+                                          "type": {
+                                            "type": "reflection",
+                                            "declaration": {
+                                              "id": 81,
+                                              "name": "__type",
+                                              "kind": 65536,
+                                              "kindString": "Type literal",
+                                              "flags": {},
+                                              "signatures": [
+                                                {
+                                                  "id": 82,
+                                                  "name": "__type",
+                                                  "kind": 4096,
+                                                  "kindString": "Call signature",
+                                                  "flags": {},
+                                                  "type": {
+                                                    "type": "intrinsic",
+                                                    "name": "void"
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "defaultValue": "..."
+                                        },
+                                        {
+                                          "id": 79,
+                                          "name": "type",
+                                          "kind": 1024,
+                                          "kindString": "Property",
+                                          "flags": {},
+                                          "type": {
+                                            "type": "reference",
+                                            "typeArguments": [
+                                              {
+                                                "type": "reference",
+                                                "name": "OnRemoveSelfCb"
+                                              }
+                                            ],
+                                            "qualifiedName": "PropType",
+                                            "package": "@vue/runtime-core",
+                                            "name": "PropType"
+                                          },
+                                          "defaultValue": "..."
+                                        }
+                                      ],
+                                      "groups": [
+                                        {
+                                          "title": "Properties",
+                                          "kind": 1024,
+                                          "children": [
+                                            80,
+                                            79
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "defaultValue": "..."
                                 },
                                 {
-                                  "id": 57,
+                                  "id": 65,
                                   "name": "onUpdate",
                                   "kind": 1024,
                                   "kindString": "Property",
                                   "flags": {},
                                   "type": {
-                                    "type": "reference",
-                                    "typeArguments": [
-                                      {
-                                        "type": "reference",
-                                        "id": 90,
-                                        "name": "IHeadingData"
-                                      }
-                                    ],
-                                    "name": "OnUpdateSelfCb"
-                                  }
+                                    "type": "reflection",
+                                    "declaration": {
+                                      "id": 66,
+                                      "name": "__type",
+                                      "kind": 65536,
+                                      "kindString": "Type literal",
+                                      "flags": {},
+                                      "children": [
+                                        {
+                                          "id": 68,
+                                          "name": "default",
+                                          "kind": 1024,
+                                          "kindString": "Property",
+                                          "flags": {},
+                                          "type": {
+                                            "type": "reflection",
+                                            "declaration": {
+                                              "id": 69,
+                                              "name": "__type",
+                                              "kind": 65536,
+                                              "kindString": "Type literal",
+                                              "flags": {},
+                                              "signatures": [
+                                                {
+                                                  "id": 70,
+                                                  "name": "__type",
+                                                  "kind": 4096,
+                                                  "kindString": "Call signature",
+                                                  "flags": {},
+                                                  "type": {
+                                                    "type": "intrinsic",
+                                                    "name": "void"
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "defaultValue": "..."
+                                        },
+                                        {
+                                          "id": 67,
+                                          "name": "type",
+                                          "kind": 1024,
+                                          "kindString": "Property",
+                                          "flags": {},
+                                          "type": {
+                                            "type": "reference",
+                                            "typeArguments": [
+                                              {
+                                                "type": "reference",
+                                                "typeArguments": [
+                                                  {
+                                                    "type": "reference",
+                                                    "id": 126,
+                                                    "name": "IHeadingData"
+                                                  }
+                                                ],
+                                                "name": "OnUpdateSelfCb"
+                                              }
+                                            ],
+                                            "qualifiedName": "PropType",
+                                            "package": "@vue/runtime-core",
+                                            "name": "PropType"
+                                          },
+                                          "defaultValue": "..."
+                                        }
+                                      ],
+                                      "groups": [
+                                        {
+                                          "title": "Properties",
+                                          "kind": 1024,
+                                          "children": [
+                                            68,
+                                            67
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "defaultValue": "..."
                                 }
                               ],
                               "groups": [
@@ -1226,28 +1349,21 @@
                                   "kind": 1024,
                                   "children": [
                                     55,
-                                    56,
-                                    60,
-                                    61,
-                                    58,
                                     59,
-                                    57
+                                    83,
+                                    89,
+                                    71,
+                                    77,
+                                    65
                                   ]
                                 }
                               ]
                             }
-                          },
-                          {
-                            "type": "reflection",
-                            "declaration": {
-                              "id": 62,
-                              "name": "__type",
-                              "kind": 65536,
-                              "kindString": "Type literal",
-                              "flags": {}
-                            }
                           }
-                        ]
+                        ],
+                        "qualifiedName": "ExtractPropTypes",
+                        "package": "@vue/runtime-core",
+                        "name": "ExtractPropTypes"
                       }
                     ],
                     "qualifiedName": "Readonly",
@@ -1257,26 +1373,26 @@
                   {
                     "type": "reflection",
                     "declaration": {
-                      "id": 63,
+                      "id": 95,
                       "name": "__type",
                       "kind": 65536,
                       "kindString": "Type literal",
                       "flags": {},
                       "children": [
                         {
-                          "id": 64,
+                          "id": 96,
                           "name": "data",
                           "kind": 1024,
                           "kindString": "Property",
                           "flags": {},
                           "type": {
                             "type": "reference",
-                            "id": 90,
+                            "id": 126,
                             "name": "IHeadingData"
                           }
                         },
                         {
-                          "id": 68,
+                          "id": 100,
                           "name": "onActivateNext",
                           "kind": 1024,
                           "kindString": "Property",
@@ -1287,7 +1403,7 @@
                           }
                         },
                         {
-                          "id": 69,
+                          "id": 101,
                           "name": "onActivatePrevious",
                           "kind": 1024,
                           "kindString": "Property",
@@ -1298,7 +1414,7 @@
                           }
                         },
                         {
-                          "id": 66,
+                          "id": 98,
                           "name": "onAppendBlock",
                           "kind": 1024,
                           "kindString": "Property",
@@ -1309,7 +1425,7 @@
                           }
                         },
                         {
-                          "id": 67,
+                          "id": 99,
                           "name": "onRemoveSelf",
                           "kind": 1024,
                           "kindString": "Property",
@@ -1320,7 +1436,7 @@
                           }
                         },
                         {
-                          "id": 65,
+                          "id": 97,
                           "name": "onUpdate",
                           "kind": 1024,
                           "kindString": "Property",
@@ -1330,7 +1446,7 @@
                             "typeArguments": [
                               {
                                 "type": "reference",
-                                "id": 90,
+                                "id": 126,
                                 "name": "IHeadingData"
                               }
                             ],
@@ -1343,12 +1459,12 @@
                           "title": "Properties",
                           "kind": 1024,
                           "children": [
-                            64,
-                            68,
-                            69,
-                            66,
-                            67,
-                            65
+                            96,
+                            100,
+                            101,
+                            98,
+                            99,
+                            97
                           ]
                         }
                       ]
@@ -1384,7 +1500,7 @@
                       "flags": {},
                       "type": {
                         "type": "reference",
-                        "id": 90,
+                        "id": 126,
                         "name": "IHeadingData"
                       }
                     }
@@ -1402,6 +1518,413 @@
                 "type": "intrinsic",
                 "name": "string"
               }
+            },
+            {
+              "id": 102,
+              "name": "view",
+              "kind": 1024,
+              "kindString": "Property",
+              "flags": {},
+              "type": {
+                "type": "reference",
+                "typeArguments": [
+                  {
+                    "type": "reflection",
+                    "declaration": {
+                      "id": 103,
+                      "name": "__type",
+                      "kind": 65536,
+                      "kindString": "Type literal",
+                      "flags": {},
+                      "children": [
+                        {
+                          "id": 104,
+                          "name": "data",
+                          "kind": 1024,
+                          "kindString": "Property",
+                          "flags": {},
+                          "type": {
+                            "type": "reflection",
+                            "declaration": {
+                              "id": 105,
+                              "name": "__type",
+                              "kind": 65536,
+                              "kindString": "Type literal",
+                              "flags": {},
+                              "children": [
+                                {
+                                  "id": 107,
+                                  "name": "default",
+                                  "kind": 1024,
+                                  "kindString": "Property",
+                                  "flags": {},
+                                  "type": {
+                                    "type": "reflection",
+                                    "declaration": {
+                                      "id": 108,
+                                      "name": "__type",
+                                      "kind": 65536,
+                                      "kindString": "Type literal",
+                                      "flags": {},
+                                      "signatures": [
+                                        {
+                                          "id": 109,
+                                          "name": "__type",
+                                          "kind": 4096,
+                                          "kindString": "Call signature",
+                                          "flags": {},
+                                          "type": {
+                                            "type": "reference",
+                                            "id": 126,
+                                            "name": "IHeadingData"
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "defaultValue": "getDefaultData"
+                                },
+                                {
+                                  "id": 106,
+                                  "name": "type",
+                                  "kind": 1024,
+                                  "kindString": "Property",
+                                  "flags": {},
+                                  "type": {
+                                    "type": "reference",
+                                    "typeArguments": [
+                                      {
+                                        "type": "reference",
+                                        "id": 126,
+                                        "name": "IHeadingData"
+                                      }
+                                    ],
+                                    "qualifiedName": "PropType",
+                                    "package": "@vue/runtime-core",
+                                    "name": "PropType"
+                                  },
+                                  "defaultValue": "..."
+                                }
+                              ],
+                              "groups": [
+                                {
+                                  "title": "Properties",
+                                  "kind": 1024,
+                                  "children": [
+                                    107,
+                                    106
+                                  ]
+                                }
+                              ]
+                            }
+                          },
+                          "defaultValue": "..."
+                        }
+                      ],
+                      "groups": [
+                        {
+                          "title": "Properties",
+                          "kind": 1024,
+                          "children": [
+                            104
+                          ]
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "type": "reflection",
+                    "declaration": {
+                      "id": 110,
+                      "name": "__type",
+                      "kind": 65536,
+                      "kindString": "Type literal",
+                      "flags": {},
+                      "signatures": [
+                        {
+                          "id": 111,
+                          "name": "__type",
+                          "kind": 4096,
+                          "kindString": "Call signature",
+                          "flags": {},
+                          "type": {
+                            "type": "reference",
+                            "typeArguments": [
+                              {
+                                "type": "reference",
+                                "qualifiedName": "RendererNode",
+                                "package": "@vue/runtime-core",
+                                "name": "RendererNode"
+                              },
+                              {
+                                "type": "reference",
+                                "qualifiedName": "RendererElement",
+                                "package": "@vue/runtime-core",
+                                "name": "RendererElement"
+                              },
+                              {
+                                "type": "reflection",
+                                "declaration": {
+                                  "id": 112,
+                                  "name": "__type",
+                                  "kind": 65536,
+                                  "kindString": "Type literal",
+                                  "flags": {},
+                                  "indexSignature": {
+                                    "id": 113,
+                                    "name": "__index",
+                                    "kind": 8192,
+                                    "kindString": "Index signature",
+                                    "flags": {},
+                                    "parameters": [
+                                      {
+                                        "id": 114,
+                                        "name": "key",
+                                        "kind": 32768,
+                                        "flags": {},
+                                        "type": {
+                                          "type": "intrinsic",
+                                          "name": "string"
+                                        }
+                                      }
+                                    ],
+                                    "type": {
+                                      "type": "intrinsic",
+                                      "name": "any"
+                                    }
+                                  }
+                                }
+                              }
+                            ],
+                            "qualifiedName": "VNode",
+                            "package": "@vue/runtime-core",
+                            "name": "VNode"
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "type": "intrinsic",
+                    "name": "unknown"
+                  },
+                  {
+                    "type": "reflection",
+                    "declaration": {
+                      "id": 115,
+                      "name": "__type",
+                      "kind": 65536,
+                      "kindString": "Type literal",
+                      "flags": {}
+                    }
+                  },
+                  {
+                    "type": "reflection",
+                    "declaration": {
+                      "id": 116,
+                      "name": "__type",
+                      "kind": 65536,
+                      "kindString": "Type literal",
+                      "flags": {}
+                    }
+                  },
+                  {
+                    "type": "reference",
+                    "qualifiedName": "ComponentOptionsMixin",
+                    "package": "@vue/runtime-core",
+                    "name": "ComponentOptionsMixin"
+                  },
+                  {
+                    "type": "reference",
+                    "qualifiedName": "ComponentOptionsMixin",
+                    "package": "@vue/runtime-core",
+                    "name": "ComponentOptionsMixin"
+                  },
+                  {
+                    "type": "reference",
+                    "typeArguments": [
+                      {
+                        "type": "intrinsic",
+                        "name": "string"
+                      },
+                      {
+                        "type": "intrinsic",
+                        "name": "any"
+                      }
+                    ],
+                    "qualifiedName": "Record",
+                    "package": "typescript",
+                    "name": "Record"
+                  },
+                  {
+                    "type": "intrinsic",
+                    "name": "string"
+                  },
+                  {
+                    "type": "reference",
+                    "qualifiedName": "PublicProps",
+                    "package": "@vue/runtime-core",
+                    "name": "PublicProps"
+                  },
+                  {
+                    "type": "reference",
+                    "typeArguments": [
+                      {
+                        "type": "reference",
+                        "typeArguments": [
+                          {
+                            "type": "reflection",
+                            "declaration": {
+                              "id": 117,
+                              "name": "__type",
+                              "kind": 65536,
+                              "kindString": "Type literal",
+                              "flags": {},
+                              "children": [
+                                {
+                                  "id": 118,
+                                  "name": "data",
+                                  "kind": 1024,
+                                  "kindString": "Property",
+                                  "flags": {},
+                                  "type": {
+                                    "type": "reflection",
+                                    "declaration": {
+                                      "id": 119,
+                                      "name": "__type",
+                                      "kind": 65536,
+                                      "kindString": "Type literal",
+                                      "flags": {},
+                                      "children": [
+                                        {
+                                          "id": 121,
+                                          "name": "default",
+                                          "kind": 1024,
+                                          "kindString": "Property",
+                                          "flags": {},
+                                          "type": {
+                                            "type": "reflection",
+                                            "declaration": {
+                                              "id": 122,
+                                              "name": "__type",
+                                              "kind": 65536,
+                                              "kindString": "Type literal",
+                                              "flags": {},
+                                              "signatures": [
+                                                {
+                                                  "id": 123,
+                                                  "name": "__type",
+                                                  "kind": 4096,
+                                                  "kindString": "Call signature",
+                                                  "flags": {},
+                                                  "type": {
+                                                    "type": "reference",
+                                                    "id": 126,
+                                                    "name": "IHeadingData"
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "defaultValue": "getDefaultData"
+                                        },
+                                        {
+                                          "id": 120,
+                                          "name": "type",
+                                          "kind": 1024,
+                                          "kindString": "Property",
+                                          "flags": {},
+                                          "type": {
+                                            "type": "reference",
+                                            "typeArguments": [
+                                              {
+                                                "type": "reference",
+                                                "id": 126,
+                                                "name": "IHeadingData"
+                                              }
+                                            ],
+                                            "qualifiedName": "PropType",
+                                            "package": "@vue/runtime-core",
+                                            "name": "PropType"
+                                          },
+                                          "defaultValue": "..."
+                                        }
+                                      ],
+                                      "groups": [
+                                        {
+                                          "title": "Properties",
+                                          "kind": 1024,
+                                          "children": [
+                                            121,
+                                            120
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "defaultValue": "..."
+                                }
+                              ],
+                              "groups": [
+                                {
+                                  "title": "Properties",
+                                  "kind": 1024,
+                                  "children": [
+                                    118
+                                  ]
+                                }
+                              ]
+                            }
+                          }
+                        ],
+                        "qualifiedName": "ExtractPropTypes",
+                        "package": "@vue/runtime-core",
+                        "name": "ExtractPropTypes"
+                      }
+                    ],
+                    "qualifiedName": "Readonly",
+                    "package": "typescript",
+                    "name": "Readonly"
+                  },
+                  {
+                    "type": "reflection",
+                    "declaration": {
+                      "id": 124,
+                      "name": "__type",
+                      "kind": 65536,
+                      "kindString": "Type literal",
+                      "flags": {},
+                      "children": [
+                        {
+                          "id": 125,
+                          "name": "data",
+                          "kind": 1024,
+                          "kindString": "Property",
+                          "flags": {},
+                          "type": {
+                            "type": "reference",
+                            "id": 126,
+                            "name": "IHeadingData"
+                          }
+                        }
+                      ],
+                      "groups": [
+                        {
+                          "title": "Properties",
+                          "kind": 1024,
+                          "children": [
+                            125
+                          ]
+                        }
+                      ]
+                    }
+                  }
+                ],
+                "qualifiedName": "DefineComponent",
+                "package": "@vue/runtime-core",
+                "name": "DefineComponent"
+              },
+              "defaultValue": "..."
             }
           ],
           "groups": [
@@ -1409,10 +1932,10 @@
               "title": "Properties",
               "kind": 1024,
               "children": [
-                70,
                 8,
                 5,
-                4
+                4,
+                102
               ]
             }
           ]
@@ -1441,7 +1964,7 @@
       "defaultValue": "'sb-heading'"
     },
     {
-      "id": 94,
+      "id": 130,
       "name": "getDefaultData",
       "kind": 64,
       "kindString": "Function",
@@ -1455,14 +1978,14 @@
       ],
       "signatures": [
         {
-          "id": 95,
+          "id": 131,
           "name": "getDefaultData",
           "kind": 4096,
           "kindString": "Call signature",
           "flags": {},
           "type": {
             "type": "reference",
-            "id": 90,
+            "id": 126,
             "name": "IHeadingData"
           }
         }
@@ -1474,7 +1997,7 @@
       "title": "Interfaces",
       "kind": 256,
       "children": [
-        90
+        126
       ]
     },
     {
@@ -1495,7 +2018,7 @@
       "title": "Functions",
       "kind": 64,
       "children": [
-        94
+        130
       ]
     }
   ],

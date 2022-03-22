@@ -23,9 +23,7 @@
   "scripts": {
     "dev": "vitepress dev lib",
     "build": "vitepress build lib",
-    "serve": "vitepress serve lib",
-    "json-to-md:watch": "json-to-md",
-    "json-to-md:build": "json-to-md"
+    "serve": "vitepress serve lib"
   },
   "dependencies": {
     "@schlechtenburg/standalone": "^0.0.0",

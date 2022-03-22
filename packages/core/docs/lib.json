@@ -12,22 +12,10 @@
       "kind": 8,
       "kindString": "Enumeration",
       "flags": {},
+      "comment": {
+        "shortText": "The mode the Schlechtenburg editor is currently in"
+      },
       "children": [
-        {
-          "id": 3,
-          "name": "Display",
-          "kind": 16,
-          "kindString": "Enumeration member",
-          "flags": {},
-          "sources": [
-            {
-              "fileName": "mode.ts",
-              "line": 3,
-              "character": 2
-            }
-          ],
-          "defaultValue": "\"display\""
-        },
         {
           "id": 2,
           "name": "Edit",
@@ -37,11 +25,26 @@
           "sources": [
             {
               "fileName": "mode.ts",
-              "line": 2,
+              "line": 5,
               "character": 2
             }
           ],
           "defaultValue": "\"edit\""
+        },
+        {
+          "id": 3,
+          "name": "View",
+          "kind": 16,
+          "kindString": "Enumeration member",
+          "flags": {},
+          "sources": [
+            {
+              "fileName": "mode.ts",
+              "line": 6,
+              "character": 2
+            }
+          ],
+          "defaultValue": "\"view\""
         }
       ],
       "groups": [
@@ -49,15 +52,15 @@
           "title": "Enumeration members",
           "kind": 16,
           "children": [
-            3,
-            2
+            2,
+            3
           ]
         }
       ],
       "sources": [
         {
           "fileName": "mode.ts",
-          "line": 1,
+          "line": 4,
           "character": 12
         }
       ]
@@ -69,7 +72,7 @@
       "kindString": "Interface",
       "flags": {},
       "comment": {
-        "shortText": "Schlechtenburg inputs and outputs a plain JS Object that can be JSON stringified. This is the\ninterface type for that data structure. <T> will be the data type of the specific block being",
+        "shortText": "Schlechtenburg inputs and outputs a plain JS Object that can be JSON stringified. This is the\ninterface type for that data structure. `T` will be the data type of the specific block being",
         "tags": [
           {
             "tag": "see",
@@ -188,60 +191,6 @@
       },
       "children": [
         {
-          "id": 56,
-          "name": "display",
-          "kind": 1024,
-          "kindString": "Property",
-          "flags": {},
-          "sources": [
-            {
-              "fileName": "types.ts",
-              "line": 162,
-              "character": 2
-            }
-          ],
-          "type": {
-            "type": "reference",
-            "typeArguments": [
-              {
-                "type": "reference",
-                "id": 41,
-                "typeArguments": [
-                  {
-                    "type": "reference",
-                    "id": 57,
-                    "name": "T"
-                  }
-                ],
-                "name": "IBlockProps"
-              },
-              {
-                "type": "intrinsic",
-                "name": "any"
-              },
-              {
-                "type": "intrinsic",
-                "name": "any"
-              },
-              {
-                "type": "reference",
-                "qualifiedName": "ComputedOptions",
-                "package": "@vue/runtime-core",
-                "name": "ComputedOptions"
-              },
-              {
-                "type": "reference",
-                "qualifiedName": "MethodOptions",
-                "package": "@vue/runtime-core",
-                "name": "MethodOptions"
-              }
-            ],
-            "qualifiedName": "Component",
-            "package": "@vue/runtime-core",
-            "name": "Component"
-          }
-        },
-        {
           "id": 55,
           "name": "edit",
           "kind": 1024,
@@ -351,6 +300,60 @@
             "type": "intrinsic",
             "name": "string"
           }
+        },
+        {
+          "id": 56,
+          "name": "view",
+          "kind": 1024,
+          "kindString": "Property",
+          "flags": {},
+          "sources": [
+            {
+              "fileName": "types.ts",
+              "line": 162,
+              "character": 2
+            }
+          ],
+          "type": {
+            "type": "reference",
+            "typeArguments": [
+              {
+                "type": "reference",
+                "id": 41,
+                "typeArguments": [
+                  {
+                    "type": "reference",
+                    "id": 57,
+                    "name": "T"
+                  }
+                ],
+                "name": "IBlockProps"
+              },
+              {
+                "type": "intrinsic",
+                "name": "any"
+              },
+              {
+                "type": "intrinsic",
+                "name": "any"
+              },
+              {
+                "type": "reference",
+                "qualifiedName": "ComputedOptions",
+                "package": "@vue/runtime-core",
+                "name": "ComputedOptions"
+              },
+              {
+                "type": "reference",
+                "qualifiedName": "MethodOptions",
+                "package": "@vue/runtime-core",
+                "name": "MethodOptions"
+              }
+            ],
+            "qualifiedName": "Component",
+            "package": "@vue/runtime-core",
+            "name": "Component"
+          }
         }
       ],
       "groups": [
@@ -358,11 +361,11 @@
           "title": "Properties",
           "kind": 1024,
           "children": [
-            56,
             55,
             54,
             53,
-            52
+            52,
+            56
           ]
         }
       ],
@@ -675,6 +678,125 @@
           "kind": 131072,
           "kindString": "Type parameter",
           "flags": {}
+        }
+      ]
+    },
+    {
+      "id": 123,
+      "name": "ISbMainProps",
+      "kind": 256,
+      "kindString": "Interface",
+      "flags": {},
+      "children": [
+        {
+          "id": 124,
+          "name": "availableBlocks",
+          "kind": 1024,
+          "kindString": "Property",
+          "flags": {},
+          "sources": [
+            {
+              "fileName": "components/Main.tsx",
+              "line": 33,
+              "character": 2
+            }
+          ],
+          "type": {
+            "type": "array",
+            "elementType": {
+              "type": "reference",
+              "id": 51,
+              "typeArguments": [
+                {
+                  "type": "intrinsic",
+                  "name": "any"
+                }
+              ],
+              "name": "IBlockDefinition"
+            }
+          }
+        },
+        {
+          "id": 125,
+          "name": "block",
+          "kind": 1024,
+          "kindString": "Property",
+          "flags": {},
+          "sources": [
+            {
+              "fileName": "components/Main.tsx",
+              "line": 34,
+              "character": 2
+            }
+          ],
+          "type": {
+            "type": "reference",
+            "id": 10,
+            "typeArguments": [
+              {
+                "type": "intrinsic",
+                "name": "any"
+              }
+            ],
+            "name": "IBlockData"
+          }
+        },
+        {
+          "id": 127,
+          "name": "mode",
+          "kind": 1024,
+          "kindString": "Property",
+          "flags": {},
+          "sources": [
+            {
+              "fileName": "components/Main.tsx",
+              "line": 36,
+              "character": 2
+            }
+          ],
+          "type": {
+            "type": "reference",
+            "id": 1,
+            "name": "SbMode"
+          }
+        },
+        {
+          "id": 126,
+          "name": "onUpdate",
+          "kind": 1024,
+          "kindString": "Property",
+          "flags": {},
+          "sources": [
+            {
+              "fileName": "components/Main.tsx",
+              "line": 35,
+              "character": 2
+            }
+          ],
+          "type": {
+            "type": "reference",
+            "id": 15,
+            "name": "OnUpdateBlockCb"
+          }
+        }
+      ],
+      "groups": [
+        {
+          "title": "Properties",
+          "kind": 1024,
+          "children": [
+            124,
+            125,
+            127,
+            126
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "fileName": "components/Main.tsx",
+          "line": 32,
+          "character": 17
         }
       ]
     },
@@ -1272,32 +1394,7 @@
       ]
     },
     {
-      "id": 4,
-      "name": "Mode",
-      "kind": 32,
-      "kindString": "Variable",
-      "flags": {
-        "isConst": true
-      },
-      "sources": [
-        {
-          "fileName": "mode.ts",
-          "line": 5,
-          "character": 13
-        }
-      ],
-      "type": {
-        "type": "query",
-        "queryType": {
-          "type": "reference",
-          "id": 4,
-          "name": "Mode"
-        }
-      },
-      "defaultValue": "..."
-    },
-    {
-      "id": 162,
+      "id": 185,
       "name": "SbBlock",
       "kind": 32,
       "kindString": "Variable",
@@ -1320,14 +1417,14 @@
           {
             "type": "reflection",
             "declaration": {
-              "id": 163,
+              "id": 186,
               "name": "__type",
               "kind": 65536,
               "kindString": "Type literal",
               "flags": {},
               "children": [
                 {
-                  "id": 164,
+                  "id": 187,
                   "name": "block",
                   "kind": 1024,
                   "kindString": "Property",
@@ -1335,14 +1432,14 @@
                   "type": {
                     "type": "reflection",
                     "declaration": {
-                      "id": 165,
+                      "id": 188,
                       "name": "__type",
                       "kind": 65536,
                       "kindString": "Type literal",
                       "flags": {},
                       "children": [
                         {
-                          "id": 167,
+                          "id": 190,
                           "name": "required",
                           "kind": 1024,
                           "kindString": "Property",
@@ -1354,7 +1451,7 @@
                           "defaultValue": "true"
                         },
                         {
-                          "id": 166,
+                          "id": 189,
                           "name": "type",
                           "kind": 1024,
                           "kindString": "Property",
@@ -1386,8 +1483,8 @@
                           "title": "Properties",
                           "kind": 1024,
                           "children": [
-                            167,
-                            166
+                            190,
+                            189
                           ]
                         }
                       ]
@@ -1396,7 +1493,7 @@
                   "defaultValue": "..."
                 },
                 {
-                  "id": 198,
+                  "id": 221,
                   "name": "onActivateNext",
                   "kind": 1024,
                   "kindString": "Property",
@@ -1404,14 +1501,14 @@
                   "type": {
                     "type": "reflection",
                     "declaration": {
-                      "id": 199,
+                      "id": 222,
                       "name": "__type",
                       "kind": 65536,
                       "kindString": "Type literal",
                       "flags": {},
                       "children": [
                         {
-                          "id": 201,
+                          "id": 224,
                           "name": "default",
                           "kind": 1024,
                           "kindString": "Property",
@@ -1419,14 +1516,14 @@
                           "type": {
                             "type": "reflection",
                             "declaration": {
-                              "id": 202,
+                              "id": 225,
                               "name": "__type",
                               "kind": 65536,
                               "kindString": "Type literal",
                               "flags": {},
                               "signatures": [
                                 {
-                                  "id": 203,
+                                  "id": 226,
                                   "name": "__type",
                                   "kind": 4096,
                                   "kindString": "Call signature",
@@ -1442,7 +1539,7 @@
                           "defaultValue": "..."
                         },
                         {
-                          "id": 200,
+                          "id": 223,
                           "name": "type",
                           "kind": 1024,
                           "kindString": "Property",
@@ -1468,8 +1565,8 @@
                           "title": "Properties",
                           "kind": 1024,
                           "children": [
-                            201,
-                            200
+                            224,
+                            223
                           ]
                         }
                       ]
@@ -1478,7 +1575,7 @@
                   "defaultValue": "..."
                 },
                 {
-                  "id": 192,
+                  "id": 215,
                   "name": "onActivatePrevious",
                   "kind": 1024,
                   "kindString": "Property",
@@ -1486,14 +1583,14 @@
                   "type": {
                     "type": "reflection",
                     "declaration": {
-                      "id": 193,
+                      "id": 216,
                       "name": "__type",
                       "kind": 65536,
                       "kindString": "Type literal",
                       "flags": {},
                       "children": [
                         {
-                          "id": 195,
+                          "id": 218,
                           "name": "default",
                           "kind": 1024,
                           "kindString": "Property",
@@ -1501,14 +1598,14 @@
                           "type": {
                             "type": "reflection",
                             "declaration": {
-                              "id": 196,
+                              "id": 219,
                               "name": "__type",
                               "kind": 65536,
                               "kindString": "Type literal",
                               "flags": {},
                               "signatures": [
                                 {
-                                  "id": 197,
+                                  "id": 220,
                                   "name": "__type",
                                   "kind": 4096,
                                   "kindString": "Call signature",
@@ -1524,7 +1621,7 @@
                           "defaultValue": "..."
                         },
                         {
-                          "id": 194,
+                          "id": 217,
                           "name": "type",
                           "kind": 1024,
                           "kindString": "Property",
@@ -1550,8 +1647,8 @@
                           "title": "Properties",
                           "kind": 1024,
                           "children": [
-                            195,
-                            194
+                            218,
+                            217
                           ]
                         }
                       ]
@@ -1560,7 +1657,7 @@
                   "defaultValue": "..."
                 },
                 {
-                  "id": 180,
+                  "id": 203,
                   "name": "onAppendBlock",
                   "kind": 1024,
                   "kindString": "Property",
@@ -1568,14 +1665,14 @@
                   "type": {
                     "type": "reflection",
                     "declaration": {
-                      "id": 181,
+                      "id": 204,
                       "name": "__type",
                       "kind": 65536,
                       "kindString": "Type literal",
                       "flags": {},
                       "children": [
                         {
-                          "id": 183,
+                          "id": 206,
                           "name": "default",
                           "kind": 1024,
                           "kindString": "Property",
@@ -1583,14 +1680,14 @@
                           "type": {
                             "type": "reflection",
                             "declaration": {
-                              "id": 184,
+                              "id": 207,
                               "name": "__type",
                               "kind": 65536,
                               "kindString": "Type literal",
                               "flags": {},
                               "signatures": [
                                 {
-                                  "id": 185,
+                                  "id": 208,
                                   "name": "__type",
                                   "kind": 4096,
                                   "kindString": "Call signature",
@@ -1606,7 +1703,7 @@
                           "defaultValue": "..."
                         },
                         {
-                          "id": 182,
+                          "id": 205,
                           "name": "type",
                           "kind": 1024,
                           "kindString": "Property",
@@ -1632,8 +1729,8 @@
                           "title": "Properties",
                           "kind": 1024,
                           "children": [
-                            183,
-                            182
+                            206,
+                            205
                           ]
                         }
                       ]
@@ -1642,7 +1739,7 @@
                   "defaultValue": "..."
                 },
                 {
-                  "id": 174,
+                  "id": 197,
                   "name": "onPrependBlock",
                   "kind": 1024,
                   "kindString": "Property",
@@ -1650,14 +1747,14 @@
                   "type": {
                     "type": "reflection",
                     "declaration": {
-                      "id": 175,
+                      "id": 198,
                       "name": "__type",
                       "kind": 65536,
                       "kindString": "Type literal",
                       "flags": {},
                       "children": [
                         {
-                          "id": 177,
+                          "id": 200,
                           "name": "default",
                           "kind": 1024,
                           "kindString": "Property",
@@ -1665,14 +1762,14 @@
                           "type": {
                             "type": "reflection",
                             "declaration": {
-                              "id": 178,
+                              "id": 201,
                               "name": "__type",
                               "kind": 65536,
                               "kindString": "Type literal",
                               "flags": {},
                               "signatures": [
                                 {
-                                  "id": 179,
+                                  "id": 202,
                                   "name": "__type",
                                   "kind": 4096,
                                   "kindString": "Call signature",
@@ -1688,7 +1785,7 @@
                           "defaultValue": "..."
                         },
                         {
-                          "id": 176,
+                          "id": 199,
                           "name": "type",
                           "kind": 1024,
                           "kindString": "Property",
@@ -1714,8 +1811,8 @@
                           "title": "Properties",
                           "kind": 1024,
                           "children": [
-                            177,
-                            176
+                            200,
+                            199
                           ]
                         }
                       ]
@@ -1724,7 +1821,7 @@
                   "defaultValue": "..."
                 },
                 {
-                  "id": 186,
+                  "id": 209,
                   "name": "onRemoveSelf",
                   "kind": 1024,
                   "kindString": "Property",
@@ -1732,14 +1829,14 @@
                   "type": {
                     "type": "reflection",
                     "declaration": {
-                      "id": 187,
+                      "id": 210,
                       "name": "__type",
                       "kind": 65536,
                       "kindString": "Type literal",
                       "flags": {},
                       "children": [
                         {
-                          "id": 189,
+                          "id": 212,
                           "name": "default",
                           "kind": 1024,
                           "kindString": "Property",
@@ -1747,14 +1844,14 @@
                           "type": {
                             "type": "reflection",
                             "declaration": {
-                              "id": 190,
+                              "id": 213,
                               "name": "__type",
                               "kind": 65536,
                               "kindString": "Type literal",
                               "flags": {},
                               "signatures": [
                                 {
-                                  "id": 191,
+                                  "id": 214,
                                   "name": "__type",
                                   "kind": 4096,
                                   "kindString": "Call signature",
@@ -1770,7 +1867,7 @@
                           "defaultValue": "..."
                         },
                         {
-                          "id": 188,
+                          "id": 211,
                           "name": "type",
                           "kind": 1024,
                           "kindString": "Property",
@@ -1796,8 +1893,8 @@
                           "title": "Properties",
                           "kind": 1024,
                           "children": [
-                            189,
-                            188
+                            212,
+                            211
                           ]
                         }
                       ]
@@ -1806,7 +1903,7 @@
                   "defaultValue": "..."
                 },
                 {
-                  "id": 168,
+                  "id": 191,
                   "name": "onUpdate",
                   "kind": 1024,
                   "kindString": "Property",
@@ -1814,14 +1911,14 @@
                   "type": {
                     "type": "reflection",
                     "declaration": {
-                      "id": 169,
+                      "id": 192,
                       "name": "__type",
                       "kind": 65536,
                       "kindString": "Type literal",
                       "flags": {},
                       "children": [
                         {
-                          "id": 171,
+                          "id": 194,
                           "name": "default",
                           "kind": 1024,
                           "kindString": "Property",
@@ -1829,14 +1926,14 @@
                           "type": {
                             "type": "reflection",
                             "declaration": {
-                              "id": 172,
+                              "id": 195,
                               "name": "__type",
                               "kind": 65536,
                               "kindString": "Type literal",
                               "flags": {},
                               "signatures": [
                                 {
-                                  "id": 173,
+                                  "id": 196,
                                   "name": "__type",
                                   "kind": 4096,
                                   "kindString": "Call signature",
@@ -1852,7 +1949,7 @@
                           "defaultValue": "..."
                         },
                         {
-                          "id": 170,
+                          "id": 193,
                           "name": "type",
                           "kind": 1024,
                           "kindString": "Property",
@@ -1878,8 +1975,8 @@
                           "title": "Properties",
                           "kind": 1024,
                           "children": [
-                            171,
-                            170
+                            194,
+                            193
                           ]
                         }
                       ]
@@ -1893,13 +1990,13 @@
                   "title": "Properties",
                   "kind": 1024,
                   "children": [
-                    164,
-                    198,
-                    192,
-                    180,
-                    174,
-                    186,
-                    168
+                    187,
+                    221,
+                    215,
+                    203,
+                    197,
+                    209,
+                    191
                   ]
                 }
               ]
@@ -1908,14 +2005,14 @@
           {
             "type": "reflection",
             "declaration": {
-              "id": 204,
+              "id": 227,
               "name": "__type",
               "kind": 65536,
               "kindString": "Type literal",
               "flags": {},
               "signatures": [
                 {
-                  "id": 205,
+                  "id": 228,
                   "name": "__type",
                   "kind": 4096,
                   "kindString": "Call signature",
@@ -1937,7 +2034,7 @@
           {
             "type": "reflection",
             "declaration": {
-              "id": 206,
+              "id": 229,
               "name": "__type",
               "kind": 65536,
               "kindString": "Type literal",
@@ -1947,7 +2044,7 @@
           {
             "type": "reflection",
             "declaration": {
-              "id": 207,
+              "id": 230,
               "name": "__type",
               "kind": 65536,
               "kindString": "Type literal",
@@ -1996,106 +2093,577 @@
             "type": "reference",
             "typeArguments": [
               {
-                "type": "intersection",
-                "types": [
+                "type": "reference",
+                "typeArguments": [
                   {
                     "type": "reflection",
                     "declaration": {
-                      "id": 208,
+                      "id": 231,
                       "name": "__type",
                       "kind": 65536,
                       "kindString": "Type literal",
                       "flags": {},
                       "children": [
                         {
-                          "id": 209,
+                          "id": 232,
                           "name": "block",
                           "kind": 1024,
                           "kindString": "Property",
                           "flags": {},
                           "type": {
-                            "type": "reference",
-                            "id": 10,
-                            "typeArguments": [
-                              {
-                                "type": "intrinsic",
-                                "name": "any"
-                              }
-                            ],
-                            "name": "IBlockData"
-                          }
+                            "type": "reflection",
+                            "declaration": {
+                              "id": 233,
+                              "name": "__type",
+                              "kind": 65536,
+                              "kindString": "Type literal",
+                              "flags": {},
+                              "children": [
+                                {
+                                  "id": 235,
+                                  "name": "required",
+                                  "kind": 1024,
+                                  "kindString": "Property",
+                                  "flags": {},
+                                  "type": {
+                                    "type": "literal",
+                                    "value": true
+                                  },
+                                  "defaultValue": "true"
+                                },
+                                {
+                                  "id": 234,
+                                  "name": "type",
+                                  "kind": 1024,
+                                  "kindString": "Property",
+                                  "flags": {},
+                                  "type": {
+                                    "type": "reference",
+                                    "typeArguments": [
+                                      {
+                                        "type": "reference",
+                                        "id": 10,
+                                        "typeArguments": [
+                                          {
+                                            "type": "intrinsic",
+                                            "name": "any"
+                                          }
+                                        ],
+                                        "name": "IBlockData"
+                                      }
+                                    ],
+                                    "qualifiedName": "PropType",
+                                    "package": "@vue/runtime-core",
+                                    "name": "PropType"
+                                  },
+                                  "defaultValue": "..."
+                                }
+                              ],
+                              "groups": [
+                                {
+                                  "title": "Properties",
+                                  "kind": 1024,
+                                  "children": [
+                                    235,
+                                    234
+                                  ]
+                                }
+                              ]
+                            }
+                          },
+                          "defaultValue": "..."
                         },
                         {
-                          "id": 215,
+                          "id": 266,
                           "name": "onActivateNext",
                           "kind": 1024,
                           "kindString": "Property",
                           "flags": {},
                           "type": {
-                            "type": "reference",
-                            "id": 38,
-                            "name": "OnActivateNextCb"
-                          }
+                            "type": "reflection",
+                            "declaration": {
+                              "id": 267,
+                              "name": "__type",
+                              "kind": 65536,
+                              "kindString": "Type literal",
+                              "flags": {},
+                              "children": [
+                                {
+                                  "id": 269,
+                                  "name": "default",
+                                  "kind": 1024,
+                                  "kindString": "Property",
+                                  "flags": {},
+                                  "type": {
+                                    "type": "reflection",
+                                    "declaration": {
+                                      "id": 270,
+                                      "name": "__type",
+                                      "kind": 65536,
+                                      "kindString": "Type literal",
+                                      "flags": {},
+                                      "signatures": [
+                                        {
+                                          "id": 271,
+                                          "name": "__type",
+                                          "kind": 4096,
+                                          "kindString": "Call signature",
+                                          "flags": {},
+                                          "type": {
+                                            "type": "intrinsic",
+                                            "name": "void"
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "defaultValue": "..."
+                                },
+                                {
+                                  "id": 268,
+                                  "name": "type",
+                                  "kind": 1024,
+                                  "kindString": "Property",
+                                  "flags": {},
+                                  "type": {
+                                    "type": "reference",
+                                    "typeArguments": [
+                                      {
+                                        "type": "reference",
+                                        "id": 38,
+                                        "name": "OnActivateNextCb"
+                                      }
+                                    ],
+                                    "qualifiedName": "PropType",
+                                    "package": "@vue/runtime-core",
+                                    "name": "PropType"
+                                  },
+                                  "defaultValue": "..."
+                                }
+                              ],
+                              "groups": [
+                                {
+                                  "title": "Properties",
+                                  "kind": 1024,
+                                  "children": [
+                                    269,
+                                    268
+                                  ]
+                                }
+                              ]
+                            }
+                          },
+                          "defaultValue": "..."
                         },
                         {
-                          "id": 214,
+                          "id": 260,
                           "name": "onActivatePrevious",
                           "kind": 1024,
                           "kindString": "Property",
                           "flags": {},
                           "type": {
-                            "type": "reference",
-                            "id": 35,
-                            "name": "OnActivatePreviousCb"
-                          }
+                            "type": "reflection",
+                            "declaration": {
+                              "id": 261,
+                              "name": "__type",
+                              "kind": 65536,
+                              "kindString": "Type literal",
+                              "flags": {},
+                              "children": [
+                                {
+                                  "id": 263,
+                                  "name": "default",
+                                  "kind": 1024,
+                                  "kindString": "Property",
+                                  "flags": {},
+                                  "type": {
+                                    "type": "reflection",
+                                    "declaration": {
+                                      "id": 264,
+                                      "name": "__type",
+                                      "kind": 65536,
+                                      "kindString": "Type literal",
+                                      "flags": {},
+                                      "signatures": [
+                                        {
+                                          "id": 265,
+                                          "name": "__type",
+                                          "kind": 4096,
+                                          "kindString": "Call signature",
+                                          "flags": {},
+                                          "type": {
+                                            "type": "intrinsic",
+                                            "name": "void"
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "defaultValue": "..."
+                                },
+                                {
+                                  "id": 262,
+                                  "name": "type",
+                                  "kind": 1024,
+                                  "kindString": "Property",
+                                  "flags": {},
+                                  "type": {
+                                    "type": "reference",
+                                    "typeArguments": [
+                                      {
+                                        "type": "reference",
+                                        "id": 35,
+                                        "name": "OnActivatePreviousCb"
+                                      }
+                                    ],
+                                    "qualifiedName": "PropType",
+                                    "package": "@vue/runtime-core",
+                                    "name": "PropType"
+                                  },
+                                  "defaultValue": "..."
+                                }
+                              ],
+                              "groups": [
+                                {
+                                  "title": "Properties",
+                                  "kind": 1024,
+                                  "children": [
+                                    263,
+                                    262
+                                  ]
+                                }
+                              ]
+                            }
+                          },
+                          "defaultValue": "..."
                         },
                         {
-                          "id": 212,
+                          "id": 248,
                           "name": "onAppendBlock",
                           "kind": 1024,
                           "kindString": "Property",
                           "flags": {},
                           "type": {
-                            "type": "reference",
-                            "id": 28,
-                            "name": "OnAppendBlockCb"
-                          }
+                            "type": "reflection",
+                            "declaration": {
+                              "id": 249,
+                              "name": "__type",
+                              "kind": 65536,
+                              "kindString": "Type literal",
+                              "flags": {},
+                              "children": [
+                                {
+                                  "id": 251,
+                                  "name": "default",
+                                  "kind": 1024,
+                                  "kindString": "Property",
+                                  "flags": {},
+                                  "type": {
+                                    "type": "reflection",
+                                    "declaration": {
+                                      "id": 252,
+                                      "name": "__type",
+                                      "kind": 65536,
+                                      "kindString": "Type literal",
+                                      "flags": {},
+                                      "signatures": [
+                                        {
+                                          "id": 253,
+                                          "name": "__type",
+                                          "kind": 4096,
+                                          "kindString": "Call signature",
+                                          "flags": {},
+                                          "type": {
+                                            "type": "intrinsic",
+                                            "name": "void"
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "defaultValue": "..."
+                                },
+                                {
+                                  "id": 250,
+                                  "name": "type",
+                                  "kind": 1024,
+                                  "kindString": "Property",
+                                  "flags": {},
+                                  "type": {
+                                    "type": "reference",
+                                    "typeArguments": [
+                                      {
+                                        "type": "reference",
+                                        "id": 28,
+                                        "name": "OnAppendBlockCb"
+                                      }
+                                    ],
+                                    "qualifiedName": "PropType",
+                                    "package": "@vue/runtime-core",
+                                    "name": "PropType"
+                                  },
+                                  "defaultValue": "..."
+                                }
+                              ],
+                              "groups": [
+                                {
+                                  "title": "Properties",
+                                  "kind": 1024,
+                                  "children": [
+                                    251,
+                                    250
+                                  ]
+                                }
+                              ]
+                            }
+                          },
+                          "defaultValue": "..."
                         },
                         {
-                          "id": 211,
+                          "id": 242,
                           "name": "onPrependBlock",
                           "kind": 1024,
                           "kindString": "Property",
                           "flags": {},
                           "type": {
-                            "type": "reference",
-                            "id": 24,
-                            "name": "OnPrependBlockCb"
-                          }
+                            "type": "reflection",
+                            "declaration": {
+                              "id": 243,
+                              "name": "__type",
+                              "kind": 65536,
+                              "kindString": "Type literal",
+                              "flags": {},
+                              "children": [
+                                {
+                                  "id": 245,
+                                  "name": "default",
+                                  "kind": 1024,
+                                  "kindString": "Property",
+                                  "flags": {},
+                                  "type": {
+                                    "type": "reflection",
+                                    "declaration": {
+                                      "id": 246,
+                                      "name": "__type",
+                                      "kind": 65536,
+                                      "kindString": "Type literal",
+                                      "flags": {},
+                                      "signatures": [
+                                        {
+                                          "id": 247,
+                                          "name": "__type",
+                                          "kind": 4096,
+                                          "kindString": "Call signature",
+                                          "flags": {},
+                                          "type": {
+                                            "type": "intrinsic",
+                                            "name": "void"
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "defaultValue": "..."
+                                },
+                                {
+                                  "id": 244,
+                                  "name": "type",
+                                  "kind": 1024,
+                                  "kindString": "Property",
+                                  "flags": {},
+                                  "type": {
+                                    "type": "reference",
+                                    "typeArguments": [
+                                      {
+                                        "type": "reference",
+                                        "id": 24,
+                                        "name": "OnPrependBlockCb"
+                                      }
+                                    ],
+                                    "qualifiedName": "PropType",
+                                    "package": "@vue/runtime-core",
+                                    "name": "PropType"
+                                  },
+                                  "defaultValue": "..."
+                                }
+                              ],
+                              "groups": [
+                                {
+                                  "title": "Properties",
+                                  "kind": 1024,
+                                  "children": [
+                                    245,
+                                    244
+                                  ]
+                                }
+                              ]
+                            }
+                          },
+                          "defaultValue": "..."
                         },
                         {
-                          "id": 213,
+                          "id": 254,
                           "name": "onRemoveSelf",
                           "kind": 1024,
                           "kindString": "Property",
                           "flags": {},
                           "type": {
-                            "type": "reference",
-                            "id": 32,
-                            "name": "OnRemoveSelfCb"
-                          }
+                            "type": "reflection",
+                            "declaration": {
+                              "id": 255,
+                              "name": "__type",
+                              "kind": 65536,
+                              "kindString": "Type literal",
+                              "flags": {},
+                              "children": [
+                                {
+                                  "id": 257,
+                                  "name": "default",
+                                  "kind": 1024,
+                                  "kindString": "Property",
+                                  "flags": {},
+                                  "type": {
+                                    "type": "reflection",
+                                    "declaration": {
+                                      "id": 258,
+                                      "name": "__type",
+                                      "kind": 65536,
+                                      "kindString": "Type literal",
+                                      "flags": {},
+                                      "signatures": [
+                                        {
+                                          "id": 259,
+                                          "name": "__type",
+                                          "kind": 4096,
+                                          "kindString": "Call signature",
+                                          "flags": {},
+                                          "type": {
+                                            "type": "intrinsic",
+                                            "name": "void"
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "defaultValue": "..."
+                                },
+                                {
+                                  "id": 256,
+                                  "name": "type",
+                                  "kind": 1024,
+                                  "kindString": "Property",
+                                  "flags": {},
+                                  "type": {
+                                    "type": "reference",
+                                    "typeArguments": [
+                                      {
+                                        "type": "reference",
+                                        "id": 32,
+                                        "name": "OnRemoveSelfCb"
+                                      }
+                                    ],
+                                    "qualifiedName": "PropType",
+                                    "package": "@vue/runtime-core",
+                                    "name": "PropType"
+                                  },
+                                  "defaultValue": "..."
+                                }
+                              ],
+                              "groups": [
+                                {
+                                  "title": "Properties",
+                                  "kind": 1024,
+                                  "children": [
+                                    257,
+                                    256
+                                  ]
+                                }
+                              ]
+                            }
+                          },
+                          "defaultValue": "..."
                         },
                         {
-                          "id": 210,
+                          "id": 236,
                           "name": "onUpdate",
                           "kind": 1024,
                           "kindString": "Property",
                           "flags": {},
                           "type": {
-                            "type": "reference",
-                            "id": 15,
-                            "name": "OnUpdateBlockCb"
-                          }
+                            "type": "reflection",
+                            "declaration": {
+                              "id": 237,
+                              "name": "__type",
+                              "kind": 65536,
+                              "kindString": "Type literal",
+                              "flags": {},
+                              "children": [
+                                {
+                                  "id": 239,
+                                  "name": "default",
+                                  "kind": 1024,
+                                  "kindString": "Property",
+                                  "flags": {},
+                                  "type": {
+                                    "type": "reflection",
+                                    "declaration": {
+                                      "id": 240,
+                                      "name": "__type",
+                                      "kind": 65536,
+                                      "kindString": "Type literal",
+                                      "flags": {},
+                                      "signatures": [
+                                        {
+                                          "id": 241,
+                                          "name": "__type",
+                                          "kind": 4096,
+                                          "kindString": "Call signature",
+                                          "flags": {},
+                                          "type": {
+                                            "type": "intrinsic",
+                                            "name": "void"
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "defaultValue": "..."
+                                },
+                                {
+                                  "id": 238,
+                                  "name": "type",
+                                  "kind": 1024,
+                                  "kindString": "Property",
+                                  "flags": {},
+                                  "type": {
+                                    "type": "reference",
+                                    "typeArguments": [
+                                      {
+                                        "type": "reference",
+                                        "id": 15,
+                                        "name": "OnUpdateBlockCb"
+                                      }
+                                    ],
+                                    "qualifiedName": "PropType",
+                                    "package": "@vue/runtime-core",
+                                    "name": "PropType"
+                                  },
+                                  "defaultValue": "..."
+                                }
+                              ],
+                              "groups": [
+                                {
+                                  "title": "Properties",
+                                  "kind": 1024,
+                                  "children": [
+                                    239,
+                                    238
+                                  ]
+                                }
+                              ]
+                            }
+                          },
+                          "defaultValue": "..."
                         }
                       ],
                       "groups": [
@@ -2103,29 +2671,22 @@
                           "title": "Properties",
                           "kind": 1024,
                           "children": [
-                            209,
-                            215,
-                            214,
-                            212,
-                            211,
-                            213,
-                            210
+                            232,
+                            266,
+                            260,
+                            248,
+                            242,
+                            254,
+                            236
                           ]
                         }
                       ]
                     }
-                  },
-                  {
-                    "type": "reflection",
-                    "declaration": {
-                      "id": 216,
-                      "name": "__type",
-                      "kind": 65536,
-                      "kindString": "Type literal",
-                      "flags": {}
-                    }
                   }
-                ]
+                ],
+                "qualifiedName": "ExtractPropTypes",
+                "package": "@vue/runtime-core",
+                "name": "ExtractPropTypes"
               }
             ],
             "qualifiedName": "Readonly",
@@ -2135,14 +2696,14 @@
           {
             "type": "reflection",
             "declaration": {
-              "id": 217,
+              "id": 272,
               "name": "__type",
               "kind": 65536,
               "kindString": "Type literal",
               "flags": {},
               "children": [
                 {
-                  "id": 223,
+                  "id": 278,
                   "name": "onActivateNext",
                   "kind": 1024,
                   "kindString": "Property",
@@ -2154,7 +2715,7 @@
                   }
                 },
                 {
-                  "id": 222,
+                  "id": 277,
                   "name": "onActivatePrevious",
                   "kind": 1024,
                   "kindString": "Property",
@@ -2166,7 +2727,7 @@
                   }
                 },
                 {
-                  "id": 220,
+                  "id": 275,
                   "name": "onAppendBlock",
                   "kind": 1024,
                   "kindString": "Property",
@@ -2178,7 +2739,7 @@
                   }
                 },
                 {
-                  "id": 219,
+                  "id": 274,
                   "name": "onPrependBlock",
                   "kind": 1024,
                   "kindString": "Property",
@@ -2190,7 +2751,7 @@
                   }
                 },
                 {
-                  "id": 221,
+                  "id": 276,
                   "name": "onRemoveSelf",
                   "kind": 1024,
                   "kindString": "Property",
@@ -2202,7 +2763,7 @@
                   }
                 },
                 {
-                  "id": 218,
+                  "id": 273,
                   "name": "onUpdate",
                   "kind": 1024,
                   "kindString": "Property",
@@ -2219,12 +2780,12 @@
                   "title": "Properties",
                   "kind": 1024,
                   "children": [
-                    223,
-                    222,
-                    220,
-                    219,
-                    221,
-                    218
+                    278,
+                    277,
+                    275,
+                    274,
+                    276,
+                    273
                   ]
                 }
               ]
@@ -2238,7 +2799,7 @@
       "defaultValue": "..."
     },
     {
-      "id": 241,
+      "id": 300,
       "name": "SbBlockOrdering",
       "kind": 32,
       "kindString": "Variable",
@@ -2258,14 +2819,14 @@
           {
             "type": "reflection",
             "declaration": {
-              "id": 242,
+              "id": 301,
               "name": "__type",
               "kind": 65536,
               "kindString": "Type literal",
               "flags": {},
               "children": [
                 {
-                  "id": 253,
+                  "id": 312,
                   "name": "onMoveBackward",
                   "kind": 1024,
                   "kindString": "Property",
@@ -2273,14 +2834,14 @@
                   "type": {
                     "type": "reflection",
                     "declaration": {
-                      "id": 254,
+                      "id": 313,
                       "name": "__type",
                       "kind": 65536,
                       "kindString": "Type literal",
                       "flags": {},
                       "children": [
                         {
-                          "id": 256,
+                          "id": 315,
                           "name": "default",
                           "kind": 1024,
                           "kindString": "Property",
@@ -2288,14 +2849,14 @@
                           "type": {
                             "type": "reflection",
                             "declaration": {
-                              "id": 257,
+                              "id": 316,
                               "name": "__type",
                               "kind": 65536,
                               "kindString": "Type literal",
                               "flags": {},
                               "signatures": [
                                 {
-                                  "id": 258,
+                                  "id": 317,
                                   "name": "__type",
                                   "kind": 4096,
                                   "kindString": "Call signature",
@@ -2311,7 +2872,7 @@
                           "defaultValue": "..."
                         },
                         {
-                          "id": 255,
+                          "id": 314,
                           "name": "type",
                           "kind": 1024,
                           "kindString": "Property",
@@ -2330,8 +2891,8 @@
                           "title": "Properties",
                           "kind": 1024,
                           "children": [
-                            256,
-                            255
+                            315,
+                            314
                           ]
                         }
                       ]
@@ -2340,7 +2901,7 @@
                   "defaultValue": "..."
                 },
                 {
-                  "id": 259,
+                  "id": 318,
                   "name": "onMoveForward",
                   "kind": 1024,
                   "kindString": "Property",
@@ -2348,14 +2909,14 @@
                   "type": {
                     "type": "reflection",
                     "declaration": {
-                      "id": 260,
+                      "id": 319,
                       "name": "__type",
                       "kind": 65536,
                       "kindString": "Type literal",
                       "flags": {},
                       "children": [
                         {
-                          "id": 262,
+                          "id": 321,
                           "name": "default",
                           "kind": 1024,
                           "kindString": "Property",
@@ -2363,14 +2924,14 @@
                           "type": {
                             "type": "reflection",
                             "declaration": {
-                              "id": 263,
+                              "id": 322,
                               "name": "__type",
                               "kind": 65536,
                               "kindString": "Type literal",
                               "flags": {},
                               "signatures": [
                                 {
-                                  "id": 264,
+                                  "id": 323,
                                   "name": "__type",
                                   "kind": 4096,
                                   "kindString": "Call signature",
@@ -2386,7 +2947,7 @@
                           "defaultValue": "..."
                         },
                         {
-                          "id": 261,
+                          "id": 320,
                           "name": "type",
                           "kind": 1024,
                           "kindString": "Property",
@@ -2405,8 +2966,8 @@
                           "title": "Properties",
                           "kind": 1024,
                           "children": [
-                            262,
-                            261
+                            321,
+                            320
                           ]
                         }
                       ]
@@ -2415,7 +2976,7 @@
                   "defaultValue": "..."
                 },
                 {
-                  "id": 247,
+                  "id": 306,
                   "name": "onRemove",
                   "kind": 1024,
                   "kindString": "Property",
@@ -2423,14 +2984,14 @@
                   "type": {
                     "type": "reflection",
                     "declaration": {
-                      "id": 248,
+                      "id": 307,
                       "name": "__type",
                       "kind": 65536,
                       "kindString": "Type literal",
                       "flags": {},
                       "children": [
                         {
-                          "id": 250,
+                          "id": 309,
                           "name": "default",
                           "kind": 1024,
                           "kindString": "Property",
@@ -2438,14 +2999,14 @@
                           "type": {
                             "type": "reflection",
                             "declaration": {
-                              "id": 251,
+                              "id": 310,
                               "name": "__type",
                               "kind": 65536,
                               "kindString": "Type literal",
                               "flags": {},
                               "signatures": [
                                 {
-                                  "id": 252,
+                                  "id": 311,
                                   "name": "__type",
                                   "kind": 4096,
                                   "kindString": "Call signature",
@@ -2461,7 +3022,7 @@
                           "defaultValue": "..."
                         },
                         {
-                          "id": 249,
+                          "id": 308,
                           "name": "type",
                           "kind": 1024,
                           "kindString": "Property",
@@ -2480,8 +3041,8 @@
                           "title": "Properties",
                           "kind": 1024,
                           "children": [
-                            250,
-                            249
+                            309,
+                            308
                           ]
                         }
                       ]
@@ -2490,7 +3051,7 @@
                   "defaultValue": "..."
                 },
                 {
-                  "id": 243,
+                  "id": 302,
                   "name": "orientation",
                   "kind": 1024,
                   "kindString": "Property",
@@ -2498,14 +3059,14 @@
                   "type": {
                     "type": "reflection",
                     "declaration": {
-                      "id": 244,
+                      "id": 303,
                       "name": "__type",
                       "kind": 65536,
                       "kindString": "Type literal",
                       "flags": {},
                       "children": [
                         {
-                          "id": 246,
+                          "id": 305,
                           "name": "default",
                           "kind": 1024,
                           "kindString": "Property",
@@ -2517,7 +3078,7 @@
                           "defaultValue": "null"
                         },
                         {
-                          "id": 245,
+                          "id": 304,
                           "name": "type",
                           "kind": 1024,
                           "kindString": "Property",
@@ -2536,8 +3097,8 @@
                           "title": "Properties",
                           "kind": 1024,
                           "children": [
-                            246,
-                            245
+                            305,
+                            304
                           ]
                         }
                       ]
@@ -2551,10 +3112,10 @@
                   "title": "Properties",
                   "kind": 1024,
                   "children": [
-                    253,
-                    259,
-                    247,
-                    243
+                    312,
+                    318,
+                    306,
+                    302
                   ]
                 }
               ]
@@ -2563,14 +3124,14 @@
           {
             "type": "reflection",
             "declaration": {
-              "id": 265,
+              "id": 324,
               "name": "__type",
               "kind": 65536,
               "kindString": "Type literal",
               "flags": {},
               "signatures": [
                 {
-                  "id": 266,
+                  "id": 325,
                   "name": "__type",
                   "kind": 4096,
                   "kindString": "Call signature",
@@ -2592,7 +3153,7 @@
           {
             "type": "reflection",
             "declaration": {
-              "id": 267,
+              "id": 326,
               "name": "__type",
               "kind": 65536,
               "kindString": "Type literal",
@@ -2602,7 +3163,7 @@
           {
             "type": "reflection",
             "declaration": {
-              "id": 268,
+              "id": 327,
               "name": "__type",
               "kind": 65536,
               "kindString": "Type literal",
@@ -2651,66 +3212,297 @@
             "type": "reference",
             "typeArguments": [
               {
-                "type": "intersection",
-                "types": [
+                "type": "reference",
+                "typeArguments": [
                   {
                     "type": "reflection",
                     "declaration": {
-                      "id": 269,
+                      "id": 328,
                       "name": "__type",
                       "kind": 65536,
                       "kindString": "Type literal",
                       "flags": {},
                       "children": [
                         {
-                          "id": 272,
+                          "id": 339,
                           "name": "onMoveBackward",
                           "kind": 1024,
                           "kindString": "Property",
                           "flags": {},
                           "type": {
-                            "type": "reference",
-                            "qualifiedName": "Function",
-                            "package": "typescript",
-                            "name": "Function"
-                          }
+                            "type": "reflection",
+                            "declaration": {
+                              "id": 340,
+                              "name": "__type",
+                              "kind": 65536,
+                              "kindString": "Type literal",
+                              "flags": {},
+                              "children": [
+                                {
+                                  "id": 342,
+                                  "name": "default",
+                                  "kind": 1024,
+                                  "kindString": "Property",
+                                  "flags": {},
+                                  "type": {
+                                    "type": "reflection",
+                                    "declaration": {
+                                      "id": 343,
+                                      "name": "__type",
+                                      "kind": 65536,
+                                      "kindString": "Type literal",
+                                      "flags": {},
+                                      "signatures": [
+                                        {
+                                          "id": 344,
+                                          "name": "__type",
+                                          "kind": 4096,
+                                          "kindString": "Call signature",
+                                          "flags": {},
+                                          "type": {
+                                            "type": "intrinsic",
+                                            "name": "void"
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "defaultValue": "..."
+                                },
+                                {
+                                  "id": 341,
+                                  "name": "type",
+                                  "kind": 1024,
+                                  "kindString": "Property",
+                                  "flags": {},
+                                  "type": {
+                                    "type": "reference",
+                                    "qualifiedName": "FunctionConstructor",
+                                    "package": "typescript",
+                                    "name": "FunctionConstructor"
+                                  },
+                                  "defaultValue": "Function"
+                                }
+                              ],
+                              "groups": [
+                                {
+                                  "title": "Properties",
+                                  "kind": 1024,
+                                  "children": [
+                                    342,
+                                    341
+                                  ]
+                                }
+                              ]
+                            }
+                          },
+                          "defaultValue": "..."
                         },
                         {
-                          "id": 273,
+                          "id": 345,
                           "name": "onMoveForward",
                           "kind": 1024,
                           "kindString": "Property",
                           "flags": {},
                           "type": {
-                            "type": "reference",
-                            "qualifiedName": "Function",
-                            "package": "typescript",
-                            "name": "Function"
-                          }
+                            "type": "reflection",
+                            "declaration": {
+                              "id": 346,
+                              "name": "__type",
+                              "kind": 65536,
+                              "kindString": "Type literal",
+                              "flags": {},
+                              "children": [
+                                {
+                                  "id": 348,
+                                  "name": "default",
+                                  "kind": 1024,
+                                  "kindString": "Property",
+                                  "flags": {},
+                                  "type": {
+                                    "type": "reflection",
+                                    "declaration": {
+                                      "id": 349,
+                                      "name": "__type",
+                                      "kind": 65536,
+                                      "kindString": "Type literal",
+                                      "flags": {},
+                                      "signatures": [
+                                        {
+                                          "id": 350,
+                                          "name": "__type",
+                                          "kind": 4096,
+                                          "kindString": "Call signature",
+                                          "flags": {},
+                                          "type": {
+                                            "type": "intrinsic",
+                                            "name": "void"
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "defaultValue": "..."
+                                },
+                                {
+                                  "id": 347,
+                                  "name": "type",
+                                  "kind": 1024,
+                                  "kindString": "Property",
+                                  "flags": {},
+                                  "type": {
+                                    "type": "reference",
+                                    "qualifiedName": "FunctionConstructor",
+                                    "package": "typescript",
+                                    "name": "FunctionConstructor"
+                                  },
+                                  "defaultValue": "Function"
+                                }
+                              ],
+                              "groups": [
+                                {
+                                  "title": "Properties",
+                                  "kind": 1024,
+                                  "children": [
+                                    348,
+                                    347
+                                  ]
+                                }
+                              ]
+                            }
+                          },
+                          "defaultValue": "..."
                         },
                         {
-                          "id": 271,
+                          "id": 333,
                           "name": "onRemove",
                           "kind": 1024,
                           "kindString": "Property",
                           "flags": {},
                           "type": {
-                            "type": "reference",
-                            "qualifiedName": "Function",
-                            "package": "typescript",
-                            "name": "Function"
-                          }
+                            "type": "reflection",
+                            "declaration": {
+                              "id": 334,
+                              "name": "__type",
+                              "kind": 65536,
+                              "kindString": "Type literal",
+                              "flags": {},
+                              "children": [
+                                {
+                                  "id": 336,
+                                  "name": "default",
+                                  "kind": 1024,
+                                  "kindString": "Property",
+                                  "flags": {},
+                                  "type": {
+                                    "type": "reflection",
+                                    "declaration": {
+                                      "id": 337,
+                                      "name": "__type",
+                                      "kind": 65536,
+                                      "kindString": "Type literal",
+                                      "flags": {},
+                                      "signatures": [
+                                        {
+                                          "id": 338,
+                                          "name": "__type",
+                                          "kind": 4096,
+                                          "kindString": "Call signature",
+                                          "flags": {},
+                                          "type": {
+                                            "type": "intrinsic",
+                                            "name": "void"
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "defaultValue": "..."
+                                },
+                                {
+                                  "id": 335,
+                                  "name": "type",
+                                  "kind": 1024,
+                                  "kindString": "Property",
+                                  "flags": {},
+                                  "type": {
+                                    "type": "reference",
+                                    "qualifiedName": "FunctionConstructor",
+                                    "package": "typescript",
+                                    "name": "FunctionConstructor"
+                                  },
+                                  "defaultValue": "Function"
+                                }
+                              ],
+                              "groups": [
+                                {
+                                  "title": "Properties",
+                                  "kind": 1024,
+                                  "children": [
+                                    336,
+                                    335
+                                  ]
+                                }
+                              ]
+                            }
+                          },
+                          "defaultValue": "..."
                         },
                         {
-                          "id": 270,
+                          "id": 329,
                           "name": "orientation",
                           "kind": 1024,
                           "kindString": "Property",
                           "flags": {},
                           "type": {
-                            "type": "intrinsic",
-                            "name": "string"
-                          }
+                            "type": "reflection",
+                            "declaration": {
+                              "id": 330,
+                              "name": "__type",
+                              "kind": 65536,
+                              "kindString": "Type literal",
+                              "flags": {},
+                              "children": [
+                                {
+                                  "id": 332,
+                                  "name": "default",
+                                  "kind": 1024,
+                                  "kindString": "Property",
+                                  "flags": {},
+                                  "type": {
+                                    "type": "literal",
+                                    "value": null
+                                  },
+                                  "defaultValue": "null"
+                                },
+                                {
+                                  "id": 331,
+                                  "name": "type",
+                                  "kind": 1024,
+                                  "kindString": "Property",
+                                  "flags": {},
+                                  "type": {
+                                    "type": "reference",
+                                    "qualifiedName": "StringConstructor",
+                                    "package": "typescript",
+                                    "name": "StringConstructor"
+                                  },
+                                  "defaultValue": "String"
+                                }
+                              ],
+                              "groups": [
+                                {
+                                  "title": "Properties",
+                                  "kind": 1024,
+                                  "children": [
+                                    332,
+                                    331
+                                  ]
+                                }
+                              ]
+                            }
+                          },
+                          "defaultValue": "..."
                         }
                       ],
                       "groups": [
@@ -2718,26 +3510,19 @@
                           "title": "Properties",
                           "kind": 1024,
                           "children": [
-                            272,
-                            273,
-                            271,
-                            270
+                            339,
+                            345,
+                            333,
+                            329
                           ]
                         }
                       ]
                     }
-                  },
-                  {
-                    "type": "reflection",
-                    "declaration": {
-                      "id": 274,
-                      "name": "__type",
-                      "kind": 65536,
-                      "kindString": "Type literal",
-                      "flags": {}
-                    }
                   }
-                ]
+                ],
+                "qualifiedName": "ExtractPropTypes",
+                "package": "@vue/runtime-core",
+                "name": "ExtractPropTypes"
               }
             ],
             "qualifiedName": "Readonly",
@@ -2747,14 +3532,14 @@
           {
             "type": "reflection",
             "declaration": {
-              "id": 275,
+              "id": 351,
               "name": "__type",
               "kind": 65536,
               "kindString": "Type literal",
               "flags": {},
               "children": [
                 {
-                  "id": 278,
+                  "id": 354,
                   "name": "onMoveBackward",
                   "kind": 1024,
                   "kindString": "Property",
@@ -2767,7 +3552,7 @@
                   }
                 },
                 {
-                  "id": 279,
+                  "id": 355,
                   "name": "onMoveForward",
                   "kind": 1024,
                   "kindString": "Property",
@@ -2780,7 +3565,7 @@
                   }
                 },
                 {
-                  "id": 277,
+                  "id": 353,
                   "name": "onRemove",
                   "kind": 1024,
                   "kindString": "Property",
@@ -2793,7 +3578,7 @@
                   }
                 },
                 {
-                  "id": 276,
+                  "id": 352,
                   "name": "orientation",
                   "kind": 1024,
                   "kindString": "Property",
@@ -2809,10 +3594,10 @@
                   "title": "Properties",
                   "kind": 1024,
                   "children": [
-                    278,
-                    279,
-                    277,
-                    276
+                    354,
+                    355,
+                    353,
+                    352
                   ]
                 }
               ]
@@ -2826,7 +3611,7 @@
       "defaultValue": "..."
     },
     {
-      "id": 224,
+      "id": 279,
       "name": "SbBlockPicker",
       "kind": 32,
       "kindString": "Variable",
@@ -2846,14 +3631,14 @@
           {
             "type": "reflection",
             "declaration": {
-              "id": 225,
+              "id": 280,
               "name": "__type",
               "kind": 65536,
               "kindString": "Type literal",
               "flags": {},
               "children": [
                 {
-                  "id": 226,
+                  "id": 281,
                   "name": "onPickedBlock",
                   "kind": 1024,
                   "kindString": "Property",
@@ -2861,14 +3646,14 @@
                   "type": {
                     "type": "reflection",
                     "declaration": {
-                      "id": 227,
+                      "id": 282,
                       "name": "__type",
                       "kind": 65536,
                       "kindString": "Type literal",
                       "flags": {},
                       "children": [
                         {
-                          "id": 229,
+                          "id": 284,
                           "name": "default",
                           "kind": 1024,
                           "kindString": "Property",
@@ -2876,14 +3661,14 @@
                           "type": {
                             "type": "reflection",
                             "declaration": {
-                              "id": 230,
+                              "id": 285,
                               "name": "__type",
                               "kind": 65536,
                               "kindString": "Type literal",
                               "flags": {},
                               "signatures": [
                                 {
-                                  "id": 231,
+                                  "id": 286,
                                   "name": "__type",
                                   "kind": 4096,
                                   "kindString": "Call signature",
@@ -2899,7 +3684,7 @@
                           "defaultValue": "..."
                         },
                         {
-                          "id": 228,
+                          "id": 283,
                           "name": "type",
                           "kind": 1024,
                           "kindString": "Property",
@@ -2918,8 +3703,8 @@
                           "title": "Properties",
                           "kind": 1024,
                           "children": [
-                            229,
-                            228
+                            284,
+                            283
                           ]
                         }
                       ]
@@ -2933,7 +3718,7 @@
                   "title": "Properties",
                   "kind": 1024,
                   "children": [
-                    226
+                    281
                   ]
                 }
               ]
@@ -2942,14 +3727,14 @@
           {
             "type": "reflection",
             "declaration": {
-              "id": 232,
+              "id": 287,
               "name": "__type",
               "kind": 65536,
               "kindString": "Type literal",
               "flags": {},
               "signatures": [
                 {
-                  "id": 233,
+                  "id": 288,
                   "name": "__type",
                   "kind": 4096,
                   "kindString": "Call signature",
@@ -2971,7 +3756,7 @@
           {
             "type": "reflection",
             "declaration": {
-              "id": 234,
+              "id": 289,
               "name": "__type",
               "kind": 65536,
               "kindString": "Type literal",
@@ -2981,7 +3766,7 @@
           {
             "type": "reflection",
             "declaration": {
-              "id": 235,
+              "id": 290,
               "name": "__type",
               "kind": 65536,
               "kindString": "Type literal",
@@ -3030,29 +3815,91 @@
             "type": "reference",
             "typeArguments": [
               {
-                "type": "intersection",
-                "types": [
+                "type": "reference",
+                "typeArguments": [
                   {
                     "type": "reflection",
                     "declaration": {
-                      "id": 236,
+                      "id": 291,
                       "name": "__type",
                       "kind": 65536,
                       "kindString": "Type literal",
                       "flags": {},
                       "children": [
                         {
-                          "id": 237,
+                          "id": 292,
                           "name": "onPickedBlock",
                           "kind": 1024,
                           "kindString": "Property",
                           "flags": {},
                           "type": {
-                            "type": "reference",
-                            "qualifiedName": "Function",
-                            "package": "typescript",
-                            "name": "Function"
-                          }
+                            "type": "reflection",
+                            "declaration": {
+                              "id": 293,
+                              "name": "__type",
+                              "kind": 65536,
+                              "kindString": "Type literal",
+                              "flags": {},
+                              "children": [
+                                {
+                                  "id": 295,
+                                  "name": "default",
+                                  "kind": 1024,
+                                  "kindString": "Property",
+                                  "flags": {},
+                                  "type": {
+                                    "type": "reflection",
+                                    "declaration": {
+                                      "id": 296,
+                                      "name": "__type",
+                                      "kind": 65536,
+                                      "kindString": "Type literal",
+                                      "flags": {},
+                                      "signatures": [
+                                        {
+                                          "id": 297,
+                                          "name": "__type",
+                                          "kind": 4096,
+                                          "kindString": "Call signature",
+                                          "flags": {},
+                                          "type": {
+                                            "type": "intrinsic",
+                                            "name": "void"
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "defaultValue": "..."
+                                },
+                                {
+                                  "id": 294,
+                                  "name": "type",
+                                  "kind": 1024,
+                                  "kindString": "Property",
+                                  "flags": {},
+                                  "type": {
+                                    "type": "reference",
+                                    "qualifiedName": "FunctionConstructor",
+                                    "package": "typescript",
+                                    "name": "FunctionConstructor"
+                                  },
+                                  "defaultValue": "Function"
+                                }
+                              ],
+                              "groups": [
+                                {
+                                  "title": "Properties",
+                                  "kind": 1024,
+                                  "children": [
+                                    295,
+                                    294
+                                  ]
+                                }
+                              ]
+                            }
+                          },
+                          "defaultValue": "..."
                         }
                       ],
                       "groups": [
@@ -3060,23 +3907,16 @@
                           "title": "Properties",
                           "kind": 1024,
                           "children": [
-                            237
+                            292
                           ]
                         }
                       ]
                     }
-                  },
-                  {
-                    "type": "reflection",
-                    "declaration": {
-                      "id": 238,
-                      "name": "__type",
-                      "kind": 65536,
-                      "kindString": "Type literal",
-                      "flags": {}
-                    }
                   }
-                ]
+                ],
+                "qualifiedName": "ExtractPropTypes",
+                "package": "@vue/runtime-core",
+                "name": "ExtractPropTypes"
               }
             ],
             "qualifiedName": "Readonly",
@@ -3086,14 +3926,14 @@
           {
             "type": "reflection",
             "declaration": {
-              "id": 239,
+              "id": 298,
               "name": "__type",
               "kind": 65536,
               "kindString": "Type literal",
               "flags": {},
               "children": [
                 {
-                  "id": 240,
+                  "id": 299,
                   "name": "onPickedBlock",
                   "kind": 1024,
                   "kindString": "Property",
@@ -3111,7 +3951,7 @@
                   "title": "Properties",
                   "kind": 1024,
                   "children": [
-                    240
+                    299
                   ]
                 }
               ]
@@ -3125,7 +3965,7 @@
       "defaultValue": "..."
     },
     {
-      "id": 280,
+      "id": 356,
       "name": "SbBlockPlaceholder",
       "kind": 32,
       "kindString": "Variable",
@@ -3154,14 +3994,14 @@
           {
             "type": "reflection",
             "declaration": {
-              "id": 281,
+              "id": 357,
               "name": "__type",
               "kind": 65536,
               "kindString": "Type literal",
               "flags": {},
               "children": [
                 {
-                  "id": 282,
+                  "id": 358,
                   "name": "onInsertBlock",
                   "kind": 1024,
                   "kindString": "Property",
@@ -3169,14 +4009,14 @@
                   "type": {
                     "type": "reflection",
                     "declaration": {
-                      "id": 283,
+                      "id": 359,
                       "name": "__type",
                       "kind": 65536,
                       "kindString": "Type literal",
                       "flags": {},
                       "children": [
                         {
-                          "id": 285,
+                          "id": 361,
                           "name": "default",
                           "kind": 1024,
                           "kindString": "Property",
@@ -3184,14 +4024,14 @@
                           "type": {
                             "type": "reflection",
                             "declaration": {
-                              "id": 286,
+                              "id": 362,
                               "name": "__type",
                               "kind": 65536,
                               "kindString": "Type literal",
                               "flags": {},
                               "signatures": [
                                 {
-                                  "id": 287,
+                                  "id": 363,
                                   "name": "__type",
                                   "kind": 4096,
                                   "kindString": "Call signature",
@@ -3207,7 +4047,7 @@
                           "defaultValue": "..."
                         },
                         {
-                          "id": 284,
+                          "id": 360,
                           "name": "type",
                           "kind": 1024,
                           "kindString": "Property",
@@ -3226,8 +4066,8 @@
                           "title": "Properties",
                           "kind": 1024,
                           "children": [
-                            285,
-                            284
+                            361,
+                            360
                           ]
                         }
                       ]
@@ -3241,7 +4081,7 @@
                   "title": "Properties",
                   "kind": 1024,
                   "children": [
-                    282
+                    358
                   ]
                 }
               ]
@@ -3250,14 +4090,14 @@
           {
             "type": "reflection",
             "declaration": {
-              "id": 288,
+              "id": 364,
               "name": "__type",
               "kind": 65536,
               "kindString": "Type literal",
               "flags": {},
               "signatures": [
                 {
-                  "id": 289,
+                  "id": 365,
                   "name": "__type",
                   "kind": 4096,
                   "kindString": "Call signature",
@@ -3279,7 +4119,7 @@
           {
             "type": "reflection",
             "declaration": {
-              "id": 290,
+              "id": 366,
               "name": "__type",
               "kind": 65536,
               "kindString": "Type literal",
@@ -3289,7 +4129,7 @@
           {
             "type": "reflection",
             "declaration": {
-              "id": 291,
+              "id": 367,
               "name": "__type",
               "kind": 65536,
               "kindString": "Type literal",
@@ -3338,29 +4178,91 @@
             "type": "reference",
             "typeArguments": [
               {
-                "type": "intersection",
-                "types": [
+                "type": "reference",
+                "typeArguments": [
                   {
                     "type": "reflection",
                     "declaration": {
-                      "id": 292,
+                      "id": 368,
                       "name": "__type",
                       "kind": 65536,
                       "kindString": "Type literal",
                       "flags": {},
                       "children": [
                         {
-                          "id": 293,
+                          "id": 369,
                           "name": "onInsertBlock",
                           "kind": 1024,
                           "kindString": "Property",
                           "flags": {},
                           "type": {
-                            "type": "reference",
-                            "qualifiedName": "Function",
-                            "package": "typescript",
-                            "name": "Function"
-                          }
+                            "type": "reflection",
+                            "declaration": {
+                              "id": 370,
+                              "name": "__type",
+                              "kind": 65536,
+                              "kindString": "Type literal",
+                              "flags": {},
+                              "children": [
+                                {
+                                  "id": 372,
+                                  "name": "default",
+                                  "kind": 1024,
+                                  "kindString": "Property",
+                                  "flags": {},
+                                  "type": {
+                                    "type": "reflection",
+                                    "declaration": {
+                                      "id": 373,
+                                      "name": "__type",
+                                      "kind": 65536,
+                                      "kindString": "Type literal",
+                                      "flags": {},
+                                      "signatures": [
+                                        {
+                                          "id": 374,
+                                          "name": "__type",
+                                          "kind": 4096,
+                                          "kindString": "Call signature",
+                                          "flags": {},
+                                          "type": {
+                                            "type": "intrinsic",
+                                            "name": "void"
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "defaultValue": "..."
+                                },
+                                {
+                                  "id": 371,
+                                  "name": "type",
+                                  "kind": 1024,
+                                  "kindString": "Property",
+                                  "flags": {},
+                                  "type": {
+                                    "type": "reference",
+                                    "qualifiedName": "FunctionConstructor",
+                                    "package": "typescript",
+                                    "name": "FunctionConstructor"
+                                  },
+                                  "defaultValue": "Function"
+                                }
+                              ],
+                              "groups": [
+                                {
+                                  "title": "Properties",
+                                  "kind": 1024,
+                                  "children": [
+                                    372,
+                                    371
+                                  ]
+                                }
+                              ]
+                            }
+                          },
+                          "defaultValue": "..."
                         }
                       ],
                       "groups": [
@@ -3368,23 +4270,16 @@
                           "title": "Properties",
                           "kind": 1024,
                           "children": [
-                            293
+                            369
                           ]
                         }
                       ]
                     }
-                  },
-                  {
-                    "type": "reflection",
-                    "declaration": {
-                      "id": 294,
-                      "name": "__type",
-                      "kind": 65536,
-                      "kindString": "Type literal",
-                      "flags": {}
-                    }
                   }
-                ]
+                ],
+                "qualifiedName": "ExtractPropTypes",
+                "package": "@vue/runtime-core",
+                "name": "ExtractPropTypes"
               }
             ],
             "qualifiedName": "Readonly",
@@ -3394,14 +4289,14 @@
           {
             "type": "reflection",
             "declaration": {
-              "id": 295,
+              "id": 375,
               "name": "__type",
               "kind": 65536,
               "kindString": "Type literal",
               "flags": {},
               "children": [
                 {
-                  "id": 296,
+                  "id": 376,
                   "name": "onInsertBlock",
                   "kind": 1024,
                   "kindString": "Property",
@@ -3419,7 +4314,7 @@
                   "title": "Properties",
                   "kind": 1024,
                   "children": [
-                    296
+                    376
                   ]
                 }
               ]
@@ -3433,7 +4328,7 @@
       "defaultValue": "..."
     },
     {
-      "id": 307,
+      "id": 386,
       "name": "SbButton",
       "kind": 32,
       "kindString": "Variable",
@@ -3462,7 +4357,7 @@
           {
             "type": "reflection",
             "declaration": {
-              "id": 308,
+              "id": 387,
               "name": "__type",
               "kind": 65536,
               "kindString": "Type literal",
@@ -3472,14 +4367,14 @@
           {
             "type": "reflection",
             "declaration": {
-              "id": 309,
+              "id": 388,
               "name": "__type",
               "kind": 65536,
               "kindString": "Type literal",
               "flags": {},
               "signatures": [
                 {
-                  "id": 310,
+                  "id": 389,
                   "name": "__type",
                   "kind": 4096,
                   "kindString": "Call signature",
@@ -3497,7 +4392,7 @@
           {
             "type": "reflection",
             "declaration": {
-              "id": 311,
+              "id": 390,
               "name": "__type",
               "kind": 65536,
               "kindString": "Type literal",
@@ -3507,7 +4402,7 @@
           {
             "type": "reflection",
             "declaration": {
-              "id": 312,
+              "id": 391,
               "name": "__type",
               "kind": 65536,
               "kindString": "Type literal",
@@ -3517,7 +4412,7 @@
           {
             "type": "reflection",
             "declaration": {
-              "id": 313,
+              "id": 392,
               "name": "__type",
               "kind": 65536,
               "kindString": "Type literal",
@@ -3556,29 +4451,22 @@
             "type": "reference",
             "typeArguments": [
               {
-                "type": "intersection",
-                "types": [
+                "type": "reference",
+                "typeArguments": [
                   {
                     "type": "reflection",
                     "declaration": {
-                      "id": 314,
-                      "name": "__type",
-                      "kind": 65536,
-                      "kindString": "Type literal",
-                      "flags": {}
-                    }
-                  },
-                  {
-                    "type": "reflection",
-                    "declaration": {
-                      "id": 315,
+                      "id": 393,
                       "name": "__type",
                       "kind": 65536,
                       "kindString": "Type literal",
                       "flags": {}
                     }
                   }
-                ]
+                ],
+                "qualifiedName": "ExtractPropTypes",
+                "package": "@vue/runtime-core",
+                "name": "ExtractPropTypes"
               }
             ],
             "qualifiedName": "Readonly",
@@ -3588,7 +4476,7 @@
           {
             "type": "reflection",
             "declaration": {
-              "id": 316,
+              "id": 394,
               "name": "__type",
               "kind": 65536,
               "kindString": "Type literal",
@@ -3603,7 +4491,7 @@
       "defaultValue": "..."
     },
     {
-      "id": 123,
+      "id": 128,
       "name": "SbMain",
       "kind": 32,
       "kindString": "Variable",
@@ -3612,8 +4500,8 @@
       },
       "sources": [
         {
-          "fileName": "components/Schlechtenburg.tsx",
-          "line": 32,
+          "fileName": "components/Main.tsx",
+          "line": 41,
           "character": 13
         }
       ],
@@ -3623,14 +4511,14 @@
           {
             "type": "reflection",
             "declaration": {
-              "id": 124,
+              "id": 129,
               "name": "__type",
               "kind": 65536,
               "kindString": "Type literal",
               "flags": {},
               "children": [
                 {
-                  "id": 125,
+                  "id": 130,
                   "name": "availableBlocks",
                   "kind": 1024,
                   "kindString": "Property",
@@ -3638,14 +4526,14 @@
                   "type": {
                     "type": "reflection",
                     "declaration": {
-                      "id": 126,
+                      "id": 131,
                       "name": "__type",
                       "kind": 65536,
                       "kindString": "Type literal",
                       "flags": {},
                       "children": [
                         {
-                          "id": 128,
+                          "id": 133,
                           "name": "default",
                           "kind": 1024,
                           "kindString": "Property",
@@ -3653,14 +4541,14 @@
                           "type": {
                             "type": "reflection",
                             "declaration": {
-                              "id": 129,
+                              "id": 134,
                               "name": "__type",
                               "kind": 65536,
                               "kindString": "Type literal",
                               "flags": {},
                               "signatures": [
                                 {
-                                  "id": 130,
+                                  "id": 135,
                                   "name": "__type",
                                   "kind": 4096,
                                   "kindString": "Call signature",
@@ -3679,7 +4567,7 @@
                           "defaultValue": "..."
                         },
                         {
-                          "id": 127,
+                          "id": 132,
                           "name": "type",
                           "kind": 1024,
                           "kindString": "Property",
@@ -3714,8 +4602,8 @@
                           "title": "Properties",
                           "kind": 1024,
                           "children": [
-                            128,
-                            127
+                            133,
+                            132
                           ]
                         }
                       ]
@@ -3724,7 +4612,7 @@
                   "defaultValue": "..."
                 },
                 {
-                  "id": 131,
+                  "id": 136,
                   "name": "block",
                   "kind": 1024,
                   "kindString": "Property",
@@ -3732,14 +4620,14 @@
                   "type": {
                     "type": "reflection",
                     "declaration": {
-                      "id": 132,
+                      "id": 137,
                       "name": "__type",
                       "kind": 65536,
                       "kindString": "Type literal",
                       "flags": {},
                       "children": [
                         {
-                          "id": 134,
+                          "id": 139,
                           "name": "required",
                           "kind": 1024,
                           "kindString": "Property",
@@ -3751,7 +4639,7 @@
                           "defaultValue": "true"
                         },
                         {
-                          "id": 133,
+                          "id": 138,
                           "name": "type",
                           "kind": 1024,
                           "kindString": "Property",
@@ -3783,8 +4671,8 @@
                           "title": "Properties",
                           "kind": 1024,
                           "children": [
-                            134,
-                            133
+                            139,
+                            138
                           ]
                         }
                       ]
@@ -3793,7 +4681,7 @@
                   "defaultValue": "..."
                 },
                 {
-                  "id": 141,
+                  "id": 146,
                   "name": "mode",
                   "kind": 1024,
                   "kindString": "Property",
@@ -3801,14 +4689,14 @@
                   "type": {
                     "type": "reflection",
                     "declaration": {
-                      "id": 142,
+                      "id": 147,
                       "name": "__type",
                       "kind": 65536,
                       "kindString": "Type literal",
                       "flags": {},
                       "children": [
                         {
-                          "id": 147,
+                          "id": 152,
                           "name": "default",
                           "kind": 1024,
                           "kindString": "Property",
@@ -3821,7 +4709,7 @@
                           "defaultValue": "SbMode.Edit"
                         },
                         {
-                          "id": 143,
+                          "id": 148,
                           "name": "type",
                           "kind": 1024,
                           "kindString": "Property",
@@ -3842,28 +4730,28 @@
                           "defaultValue": "..."
                         },
                         {
-                          "id": 144,
+                          "id": 149,
                           "name": "validator",
                           "kind": 2048,
                           "kindString": "Method",
                           "flags": {},
                           "sources": [
                             {
-                              "fileName": "components/Schlechtenburg.tsx",
-                              "line": 49,
+                              "fileName": "components/Main.tsx",
+                              "line": 64,
                               "character": 6
                             }
                           ],
                           "signatures": [
                             {
-                              "id": 145,
+                              "id": 150,
                               "name": "validator",
                               "kind": 4096,
                               "kindString": "Call signature",
                               "flags": {},
                               "parameters": [
                                 {
-                                  "id": 146,
+                                  "id": 151,
                                   "name": "value",
                                   "kind": 32768,
                                   "kindString": "Parameter",
@@ -3887,15 +4775,15 @@
                           "title": "Properties",
                           "kind": 1024,
                           "children": [
-                            147,
-                            143
+                            152,
+                            148
                           ]
                         },
                         {
                           "title": "Methods",
                           "kind": 2048,
                           "children": [
-                            144
+                            149
                           ]
                         }
                       ]
@@ -3904,7 +4792,7 @@
                   "defaultValue": "..."
                 },
                 {
-                  "id": 135,
+                  "id": 140,
                   "name": "onUpdate",
                   "kind": 1024,
                   "kindString": "Property",
@@ -3912,14 +4800,14 @@
                   "type": {
                     "type": "reflection",
                     "declaration": {
-                      "id": 136,
+                      "id": 141,
                       "name": "__type",
                       "kind": 65536,
                       "kindString": "Type literal",
                       "flags": {},
                       "children": [
                         {
-                          "id": 138,
+                          "id": 143,
                           "name": "default",
                           "kind": 1024,
                           "kindString": "Property",
@@ -3927,14 +4815,14 @@
                           "type": {
                             "type": "reflection",
                             "declaration": {
-                              "id": 139,
+                              "id": 144,
                               "name": "__type",
                               "kind": 65536,
                               "kindString": "Type literal",
                               "flags": {},
                               "signatures": [
                                 {
-                                  "id": 140,
+                                  "id": 145,
                                   "name": "__type",
                                   "kind": 4096,
                                   "kindString": "Call signature",
@@ -3950,18 +4838,25 @@
                           "defaultValue": "..."
                         },
                         {
-                          "id": 137,
+                          "id": 142,
                           "name": "type",
                           "kind": 1024,
                           "kindString": "Property",
                           "flags": {},
                           "type": {
                             "type": "reference",
-                            "qualifiedName": "FunctionConstructor",
-                            "package": "typescript",
-                            "name": "FunctionConstructor"
+                            "typeArguments": [
+                              {
+                                "type": "reference",
+                                "id": 15,
+                                "name": "OnUpdateBlockCb"
+                              }
+                            ],
+                            "qualifiedName": "PropType",
+                            "package": "@vue/runtime-core",
+                            "name": "PropType"
                           },
-                          "defaultValue": "Function"
+                          "defaultValue": "..."
                         }
                       ],
                       "groups": [
@@ -3969,8 +4864,8 @@
                           "title": "Properties",
                           "kind": 1024,
                           "children": [
-                            138,
-                            137
+                            143,
+                            142
                           ]
                         }
                       ]
@@ -3984,10 +4879,10 @@
                   "title": "Properties",
                   "kind": 1024,
                   "children": [
-                    125,
-                    131,
-                    141,
-                    135
+                    130,
+                    136,
+                    146,
+                    140
                   ]
                 }
               ]
@@ -3996,14 +4891,14 @@
           {
             "type": "reflection",
             "declaration": {
-              "id": 148,
+              "id": 153,
               "name": "__type",
               "kind": 65536,
               "kindString": "Type literal",
               "flags": {},
               "signatures": [
                 {
-                  "id": 149,
+                  "id": 154,
                   "name": "__type",
                   "kind": 4096,
                   "kindString": "Call signature",
@@ -4025,7 +4920,7 @@
           {
             "type": "reflection",
             "declaration": {
-              "id": 150,
+              "id": 155,
               "name": "__type",
               "kind": 65536,
               "kindString": "Type literal",
@@ -4035,7 +4930,7 @@
           {
             "type": "reflection",
             "declaration": {
-              "id": 151,
+              "id": 156,
               "name": "__type",
               "kind": 65536,
               "kindString": "Type literal",
@@ -4084,96 +4979,8 @@
             "type": "reference",
             "typeArguments": [
               {
-                "type": "intersection",
-                "types": [
-                  {
-                    "type": "reflection",
-                    "declaration": {
-                      "id": 152,
-                      "name": "__type",
-                      "kind": 65536,
-                      "kindString": "Type literal",
-                      "flags": {},
-                      "children": [
-                        {
-                          "id": 154,
-                          "name": "availableBlocks",
-                          "kind": 1024,
-                          "kindString": "Property",
-                          "flags": {},
-                          "type": {
-                            "type": "array",
-                            "elementType": {
-                              "type": "reference",
-                              "id": 51,
-                              "typeArguments": [
-                                {
-                                  "type": "intrinsic",
-                                  "name": "any"
-                                }
-                              ],
-                              "name": "IBlockDefinition"
-                            }
-                          }
-                        },
-                        {
-                          "id": 153,
-                          "name": "block",
-                          "kind": 1024,
-                          "kindString": "Property",
-                          "flags": {},
-                          "type": {
-                            "type": "reference",
-                            "id": 10,
-                            "typeArguments": [
-                              {
-                                "type": "intrinsic",
-                                "name": "any"
-                              }
-                            ],
-                            "name": "IBlockData"
-                          }
-                        },
-                        {
-                          "id": 156,
-                          "name": "mode",
-                          "kind": 1024,
-                          "kindString": "Property",
-                          "flags": {},
-                          "type": {
-                            "type": "reference",
-                            "id": 1,
-                            "name": "SbMode"
-                          }
-                        },
-                        {
-                          "id": 155,
-                          "name": "onUpdate",
-                          "kind": 1024,
-                          "kindString": "Property",
-                          "flags": {},
-                          "type": {
-                            "type": "reference",
-                            "qualifiedName": "Function",
-                            "package": "typescript",
-                            "name": "Function"
-                          }
-                        }
-                      ],
-                      "groups": [
-                        {
-                          "title": "Properties",
-                          "kind": 1024,
-                          "children": [
-                            154,
-                            153,
-                            156,
-                            155
-                          ]
-                        }
-                      ]
-                    }
-                  },
+                "type": "reference",
+                "typeArguments": [
                   {
                     "type": "reflection",
                     "declaration": {
@@ -4181,10 +4988,383 @@
                       "name": "__type",
                       "kind": 65536,
                       "kindString": "Type literal",
-                      "flags": {}
+                      "flags": {},
+                      "children": [
+                        {
+                          "id": 158,
+                          "name": "availableBlocks",
+                          "kind": 1024,
+                          "kindString": "Property",
+                          "flags": {},
+                          "type": {
+                            "type": "reflection",
+                            "declaration": {
+                              "id": 159,
+                              "name": "__type",
+                              "kind": 65536,
+                              "kindString": "Type literal",
+                              "flags": {},
+                              "children": [
+                                {
+                                  "id": 161,
+                                  "name": "default",
+                                  "kind": 1024,
+                                  "kindString": "Property",
+                                  "flags": {},
+                                  "type": {
+                                    "type": "reflection",
+                                    "declaration": {
+                                      "id": 162,
+                                      "name": "__type",
+                                      "kind": 65536,
+                                      "kindString": "Type literal",
+                                      "flags": {},
+                                      "signatures": [
+                                        {
+                                          "id": 163,
+                                          "name": "__type",
+                                          "kind": 4096,
+                                          "kindString": "Call signature",
+                                          "flags": {},
+                                          "type": {
+                                            "type": "array",
+                                            "elementType": {
+                                              "type": "intrinsic",
+                                              "name": "never"
+                                            }
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "defaultValue": "..."
+                                },
+                                {
+                                  "id": 160,
+                                  "name": "type",
+                                  "kind": 1024,
+                                  "kindString": "Property",
+                                  "flags": {},
+                                  "type": {
+                                    "type": "reference",
+                                    "typeArguments": [
+                                      {
+                                        "type": "array",
+                                        "elementType": {
+                                          "type": "reference",
+                                          "id": 51,
+                                          "typeArguments": [
+                                            {
+                                              "type": "intrinsic",
+                                              "name": "any"
+                                            }
+                                          ],
+                                          "name": "IBlockDefinition"
+                                        }
+                                      }
+                                    ],
+                                    "qualifiedName": "PropType",
+                                    "package": "@vue/runtime-core",
+                                    "name": "PropType"
+                                  },
+                                  "defaultValue": "..."
+                                }
+                              ],
+                              "groups": [
+                                {
+                                  "title": "Properties",
+                                  "kind": 1024,
+                                  "children": [
+                                    161,
+                                    160
+                                  ]
+                                }
+                              ]
+                            }
+                          },
+                          "defaultValue": "..."
+                        },
+                        {
+                          "id": 164,
+                          "name": "block",
+                          "kind": 1024,
+                          "kindString": "Property",
+                          "flags": {},
+                          "type": {
+                            "type": "reflection",
+                            "declaration": {
+                              "id": 165,
+                              "name": "__type",
+                              "kind": 65536,
+                              "kindString": "Type literal",
+                              "flags": {},
+                              "children": [
+                                {
+                                  "id": 167,
+                                  "name": "required",
+                                  "kind": 1024,
+                                  "kindString": "Property",
+                                  "flags": {},
+                                  "type": {
+                                    "type": "literal",
+                                    "value": true
+                                  },
+                                  "defaultValue": "true"
+                                },
+                                {
+                                  "id": 166,
+                                  "name": "type",
+                                  "kind": 1024,
+                                  "kindString": "Property",
+                                  "flags": {},
+                                  "type": {
+                                    "type": "reference",
+                                    "typeArguments": [
+                                      {
+                                        "type": "reference",
+                                        "id": 10,
+                                        "typeArguments": [
+                                          {
+                                            "type": "intrinsic",
+                                            "name": "any"
+                                          }
+                                        ],
+                                        "name": "IBlockData"
+                                      }
+                                    ],
+                                    "qualifiedName": "PropType",
+                                    "package": "@vue/runtime-core",
+                                    "name": "PropType"
+                                  },
+                                  "defaultValue": "..."
+                                }
+                              ],
+                              "groups": [
+                                {
+                                  "title": "Properties",
+                                  "kind": 1024,
+                                  "children": [
+                                    167,
+                                    166
+                                  ]
+                                }
+                              ]
+                            }
+                          },
+                          "defaultValue": "..."
+                        },
+                        {
+                          "id": 174,
+                          "name": "mode",
+                          "kind": 1024,
+                          "kindString": "Property",
+                          "flags": {},
+                          "type": {
+                            "type": "reflection",
+                            "declaration": {
+                              "id": 175,
+                              "name": "__type",
+                              "kind": 65536,
+                              "kindString": "Type literal",
+                              "flags": {},
+                              "children": [
+                                {
+                                  "id": 180,
+                                  "name": "default",
+                                  "kind": 1024,
+                                  "kindString": "Property",
+                                  "flags": {},
+                                  "type": {
+                                    "type": "reference",
+                                    "id": 1,
+                                    "name": "SbMode"
+                                  },
+                                  "defaultValue": "SbMode.Edit"
+                                },
+                                {
+                                  "id": 176,
+                                  "name": "type",
+                                  "kind": 1024,
+                                  "kindString": "Property",
+                                  "flags": {},
+                                  "type": {
+                                    "type": "reference",
+                                    "typeArguments": [
+                                      {
+                                        "type": "reference",
+                                        "id": 1,
+                                        "name": "SbMode"
+                                      }
+                                    ],
+                                    "qualifiedName": "PropType",
+                                    "package": "@vue/runtime-core",
+                                    "name": "PropType"
+                                  },
+                                  "defaultValue": "..."
+                                },
+                                {
+                                  "id": 177,
+                                  "name": "validator",
+                                  "kind": 2048,
+                                  "kindString": "Method",
+                                  "flags": {},
+                                  "sources": [
+                                    {
+                                      "fileName": "components/Main.tsx",
+                                      "line": 64,
+                                      "character": 6
+                                    }
+                                  ],
+                                  "signatures": [
+                                    {
+                                      "id": 178,
+                                      "name": "validator",
+                                      "kind": 4096,
+                                      "kindString": "Call signature",
+                                      "flags": {},
+                                      "parameters": [
+                                        {
+                                          "id": 179,
+                                          "name": "value",
+                                          "kind": 32768,
+                                          "kindString": "Parameter",
+                                          "flags": {},
+                                          "type": {
+                                            "type": "intrinsic",
+                                            "name": "any"
+                                          }
+                                        }
+                                      ],
+                                      "type": {
+                                        "type": "intrinsic",
+                                        "name": "boolean"
+                                      }
+                                    }
+                                  ]
+                                }
+                              ],
+                              "groups": [
+                                {
+                                  "title": "Properties",
+                                  "kind": 1024,
+                                  "children": [
+                                    180,
+                                    176
+                                  ]
+                                },
+                                {
+                                  "title": "Methods",
+                                  "kind": 2048,
+                                  "children": [
+                                    177
+                                  ]
+                                }
+                              ]
+                            }
+                          },
+                          "defaultValue": "..."
+                        },
+                        {
+                          "id": 168,
+                          "name": "onUpdate",
+                          "kind": 1024,
+                          "kindString": "Property",
+                          "flags": {},
+                          "type": {
+                            "type": "reflection",
+                            "declaration": {
+                              "id": 169,
+                              "name": "__type",
+                              "kind": 65536,
+                              "kindString": "Type literal",
+                              "flags": {},
+                              "children": [
+                                {
+                                  "id": 171,
+                                  "name": "default",
+                                  "kind": 1024,
+                                  "kindString": "Property",
+                                  "flags": {},
+                                  "type": {
+                                    "type": "reflection",
+                                    "declaration": {
+                                      "id": 172,
+                                      "name": "__type",
+                                      "kind": 65536,
+                                      "kindString": "Type literal",
+                                      "flags": {},
+                                      "signatures": [
+                                        {
+                                          "id": 173,
+                                          "name": "__type",
+                                          "kind": 4096,
+                                          "kindString": "Call signature",
+                                          "flags": {},
+                                          "type": {
+                                            "type": "intrinsic",
+                                            "name": "void"
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "defaultValue": "..."
+                                },
+                                {
+                                  "id": 170,
+                                  "name": "type",
+                                  "kind": 1024,
+                                  "kindString": "Property",
+                                  "flags": {},
+                                  "type": {
+                                    "type": "reference",
+                                    "typeArguments": [
+                                      {
+                                        "type": "reference",
+                                        "id": 15,
+                                        "name": "OnUpdateBlockCb"
+                                      }
+                                    ],
+                                    "qualifiedName": "PropType",
+                                    "package": "@vue/runtime-core",
+                                    "name": "PropType"
+                                  },
+                                  "defaultValue": "..."
+                                }
+                              ],
+                              "groups": [
+                                {
+                                  "title": "Properties",
+                                  "kind": 1024,
+                                  "children": [
+                                    171,
+                                    170
+                                  ]
+                                }
+                              ]
+                            }
+                          },
+                          "defaultValue": "..."
+                        }
+                      ],
+                      "groups": [
+                        {
+                          "title": "Properties",
+                          "kind": 1024,
+                          "children": [
+                            158,
+                            164,
+                            174,
+                            168
+                          ]
+                        }
+                      ]
                     }
                   }
-                ]
+                ],
+                "qualifiedName": "ExtractPropTypes",
+                "package": "@vue/runtime-core",
+                "name": "ExtractPropTypes"
               }
             ],
             "qualifiedName": "Readonly",
@@ -4194,14 +5374,14 @@
           {
             "type": "reflection",
             "declaration": {
-              "id": 158,
+              "id": 181,
               "name": "__type",
               "kind": 65536,
               "kindString": "Type literal",
               "flags": {},
               "children": [
                 {
-                  "id": 159,
+                  "id": 182,
                   "name": "availableBlocks",
                   "kind": 1024,
                   "kindString": "Property",
@@ -4222,7 +5402,7 @@
                   }
                 },
                 {
-                  "id": 161,
+                  "id": 184,
                   "name": "mode",
                   "kind": 1024,
                   "kindString": "Property",
@@ -4234,16 +5414,15 @@
                   }
                 },
                 {
-                  "id": 160,
+                  "id": 183,
                   "name": "onUpdate",
                   "kind": 1024,
                   "kindString": "Property",
                   "flags": {},
                   "type": {
                     "type": "reference",
-                    "qualifiedName": "Function",
-                    "package": "typescript",
-                    "name": "Function"
+                    "id": 15,
+                    "name": "OnUpdateBlockCb"
                   }
                 }
               ],
@@ -4252,9 +5431,9 @@
                   "title": "Properties",
                   "kind": 1024,
                   "children": [
-                    159,
-                    161,
-                    160
+                    182,
+                    184,
+                    183
                   ]
                 }
               ]
@@ -4268,7 +5447,7 @@
       "defaultValue": "..."
     },
     {
-      "id": 317,
+      "id": 395,
       "name": "SbSelect",
       "kind": 32,
       "kindString": "Variable",
@@ -4297,7 +5476,7 @@
           {
             "type": "reflection",
             "declaration": {
-              "id": 318,
+              "id": 396,
               "name": "__type",
               "kind": 65536,
               "kindString": "Type literal",
@@ -4307,14 +5486,14 @@
           {
             "type": "reflection",
             "declaration": {
-              "id": 319,
+              "id": 397,
               "name": "__type",
               "kind": 65536,
               "kindString": "Type literal",
               "flags": {},
               "signatures": [
                 {
-                  "id": 320,
+                  "id": 398,
                   "name": "__type",
                   "kind": 4096,
                   "kindString": "Call signature",
@@ -4332,7 +5511,7 @@
           {
             "type": "reflection",
             "declaration": {
-              "id": 321,
+              "id": 399,
               "name": "__type",
               "kind": 65536,
               "kindString": "Type literal",
@@ -4342,7 +5521,7 @@
           {
             "type": "reflection",
             "declaration": {
-              "id": 322,
+              "id": 400,
               "name": "__type",
               "kind": 65536,
               "kindString": "Type literal",
@@ -4352,7 +5531,7 @@
           {
             "type": "reflection",
             "declaration": {
-              "id": 323,
+              "id": 401,
               "name": "__type",
               "kind": 65536,
               "kindString": "Type literal",
@@ -4391,29 +5570,22 @@
             "type": "reference",
             "typeArguments": [
               {
-                "type": "intersection",
-                "types": [
+                "type": "reference",
+                "typeArguments": [
                   {
                     "type": "reflection",
                     "declaration": {
-                      "id": 324,
-                      "name": "__type",
-                      "kind": 65536,
-                      "kindString": "Type literal",
-                      "flags": {}
-                    }
-                  },
-                  {
-                    "type": "reflection",
-                    "declaration": {
-                      "id": 325,
+                      "id": 402,
                       "name": "__type",
                       "kind": 65536,
                       "kindString": "Type literal",
                       "flags": {}
                     }
                   }
-                ]
+                ],
+                "qualifiedName": "ExtractPropTypes",
+                "package": "@vue/runtime-core",
+                "name": "ExtractPropTypes"
               }
             ],
             "qualifiedName": "Readonly",
@@ -4423,7 +5595,7 @@
           {
             "type": "reflection",
             "declaration": {
-              "id": 326,
+              "id": 403,
               "name": "__type",
               "kind": 65536,
               "kindString": "Type literal",
@@ -4438,7 +5610,7 @@
       "defaultValue": "..."
     },
     {
-      "id": 297,
+      "id": 377,
       "name": "SbToolbar",
       "kind": 32,
       "kindString": "Variable",
@@ -4467,7 +5639,7 @@
           {
             "type": "reflection",
             "declaration": {
-              "id": 298,
+              "id": 378,
               "name": "__type",
               "kind": 65536,
               "kindString": "Type literal",
@@ -4477,14 +5649,14 @@
           {
             "type": "reflection",
             "declaration": {
-              "id": 299,
+              "id": 379,
               "name": "__type",
               "kind": 65536,
               "kindString": "Type literal",
               "flags": {},
               "signatures": [
                 {
-                  "id": 300,
+                  "id": 380,
                   "name": "__type",
                   "kind": 4096,
                   "kindString": "Call signature",
@@ -4502,7 +5674,7 @@
           {
             "type": "reflection",
             "declaration": {
-              "id": 301,
+              "id": 381,
               "name": "__type",
               "kind": 65536,
               "kindString": "Type literal",
@@ -4512,7 +5684,7 @@
           {
             "type": "reflection",
             "declaration": {
-              "id": 302,
+              "id": 382,
               "name": "__type",
               "kind": 65536,
               "kindString": "Type literal",
@@ -4522,7 +5694,7 @@
           {
             "type": "reflection",
             "declaration": {
-              "id": 303,
+              "id": 383,
               "name": "__type",
               "kind": 65536,
               "kindString": "Type literal",
@@ -4561,29 +5733,22 @@
             "type": "reference",
             "typeArguments": [
               {
-                "type": "intersection",
-                "types": [
+                "type": "reference",
+                "typeArguments": [
                   {
                     "type": "reflection",
                     "declaration": {
-                      "id": 304,
-                      "name": "__type",
-                      "kind": 65536,
-                      "kindString": "Type literal",
-                      "flags": {}
-                    }
-                  },
-                  {
-                    "type": "reflection",
-                    "declaration": {
-                      "id": 305,
+                      "id": 384,
                       "name": "__type",
                       "kind": 65536,
                       "kindString": "Type literal",
                       "flags": {}
                     }
                   }
-                ]
+                ],
+                "qualifiedName": "ExtractPropTypes",
+                "package": "@vue/runtime-core",
+                "name": "ExtractPropTypes"
               }
             ],
             "qualifiedName": "Readonly",
@@ -4593,7 +5758,7 @@
           {
             "type": "reflection",
             "declaration": {
-              "id": 306,
+              "id": 385,
               "name": "__type",
               "kind": 65536,
               "kindString": "Type literal",
@@ -4643,7 +5808,7 @@
       "sources": [
         {
           "fileName": "use-resize-observer.ts",
-          "line": 16,
+          "line": 17,
           "character": 13
         }
       ],
@@ -4693,7 +5858,7 @@
       "sources": [
         {
           "fileName": "use-resize-observer.ts",
-          "line": 17,
+          "line": 18,
           "character": 13
         }
       ],
@@ -4703,6 +5868,31 @@
           "type": "reference",
           "id": 122,
           "name": "SymEditorDimensions"
+        }
+      },
+      "defaultValue": "..."
+    },
+    {
+      "id": 4,
+      "name": "SymMode",
+      "kind": 32,
+      "kindString": "Variable",
+      "flags": {
+        "isConst": true
+      },
+      "sources": [
+        {
+          "fileName": "mode.ts",
+          "line": 8,
+          "character": 13
+        }
+      ],
+      "type": {
+        "type": "query",
+        "queryType": {
+          "type": "reference",
+          "id": 4,
+          "name": "SymMode"
         }
       },
       "defaultValue": "..."
@@ -5270,7 +6460,7 @@
       "sources": [
         {
           "fileName": "use-resize-observer.ts",
-          "line": 49,
+          "line": 52,
           "character": 16
         }
       ],
@@ -5499,7 +6689,7 @@
       "sources": [
         {
           "fileName": "use-resize-observer.ts",
-          "line": 18,
+          "line": 19,
           "character": 16
         }
       ],
@@ -5653,6 +6843,7 @@
         51,
         58,
         41,
+        123,
         5
       ]
     },
@@ -5673,19 +6864,19 @@
       "title": "Variables",
       "kind": 32,
       "children": [
-        4,
-        162,
-        241,
-        224,
-        280,
-        307,
-        123,
-        317,
-        297,
+        185,
+        300,
+        279,
+        356,
+        386,
+        128,
+        395,
+        377,
         96,
         121,
         106,
         122,
+        4,
         73,
         69
       ]

@@ -1,6 +1,12 @@
-<script setup>
-import Package from '../Package'
-</script>
+# @schlechtenburg/standalone
 
-<Package name="@schlechtenburg/standalone" />
+## startSchlechtenburg
 
+
+
+- **Type**
+  ```
+    Function
+  ```
+
+- **Members**

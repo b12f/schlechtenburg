@@ -7,7 +7,7 @@
   "license": "GPL-3.0-or-later",
   "main": "lib/index.ts",
   "scripts": {
-    "dev": "json-to-md:watch",
+    "dev": "npm run json-to-md:watch",
     "typecheck": "vuedx-typecheck --no-pretty ./lib",
     "ts-to-json:build": "ts-to-json",
     "json-to-md:build": "json-to-md build",
@@ -34,13 +34,14 @@
     "uuid": "^8.3.2"
   },
   "peerDependencies": {
-    "vue": "^3.0.7"
+    "vue": "^3.2.31"
   },
   "devDependencies": {
     "@schlechtenburg/docgen": "^0.0.0",
     "@types/lodash-es": "^4.17.4",
     "@types/uuid": "^8.3.0",
     "@vuedx/typecheck": "^0.6.3",
-    "@vuedx/typescript-plugin-vue": "^0.6.3"
+    "@vuedx/typescript-plugin-vue": "^0.6.3",
+    "vue": "^3.2.31"
   }
 }

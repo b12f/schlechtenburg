@@ -12,11 +12,5 @@
 //    "noErrorTruncation": true,
     "allowSyntheticDefaultImports": true,
     "paths": {}
-  },
-  "include": [
-    "packages/**/lib/**/*.ts",
-    "packages/**lib/**/*.d.ts",
-    "packages/**lib/**/*.tsx",
-    "packages/**lib/**/*.vue"
-  ]
+  }
 }

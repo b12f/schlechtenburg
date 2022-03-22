@@ -1,7 +1,9 @@
 {
   "extends": "../../tsconfig.json",
-  "typedocOptions": {
-    "entryPoints": ["lib/index.ts"],
-    "json": "docs"
-  }
+  "include": [
+    "lib/**/*.ts",
+    "lib/**/*.d.ts",
+    "lib/**/*.tsx",
+    "lib/**/*.vue"
+  ]
 }

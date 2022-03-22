@@ -22,8 +22,12 @@ const transformTSDocs = (docs) => {
 const getTSDocs = async (outputFile) => {
   const app = new TypeDoc.Application();
   app.options.addReader(new TypeDoc.TSConfigReader());
+  app.bootstrap({
+    entryPoints: ['lib/index.ts'],
+    json: 'docs',
+    excludeExternals: true,
+  });
 
-  app.bootstrap();
   const project = app.convert();
   await app.generateJson(project, outputFile);
   const data = JSON.parse(await readFile(outputFile));

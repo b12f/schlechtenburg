@@ -46,7 +46,7 @@ ${docs.comment?.shortText || ''}
 
 - **Members**
 ${(docs.children || [])
-  .map((child) => `   - \`${child.name}\`: \`${child.type?.name}\``)
+  .map((child) => `   - **${child.name}**: \`${child.type?.name}\``)
   .join('\n')}
 `;
 

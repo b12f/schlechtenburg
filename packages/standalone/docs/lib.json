@@ -1,0 +1,306 @@
+{
+  "id": 0,
+  "name": "@schlechtenburg/standalone",
+  "kind": 1,
+  "kindString": "Project",
+  "flags": {},
+  "originalName": "",
+  "children": [
+    {
+      "id": 1,
+      "name": "startSchlechtenburg",
+      "kind": 64,
+      "kindString": "Function",
+      "flags": {},
+      "sources": [
+        {
+          "fileName": "main.ts",
+          "line": 8,
+          "character": 13
+        }
+      ],
+      "signatures": [
+        {
+          "id": 2,
+          "name": "startSchlechtenburg",
+          "kind": 4096,
+          "kindString": "Call signature",
+          "flags": {},
+          "comment": {},
+          "parameters": [
+            {
+              "id": 3,
+              "name": "el",
+              "kind": 32768,
+              "kindString": "Parameter",
+              "flags": {},
+              "type": {
+                "type": "union",
+                "types": [
+                  {
+                    "type": "intrinsic",
+                    "name": "string"
+                  },
+                  {
+                    "type": "reference",
+                    "qualifiedName": "HTMLElement",
+                    "package": "typescript",
+                    "name": "HTMLElement"
+                  }
+                ]
+              }
+            },
+            {
+              "id": 4,
+              "name": "props",
+              "kind": 32768,
+              "kindString": "Parameter",
+              "flags": {},
+              "type": {
+                "type": "reference",
+                "name": "ISbMainProps"
+              }
+            }
+          ],
+          "type": {
+            "type": "reference",
+            "typeArguments": [
+              {
+                "type": "reflection",
+                "declaration": {
+                  "id": 5,
+                  "name": "__type",
+                  "kind": 65536,
+                  "kindString": "Type literal",
+                  "flags": {},
+                  "children": [
+                    {
+                      "id": 6,
+                      "name": "app",
+                      "kind": 1024,
+                      "kindString": "Property",
+                      "flags": {},
+                      "type": {
+                        "type": "reference",
+                        "typeArguments": [
+                          {
+                            "type": "reference",
+                            "qualifiedName": "Element",
+                            "package": "typescript",
+                            "name": "Element"
+                          }
+                        ],
+                        "qualifiedName": "App",
+                        "package": "@vue/runtime-core",
+                        "name": "App"
+                      }
+                    },
+                    {
+                      "id": 7,
+                      "name": "getBlock",
+                      "kind": 1024,
+                      "kindString": "Property",
+                      "flags": {},
+                      "type": {
+                        "type": "reflection",
+                        "declaration": {
+                          "id": 8,
+                          "name": "__type",
+                          "kind": 65536,
+                          "kindString": "Type literal",
+                          "flags": {},
+                          "signatures": [
+                            {
+                              "id": 9,
+                              "name": "__type",
+                              "kind": 4096,
+                              "kindString": "Call signature",
+                              "flags": {},
+                              "type": {
+                                "type": "union",
+                                "types": [
+                                  {
+                                    "type": "literal",
+                                    "value": null
+                                  },
+                                  {
+                                    "type": "reference",
+                                    "typeArguments": [
+                                      {
+                                        "type": "intrinsic",
+                                        "name": "any"
+                                      }
+                                    ],
+                                    "name": "IBlockData"
+                                  }
+                                ]
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    },
+                    {
+                      "id": 14,
+                      "name": "getMode",
+                      "kind": 1024,
+                      "kindString": "Property",
+                      "flags": {},
+                      "type": {
+                        "type": "reflection",
+                        "declaration": {
+                          "id": 15,
+                          "name": "__type",
+                          "kind": 65536,
+                          "kindString": "Type literal",
+                          "flags": {},
+                          "signatures": [
+                            {
+                              "id": 16,
+                              "name": "__type",
+                              "kind": 4096,
+                              "kindString": "Call signature",
+                              "flags": {},
+                              "type": {
+                                "type": "reference",
+                                "name": "SbMode"
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    },
+                    {
+                      "id": 10,
+                      "name": "setBlock",
+                      "kind": 1024,
+                      "kindString": "Property",
+                      "flags": {},
+                      "type": {
+                        "type": "reflection",
+                        "declaration": {
+                          "id": 11,
+                          "name": "__type",
+                          "kind": 65536,
+                          "kindString": "Type literal",
+                          "flags": {},
+                          "signatures": [
+                            {
+                              "id": 12,
+                              "name": "__type",
+                              "kind": 4096,
+                              "kindString": "Call signature",
+                              "flags": {},
+                              "parameters": [
+                                {
+                                  "id": 13,
+                                  "name": "block",
+                                  "kind": 32768,
+                                  "kindString": "Parameter",
+                                  "flags": {},
+                                  "type": {
+                                    "type": "reference",
+                                    "typeArguments": [
+                                      {
+                                        "type": "intrinsic",
+                                        "name": "any"
+                                      }
+                                    ],
+                                    "name": "IBlockData"
+                                  }
+                                }
+                              ],
+                              "type": {
+                                "type": "intrinsic",
+                                "name": "void"
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    },
+                    {
+                      "id": 17,
+                      "name": "setMode",
+                      "kind": 1024,
+                      "kindString": "Property",
+                      "flags": {},
+                      "type": {
+                        "type": "reflection",
+                        "declaration": {
+                          "id": 18,
+                          "name": "__type",
+                          "kind": 65536,
+                          "kindString": "Type literal",
+                          "flags": {},
+                          "signatures": [
+                            {
+                              "id": 19,
+                              "name": "__type",
+                              "kind": 4096,
+                              "kindString": "Call signature",
+                              "flags": {},
+                              "parameters": [
+                                {
+                                  "id": 20,
+                                  "name": "mode",
+                                  "kind": 32768,
+                                  "kindString": "Parameter",
+                                  "flags": {},
+                                  "type": {
+                                    "type": "reference",
+                                    "name": "SbMode"
+                                  }
+                                }
+                              ],
+                              "type": {
+                                "type": "intrinsic",
+                                "name": "void"
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ],
+                  "groups": [
+                    {
+                      "title": "Properties",
+                      "kind": 1024,
+                      "children": [
+                        6,
+                        7,
+                        14,
+                        10,
+                        17
+                      ]
+                    }
+                  ]
+                }
+              }
+            ],
+            "qualifiedName": "Promise",
+            "package": "typescript",
+            "name": "Promise"
+          }
+        }
+      ]
+    }
+  ],
+  "groups": [
+    {
+      "title": "Functions",
+      "kind": 64,
+      "children": [
+        1
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "fileName": "index.ts",
+      "line": 1,
+      "character": 0
+    }
+  ]
+}

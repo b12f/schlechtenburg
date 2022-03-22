@@ -11,7 +11,8 @@
     "test": "__tests__"
   },
   "files": [
-    "lib"
+    "lib",
+    "docs"
   ],
   "publishConfig": {
     "access": "public"
@@ -21,21 +22,24 @@
     "url": "git@git.b12f.io:b12f/schlechtenburg.git"
   },
   "scripts": {
-    "dev": "json-to-md:watch",
+    "dev": "npm run json-to-md:watch",
     "typecheck": "vuedx-typecheck --no-pretty ./lib",
     "ts-to-json:build": "ts-to-json",
     "json-to-md:build": "json-to-md build",
     "json-to-md:watch": "json-to-md watch",
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
+  "peerDependencies": {
+    "vue": "^3.2.31"
+  },
   "dependencies": {
     "@schlechtenburg/core": "^0.0.0",
-    "@schlechtenburg/paragraph": "^0.0.0",
-    "vue": "^3.0.7"
+    "@schlechtenburg/paragraph": "^0.0.0"
   },
   "devDependencies": {
     "@schlechtenburg/docgen": "^0.0.0",
     "@vuedx/typecheck": "^0.6.3",
-    "@vuedx/typescript-plugin-vue": "^0.6.3"
+    "@vuedx/typescript-plugin-vue": "^0.6.3",
+    "vue": "^3.2.31"
   }
 }

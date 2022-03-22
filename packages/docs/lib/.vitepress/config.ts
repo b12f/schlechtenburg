@@ -18,7 +18,7 @@ export default defineConfig({
       {
         text: 'Guide',
         activeMatch: '^/guide/',
-        link: '/guide/introduction'
+        link: '/guide/why'
       },
       {
         text: 'API',
@@ -35,22 +35,18 @@ export default defineConfig({
           text: 'Getting Started',
           children: [
             { text: 'Why Schlechtenburg?', link: '/guide/why' },
-            { text: 'Examples', link: '/guide/examples' },
             { text: 'Installation', link: '/guide/installation' },
+            { text: 'Examples', link: '/guide/examples' },
           ],
         }
       ],
       '/api/': [
         {
           text: 'API',
-          children: [
-            { text: '@schlechtenburg/standalone', link: '/api/@schlechtenburg/standalone' },
-            { text: '@schlechtenburg/core', link: '/api/@schlechtenburg/core' },
-            { text: '@schlechtenburg/layout', link: '/api/@schlechtenburg/layout' },
-            { text: '@schlechtenburg/heading', link: '/api/@schlechtenburg/heading' },
-            { text: '@schlechtenburg/paragraph', link: '/api/@schlechtenburg/paragraph' },
-            { text: '@schlechtenburg/image', link: '/api/@schlechtenburg/image' },
-          ],
+          children: DOCS_PACKAGES.map((name) => ({
+            text: `@schlechtenburg/${name}`,
+            link: `/api/@schlechtenburg/${name}`,
+          })),
         }
       ],
       '/': false,

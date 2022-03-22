@@ -4,38 +4,34 @@
 
 The mode the Schlechtenburg editor is currently in
 
-- **Type**
-  ```
-    Enumeration
-  ```
+- **Type** `Enumeration`
+
 
 - **Members**
    - **Edit**: `undefined`
    - **View**: `undefined`
+
 
 ## IBlockData&lt;T&gt;
 
 Schlechtenburg inputs and outputs a plain JS Object that can be JSON stringified. This is the
 interface type for that data structure. `T` will be the data type of the specific block being
 
-- **Type**
-  ```
-    Interface
-  ```
+- **Type** `Interface`
+
 
 - **Members**
    - **data**: `T`
    - **id**: `string`
    - **name**: `string`
 
+
 ## IBlockDefinition&lt;T&gt;
 
 Any Block that you create
 
-- **Type**
-  ```
-    Interface
-  ```
+- **Type** `Interface`
+
 
 - **Members**
    - **edit**: `Component`
@@ -44,26 +40,21 @@ Any Block that you create
    - **name**: `string`
    - **view**: `Component`
 
+
 ## IBlockLibrary
 
 Schlechtenburg maintains a library of blocks that are available
 
-- **Type**
-  ```
-    Interface
-  ```
+- **Type** `Interface`
 
-- **Members**
 
 
 ## IBlockProps&lt;T&gt;
 
 Any Block that you create
 
-- **Type**
-  ```
-    Interface
-  ```
+- **Type** `Interface`
+
 
 - **Members**
    - **blockId**: `string`
@@ -75,14 +66,13 @@ Any Block that you create
    - **onRemoveSelf**: `OnRemoveSelfCb`
    - **onUpdate**: `OnUpdateSelfCb`
 
+
 ## ISbMainProps
 
 
 
-- **Type**
-  ```
-    Interface
-  ```
+- **Type** `Interface`
+
 
 - **Members**
    - **availableBlocks**: `undefined`
@@ -90,15 +80,14 @@ Any Block that you create
    - **mode**: `SbMode`
    - **onUpdate**: `OnUpdateBlockCb`
 
+
 ## ITreeNode
 
 Schlechtenburg keeps track of the rendered block tree.
 This is useful for e.g. the tree select component in the editor header.
 
-- **Type**
-  ```
-    Interface
-  ```
+- **Type** `Interface`
+
 
 - **Members**
    - **children**: `undefined`
@@ -106,88 +95,61 @@ This is useful for e.g. the tree select component in the editor header.
    - **id**: `string`
    - **name**: `string`
 
+
 ## OnActivateNextCb
 
 
 
-- **Type**
-  ```
-    Type alias
-  ```
+- **Type** `Type alias`
 
-- **Members**
 
 
 ## OnActivatePreviousCb
 
 
 
-- **Type**
-  ```
-    Type alias
-  ```
+- **Type** `Type alias`
 
-- **Members**
 
 
 ## OnAppendBlockCb
 
 
 
-- **Type**
-  ```
-    Type alias
-  ```
+- **Type** `Type alias`
 
-- **Members**
 
 
 ## OnPrependBlockCb
 
 
 
-- **Type**
-  ```
-    Type alias
-  ```
+- **Type** `Type alias`
 
-- **Members**
 
 
 ## OnRemoveSelfCb
 
 
 
-- **Type**
-  ```
-    Type alias
-  ```
+- **Type** `Type alias`
 
-- **Members**
 
 
 ## OnUpdateBlockCb
 
 
 
-- **Type**
-  ```
-    Type alias
-  ```
+- **Type** `Type alias`
 
-- **Members**
 
 
 ## OnUpdateSelfCb&lt;T&gt;
 
 
 
-- **Type**
-  ```
-    Type alias
-  ```
+- **Type** `Type alias`
 
-- **Members**
 
 
 ## SbBlock
@@ -195,11 +157,7 @@ This is useful for e.g. the tree select component in the editor header.
 Displays a Schlechtenburg block either the mode of the schlechtenburg instance.
 You can use this to display child blocks inside your own blocks.
 
-- **Type**
-
-  ```
-    Component
-  ```
+- **Type**: `Component`
 
 ### Props
 
@@ -209,10 +167,7 @@ You can use this to display child blocks inside your own blocks.
 The state for the block.
 
 
-- **Type**
-  ```
-    IBlockData<any>
-  ```
+- **Type** `IBlockData<any>`
 
 
 
@@ -223,16 +178,10 @@ The state for the block.
 Called when the block should be updated.
 
 
-- **Type**
-  ```
-    OnUpdateBlockCb
-  ```
+- **Type** `OnUpdateBlockCb`
 
 
-- **Default value**
-  ```
-    () => {}
-  ```
+- **Default value** `() => {}`
 
 
 
@@ -242,16 +191,10 @@ Called when the block should be updated.
 Called when a sibling block should be inserted before the block
 
 
-- **Type**
-  ```
-    OnPrependBlockCb
-  ```
+- **Type** `OnPrependBlockCb`
 
 
-- **Default value**
-  ```
-    () => {}
-  ```
+- **Default value** `() => {}`
 
 
 
@@ -261,16 +204,10 @@ Called when a sibling block should be inserted before the block
 Called when a sibling block should be inserted after the block
 
 
-- **Type**
-  ```
-    OnAppendBlockCb
-  ```
+- **Type** `OnAppendBlockCb`
 
 
-- **Default value**
-  ```
-    () => {}
-  ```
+- **Default value** `() => {}`
 
 
 
@@ -280,16 +217,10 @@ Called when a sibling block should be inserted after the block
 Called when the block should be removed
 
 
-- **Type**
-  ```
-    OnRemoveSelfCb
-  ```
+- **Type** `OnRemoveSelfCb`
 
 
-- **Default value**
-  ```
-    () => {}
-  ```
+- **Default value** `() => {}`
 
 
 
@@ -299,16 +230,10 @@ Called when the block should be removed
 Called when the previous sibling block should be activated
 
 
-- **Type**
-  ```
-    OnActivatePreviousCb
-  ```
+- **Type** `OnActivatePreviousCb`
 
 
-- **Default value**
-  ```
-    () => {}
-  ```
+- **Default value** `() => {}`
 
 
 
@@ -318,16 +243,10 @@ Called when the previous sibling block should be activated
 Called when the next sibling block should be activated
 
 
-- **Type**
-  ```
-    OnActivateNextCb
-  ```
+- **Type** `OnActivateNextCb`
 
 
-- **Default value**
-  ```
-    () => {}
-  ```
+- **Default value** `() => {}`
 
 
 
@@ -336,11 +255,7 @@ Called when the next sibling block should be activated
 
 
 
-- **Type**
-
-  ```
-    Component
-  ```
+- **Type**: `Component`
 
 ### Props
 
@@ -350,16 +265,10 @@ Called when the next sibling block should be activated
 
 
 
-- **Type**
-  ```
-    string
-  ```
+- **Type** `string`
 
 
-- **Default value**
-  ```
-    null
-  ```
+- **Default value** `null`
 
 
 
@@ -369,16 +278,10 @@ Called when the next sibling block should be activated
 
 
 
-- **Type**
-  ```
-    func
-  ```
+- **Type** `func`
 
 
-- **Default value**
-  ```
-    () => {}
-  ```
+- **Default value** `() => {}`
 
 
 
@@ -388,16 +291,10 @@ Called when the next sibling block should be activated
 
 
 
-- **Type**
-  ```
-    func
-  ```
+- **Type** `func`
 
 
-- **Default value**
-  ```
-    () => {}
-  ```
+- **Default value** `() => {}`
 
 
 
@@ -407,16 +304,10 @@ Called when the next sibling block should be activated
 
 
 
-- **Type**
-  ```
-    func
-  ```
+- **Type** `func`
 
 
-- **Default value**
-  ```
-    () => {}
-  ```
+- **Default value** `() => {}`
 
 
 
@@ -425,11 +316,7 @@ Called when the next sibling block should be activated
 
 
 
-- **Type**
-
-  ```
-    Component
-  ```
+- **Type**: `Component`
 
 ### Props
 
@@ -439,16 +326,10 @@ Called when the next sibling block should be activated
 
 
 
-- **Type**
-  ```
-    func
-  ```
+- **Type** `func`
 
 
-- **Default value**
-  ```
-    () => {}
-  ```
+- **Default value** `() => {}`
 
 
 
@@ -458,11 +339,7 @@ Called when the next sibling block should be activated
 A placeholder for a block.
 Displays a placeholder for a block, allowing the user to select a block to insert.
 
-- **Type**
-
-  ```
-    Component
-  ```
+- **Type**: `Component`
 
 ### Props
 
@@ -472,16 +349,10 @@ Displays a placeholder for a block, allowing the user to select a block to inser
 Called when the user picked a block that should be inserted here.
 
 
-- **Type**
-  ```
-    func
-  ```
+- **Type** `func`
 
 
-- **Default value**
-  ```
-    () => {}
-  ```
+- **Default value** `() => {}`
 
 
 
@@ -490,11 +361,7 @@ Called when the user picked a block that should be inserted here.
 
 A button in the schlechtenburg theme
 
-- **Type**
-
-  ```
-    Component
-  ```
+- **Type**: `Component`
 
 ### Props
 
@@ -504,23 +371,15 @@ A button in the schlechtenburg theme
 
 
 
-- **Type**
-  ```
-    Variable
-  ```
+- **Type** `Variable`
 
-- **Members**
 
 
 ## SbSelect
 
 A select input in the schlechtenburg theme
 
-- **Type**
-
-  ```
-    Component
-  ```
+- **Type**: `Component`
 
 ### Props
 
@@ -530,11 +389,7 @@ A select input in the schlechtenburg theme
 
 Toolbar in the schlechtenburg theme
 
-- **Type**
-
-  ```
-    Component
-  ```
+- **Type**: `Component`
 
 ### Props
 
@@ -544,141 +399,92 @@ Toolbar in the schlechtenburg theme
 
 
 
-- **Type**
-  ```
-    Variable
-  ```
+- **Type** `Variable`
 
-- **Members**
 
 
 ## SymBlockDimensions
 
 
 
-- **Type**
-  ```
-    Variable
-  ```
+- **Type** `Variable`
 
-- **Members**
 
 
 ## SymBlockLibrary
 
 
 
-- **Type**
-  ```
-    Variable
-  ```
+- **Type** `Variable`
 
-- **Members**
 
 
 ## SymEditorDimensions
 
 
 
-- **Type**
-  ```
-    Variable
-  ```
+- **Type** `Variable`
 
-- **Members**
 
 
 ## SymMode
 
 
 
-- **Type**
-  ```
-    Variable
-  ```
+- **Type** `Variable`
 
-- **Members**
 
 
 ## blockProps
 
 
 
-- **Type**
-  ```
-    Variable
-  ```
+- **Type** `Variable`
 
-- **Members**
 
 
 ## model
 
 
 
-- **Type**
-  ```
-    Variable
-  ```
+- **Type** `Variable`
 
-- **Members**
 
 
 ## generateBlockId
 
 
 
-- **Type**
-  ```
-    Function
-  ```
+- **Type** `Function`
 
-- **Members**
 
 
 ## useActivation
 
 
 
-- **Type**
-  ```
-    Function
-  ```
+- **Type** `Function`
 
-- **Members**
 
 
 ## useBlockSizing
 
 
 
-- **Type**
-  ```
-    Function
-  ```
+- **Type** `Function`
 
-- **Members**
 
 
 ## useDynamicBlocks
 
 
 
-- **Type**
-  ```
-    Function
-  ```
+- **Type** `Function`
 
-- **Members**
 
 
 ## useResizeObserver
 
 
 
-- **Type**
-  ```
-    Function
-  ```
-
-- **Members**
+- **Type** `Function`

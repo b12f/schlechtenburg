@@ -5,11 +5,7 @@ const generateComponentDoc = (docs) => `
 
 ${docs.description || ''}
 
-- **Type**
-
-  \`\`\`
-    Component
-  \`\`\`
+- **Type**: \`Component\`
 
 ### Props
 
@@ -19,35 +15,30 @@ ${(docs.props || []).map(prop => `
 ${prop.description || ''}
 
 ${prop.type ? `
-- **Type**
-  \`\`\`
-    ${prop.type.name}
-  \`\`\`
+- **Type** \`${prop.type.name}\`
 ` : ''}
 ${prop.defaultValue ? `
-- **Default value**
-  \`\`\`
-    ${prop.defaultValue.value}
-  \`\`\`
+- **Default value** \`${prop.defaultValue.value}\`
 ` : ''}
 
 `).join('\n')}
 `;
+
+const generateMembersDocs = (children) => children ? `
+- **Members**
+${(children)
+  .map((child) => `   - **${child.name}**: \`${child.type?.name}\``)
+  .join('\n')}
+` : '';
 
 const generateTSDocs = (docs) => `
 ## ${docs.name}${docs.typeParameters ? getTypeParamString(docs.typeParameters) : ''}
 
 ${docs.comment?.shortText || ''}
 
-- **Type**
-  \`\`\`
-    ${docs.kindString}
-  \`\`\`
+- **Type** \`${docs.kindString}\`
 
-- **Members**
-${(docs.children || [])
-  .map((child) => `   - **${child.name}**: \`${child.type?.name}\``)
-  .join('\n')}
+${generateMembersDocs(docs.children)}
 `;
 
 const generateChildren = (

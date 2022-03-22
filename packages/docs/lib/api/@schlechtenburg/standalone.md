@@ -4,9 +4,4 @@
 
 
 
-- **Type**
-  ```
-    Function
-  ```
-
-- **Members**
+- **Type** `Function`

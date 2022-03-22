@@ -4,47 +4,33 @@
 
 
 
-- **Type**
-  ```
-    Interface
-  ```
+- **Type** `Interface`
+
 
 - **Members**
    - **alt**: `string`
    - **description**: `IBlockData`
    - **src**: `string`
 
+
 ## default
 
 
 
-- **Type**
-  ```
-    Property
-  ```
+- **Type** `Property`
 
-- **Members**
 
 
 ## name
 
 
 
-- **Type**
-  ```
-    Variable
-  ```
+- **Type** `Variable`
 
-- **Members**
 
 
 ## getDefaultData
 
 
 
-- **Type**
-  ```
-    Function
-  ```
-
-- **Members**
+- **Type** `Function`

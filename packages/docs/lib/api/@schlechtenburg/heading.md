@@ -4,47 +4,33 @@
 
 
 
-- **Type**
-  ```
-    Interface
-  ```
+- **Type** `Interface`
+
 
 - **Members**
    - **align**: `string`
    - **level**: `number`
    - **value**: `string`
 
+
 ## default
 
 
 
-- **Type**
-  ```
-    Property
-  ```
+- **Type** `Property`
 
-- **Members**
 
 
 ## name
 
 
 
-- **Type**
-  ```
-    Variable
-  ```
+- **Type** `Variable`
 
-- **Members**
 
 
 ## getDefaultData
 
 
 
-- **Type**
-  ```
-    Function
-  ```
-
-- **Members**
+- **Type** `Function`
